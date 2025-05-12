@@ -1,0 +1,9 @@
+#import ./fragments/CompanyEntry.gql
+
+query PageHome {
+  entries(section: "company", limit: 1) {
+    ... on company_Entry {
+      ...CompanyEntry
+    }
+  }
+}

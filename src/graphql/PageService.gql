@@ -1,0 +1,10 @@
+#import ./fragments/ServicesEntry.gql
+
+query PageService($slug: [String]) {
+  # Fetching the service entry based on the slug
+  entries(section: "services", slug: $slug) {
+    ... on services_Entry {
+      ...ServicesEntry
+    }
+  }
+}

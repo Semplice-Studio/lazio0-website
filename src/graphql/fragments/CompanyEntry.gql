@@ -1,0 +1,6 @@
+fragment CompanyEntry on company_Entry {
+  id
+  title
+  metaDescription
+  metaTitle
+}

@@ -1,0 +1,39 @@
+{
+  "vue-component": {
+    "scope": "vue",
+    "prefix": "vue-component",
+    "body": [
+      "<script setup lang=\"ts\">",
+      "${0}",
+      "</script>",
+      "",
+      "<template>",
+      "  <div></div>",
+      "</template>",
+      "",
+      "<style lang=\"scss\" scoped>",
+      "/**  */",
+      "</style>",
+      ""
+    ]
+  },
+  "vue-component-style": {
+    "scope": "vue",
+    "prefix": "vue-component-style",
+    "body": [
+      "<style lang=\"scss\" scoped>",
+      "/**  */",
+      "</style>",
+    ]
+  },
+  "vue-composable": {
+    "scope": "typescript",
+    "prefix": "vue-composable",
+    "body": [
+      "export function ${TM_FILENAME_BASE}() {",
+      "\t${0}",
+      "}",
+      ""
+    ]
+  },
+}

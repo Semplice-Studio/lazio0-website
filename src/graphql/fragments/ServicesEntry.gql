@@ -1,0 +1,23 @@
+#import ./ButtonLink.gql
+
+fragment ServicesEntry on services_Entry {
+  abstract
+  buttonLink {
+    ...ButtonLink
+  }
+  id
+  title
+  pageBlocks {
+    __typename
+    ... on blockParagraph_Entry {
+      buttonLink {
+        ...ButtonLink
+      }
+      evidence
+      htmlContent
+      title
+      typeHandle
+      uid
+    }
+  }
+}

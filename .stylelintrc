@@ -1,0 +1,18 @@
+{
+  "customSyntax": "postcss-html",
+  "extends": [
+    "stylelint-config-idiomatic-order",
+    "@stylistic/stylelint-config"
+  ],
+  "overrides": [
+    { "files": ["src/**/*.scss"], "customSyntax": "postcss-scss" }
+  ],
+  "rules": {
+    "color-function-notation": "modern",
+    "custom-property-no-missing-var-function": true,
+    "selector-max-id": 1,
+    "selector-pseudo-class-no-unknown": [true, { "ignorePseudoClasses": ["deep", "global"] }],
+    "selector-pseudo-element-no-unknown": [true, { "ignorePseudoElements": ["v-deep", "v-global", "v-slotted"] }],
+    "value-keyword-case": ["lower", { "camelCaseSvgKeywords": true, "ignoreFunctions": ["v-bind"] }]
+  }
+}

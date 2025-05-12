@@ -1,0 +1,34 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "editor.formatOnSave": false,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "explicit",
+      "source.fixAll.stylelint": "explicit"
+    },
+    "explorer.sortOrder": "foldersNestsFiles",
+    "explorer.fileNesting.enabled": true,
+    "explorer.fileNesting.expand": false,
+    "explorer.fileNesting.patterns": {
+      ".gitignore": ".gitattributes, .gitmodules, .gitmessage, .mailmap, .git-blame*",
+      ".env": ".env.*",
+      "*.code-workspace": ".editorconfig",
+      "*.vue": "$(capture)*.vue, $(capture).*.ts",
+      "*.ts": "$(capture)*.ts, $(capture).*.ts",
+      "package.json": "package*, .npmrc*, .vscode*",
+      "nuxt.config.ts": ".eslint*, .nuxtignore, .postcssrc, .stylelint*, eslint.config.*, formkit.config.*, postcss.config.ts, uno.config.*",
+      "serverless.cjs": ".env*, *.env, .serverless-*, monogrid-*"
+    },
+    "eslint.useFlatConfig": true,
+    "eslint.format.enable": true,
+    "eslint.validate": ["vue", "javascript", "typescript"],
+    "css.validate": false,
+    "scss.validate": false,
+    "stylelint.packageManager": "npm",
+    "stylelint.validate": ["vue", "scss", "css"]
+  }
+}
