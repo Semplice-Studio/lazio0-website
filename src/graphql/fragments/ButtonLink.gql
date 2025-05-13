@@ -2,10 +2,9 @@ fragment ButtonLink on LinkData {
   ariaLabel
   defaultLabel
   entry {
-    ... on EntryInterface {
-      typeHandle
-    }
+    uri
   }
   label
   type
+  url
 }

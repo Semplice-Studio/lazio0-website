@@ -29,6 +29,7 @@
     "vue-router": "^4.5.0"
   },
   "devDependencies": {
+    "@bootstrap-vue-next/nuxt": "^0.29.3",
     "@graphql-codegen/cli": "^5.0.5",
     "@graphql-codegen/typescript": "^4.1.6",
     "@graphql-codegen/typescript-operations": "^4.6.0",
@@ -38,6 +39,7 @@
     "@stylistic/eslint-plugin": "^4.2.0",
     "@stylistic/eslint-plugin-ts": "^4.2.0",
     "@stylistic/stylelint-config": "^2.0.0",
+    "bootstrap-vue-next": "^0.29.3",
     "eslint": "^9.25.1",
     "eslint-plugin-simple-import-sort": "^12.1.1",
     "eslint-plugin-unused-imports": "^4.1.4",

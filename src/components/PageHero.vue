@@ -3,7 +3,13 @@
     <div class="col-md-8">
       <h1>{{ title }}</h1>
       <div v-if="abstract" class="text-md-left" v-html="abstract" />
-      <Button :to="buttonLinkTo">{{ buttonLink?.label }}</Button>
+      <Button
+        v-if="link"
+        :aria-label="link.ariaLabel"
+        :to="link.url"
+      >
+        {{ link.label }}
+      </Button>
     </div>
   </div>
 </template>
@@ -28,5 +34,5 @@ const props = defineProps({
   }
 })
 
-const buttonLinkTo = useCraftLink(props.buttonLink)
+const link = useCraftLink(props.buttonLink)
 </script>

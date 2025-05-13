@@ -1,22 +1,28 @@
 <template>
   <div class="row">
     <div class="col-12 col-lg-4">
-      <Navbar ref="navScrollEl" class="it-navscroll-wrapper it-bottom-navscroll it-right-side affix-top" expand="lg">
-        <Progress class="custom-navbar-progressbar" />
-        <div className="menu-wrapper">
-          <div className="link-list-wrapper">
-            <h3>header</h3>
-            <Progress class="it-navscroll-progressbar" />
-            <LinkList no-wrapper>
-              <li v-for="block, i in blocks" :key="i" class="nav-item">
-                <NuxtLinkLocale class="nav-link">
-                  <span>{{ block.typeHandle }}</span>
-                </NuxtLinkLocale>
-              </li>
-            </LinkList>
+      <BNavbar ref="navScrollEl" class="it-navscroll-wrapper it-bottom-navscroll it-right-side affix-top" expand="lg">
+        <BNavbarToggle class="custom-navbar-toggler" target="nav-collapse">
+          <span class="it-list" />
+          <Progress class="custom-navbar-progressbar" />
+        </BNavbarToggle>
+        <BCollapse id="nav-collapse" is-nav>
+          <Progress class="custom-navbar-progressbar" />
+          <div className="menu-wrapper">
+            <div className="link-list-wrapper">
+              <h3>indice della pagina</h3>
+              <Progress class="it-navscroll-progressbar" />
+              <LinkList no-wrapper>
+                <LinkListItem v-for="block, i in blocks" :key="i">
+                  <NuxtLinkLocale class="nav-link">
+                    <span>{{ block.typeHandle }}</span>
+                  </NuxtLinkLocale>
+                </LinkListItem>
+              </LinkList>
+            </div>
           </div>
-        </div>
-      </Navbar>
+        </BCollapse>
+      </BNavbar>
     </div>
     <div class="it-page-sections-container col-12 col-lg-8">
       <Blocks :blocks="blocks" />

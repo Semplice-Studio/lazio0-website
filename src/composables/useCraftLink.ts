@@ -1,18 +1,25 @@
 import type { ButtonLinkFragment } from '@/graphql'
 
-const ENTRY_TO_ROUTE = {
-  company: 'index',
-  newsIndex: 'news'
-}
-
 export function useCraftLink(link: ButtonLinkFragment) {
-  if (!link) {
-    return undefined
-  }
+  const { locale } = useI18n()
 
-  if (link.type === 'entry' && link.entry) {
-    return ENTRY_TO_ROUTE[link.entry.typeHandle as keyof typeof ENTRY_TO_ROUTE]
-  }
+  if (!link) return null
 
-  return undefined
+  const url = computed(() => {
+    if (link.entry && link.entry.uri) {
+      return `/${locale.value}/${link.entry.uri}`
+    }
+
+    if (link.url) {
+      return link.url
+    }
+
+    return ''
+  })
+
+  return readonly({
+    label: link.label || link.defaultLabel,
+    ariaLabel: link.ariaLabel || link.label || link.defaultLabel,
+    url: url.value
+  })
 }

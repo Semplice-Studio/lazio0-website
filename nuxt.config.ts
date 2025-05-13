@@ -24,7 +24,7 @@ export default defineNuxtConfig({
     locales,
     lazy: true,
     langDir: 'i18n/locales',
-    strategy: 'no_prefix',
+    strategy: 'prefix',
     restructureDir: false
   },
   image: {
@@ -32,6 +32,7 @@ export default defineNuxtConfig({
     provider: 'ipx'
   },
   modules: [
+    '@bootstrap-vue-next/nuxt',
     '@nuxt/eslint',
     '@nuxt/fonts',
     '@nuxt/image',

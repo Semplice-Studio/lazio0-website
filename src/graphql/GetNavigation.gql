@@ -1,0 +1,14 @@
+query GetNavigation($navHandle: String) {
+  navigationNodes (navHandle: $navHandle, level: 1) {
+    children {
+      title
+      url
+    }
+    element {
+      uri
+    }
+    title
+    type
+    url
+  }
+}
