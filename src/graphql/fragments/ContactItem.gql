@@ -1,0 +1,11 @@
+#import ./ButtonLink.gql
+
+fragment ContactItem on contactItem_Entry {
+  address
+  email {
+    ...ButtonLink
+  }
+  id
+  slug
+  title
+}

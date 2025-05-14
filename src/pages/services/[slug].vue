@@ -26,7 +26,7 @@ const blocks = computed(() => (data?.pageBlocks || []) as CraftMatrixField[])
           <span class="separator">/</span>
         </BreadcrumbItem>
         <BreadcrumbItem>
-          <NuxtLinkLocale :to="{ name: 'services' }">Services</NuxtLinkLocale>
+          <NuxtLinkLocale :to="{ name: 'services' }">Servizi</NuxtLinkLocale>
           <span class="separator">/</span>
         </BreadcrumbItem>
         <BreadcrumbItem>{{ data.title }}</BreadcrumbItem>

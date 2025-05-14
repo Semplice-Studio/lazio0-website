@@ -1,4 +1,7 @@
 #import ./ButtonLink.gql
+#import ./BlockContacts.gql
+#import ./BlockParagraph.gql
+#import ./BlockTimeline.gql
 
 fragment ServicesEntry on services_Entry {
   abstract
@@ -10,14 +13,13 @@ fragment ServicesEntry on services_Entry {
   pageBlocks {
     __typename
     ... on blockParagraph_Entry {
-      buttonLink {
-        ...ButtonLink
-      }
-      evidence
-      htmlContent
-      title
-      typeHandle
-      uid
+      ...BlockParagraph
+    }
+    ... on blockContacts_Entry {
+      ...BlockContacts
+    }
+    ... on blockTimeline_Entry {
+      ...BlockTimeline
     }
   }
 }

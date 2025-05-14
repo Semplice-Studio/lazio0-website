@@ -1,0 +1,4 @@
+fragment ServicesIndexEntry on servicesIndex_Entry {
+  title
+  abstract
+}

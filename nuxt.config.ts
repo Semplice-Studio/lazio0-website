@@ -10,7 +10,9 @@ export default defineNuxtConfig({
   },
   compatibilityDate: '2024-11-01',
   css: [
-    'bootstrap-italia/dist/css/bootstrap-italia.min.css'
+    // 'bootstrap-italia/dist/css/bootstrap-italia.min.css'
+    // 'bootstrap-italia/src/scss/bootstrap-italia.scss'
+    '@/styles/main.scss'
   ],
   device: {
     refreshOnResize: true
@@ -69,7 +71,15 @@ export default defineNuxtConfig({
     svgo: false
   },
   vite: {
-    plugins: [graphql()]
+    plugins: [graphql()],
+    css: {
+      preprocessorOptions: {
+        scss: {
+          api: 'modern-compiler',
+          quietDeps: true
+        }
+      }
+    }
   },
   watch: ['uno.config.ts', 'src/i18n']
 })

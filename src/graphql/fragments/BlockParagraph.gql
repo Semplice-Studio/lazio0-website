@@ -1,0 +1,10 @@
+fragment BlockParagraph on blockParagraph_Entry {
+  buttonLink {
+    ...ButtonLink
+  }
+  evidence
+  htmlContent
+  title
+  typeHandle
+  uid
+}

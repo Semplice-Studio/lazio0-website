@@ -1,0 +1,14 @@
+#import ./TimelineItem.gql
+
+fragment BlockTimeline  on blockTimeline_Entry {
+  id
+  htmlContent
+  timelineItems {
+    ... on timelineItem_Entry {
+      ...TimelineItem
+    }
+  }
+  title
+  typeHandle
+  uid
+}

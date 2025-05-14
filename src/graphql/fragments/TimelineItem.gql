@@ -1,0 +1,5 @@
+fragment TimelineItem on timelineItem_Entry {
+  abstract
+  date
+  title
+}

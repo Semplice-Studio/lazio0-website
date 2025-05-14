@@ -14,9 +14,9 @@
               <Progress class="it-navscroll-progressbar" />
               <LinkList no-wrapper>
                 <LinkListItem v-for="block, i in blocks" :key="i">
-                  <NuxtLinkLocale class="nav-link">
-                    <span>{{ block.typeHandle }}</span>
-                  </NuxtLinkLocale>
+                  <a class="nav-link" :href="`#${block.uid}`">
+                    <span>{{ block.title }}</span>
+                  </a>
                 </LinkListItem>
               </LinkList>
             </div>

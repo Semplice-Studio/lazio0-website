@@ -1,6 +1,8 @@
 <template>
   <Section
-    :aria-labelledby="uid"
+    :id="uid"
+    class="it-page-section"
+    :aria-labelledby="`title-${uid}`"
     :class="{
       'p-0': !evidence
     }"
@@ -8,7 +10,7 @@
   >
     <div class="row">
       <div class="col-12">
-        <h2 :id="uid">{{ title }}</h2>
+        <h2 :id="`title-${uid}`">{{ title }}</h2>
         <div v-if="htmlContent" class="text-md-left" v-html="htmlContent" />
         <Button
           v-if="link"

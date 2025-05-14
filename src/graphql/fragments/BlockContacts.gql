@@ -1,0 +1,14 @@
+#import ./ContactItem.gql
+
+fragment BlockContacts on blockContacts_Entry {
+  abstract
+  contactItems {
+    ... on contactItem_Entry {
+      ...ContactItem
+    }
+  }
+  id
+  title
+  typeHandle
+  uid
+}

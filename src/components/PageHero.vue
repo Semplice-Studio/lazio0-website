@@ -1,15 +1,19 @@
 <template>
   <div class="row">
     <div class="col-md-8">
-      <h1>{{ title }}</h1>
-      <div v-if="abstract" class="text-md-left" v-html="abstract" />
-      <Button
-        v-if="link"
-        :aria-label="link.ariaLabel"
-        :to="link.url"
-      >
-        {{ link.label }}
-      </Button>
+      <div class="it-hero-wrapper">
+        <div class="it-hero-text-wrapper">
+          <h1 class="h1">{{ title }}</h1>
+          <div v-if="abstract" class="text-md-left" v-html="abstract" />
+          <Button
+            v-if="link"
+            :aria-label="link.ariaLabel"
+            :to="link.url"
+          >
+            {{ link.label }}
+          </Button>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -30,9 +34,28 @@ const props = defineProps({
   },
   buttonLink: {
     type: Object as PropType<ButtonLinkFragment>,
-    default: () => ({})
+    default: () => null
   }
 })
 
 const link = useCraftLink(props.buttonLink)
 </script>
+
+<style scoped>
+.it-hero-wrapper {
+  background-color: unset;
+}
+
+.it-hero-text-wrapper {
+  padding: 0;
+}
+
+.it-hero-wrapper .it-hero-text-wrapper h1 {
+  color: unset;
+}
+
+.it-hero-text-wrapper :deep(p) {
+  color: unset;
+  font-family: unset;
+}
+</style>

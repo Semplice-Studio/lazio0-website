@@ -6,13 +6,16 @@
           <div class="row clearfix">
             <div class="col-sm-12">
               <div class="it-brand-wrapper">
-                <a href="#">
+                <NuxtLinkLocale to="/">
+                  <LogoFull />
+                </NuxtLinkLocale>
+                <!-- <a href="#">
                   <Icon icon="it-pa" />
                   <div class="it-brand-text">
                     <h2>{{ townName }}</h2>
                     <h3 class="d-none d-md-block">{{ townTagLine }}</h3>
                   </div>
-                </a>
+                </a> -->
               </div>
             </div>
           </div>
@@ -20,8 +23,8 @@
 
         <section>
           <div class="row">
-            <div v-for="(section, idx) in menuSections" :key="idx" class="col-lg-3 col-md-3 col-sm-6 pb-2">
-              <h4><a :href="section.link" :title="'Vai alla pagina: ' + section.title">{{ section.title }}</a></h4>
+            <div v-for="(navigationItems, idx) in navigation" :key="idx" class="col-lg-3 col-md-3 col-sm-6 pb-2">
+              <h4><a :href="navigationItems.link" :title="'Vai alla pagina: ' + navigationItems.title">{{ navigationItems.title }}</a></h4>
               <!-- <ul class="footer-list clearfix">
                 <li v-for="item in section.items" :key="item">
                   <a href="#" :title="'Vai alla pagina: ' + item">{{ item }}</a>
@@ -29,8 +32,8 @@
               </ul> -->
               <LinkList class='footer-list clearfix'>
                 <!-- TODO: this neeeds to be a link -->
-                <LinkListItem v-for="item in section.items" :key="item" to="/" :title="'Vai alla pagina: ' + item">
-                  {{ item }}
+                <LinkListItem v-for="item in navigationItems.children" :key="item" to="/" :title="'Vai alla pagina: ' + item.title">
+                  {{ item.title }}
                 </LinkListItem>
               </LinkList>
             </div>
@@ -39,15 +42,15 @@
 
         <section class="py-4 border-white border-top">
           <div class="row">
-            <div class="col-lg-3 col-md-3 pb-2">
+            <!-- <div class="col-lg-3 col-md-3 pb-2">
               <h4><a href="#" title="Vai alla pagina: Amministrazione">Amministrazione trasparente</a></h4>
               <p>
                 I dati personali pubblicati sono riutilizzabili solo alle condizioni previste dalla direttiva
                 comunitaria 2003/98/CE e dal d.lgs. 36/2006
               </p>
-            </div>
+            </div> -->
 
-            <div class="col-lg-3 col-md-3 pb-2">
+            <div class="col-lg-9 col-md-3 pb-2">
               <h4><a href="#" title="Vai alla pagina: Contatti">Contatti</a></h4>
               <p>
                 <strong>Nome del Comune</strong><br>
@@ -60,7 +63,7 @@
               </ul>
             </div>
 
-            <div class="col-lg-3 col-md-3 pb-2">
+            <!-- <div class="col-lg-3 col-md-3 pb-2">
               <h4><a href="#" title="Vai alla pagina: Newsletter">Newsletter</a></h4>
               <form action="#" class="form-newsletter" method="post">
                 <label class="text-white fw-semibold active" for="input-newsletter" style="transition: none 0s ease 0s;">
@@ -72,7 +75,7 @@
                   <span>Iscriviti</span>
                 </button>
               </form>
-            </div>
+            </div> -->
 
             <div class="col-lg-3 col-md-3 pb-2">
               <h4><a href="#" title="Vai alla pagina: Seguici su">Seguici su</a></h4>
@@ -104,33 +107,14 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import LogoFull from '@/assets/images/LogoFUllLight.svg'
+import GetNavigation from '@/graphql/GetNavigation.gql'
 
 const townName = 'Nome Comune'
 const townTagLine = 'Tagline del Comune'
 
-const menuSections = ref([
-  {
-    title: 'Amministrazione',
-    link: '#',
-    items: ['Giunta e consiglio', 'Aree di competenza', 'Dipendenti', 'Luoghi', 'Associazioni e società partecipate']
-  },
-  {
-    title: 'Servizi',
-    link: '#',
-    items: ['Pagamenti', 'Sostegno', 'Domande e iscrizioni', 'Segnalazioni', 'Autorizzazioni e concessioni', 'Certificati e dichiarazioni']
-  },
-  {
-    title: 'Novità',
-    link: '#',
-    items: ['Notizie', 'Eventi', 'Comunicati Stampa']
-  },
-  {
-    title: 'Documenti',
-    link: '#',
-    items: ['Progetti e attività', 'Delibere, determine e ordinanze', 'Bandi', 'Concorsi', 'Albo pretorio']
-  }
-])
+const { locale } = useI18n()
+const { data: navigation } = await useCraftNavigation('footerNavigation', GetNavigation, { navHandle: 'footerNavigation' })
 
 const contacts = ref(['Posta Elettronica Certificata', 'URP - Ufficio Relazioni con il Pubblico'])
 

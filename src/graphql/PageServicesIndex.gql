@@ -1,0 +1,9 @@
+#import ./fragments/ServicesIndexEntry.gql
+
+query ServicesIndex {
+  entries(section: "servicesIndex") {
+    ... on servicesIndex_Entry {
+      ...ServicesIndexEntry
+    }
+  }
+}
