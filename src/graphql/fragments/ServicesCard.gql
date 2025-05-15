@@ -1,0 +1,10 @@
+fragment ServicesCard on services_Entry {
+  abstract
+  id
+  serviceCategories {
+    title
+    slug
+  }
+  slug
+  title
+}

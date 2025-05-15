@@ -4,8 +4,8 @@ import PageServicesIndexGQL from '@/graphql/PageServicesIndex.gql'
 
 defineI18nRoute({
   paths: {
-    en: '/services', // -> accessible at /services
-    it: '/servizi' // -> accessible at /servizi
+    en: '/news', // -> accessible at /services
+    it: '/novita' // -> accessible at /servizi
   }
 })
 

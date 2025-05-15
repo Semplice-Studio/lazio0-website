@@ -16,20 +16,7 @@
         :key="index"
         class="col-6"
       >
-        <Card
-          teaser
-          class="rounded shadow p-4"
-        >
-          <BCardBody>
-            <BCardTitle class="h5">{{ item.title }}</BCardTitle>
-            <BCardText class="pt-0 font-sans-serif">
-              <div v-if="item.address" v-html="item.address" />
-              <a v-if="item.email" class="text-decoration-none" :href="item.email.url">
-                {{ item.email.label || item.email.defaultLabel }}
-              </a>
-            </BCardText>
-          </BCardBody>
-        </Card>
+        <CardContact v-bind="item" />
       </div>
     </div>
   </Section>

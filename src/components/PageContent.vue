@@ -12,7 +12,7 @@
             <div className="link-list-wrapper">
               <h3>indice della pagina</h3>
               <Progress class="it-navscroll-progressbar" />
-              <LinkList no-wrapper>
+              <LinkList no-wrapper class="mt-4">
                 <LinkListItem v-for="block, i in blocks" :key="i">
                   <a class="nav-link" :href="`#${block.uid}`">
                     <span>{{ block.title }}</span>

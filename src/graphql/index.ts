@@ -1254,6 +1254,7 @@ export type EntryInterfaceAncestorsArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -1326,6 +1327,7 @@ export type EntryInterfaceChildrenArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -1398,6 +1400,7 @@ export type EntryInterfaceDescendantsArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -1470,6 +1473,7 @@ export type EntryInterfaceLocalizedArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -1542,6 +1546,7 @@ export type EntryInterfaceNextArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -1614,6 +1619,7 @@ export type EntryInterfaceParentArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -1686,6 +1692,7 @@ export type EntryInterfacePrevArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -1773,6 +1780,7 @@ export type EntryRelationCriteriaInput = {
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   /** Narrows the query results based on whether the elements have any descendants in their structure. */
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   /** Narrows the query results based on the elements’ IDs. */
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   /** Causes the query results to be returned in reverse order. */
@@ -2441,6 +2449,7 @@ export type QueryEntriesArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -2512,6 +2521,7 @@ export type QueryEntryArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -2583,6 +2593,7 @@ export type QueryEntryCountArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -2878,6 +2889,7 @@ export type QueryServicesEntriesArgs = {
   expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -3739,6 +3751,7 @@ export type BlockContacts_EntryAncestorsArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -3810,6 +3823,7 @@ export type BlockContacts_EntryChildrenArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -3945,6 +3959,7 @@ export type BlockContacts_EntryDescendantsArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -4016,6 +4031,7 @@ export type BlockContacts_EntryLocalizedArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -4087,6 +4103,7 @@ export type BlockContacts_EntryNextArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -4158,6 +4175,7 @@ export type BlockContacts_EntryParentArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -4229,6 +4247,7 @@ export type BlockContacts_EntryPrevArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -4421,6 +4440,7 @@ export type BlockHighlightedLinks_EntryAncestorsArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -4492,6 +4512,7 @@ export type BlockHighlightedLinks_EntryChildrenArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -4563,6 +4584,7 @@ export type BlockHighlightedLinks_EntryDescendantsArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -4697,6 +4719,7 @@ export type BlockHighlightedLinks_EntryLocalizedArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -4768,6 +4791,7 @@ export type BlockHighlightedLinks_EntryNextArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -4839,6 +4863,7 @@ export type BlockHighlightedLinks_EntryParentArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -4910,6 +4935,7 @@ export type BlockHighlightedLinks_EntryPrevArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -5102,6 +5128,7 @@ export type BlockHighlightedNews_EntryAncestorsArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -5173,6 +5200,7 @@ export type BlockHighlightedNews_EntryChildrenArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -5244,6 +5272,7 @@ export type BlockHighlightedNews_EntryDescendantsArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -5315,6 +5344,7 @@ export type BlockHighlightedNews_EntryLocalizedArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -5448,6 +5478,7 @@ export type BlockHighlightedNews_EntryNextArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -5519,6 +5550,7 @@ export type BlockHighlightedNews_EntryParentArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -5590,6 +5622,7 @@ export type BlockHighlightedNews_EntryPrevArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -5784,6 +5817,7 @@ export type BlockParagraph_EntryAncestorsArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -5855,6 +5889,7 @@ export type BlockParagraph_EntryChildrenArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -5926,6 +5961,7 @@ export type BlockParagraph_EntryDescendantsArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -5997,6 +6033,7 @@ export type BlockParagraph_EntryLocalizedArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -6068,6 +6105,7 @@ export type BlockParagraph_EntryNextArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -6139,6 +6177,7 @@ export type BlockParagraph_EntryParentArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -6210,6 +6249,7 @@ export type BlockParagraph_EntryPrevArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -6403,6 +6443,7 @@ export type BlockTimeline_EntryAncestorsArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -6474,6 +6515,7 @@ export type BlockTimeline_EntryChildrenArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -6545,6 +6587,7 @@ export type BlockTimeline_EntryDescendantsArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -6616,6 +6659,7 @@ export type BlockTimeline_EntryLocalizedArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -6687,6 +6731,7 @@ export type BlockTimeline_EntryNextArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -6758,6 +6803,7 @@ export type BlockTimeline_EntryParentArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -6829,6 +6875,7 @@ export type BlockTimeline_EntryPrevArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -7092,6 +7139,7 @@ export type Company_EntryAncestorsArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -7163,6 +7211,7 @@ export type Company_EntryChildrenArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -7297,6 +7346,7 @@ export type Company_EntryDescendantsArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -7368,6 +7418,7 @@ export type Company_EntryLocalizedArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -7439,6 +7490,7 @@ export type Company_EntryNextArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -7556,6 +7608,7 @@ export type Company_EntryParentArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -7627,6 +7680,7 @@ export type Company_EntryPrevArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -7820,6 +7874,7 @@ export type ContactItem_EntryAncestorsArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -7891,6 +7946,7 @@ export type ContactItem_EntryChildrenArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -7962,6 +8018,7 @@ export type ContactItem_EntryDescendantsArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -8033,6 +8090,7 @@ export type ContactItem_EntryLocalizedArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -8104,6 +8162,7 @@ export type ContactItem_EntryNextArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -8175,6 +8234,7 @@ export type ContactItem_EntryParentArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -8246,6 +8306,7 @@ export type ContactItem_EntryPrevArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -8574,6 +8635,7 @@ export type LinkItem_EntryAncestorsArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -8645,6 +8707,7 @@ export type LinkItem_EntryChildrenArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -8716,6 +8779,7 @@ export type LinkItem_EntryDescendantsArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -8787,6 +8851,7 @@ export type LinkItem_EntryLocalizedArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -8858,6 +8923,7 @@ export type LinkItem_EntryNextArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -8929,6 +8995,7 @@ export type LinkItem_EntryParentArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -9000,6 +9067,7 @@ export type LinkItem_EntryPrevArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -9748,6 +9816,7 @@ export type NewsIndex_EntryAncestorsArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -9819,6 +9888,7 @@ export type NewsIndex_EntryChildrenArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -9890,6 +9960,7 @@ export type NewsIndex_EntryDescendantsArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -9961,6 +10032,7 @@ export type NewsIndex_EntryLocalizedArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -10032,6 +10104,7 @@ export type NewsIndex_EntryNextArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -10149,6 +10222,7 @@ export type NewsIndex_EntryParentArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -10220,6 +10294,7 @@ export type NewsIndex_EntryPrevArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -10422,6 +10497,7 @@ export type News_EntryAncestorsArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -10493,6 +10569,7 @@ export type News_EntryChildrenArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -10564,6 +10641,7 @@ export type News_EntryDescendantsArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -10635,6 +10713,7 @@ export type News_EntryLocalizedArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -10755,6 +10834,7 @@ export type News_EntryNextArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -10938,6 +11018,7 @@ export type News_EntryParentArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -11009,6 +11090,7 @@ export type News_EntryPrevArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -12087,6 +12169,7 @@ export type ServicesIndex_EntryAncestorsArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -12158,6 +12241,7 @@ export type ServicesIndex_EntryChildrenArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -12229,6 +12313,7 @@ export type ServicesIndex_EntryDescendantsArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -12300,6 +12385,7 @@ export type ServicesIndex_EntryLocalizedArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -12371,6 +12457,7 @@ export type ServicesIndex_EntryNextArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -12488,6 +12575,7 @@ export type ServicesIndex_EntryParentArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -12559,6 +12647,7 @@ export type ServicesIndex_EntryPrevArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -12648,6 +12737,7 @@ export type Services_Entry = ElementInterface & EntryInterface & {
   fieldHandle?: Maybe<Scalars['String']['output']>;
   /** The ID of the field that contains the entry. */
   fieldId?: Maybe<Scalars['Int']['output']>;
+  htmlContent?: Maybe<Scalars['String']['output']>;
   /** The ID of the entity */
   id?: Maybe<Scalars['ID']['output']>;
   /** Returns whether this is a draft. */
@@ -12761,6 +12851,7 @@ export type Services_EntryAncestorsArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -12832,6 +12923,7 @@ export type Services_EntryChildrenArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -12903,6 +12995,7 @@ export type Services_EntryDescendantsArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -12974,6 +13067,7 @@ export type Services_EntryLocalizedArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -13045,6 +13139,7 @@ export type Services_EntryNextArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -13228,6 +13323,7 @@ export type Services_EntryParentArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -13299,6 +13395,7 @@ export type Services_EntryPrevArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -14005,6 +14102,7 @@ export type TimelineItem_EntryAncestorsArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -14076,6 +14174,7 @@ export type TimelineItem_EntryChildrenArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -14147,6 +14246,7 @@ export type TimelineItem_EntryDescendantsArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -14218,6 +14318,7 @@ export type TimelineItem_EntryLocalizedArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -14289,6 +14390,7 @@ export type TimelineItem_EntryNextArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -14360,6 +14462,7 @@ export type TimelineItem_EntryParentArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -14431,6 +14534,7 @@ export type TimelineItem_EntryPrevArgs = {
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -14489,6 +14593,14 @@ export type GetNavigationQueryVariables = Exact<{
 
 export type GetNavigationQuery = { navigationNodes?: Array<{ title?: string, type?: string, url?: string, children?: Array<{ title?: string, url?: string }>, element?: { uri?: string } | { uri?: string } }> };
 
+export type ListServicesQueryVariables = Exact<{
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+}>;
+
+
+export type ListServicesQuery = { entries?: Array<{ abstract?: string, id?: string, slug?: string, title?: string, serviceCategories: Array<{ title?: string, slug?: string }> }> };
+
 export type PageHomeQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -14499,7 +14611,7 @@ export type PageServiceQueryVariables = Exact<{
 }>;
 
 
-export type PageServiceQuery = { entries?: Array<{ abstract?: string, id?: string, title?: string, buttonLink?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string } }, pageBlocks: Array<(
+export type PageServiceQuery = { entries?: Array<{ htmlContent?: string, id?: string, title?: string, buttonLink?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string } }, pageBlocks: Array<(
       { abstract?: string, id?: string, title?: string, typeHandle: string, uid?: string, contactItems: Array<{ address?: string, id?: string, slug?: string, title?: string, email?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string } } }> }
       & { __typename: 'blockContacts_Entry' }
     ) | (
@@ -14527,7 +14639,9 @@ export type CompanyEntryFragment = { id?: string, title?: string, metaDescriptio
 
 export type ContactItemFragment = { address?: string, id?: string, slug?: string, title?: string, email?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string } } };
 
-export type ServicesEntryFragment = { abstract?: string, id?: string, title?: string, buttonLink?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string } }, pageBlocks: Array<(
+export type ServicesCardFragment = { abstract?: string, id?: string, slug?: string, title?: string, serviceCategories: Array<{ title?: string, slug?: string }> };
+
+export type ServicesEntryFragment = { htmlContent?: string, id?: string, title?: string, buttonLink?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string } }, pageBlocks: Array<(
     { abstract?: string, id?: string, title?: string, typeHandle: string, uid?: string, contactItems: Array<{ address?: string, id?: string, slug?: string, title?: string, email?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string } } }> }
     & { __typename: 'blockContacts_Entry' }
   ) | (

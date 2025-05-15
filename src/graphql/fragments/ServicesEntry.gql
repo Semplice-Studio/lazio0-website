@@ -4,10 +4,10 @@
 #import ./BlockTimeline.gql
 
 fragment ServicesEntry on services_Entry {
-  abstract
   buttonLink {
     ...ButtonLink
   }
+  htmlContent
   id
   title
   pageBlocks {

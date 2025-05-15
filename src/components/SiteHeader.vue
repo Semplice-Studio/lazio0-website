@@ -1,18 +1,38 @@
 <script setup lang="ts">
 import Logo from '@/assets/images/Logo.svg'
 import LogoFull from '@/assets/images/LogoFull.svg'
+import type { NodeInterface } from '@/graphql'
 import GetNavigation from '@/graphql/GetNavigation.gql'
+import { NuxtLinkLocale } from '#components'
 
-const isOpenSide = ref(false)
+const route = useRoute()
 const { locale } = useI18n()
 const { data: navigation } = await useCraftNavigation('mainNavigation', GetNavigation, { navHandle: 'mainNavigation' })
+
+const isOpenSide = ref(false)
+
+function getNavItemURL(item: NodeInterface) {
+  if (item.element?.uri && item.element.uri !== '__home__') {
+    return `/${locale.value}/${item.element.uri}`
+  }
+
+  return `/${locale.value}`
+}
+
+function getIsActive(item: NodeInterface) {
+  if (item.element?.uri && item.element.uri !== '__home__') {
+    return `/${locale.value}/${item.element.uri}` === route.path
+  }
+
+  return `/${locale.value}` === route.path
+}
 </script>
 
 <template>
   <Headers>
     <Header type="slim">
       <HeaderContent>
-        <HeaderBrand>
+        <HeaderBrand to="/" :tag="NuxtLinkLocale">
           <Logo class="me-2" style="height: 32px;" />
           Regione Lazio
         </HeaderBrand>
@@ -21,7 +41,7 @@ const { data: navigation } = await useCraftNavigation('mainNavigation', GetNavig
     <div class="it-nav-wrapper">
       <Header small theme="light" type="center">
         <HeaderContent>
-          <HeaderBrand>
+          <HeaderBrand to="/" :tag="NuxtLinkLocale">
             <LogoFull />
           </HeaderBrand>
           <HeaderRightZone>
@@ -51,9 +71,10 @@ const { data: navigation } = await useCraftNavigation('mainNavigation', GetNavig
                 <BNavItem
                   v-for="(item, index) in navigation"
                   :key="index"
-                  router-component-name="NuxtLinkLocale"
-                  :to="`/${locale}/${item.element!.uri}`"
+                  :active="getIsActive(item)"
+                  :to="getNavItemURL(item)"
                 >
+                  <!-- router-component-name="NuxtLinkLocale" -->
                   {{item.title}}
                 </BNavItem>
                 <!-- <BNavItem active><span>link 1 active</span><span class="visually-hidden">current</span></BNavItem>

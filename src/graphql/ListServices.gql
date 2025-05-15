@@ -1,0 +1,7 @@
+#import ./fragments/ServicesCard.gql
+
+query ListServices($offset: Int, $limit: Int) {
+  entries(section: "services", offset: $offset, limit: $limit) {
+    ...ServicesCard
+  }
+}

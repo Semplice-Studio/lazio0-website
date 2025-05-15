@@ -12,6 +12,7 @@
           >
             {{ link.label }}
           </Button>
+          <slot />
         </div>
       </div>
     </div>
