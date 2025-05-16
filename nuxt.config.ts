@@ -5,6 +5,9 @@ import { defaultLocale, locales } from './src/i18n'
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  app: {
+    pageTransition: { name: 'page', mode: 'out-in' }
+  },
   codegen: {
     schema: process.env.CRAFT_GQL_SCHEMA
   },
@@ -30,8 +33,8 @@ export default defineNuxtConfig({
     restructureDir: false
   },
   image: {
-    domains: [process.env.STRAPI_URL as string],
-    provider: 'ipx'
+    domains: [process.env.CRAFT_URL as string]
+    // provider: 'ipx'
   },
   modules: [
     '@bootstrap-vue-next/nuxt',

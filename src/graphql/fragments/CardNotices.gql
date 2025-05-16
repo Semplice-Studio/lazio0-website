@@ -1,0 +1,12 @@
+fragment CardNotices on notices_Entry {
+  abstract
+  expiryDate
+  id
+  noticeCategories {
+    title
+    slug
+  }
+  postDate
+  slug
+  title
+}

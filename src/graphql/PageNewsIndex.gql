@@ -1,0 +1,9 @@
+#import ./fragments/NewsIndexEntry.gql
+
+query NewsIndex {
+  entries(section: "newsIndex") {
+    ... on newsIndex_Entry {
+      ...NewsIndexEntry
+    }
+  }
+}

@@ -1,0 +1,10 @@
+fragment ImageThumb on AssetInterface {
+  src: url(width: 800)
+  webp: url(format: "webp", width: 800)
+  avif: url(format: "avif", width: 800)
+  filename
+  focalPoint
+  hasFocalPoint
+  width
+  height
+}

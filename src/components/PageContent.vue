@@ -37,12 +37,19 @@ import { NavScroll } from 'bootstrap-italia'
 import type { CraftMatrixField } from '@/components/Blocks.vue'
 
 const navScrollEl = ref(null)
+const navScrollInstance = ref<NavScroll | null>(null)
 
 onMounted(() => {
-  const target = unrefElement(navScrollEl)! as HTMLElement
-  const navscroll = new NavScroll(target)
+  if (navScrollEl.value) {
+    const target = unrefElement(navScrollEl)! as HTMLElement
+    navScrollInstance.value = new NavScroll(target)
+  }
+})
 
-  console.log('NavScroll initialized', navscroll)
+onUnmounted(() => {
+  if (navScrollInstance.value) {
+    navScrollInstance.value.dispose()
+  }
 })
 
 defineProps({

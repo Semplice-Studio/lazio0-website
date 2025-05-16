@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { CraftMatrixField } from '@/components/Blocks.vue'
-import type { ServicesEntryFragment } from '@/graphql'
-import PageServiceGQL from '@/graphql/PageService.gql'
+import type { NewsEntryFragment } from '@/graphql'
+import PageNewsGQL from '@/graphql/PageNews.gql'
 
 defineI18nRoute({
   paths: {
@@ -13,7 +13,7 @@ defineI18nRoute({
 const route = useRoute()
 const slug = route.params.slug as string
 
-const { data, status } = await useCraftPage<ServicesEntryFragment>('service -' + slug, PageServiceGQL, { slug })
+const { data, status } = await useCraftPage<NewsEntryFragment>('news-' + slug, PageNewsGQL, { slug })
 const blocks = computed(() => (data?.pageBlocks || []) as CraftMatrixField[])
 </script>
 
@@ -26,7 +26,7 @@ const blocks = computed(() => (data?.pageBlocks || []) as CraftMatrixField[])
           <span class="separator">/</span>
         </BreadcrumbItem>
         <BreadcrumbItem>
-          <NuxtLinkLocale :to="{ name: 'services' }">Servizi</NuxtLinkLocale>
+          <NuxtLinkLocale :to="{ name: 'news' }">Novità</NuxtLinkLocale>
           <span class="separator">/</span>
         </BreadcrumbItem>
         <BreadcrumbItem>{{ data.title }}</BreadcrumbItem>
@@ -35,7 +35,7 @@ const blocks = computed(() => (data?.pageBlocks || []) as CraftMatrixField[])
     <section class="container my-5">
       <PageHero :abstract="data.htmlContent" :button-link="data.buttonLink" :title="data.title" />
     </section>
-    <section class="container my-5">
+    <section v-if="blocks.length > 0" class="container my-5">
       <PageContent :blocks="blocks" />
     </section>
   </div>

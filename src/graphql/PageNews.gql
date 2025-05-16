@@ -1,0 +1,9 @@
+#import ./fragments/NewsEntry.gql
+
+query PageNews($slug: [String]) {
+  entries(section: "news", slug: $slug) {
+    ... on news_Entry {
+      ...NewsEntry
+    }
+  }
+}

@@ -1,0 +1,16 @@
+#import ./ImageThumb.gql
+
+fragment CardNews on news_Entry {
+  abstract
+  date
+  id
+  image {
+    ...ImageThumb
+  }
+  newsCategories {
+    title
+    slug
+  }
+  slug
+  title
+}

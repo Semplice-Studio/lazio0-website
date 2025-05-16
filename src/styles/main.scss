@@ -17,6 +17,7 @@
 @import "bootstrap-italia/src/scss/base/mixins";
 @import "bootstrap-italia/src/scss/base/maps";
 @import "bootstrap-italia/src/scss/base/utilities";
+@import "base/animations";
 // ------------------------------
 
 // Layout
@@ -90,7 +91,7 @@
 @import "bootstrap-italia/src/scss/components/avatar";
 @import "bootstrap-italia/src/scss/components/thumbnav";
 @import "bootstrap-italia/src/scss/components/steppers";
-@import "bootstrap-italia/src/scss/components/card";
+@import "components/card";
 @import "bootstrap-italia/src/scss/components/imgresponsive";
 @import "bootstrap-italia/src/scss/components/overlay-panel";
 @import "bootstrap-italia/src/scss/components/progress-donuts";

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type { ServicesIndexEntryFragment } from '@/graphql'
-import PageServicesIndexGQL from '@/graphql/PageServicesIndex.gql'
+import type { NewsIndexEntryFragment } from '@/graphql'
+import PageNewsIndexGQL from '@/graphql/PageNewsIndex.gql'
 
 defineI18nRoute({
   paths: {
@@ -9,7 +9,7 @@ defineI18nRoute({
   }
 })
 
-const { data, status } = await useCraftPage<ServicesIndexEntryFragment>('servicesIndex', PageServicesIndexGQL)
+const { data, status } = await useCraftPage<NewsIndexEntryFragment>('news', PageNewsIndexGQL)
 </script>
 
 <template>
@@ -29,7 +29,7 @@ const { data, status } = await useCraftPage<ServicesIndexEntryFragment>('service
       </PageHero>
     </section>
     <section class="container mb-5">
-      <ListServices />
+      <ListNews />
     </section>
   </div>
 </template>

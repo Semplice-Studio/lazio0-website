@@ -1,24 +1,18 @@
 <script setup lang="ts">
-
-const props = defineProps<{
+interface CardProps {
   tag?: string
-  href?: string
   teaser?: boolean
   spacing?: boolean
-  wrapperClassName?: string
-}>()
+}
 
-const tag = props.tag || 'div'
+withDefaults(defineProps<CardProps>(), {
+  tag: 'div',
+  teaser: false,
+  spacing: false
+})
 </script>
 
 <template>
-  <!-- <div
-    class="card-wrapper"
-    :class="{
-      'card-space': spacing,
-      'card-teaser-wrapper': teaser
-    }"
-  > -->
   <BCard
     :is="tag"
     no-body
@@ -28,5 +22,4 @@ const tag = props.tag || 'div'
   >
     <slot />
   </BCard>
-  <!-- </div> -->
 </template>

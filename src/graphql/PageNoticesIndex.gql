@@ -1,0 +1,9 @@
+#import ./fragments/NoticesIndexEntry.gql
+
+query NoticesIndex {
+  entries(section: "noticesIndex") {
+    ... on noticesIndex_Entry {
+      ...NoticesIndexEntry
+    }
+  }
+}

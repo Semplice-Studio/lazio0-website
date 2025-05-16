@@ -1,19 +1,19 @@
 <script setup lang="ts">
 import type { CraftMatrixField } from '@/components/Blocks.vue'
-import type { ServicesEntryFragment } from '@/graphql'
-import PageServiceGQL from '@/graphql/PageService.gql'
+import type { NewsEntryFragment } from '@/graphql'
+import PageNoticesGQL from '@/graphql/PageNotices.gql'
 
 defineI18nRoute({
   paths: {
-    en: '/services/[slug]', // -> accessible at /en/services/[slug]
-    it: '/servizi/[slug]' // -> accessible at /it/servizi/[slug]
+    en: '/notices/[slug]', // -> accessible at /en/news/[slug]
+    it: '/concorsi/[slug]' // -> accessible at /it/novita/[slug]
   }
 })
 
 const route = useRoute()
 const slug = route.params.slug as string
 
-const { data, status } = await useCraftPage<ServicesEntryFragment>('service-' + slug, PageServiceGQL, { slug })
+const { data, status } = await useCraftPage<NewsEntryFragment>('notices-' + slug, PageNoticesGQL, { slug })
 const blocks = computed(() => (data?.pageBlocks || []) as CraftMatrixField[])
 </script>
 
@@ -26,7 +26,7 @@ const blocks = computed(() => (data?.pageBlocks || []) as CraftMatrixField[])
           <span class="separator">/</span>
         </BreadcrumbItem>
         <BreadcrumbItem>
-          <NuxtLinkLocale :to="{ name: 'services' }">Servizi</NuxtLinkLocale>
+          <NuxtLinkLocale :to="{ name: 'notices' }">Bandi, Concorsi e Gare</NuxtLinkLocale>
           <span class="separator">/</span>
         </BreadcrumbItem>
         <BreadcrumbItem>{{ data.title }}</BreadcrumbItem>

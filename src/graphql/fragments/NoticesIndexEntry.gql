@@ -1,0 +1,4 @@
+fragment NoticesIndexEntry on noticesIndex_Entry {
+  title
+  abstract
+}

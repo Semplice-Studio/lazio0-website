@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import type { ServicesCardFragment } from '@/graphql'
+import type { CardServicesFragment } from '@/graphql'
 import ListServicesGQL from '@/graphql/ListServices.gql'
 
 // const route = useRoute()
 // const slug = route.params.slug as string
 
-const { data: services, status } = await useCraftStructure<ServicesCardFragment>('list-services', ListServicesGQL, { })
+const { data: services, status } = await useCraftStructure<CardServicesFragment>('list-services', ListServicesGQL, { })
 </script>
 
 <template>

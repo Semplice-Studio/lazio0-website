@@ -74,19 +74,8 @@ function getIsActive(item: NodeInterface) {
                   :active="getIsActive(item)"
                   :to="getNavItemURL(item)"
                 >
-                  <!-- router-component-name="NuxtLinkLocale" -->
                   {{item.title}}
                 </BNavItem>
-                <!-- <BNavItem active><span>link 1 active</span><span class="visually-hidden">current</span></BNavItem>
-                <BNavItem disabled>
-                  Link 2
-                </BNavItem>
-                <BNavItem>
-                  Link 4
-                </BNavItem>
-                <BNavItem>
-                  Link 5
-                </BNavItem> -->
               </Nav>
             </div>
           </Collapse>

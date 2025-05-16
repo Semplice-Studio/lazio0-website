@@ -1,4 +1,4 @@
-fragment ServicesCard on services_Entry {
+fragment CardServices on services_Entry {
   abstract
   id
   serviceCategories {

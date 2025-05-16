@@ -1,0 +1,9 @@
+#import ./fragments/NoticesEntry.gql
+
+query PageNotices($slug: [String]) {
+  entries(section: "notices", slug: $slug) {
+    ... on notices_Entry {
+      ...NoticesEntry
+    }
+  }
+}

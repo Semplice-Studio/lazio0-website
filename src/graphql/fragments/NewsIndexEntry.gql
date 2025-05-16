@@ -1,0 +1,4 @@
+fragment NewsIndexEntry on newsIndex_Entry {
+  title
+  abstract
+}
