@@ -7,9 +7,8 @@ const { data, status } = await useCraftPage<CompanyEntryFragment>('home', PageHo
 
 <template>
   <div v-if="status === 'success'">
-    <pre>
-      {{ data.title }}
-    </pre>
-    <button class="btn btn-primary" type="button">Etichetta pulsante</button>
+    <section class="container my-5">
+      <Blocks :blocks="data.companyBlocks" />
+    </section>
   </div>
 </template>

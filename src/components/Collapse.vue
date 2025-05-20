@@ -1,56 +1,56 @@
 <script setup lang="ts">
-// import { Icon } from '../Icon/Icon.vue'
+import { useVModel } from '@vueuse/core'
 
 interface CollapseProps {
-  isOpen?: boolean
+  open?: boolean
   tag?: string
   navbar?: boolean
   megamenu?: boolean
   header?: boolean
   closeSrText?: string
-  onOverlayClick?: () => void
 }
 
 const props = withDefaults(defineProps<CollapseProps>(), {
-  isOpen: false,
+  open: false,
   tag: 'div',
   header: false,
   closeSrText: 'Nascondi la navigazione'
 })
 
 const style = computed(() => ({
-  display: props.isOpen ? 'block' : 'none'
+  display: props.open ? 'block' : 'none'
 }))
 
-const visible = ref(false)
-watch(() => props.isOpen, (value) => {
-  visible.value = value
-})
+const emit = defineEmits<{
+  (e: 'update:open', value: boolean): void
+}>()
+
+const visible = useVModel(props, 'open', emit)
 </script>
 
 <template>
   <BCollapse
     v-model="visible"
+    initial-animation
     :class="{
       'navbar-collapsable': navbar || megamenu,
-      'expanded': isOpen,
+      'expanded': visible,
       'link-list-wrapper': header
     }"
     :is-nav="navbar"
   >
-    <!-- :style="(navbar || megamenu) ? style : undefined" -->
     <template v-if="navbar || megamenu">
       <div
         class="overlay"
         :class="{
-          fade: isOpen,
-          show: isOpen
+          fade: visible,
+          show: visible
         }"
-        @click="onOverlayClick"
+        :style="style"
+        @click="visible = false"
       />
-      <!-- :style="style" -->
       <div class="close-div">
-        <button class="btn close-menu" type="button" @click="onOverlayClick">
+        <button class="btn close-menu" type="button" @click="visible = false">
           <span class="visually-hidden">{{ closeSrText }}</span>
           <Icon color="white" icon="it-close-big" />
         </button>

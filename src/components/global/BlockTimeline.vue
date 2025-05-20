@@ -13,7 +13,12 @@
     <Timeline>
       <div class="row">
         <div v-for="(item, index) in timelineItems" :key="index" class="col-12">
-          <TimelinePin past icon-title="Segnaposto" :date="new Date(item.date)">
+          <TimelinePin
+            icon-title="Segnaposto"
+            :date="new Date(item.date)"
+            :now="isToday(item.date)"
+            :past="isBefore(item.date, startOfToday())"
+          >
             <div class="card-wrapper">
               <Card>
                 <BCardBody>
@@ -34,6 +39,8 @@
 </template>
 
 <script setup lang="ts">
+import { isBefore, isToday, startOfToday } from 'date-fns'
+
 import type { TimelineItemFragment } from '@/graphql'
 
 defineProps({

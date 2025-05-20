@@ -20,6 +20,7 @@
     "@vueuse/core": "^13.1.0",
     "@vueuse/integrations": "^13.1.0",
     "bootstrap-italia": "^2.14.0",
+    "date-fns": "^4.1.0",
     "graphql": "^16.11.0",
     "gsap": "^3.13.0",
     "nuxt": "^3.17.3",

@@ -40,10 +40,3 @@ const blocks = computed(() => (data?.pageBlocks || []) as CraftMatrixField[])
     </section>
   </div>
 </template>
-
-<style scoped>
-:deep(.blocks) {
-  display: grid;
-  gap: 4rem;
-}
-</style>

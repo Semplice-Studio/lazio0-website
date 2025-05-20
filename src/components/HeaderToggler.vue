@@ -24,15 +24,13 @@ onMounted(() => {
 </script>
 
 <template>
+  <!-- :aria-expanded="ariaExpanded" -->
   <BNavbarToggle
-    :aria-expanded="ariaExpanded"
     :class="{
       'it-opener d-lg-none': headerType === SLIM,
       'custom-navbar-toggler': headerType === NAVBAR
     }"
   >
-    <!-- :tag="tag"
-  :type="buttonType" -->
     <slot />
   </BNavbarToggle>
 </template>

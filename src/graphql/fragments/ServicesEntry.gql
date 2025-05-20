@@ -2,14 +2,15 @@
 #import ./BlockContacts.gql
 #import ./BlockParagraph.gql
 #import ./BlockTimeline.gql
+#import ./Tag.gql
 
 fragment ServicesEntry on services_Entry {
   buttonLink {
     ...ButtonLink
   }
+  dateUpdated
   htmlContent
   id
-  title
   pageBlocks {
     __typename
     ... on blockParagraph_Entry {
@@ -22,4 +23,9 @@ fragment ServicesEntry on services_Entry {
       ...BlockTimeline
     }
   }
+  tags {
+    ...Tag
+  }
+  title
+  withSidebar
 }

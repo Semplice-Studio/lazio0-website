@@ -1,6 +1,17 @@
+#import ./BlockHighlightedNews.gql
+#import ./BlockHighlightedLinks.gql
+
 fragment CompanyEntry on company_Entry {
   id
-  title
+  companyBlocks {
+    ... on blockHighlightedNews_Entry {
+      ...BlockHighlightedNews
+    }
+    ... on blockHighlightedLinks_Entry {
+      ...BlockHighlightedLinks
+    }
+  }
   metaDescription
   metaTitle
+  title
 }

@@ -1,0 +1,14 @@
+#import ./ButtonLink.gql
+
+fragment BlockHighlightedLinks on blockHighlightedLinks_Entry {
+  linkItems {
+    ...on linkItem_Entry {
+      buttonLink {
+        ...ButtonLink
+      }
+    }
+  }
+  title
+  typeHandle
+  uid
+}

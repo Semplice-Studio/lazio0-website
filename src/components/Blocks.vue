@@ -33,3 +33,9 @@ const components = computed(() => (props.blocks || []).reduce((acc, entry, i) =>
     />
   </div>
 </template>
+
+<style scoped>
+.blocks > :not([hidden]) ~ :not([hidden]) {
+  margin-top: 2rem;
+}
+</style>

@@ -36,14 +36,13 @@ const blocks = computed(() => (data?.pageBlocks || []) as CraftMatrixField[])
       <PageHero :abstract="data.htmlContent" :button-link="data.buttonLink" :title="data.title" />
     </section>
     <section v-if="blocks.length > 0" class="container my-5">
-      <PageContent :blocks="blocks" />
+      <PageContent
+        :blocks="blocks"
+        :with-sidebar="data.withSidebar"
+      >
+        <PageArguments :tags="data.tags" />
+        <PageUpdatedAt :date="data.dateUpdated" />
+      </PageContent>
     </section>
   </div>
 </template>
-
-<style scoped>
-:deep(.blocks) {
-  display: grid;
-  gap: 4rem;
-}
-</style>

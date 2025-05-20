@@ -1,0 +1,10 @@
+#import ./CardNews.gql
+
+fragment BlockHighlightedNews on blockHighlightedNews_Entry {
+  newsEntries {
+    ... CardNews
+  }
+  title
+  typeHandle
+  uid
+}

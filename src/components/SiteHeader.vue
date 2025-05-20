@@ -9,7 +9,7 @@ const route = useRoute()
 const { locale } = useI18n()
 const { data: navigation } = await useCraftNavigation('mainNavigation', GetNavigation, { navHandle: 'mainNavigation' })
 
-const isOpenSide = ref(false)
+const open = ref(false)
 
 function getNavItemURL(item: NodeInterface) {
   if (item.element?.uri && item.element.uri !== '__home__') {
@@ -54,18 +54,17 @@ function getIsActive(item: NodeInterface) {
           <HeaderToggler
             aria-controls="main-navigation"
             aria-label="Toggle navigation"
-            :aria-expanded="isOpenSide"
-            @click="isOpenSide = !isOpenSide"
+            :aria-expanded="open"
+            @click="open = true"
           >
             <Icon icon="it-burger" />
           </HeaderToggler>
 
           <Collapse
             id="main-navigation"
+            v-model:open="open"
             header
             navbar
-            :is-open="isOpenSide"
-            @overlay-click="isOpenSide = false"
           >
             <div class="menu-wrapper">
               <Nav navbar>
