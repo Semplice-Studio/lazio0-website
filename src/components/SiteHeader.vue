@@ -32,14 +32,14 @@ function getIsActive(item: NodeInterface) {
   <Headers>
     <Header type="slim">
       <HeaderContent>
-        <HeaderBrand to="/" :tag="NuxtLinkLocale">
+        <HeaderBrand responsive to="/" :tag="NuxtLinkLocale">
           <Logo class="me-2" style="height: 32px;" />
           Regione Lazio
         </HeaderBrand>
       </HeaderContent>
     </Header>
     <div class="it-nav-wrapper">
-      <Header small theme="light" type="center">
+      <Header theme="light" type="center">
         <HeaderContent>
           <HeaderBrand to="/" :tag="NuxtLinkLocale">
             <LogoFull />
@@ -52,7 +52,7 @@ function getIsActive(item: NodeInterface) {
       <Header theme="light" type="navbar">
         <HeaderContent expand="lg">
           <HeaderToggler
-            aria-controls="nav1"
+            aria-controls="main-navigation"
             aria-label="Toggle navigation"
             :aria-expanded="isOpenSide"
             @click="isOpenSide = !isOpenSide"
@@ -61,6 +61,7 @@ function getIsActive(item: NodeInterface) {
           </HeaderToggler>
 
           <Collapse
+            id="main-navigation"
             header
             navbar
             :is-open="isOpenSide"

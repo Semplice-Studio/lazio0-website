@@ -10,6 +10,22 @@
       </BCardTitle>
       <BCardText>
         <div v-if="abstract" class="card-abstract font-sans-serif" v-html="abstract" />
+        <div v-if="postDate" class="card-abstract font-sans-serif">
+          <strong>Data pubblicazione:</strong> <NuxtTime
+            day="numeric"
+            month="long"
+            year="numeric"
+            :datetime="new Date(postDate)"
+          />
+        </div>
+        <div v-if="expiryDate" class="card-abstract font-sans-serif">
+          <strong>Data scadenza:</strong> <NuxtTime
+            day="numeric"
+            month="long"
+            year="numeric"
+            :datetime="new Date(expiryDate)"
+          />
+        </div>
       </BCardText>
       <NuxtLinkLocale class="read-more" :to="{ name: 'notices-slug', params: { slug } }">
         Approfondisci

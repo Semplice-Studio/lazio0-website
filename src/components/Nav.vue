@@ -30,21 +30,23 @@ withDefaults(defineProps<NavProps>(), {
 </script>
 
 <template>
-  <BNav
-    :is="tag"
-    role="tablist"
-    :class="{
-      'navbar-secondary': secondary,
-      'nav-tabs': tabs,
-      'nav-pills': pills,
-      'card-header-tabs': card,
-      'navbar-nav': navbar,
-      'nav-justified': justified,
-      'nav-fill': fill,
-      'flex-column': vertical === true || vertical === 'xs',
-      [`justify-content-${horizontal}`]: horizontal
-    }"
-  >
-    <slot />
-  </BNav>
+  <nav aria-label="Principale">
+    <BNav
+      :is="tag"
+      role="tablist"
+      :class="{
+        'navbar-secondary': secondary,
+        'nav-tabs': tabs,
+        'nav-pills': pills,
+        'card-header-tabs': card,
+        'navbar-nav': navbar,
+        'nav-justified': justified,
+        'nav-fill': fill,
+        'flex-column': vertical === true || vertical === 'xs',
+        [`justify-content-${horizontal}`]: horizontal
+      }"
+    >
+      <slot />
+    </BNav>
+  </nav>
 </template>

@@ -11,16 +11,16 @@ const props = defineProps<{
 const headerType = useHeaderContext()
 
 // Compute tag and type defaults
-const tag = computed(() => props.tag ?? (headerType === SLIM ? 'a' : 'button'))
-const buttonType = computed(() => props.type ?? (headerType === SLIM ? undefined : 'button'))
+// const tag = computed(() => props.tag ?? (headerType === SLIM ? 'a' : 'button'))
+// const buttonType = computed(() => props.type ?? (headerType === SLIM ? undefined : 'button'))
 
 const ariaExpanded = computed(() => String(props.isOpen ?? false))
 
-// onMounted(() => {
-//   document.querySelectorAll('.container-fluid').forEach((el) => {
-//     el.classList.remove('container-fluid')
-//   })
-// })
+onMounted(() => {
+  document.querySelectorAll('.container-fluid').forEach((el) => {
+    el.classList.remove('container-fluid')
+  })
+})
 </script>
 
 <template>
@@ -30,7 +30,15 @@ const ariaExpanded = computed(() => String(props.isOpen ?? false))
       'it-opener d-lg-none': headerType === SLIM,
       'custom-navbar-toggler': headerType === NAVBAR
     }"
-    :tag="tag"
-    :type="buttonType"
-  />
+  >
+    <!-- :tag="tag"
+  :type="buttonType" -->
+    <slot />
+  </BNavbarToggle>
 </template>
+
+<style lang="scss" scoped>
+.navbar-toggler {
+  padding: 0;
+}
+</style>

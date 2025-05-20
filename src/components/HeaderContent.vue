@@ -21,7 +21,7 @@ const className = computed(() => {
 </script>
 
 <template>
-  <div fluid class="container-xxl">
+  <div class="container">
     <div class="row">
       <div class="col">
         <BNavbar
@@ -38,3 +38,10 @@ const className = computed(() => {
     </div>
   </div>
 </template>
+
+<style lang="scss" scoped>
+nav {
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+}
+</style>

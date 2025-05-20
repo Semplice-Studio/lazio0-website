@@ -2075,7 +2075,7 @@ export type Query = {
   category?: Maybe<CategoryInterface>;
   /** This query is used to return the number of categories. */
   categoryCount: Scalars['Int']['output'];
-  /** Entries within the “Company” section. */
+  /** Entries within the “Azienda” section. */
   companyEntries?: Maybe<Array<Maybe<CompanySectionEntryUnion>>>;
   /** This query is used to query for entries. */
   entries?: Maybe<Array<Maybe<EntryInterface>>>;
@@ -2089,16 +2089,16 @@ export type Query = {
   navigationNodes?: Maybe<Array<Maybe<NodeInterface>>>;
   /** Entries within the “News” section. */
   newsEntries?: Maybe<Array<Maybe<NewsSectionEntryUnion>>>;
-  /** Entries within the “News Index” section. */
+  /** Entries within the “Pagina Lista News” section. */
   newsIndexEntries?: Maybe<Array<Maybe<NewsIndexSectionEntryUnion>>>;
-  /** Entries within the “Notices” section. */
+  /** Entries within the “Concorsi” section. */
   noticesEntries?: Maybe<Array<Maybe<NoticesSectionEntryUnion>>>;
-  /** Entries within the “Notices Index” section. */
+  /** Entries within the “Pagina Lista Concorsi” section. */
   noticesIndexEntries?: Maybe<Array<Maybe<NoticesIndexSectionEntryUnion>>>;
   ping?: Maybe<Scalars['String']['output']>;
-  /** Entries within the “Services” section. */
+  /** Entries within the “Servizi” section. */
   servicesEntries?: Maybe<Array<Maybe<ServicesSectionEntryUnion>>>;
-  /** Entries within the “Services Index” section. */
+  /** Entries within the “Pagina Lista Servizi” section. */
   servicesIndexEntries?: Maybe<Array<Maybe<ServicesIndexSectionEntryUnion>>>;
 };
 

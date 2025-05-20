@@ -9,8 +9,6 @@ interface CollapseProps {
   header?: boolean
   closeSrText?: string
   onOverlayClick?: () => void
-  testId?: string
-  className?: string
 }
 
 const props = withDefaults(defineProps<CollapseProps>(), {
@@ -38,9 +36,9 @@ watch(() => props.isOpen, (value) => {
       'expanded': isOpen,
       'link-list-wrapper': header
     }"
-    :navbar="navbar"
-    :style="(navbar || megamenu) ? style : undefined"
+    :is-nav="navbar"
   >
+    <!-- :style="(navbar || megamenu) ? style : undefined" -->
     <template v-if="navbar || megamenu">
       <div
         class="overlay"
@@ -48,9 +46,9 @@ watch(() => props.isOpen, (value) => {
           fade: isOpen,
           show: isOpen
         }"
-        :style="style"
         @click="onOverlayClick"
       />
+      <!-- :style="style" -->
       <div class="close-div">
         <button class="btn close-menu" type="button" @click="onOverlayClick">
           <span class="visually-hidden">{{ closeSrText }}</span>
