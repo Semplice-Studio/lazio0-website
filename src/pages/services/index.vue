@@ -9,6 +9,8 @@ defineI18nRoute({
   }
 })
 
+const search = ref('')
+
 const { data, status } = await useCraftPage<ServicesIndexEntryFragment>('services', PageServicesIndexGQL)
 </script>
 
@@ -23,13 +25,14 @@ const { data, status } = await useCraftPage<ServicesIndexEntryFragment>('service
         <BreadcrumbItem>{{ data.title }}</BreadcrumbItem>
       </Breadcrumb>
     </section>
-    <section class="container mt-5">
+    <section class="container">
       <PageHero :abstract="data.abstract" :title="data.title">
-        <FormSearch />
+        <FormSearch v-model:search="search" />
       </PageHero>
     </section>
     <section class="container mb-5">
-      <ListServices />
+      <ListServicesCategories />
+      <ListServices :search="search" />
     </section>
   </div>
 </template>

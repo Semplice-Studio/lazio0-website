@@ -1,17 +1,19 @@
 import type { DocumentNode } from 'graphql'
 
+import type { CraftGraphqlVariables } from '@/types'
+
 export type CraftStructureResponse = {
   entries?: Record<string, unknown>[]
 }
 
-export async function useCraftStructure<T = Record<string, unknown>>(cacheKey: string, gql: DocumentNode, variables?: Record<string, unknown>) {
+export async function useCraftStructure<T = Record<string, unknown>>(cacheKey: string, gql: DocumentNode, variables: MaybeRefOrGetter<CraftGraphqlVariables> = {}) {
   const { locale } = useI18n()
 
-  const query = await useCraftData<CraftStructureResponse>(cacheKey, gql, {
-    ...variables
-  }, {
-    watch: [locale]
+  const { error, status, ...query } = await useCraftData<CraftStructureResponse>(cacheKey, gql, variables, {
+    watch: [locale, variables]
   })
+
+  console.log('useCraftStructure', query)
 
   const data = computed(() => {
     if (!query.data.value?.entries) return []
@@ -20,13 +22,13 @@ export async function useCraftStructure<T = Record<string, unknown>>(cacheKey: s
       : [query.data.value.entries]
   }) as Ref<T[]>
 
-  if (query.status.value === 'success' && !data.value) {
+  if (status.value === 'success' && !data.value) {
     throw createError({ statusCode: 404 })
   }
 
   return {
-    data: data.value,
-    error: query.error,
-    status: query.status
+    data,
+    error,
+    status
   }
 }

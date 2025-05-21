@@ -17308,10 +17308,17 @@ export type ListNoticesQuery = { entries?: Array<{ abstract?: string, expiryDate
 export type ListServicesQueryVariables = Exact<{
   offset?: InputMaybe<Scalars['Int']['input']>;
   limit?: InputMaybe<Scalars['Int']['input']>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  categorySlugs?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>> | InputMaybe<Scalars['String']['input']>>;
 }>;
 
 
 export type ListServicesQuery = { entries?: Array<{ abstract?: string, id?: string, slug?: string, title?: string, serviceCategories: Array<{ title?: string, slug?: string }> }> };
+
+export type ListServicesCategoriesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type ListServicesCategoriesQuery = { categories?: Array<{ id?: string, title?: string, slug?: string }> };
 
 export type PageHomeQueryVariables = Exact<{ [key: string]: never; }>;
 

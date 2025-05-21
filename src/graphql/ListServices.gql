@@ -1,7 +1,19 @@
 #import ./fragments/CardServices.gql
 
-query ListServices($offset: Int, $limit: Int) {
-  entries(section: "services", offset: $offset, limit: $limit) {
+query ListServices($offset: Int, $limit: Int, $search: String, $categorySlugs: [String]) {
+  entries(
+    section: "services"
+    offset: $offset
+    limit: $limit
+    search: $search
+    relatedToCategories: [
+      {
+        slug: $categorySlugs
+        group: "serviceCategories"
+        relatedViaField: "serviceCategories"
+      }
+    ]
+  ) {
     ...CardServices
   }
 }

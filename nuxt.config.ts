@@ -39,7 +39,7 @@ export default defineNuxtConfig({
   modules: [
     '@bootstrap-vue-next/nuxt',
     '@nuxt/eslint',
-    '@nuxt/fonts',
+    // '@nuxt/fonts',
     '@nuxt/image',
     '@nuxt/scripts',
     '@nuxtjs/device',

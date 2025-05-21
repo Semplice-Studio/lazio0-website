@@ -1,5 +1,5 @@
 <template>
-  <div class="form-group">
+  <BForm class="form-group" @submit.prevent="$emit('update:search', text)">
     <div class="input-group">
       <BFormInput v-model="text" placeholder="Cerca in servizi" />
       <div class="input-group-append">
@@ -9,9 +9,20 @@
         </Button>
       </div>
     </div>
-  </div>
+  </BForm>
 </template>
 
 <script setup lang="ts">
+defineProps({
+  search: {
+    type: String,
+    default: ''
+  }
+})
+
 const text = ref('')
+
+defineEmits<{
+  (e: 'update:search', value: boolean): void
+}>()
 </script>

@@ -3,8 +3,9 @@
     <div class="col-md-8">
       <div class="it-hero-wrapper">
         <div class="it-hero-text-wrapper">
+          <!-- primary-color-a9 -->
           <h1 class="h1">{{ title }}</h1>
-          <div v-if="abstract" class="text-md-left" v-html="abstract" />
+          <div v-if="abstract" class="hero-text neutral-1-color-a7" v-html="abstract" />
           <Button
             v-if="link"
             :aria-label="link.ariaLabel"
@@ -44,6 +45,7 @@ const link = useCraftLink(props.buttonLink)
 
 <style scoped>
 .it-hero-wrapper {
+  min-height: auto;
   background-color: unset;
 }
 
@@ -58,5 +60,10 @@ const link = useCraftLink(props.buttonLink)
 .it-hero-text-wrapper :deep(p) {
   color: unset;
   font-family: unset;
+}
+
+.hero-text :deep(p) {
+  font-size: 1.5rem;
+  line-height: 1.5;
 }
 </style>

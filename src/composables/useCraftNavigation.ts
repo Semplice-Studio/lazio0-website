@@ -1,12 +1,13 @@
 import type { DocumentNode } from 'graphql'
 
 import type { NodeInterface } from '@/graphql'
+import type { CraftGraphqlVariables } from '@/types'
 
 export type CraftNavigationResponse = {
   navigationNodes?: NodeInterface[]
 }
 
-export async function useCraftNavigation(cacheKey: string, gql: DocumentNode, variables?: Record<string, unknown>) {
+export async function useCraftNavigation(cacheKey: string, gql: DocumentNode, variables?: CraftGraphqlVariables) {
   const { locale } = useI18n()
 
   const query = await useCraftData<CraftNavigationResponse>(cacheKey, gql, {
@@ -21,7 +22,8 @@ export async function useCraftNavigation(cacheKey: string, gql: DocumentNode, va
   }) as Ref<NodeInterface[]>
 
   return {
-    data: data.value,
+    // data: data.value,
+    data,
     error: query.error,
     status: query.status
   }

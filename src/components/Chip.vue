@@ -11,7 +11,9 @@
       }
     ]"
   >
-    <slot />
+    <span class="chip-label">
+      <slot />
+    </span>
   </component>
 </template>
 

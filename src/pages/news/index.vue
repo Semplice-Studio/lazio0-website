@@ -23,7 +23,7 @@ const { data, status } = await useCraftPage<NewsIndexEntryFragment>('news', Page
         <BreadcrumbItem>{{ data.title }}</BreadcrumbItem>
       </Breadcrumb>
     </section>
-    <section class="container mt-5">
+    <section class="container">
       <PageHero :abstract="data.abstract" :title="data.title">
         <FormSearch />
       </PageHero>

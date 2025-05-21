@@ -1,13 +1,13 @@
 import type { DocumentNode } from 'graphql'
 import { print } from 'graphql'
 
-import type { CraftGraphQLResponseError } from '@/types'
+import type { CraftGraphQLResponseError, CraftGraphqlVariables } from '@/types'
 
 export function useCraftGraphQL() {
   const nuxt = useNuxtApp()
   const config = useRuntimeConfig()
 
-  return <T> (query: string | DocumentNode, variables?: Record<string, unknown>): Promise<T> => {
+  return <T> (query: string | DocumentNode, variables?: CraftGraphqlVariables): Promise<T> => {
     const queryAsString = typeof query === 'string' ? query : print(query)
 
     try {

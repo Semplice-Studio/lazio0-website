@@ -12,7 +12,9 @@ const { data: items, status } = await useCraftStructure<CardNoticesFragment>('li
   <div v-if="status === 'success'">
     <div class="row">
       <div v-for="(item, index) in items" :key="index" class="col-12 col-lg-4">
-        <CardNotice v-bind="item" />
+        <div class="card-wrapper">
+          <CardNotice v-bind="item" />
+        </div>
       </div>
     </div>
   </div>

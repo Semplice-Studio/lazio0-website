@@ -63,7 +63,6 @@ function getIsActive(item: NodeInterface) {
           <Collapse
             id="main-navigation"
             v-model:open="open"
-            header
             navbar
           >
             <div class="menu-wrapper">
@@ -71,10 +70,12 @@ function getIsActive(item: NodeInterface) {
                 <BNavItem
                   v-for="(item, index) in navigation"
                   :key="index"
-                  :active="getIsActive(item)"
+                  exact
+                  data-focus-mouse="true"
+                  exact-active-class="active"
                   :to="getNavItemURL(item)"
                 >
-                  {{item.title}}
+                  <span>{{item.title}}</span>
                 </BNavItem>
               </Nav>
             </div>

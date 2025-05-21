@@ -1,0 +1,7 @@
+query ListServicesCategories {
+  categories(group: "serviceCategories") {
+    id
+    title
+    slug
+  }
+}

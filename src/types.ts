@@ -1,3 +1,7 @@
+export interface CraftGraphqlVariables {
+  [variable: string]: unknown
+}
+
 export type CraftGraphQLError = {
   message: string
   locations?: {
