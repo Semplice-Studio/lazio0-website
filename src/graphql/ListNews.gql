@@ -1,7 +1,19 @@
 #import ./fragments/CardNews.gql
 
-query ListNews($offset: Int, $limit: Int) {
-  entries(section: "news", offset: $offset, limit: $limit) {
+query ListNews($offset: Int, $limit: Int, $search: String, $categorySlugs: [String]) {
+  entries(
+    section: "news"
+    offset: $offset
+    limit: $limit
+    search: $search
+    relatedToCategories: [
+      {
+        slug: $categorySlugs
+        group: "newsCategories"
+        relatedViaField: "newsCategories"
+      }
+    ]
+  ) {
     ...CardNews
   }
 }

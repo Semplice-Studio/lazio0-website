@@ -16,7 +16,7 @@ import type { NuxtLinkProps } from '#app'
 import { NuxtLinkLocale } from '#components'
 
 type ButtonSize = 'lg' | 'sm' | 'xs'
-type ButtonTheme = 'primary' | 'secondary' | 'success' | 'info' | 'warning' | 'danger' | 'light' | 'dark'
+type ButtonTheme = 'primary' | 'secondary' | 'success' | 'info' | 'warning' | 'danger' | 'light' | 'dark' | false
 
 interface ButtonProps {
   block?: boolean

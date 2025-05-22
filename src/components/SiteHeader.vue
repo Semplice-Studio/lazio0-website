@@ -33,8 +33,8 @@ function getIsActive(item: NodeInterface) {
     <Header type="slim">
       <HeaderContent>
         <HeaderBrand responsive to="/" :tag="NuxtLinkLocale">
-          <Logo class="me-2" style="height: 32px;" />
-          Regione Lazio
+          <Logo class="me-2" style="height: 24px;" /><!--
+          -->REGIONE LAZIO
         </HeaderBrand>
       </HeaderContent>
     </Header>
@@ -59,7 +59,6 @@ function getIsActive(item: NodeInterface) {
           >
             <Icon icon="it-burger" />
           </HeaderToggler>
-
           <Collapse
             id="main-navigation"
             v-model:open="open"

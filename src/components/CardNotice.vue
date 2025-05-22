@@ -28,8 +28,8 @@
         </div>
       </BCardText>
       <NuxtLinkLocale class="read-more" :to="{ name: 'notices-slug', params: { slug } }">
-        Approfondisci
-        <Icon icon="it-arrow-right" />
+        Approfondisci<!--
+        --><Icon icon="it-arrow-right" />
       </NuxtLinkLocale>
     </BCardBody>
   </Card>

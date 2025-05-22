@@ -11,9 +11,11 @@
       }
     ]"
   >
+    <slot name="beforeLabel" />
     <span class="chip-label">
       <slot />
     </span>
+    <slot name="afterLabel" />
   </component>
 </template>
 

@@ -1,0 +1,7 @@
+query ListNewsCategories {
+  categories(group: "newsCategories") {
+    id
+    title
+    slug
+  }
+}

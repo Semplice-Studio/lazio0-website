@@ -17292,18 +17292,32 @@ export type GetNavigationQuery = { navigationNodes?: Array<{ title?: string, typ
 export type ListNewsQueryVariables = Exact<{
   offset?: InputMaybe<Scalars['Int']['input']>;
   limit?: InputMaybe<Scalars['Int']['input']>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  categorySlugs?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>> | InputMaybe<Scalars['String']['input']>>;
 }>;
 
 
 export type ListNewsQuery = { entries?: Array<{ abstract?: string, date?: any, id?: string, slug?: string, title?: string, image: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, newsCategories: Array<{ title?: string, slug?: string }> }> };
 
+export type ListNewsCategoriesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type ListNewsCategoriesQuery = { categories?: Array<{ id?: string, title?: string, slug?: string }> };
+
 export type ListNoticesQueryVariables = Exact<{
   offset?: InputMaybe<Scalars['Int']['input']>;
   limit?: InputMaybe<Scalars['Int']['input']>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  categorySlugs?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>> | InputMaybe<Scalars['String']['input']>>;
 }>;
 
 
 export type ListNoticesQuery = { entries?: Array<{ abstract?: string, expiryDate?: any, id?: string, postDate?: any, slug?: string, title?: string, noticeCategories: Array<{ title?: string, slug?: string }> }> };
+
+export type ListNoticesCategoriesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type ListNoticesCategoriesQuery = { categories?: Array<{ id?: string, title?: string, slug?: string }> };
 
 export type ListServicesQueryVariables = Exact<{
   offset?: InputMaybe<Scalars['Int']['input']>;

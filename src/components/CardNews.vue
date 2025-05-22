@@ -27,8 +27,8 @@
         <div v-if="abstract" class="card-abstract font-sans-serif mb-4" v-html="abstract" />
       </BCardText>
       <NuxtLinkLocale class="read-more" :to="{ name: 'news-slug', params: { slug } }">
-        Leggi di più
-        <Icon icon="it-arrow-right" />
+        Leggi di più<!--
+        --><Icon icon="it-arrow-right" />
       </NuxtLinkLocale>
     </BCardBody>
   </Card>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { CardServicesFragment } from '@/graphql'
+import type { CardServicesFragment, CategoryInterface } from '@/graphql'
 import ListServicesGQL from '@/graphql/ListServices.gql'
 
 // const route = useRoute()
@@ -9,14 +9,19 @@ const props = defineProps({
   search: {
     type: String,
     default: ''
+  },
+  categories: {
+    type: Array as PropType<CategoryInterface[]>,
+    default: () => []
   }
 })
 
 const gqlVariables = computed(() => ({
-  search: props.search
+  search: props.search,
+  categorySlugs: props.categories
 }))
 
-const { data: services } = await useCraftStructure<CardServicesFragment>(
+const { data: services, key } = await useCraftStructure<CardServicesFragment>(
   'list-services',
   ListServicesGQL,
   gqlVariables
@@ -24,15 +29,13 @@ const { data: services } = await useCraftStructure<CardServicesFragment>(
 </script>
 
 <template>
-  <div>
-    <Transition mode="out-in" name="fade">
-      <div :key="search" class="row">
-        <div v-for="(service, index) in services" :key="index" class="col-12 col-lg-4">
-          <div class="card-wrapper">
-            <CardService v-bind="service" />
-          </div>
+  <Transition mode="out-in" name="fade">
+    <div :key="key" class="row">
+      <div v-for="(service, index) in services" :key="index" class="col-12 col-lg-4">
+        <div class="card-wrapper">
+          <CardService v-bind="service" />
         </div>
       </div>
-    </Transition>
-  </div>
+    </div>
+  </Transition>
 </template>

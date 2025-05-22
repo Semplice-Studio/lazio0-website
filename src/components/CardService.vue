@@ -13,8 +13,8 @@
         <div v-if="abstract" class="card-abstract font-sans-serif" v-html="abstract" />
       </BCardText>
       <NuxtLinkLocale class="read-more" :to="{ name: 'services-slug', params: { slug } }">
-        Approfondisci
-        <Icon icon="it-arrow-right" />
+        Approfondisci<!--
+        --><Icon icon="it-arrow-right" />
       </NuxtLinkLocale>
     </BCardBody>
   </Card>

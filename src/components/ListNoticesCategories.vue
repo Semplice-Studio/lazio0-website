@@ -18,7 +18,7 @@
 
 <script setup lang="ts">
 import type { CategoryInterface } from '@/graphql'
-import ListServicesCategoriesGQL from '@/graphql/ListServicesCategories.gql'
+import ListNoticesCategoriesGQL from '@/graphql/ListNoticesCategories.gql'
 
 // const route = useRoute()
 // const slug = route.params.slug as string
@@ -41,7 +41,7 @@ watch(selection, (value) => {
 })
 
 const { data: categoryItems, status } = await useCraftCategories<CategoryInterface>(
-  'services-categories',
-  ListServicesCategoriesGQL
+  'notices-categories',
+  ListNoticesCategoriesGQL
 )
 </script>
