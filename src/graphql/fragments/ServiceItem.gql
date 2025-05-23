@@ -1,0 +1,10 @@
+#import ./ButtonLink.gql
+
+fragment ServiceItem on serviceItem_Entry {
+  htmlContent
+  abstract
+  title
+  buttonLink {
+    ...ButtonLink
+  }
+}

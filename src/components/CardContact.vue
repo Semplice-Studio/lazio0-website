@@ -1,7 +1,7 @@
 <template>
   <Card
     teaser
-    class="rounded shadow p-4 border-bottom-card"
+    class="card-teaser-info shadow rounded"
   >
     <BCardBody>
       <BCardTitle class="h5 text-primary">{{ title }}</BCardTitle>

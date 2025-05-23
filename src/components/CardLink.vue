@@ -2,10 +2,10 @@
   <Card
     no-wrapper
     teaser
-    class="card-link"
+    class="card-link card-teaser-info shadow-sm rounded"
   >
     <BCardBody>
-      <div class="categoryicon-top text-primary">
+      <div class="categoryicon-top mb-2 text-primary">
         <Icon icon="it-clip" />
         <!-- <span class="text">{{ buttonLink.label || buttonLink.defaultLabel }}</span> -->
         <BCardTitle class="mb-0" tag="h5">
@@ -13,7 +13,7 @@
         </BCardTitle>
       </div>
       <BCardText>
-        <p class="font-sans-serif">Descrizione</p>
+        <p class="ps-4 text-primary font-sans-serif">Descrizione</p>
       </BCardText>
     </BCardBody>
   </Card>

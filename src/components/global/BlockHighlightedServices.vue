@@ -1,7 +1,7 @@
 <template>
   <Section
     :id="uid"
-    class="it-page-section px-0 lightgrey-bg-b4"
+    class="it-page-section px-0"
     :aria-labelledby="`title-${uid}`"
   >
     <div class="container">
@@ -11,9 +11,10 @@
         </div>
       </div>
       <div class="row ps-lg-5">
-        <div v-for="(item, index) in newsEntries" :key="index" class="col-12 col-lg-4">
+        <div v-for="(item, index) in serviceItems" :key="index" class="col-12 col-lg-4">
           <div class="card-wrapper">
-            <CardNews v-bind="item" />
+            <!-- <CardNews v-bind="item" /> -->
+            <CardServiceLauncher v-bind="item" />
           </div>
         </div>
       </div>
@@ -22,15 +23,15 @@
 </template>
 
 <script setup lang="ts">
-import type { CardNewsFragment } from '@/graphql'
+import type { ServiceItemFragment } from '@/graphql'
 
 defineProps({
   title: {
     type: String,
     default: ''
   },
-  newsEntries: {
-    type: Array as PropType<CardNewsFragment[]>,
+  serviceItems: {
+    type: Array as PropType<ServiceItemFragment[]>,
     default: () => ([])
   },
   uid: {

@@ -1,5 +1,6 @@
 #import ./BlockHighlightedNews.gql
 #import ./BlockHighlightedLinks.gql
+#import ./BlockHighlightedServices.gql
 
 fragment CompanyEntry on company_Entry {
   id
@@ -9,6 +10,9 @@ fragment CompanyEntry on company_Entry {
     }
     ... on blockHighlightedLinks_Entry {
       ...BlockHighlightedLinks
+    }
+    ... on blockHighlightedServices_Entry {
+      ...BlockHighlightedServices
     }
   }
   metaDescription

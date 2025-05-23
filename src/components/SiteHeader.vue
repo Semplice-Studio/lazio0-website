@@ -30,7 +30,7 @@ function getIsActive(item: NodeInterface) {
 
 <template>
   <Headers>
-    <Header type="slim">
+    <Header class="primary-bg-a10" type="slim">
       <HeaderContent>
         <HeaderBrand responsive to="/" :tag="NuxtLinkLocale">
           <Logo class="me-2" style="height: 24px;" /><!--

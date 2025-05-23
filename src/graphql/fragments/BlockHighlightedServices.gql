@@ -1,0 +1,10 @@
+#import ./ServiceItem.gql
+
+fragment BlockHighlightedServices on blockHighlightedServices_Entry {
+  serviceItems {
+    ...ServiceItem
+  }
+  title
+  typeHandle
+  uid
+}

@@ -2,6 +2,7 @@
 #import ./BlockContacts.gql
 #import ./BlockParagraph.gql
 #import ./BlockTimeline.gql
+#import ./ImageThumb.gql
 
 fragment NewsEntry on news_Entry {
   buttonLink {
@@ -9,6 +10,9 @@ fragment NewsEntry on news_Entry {
   }
   htmlContent
   id
+  image {
+    ...ImageThumb
+  }
   title
   pageBlocks {
     __typename

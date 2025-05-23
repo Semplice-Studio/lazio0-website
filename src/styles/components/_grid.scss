@@ -1,0 +1,11 @@
+@import "bootstrap-italia/src/scss/components/grid";
+
+@if $enable-grid-classes {
+  .row {
+    --bs-gutter-y: 16px;
+
+    @include media-breakpoint-up(lg) {
+      --bs-gutter-y: 24px;
+    }
+  }
+}

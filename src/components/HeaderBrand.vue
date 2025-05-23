@@ -20,7 +20,7 @@ const type = useHeaderContext()
   <component
     :is="tag"
     v-if="type !== CENTER"
-    class="navbar-brand d-lg-block"
+    class="navbar-brand d-lg-flex align-items-center"
     :class="{ 'd-none': !responsive }"
   >
     <slot />

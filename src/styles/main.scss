@@ -10,6 +10,7 @@
 // ------------------------------
 
 // Variables
+@import "base/variables";
 @import "bootstrap-italia/src/scss/base/variables";
 // ------------------------------
 
@@ -55,7 +56,7 @@
 
 // Components
 @import "bootstrap-italia/src/scss/components/type";
-@import "bootstrap-italia/src/scss/components/grid";
+@import "components/grid";
 @import "bootstrap-italia/src/scss/components/tables";
 @import "bootstrap-italia/src/scss/components/breadcrumb";
 @import "bootstrap-italia/src/scss/components/modal";

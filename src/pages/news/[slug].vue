@@ -14,7 +14,9 @@ const route = useRoute()
 const slug = route.params.slug as string
 
 const { data, status } = await useCraftPage<NewsEntryFragment>('news-' + slug, PageNewsGQL, { slug })
+
 const blocks = computed(() => (data?.pageBlocks || []) as CraftMatrixField[])
+const featuredImage = computed(() => data.image?.[0])
 </script>
 
 <template>
@@ -33,7 +35,17 @@ const blocks = computed(() => (data?.pageBlocks || []) as CraftMatrixField[])
       </Breadcrumb>
     </section>
     <section class="container my-5">
-      <PageHero :abstract="data.htmlContent" :button-link="data.buttonLink" :title="data.title" />
+      <PageHero :abstract="data.htmlContent" :button-link="data.buttonLink" :title="data.title">
+        <div class="img-responsive-wrapper">
+          <div class="img-responsive">
+            <div class="img-wrapper">
+              <CraftImage
+                v-bind="featuredImage"
+              />
+            </div>
+          </div>
+        </div>
+      </PageHero>
     </section>
     <section v-if="blocks.length > 0" class="container my-5">
       <PageContent :blocks="blocks" />
