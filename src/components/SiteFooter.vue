@@ -107,7 +107,7 @@
 </template>
 
 <script setup>
-import LogoFull from '@/assets/images/LogoFUllLight.svg'
+import LogoFull from '@/assets/images/LogoFullLight.svg'
 import GetNavigation from '@/graphql/GetNavigation.gql'
 
 const townName = 'Nome Comune'
