@@ -1,0 +1,11 @@
+#import ./Media.gql
+
+fragment BlockMedia on blockMedia_Entry {
+  id
+  medias {
+    ...Media
+  }
+  title
+  typeHandle
+  uid
+}

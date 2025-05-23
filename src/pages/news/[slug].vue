@@ -35,18 +35,9 @@ const featuredImage = computed(() => data.image?.[0])
       </Breadcrumb>
     </section>
     <section class="container my-5">
-      <PageHero :abstract="data.htmlContent" :button-link="data.buttonLink" :title="data.title">
-        <div class="img-responsive-wrapper">
-          <div class="img-responsive">
-            <div class="img-wrapper">
-              <CraftImage
-                v-bind="featuredImage"
-              />
-            </div>
-          </div>
-        </div>
-      </PageHero>
+      <PageHero :abstract="data.htmlContent" :button-link="data.buttonLink" :title="data.title" />
     </section>
+    <PageHeroImage :image="featuredImage" />
     <section v-if="blocks.length > 0" class="container my-5">
       <PageContent :blocks="blocks" />
     </section>

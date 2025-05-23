@@ -1,0 +1,12 @@
+#import ./ImageFull.gql
+
+fragment Media on media_Entry {
+  image {
+    ...ImageFull
+  }
+  video {
+    src: url
+    type: format
+  }
+  column
+}

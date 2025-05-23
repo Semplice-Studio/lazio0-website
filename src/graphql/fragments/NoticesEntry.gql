@@ -1,7 +1,5 @@
 #import ./ButtonLink.gql
-#import ./BlockContacts.gql
-#import ./BlockParagraph.gql
-#import ./BlockTimeline.gql
+#import ./PageBlocks.gql
 
 fragment NoticesEntry on notices_Entry {
   buttonLink {
@@ -11,15 +9,6 @@ fragment NoticesEntry on notices_Entry {
   id
   title
   pageBlocks {
-    __typename
-    ... on blockParagraph_Entry {
-      ...BlockParagraph
-    }
-    ... on blockContacts_Entry {
-      ...BlockContacts
-    }
-    ... on blockTimeline_Entry {
-      ...BlockTimeline
-    }
+    ...PageBlocks
   }
 }

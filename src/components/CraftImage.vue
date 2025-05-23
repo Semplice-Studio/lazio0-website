@@ -34,7 +34,10 @@ const props = defineProps({
     type: Boolean,
     default: false
   },
-  src: String,
+  src: {
+    type: String,
+    required: true
+  },
   url: String,
   webp: String,
   avif: String,
@@ -98,60 +101,3 @@ onMounted(() => {
   }
 })
 </script>
-
-<style lang="scss" scoped>
-  .image {
-    position: relative;
-    z-index: 0;
-    display: block;
-
-    > img {
-      z-index: 1;
-      display: block;
-      border: 0;
-    }
-
-    // &__placeholder {
-    //   position: absolute;
-    //   z-index: 0;
-    //   width: 100%;
-    //   height: 100%;
-    //   background-color: darken($color-light-grey, 5%);
-    //   inset: 0;
-    //   object-fit: cover;
-    // }
-
-    // &.-is-contained,
-    // &.-is-cover {
-    //   > img {
-    //     width: 100%;
-    //     height: 100%;
-    //   }
-    // }
-
-    // &.-is-contained {
-    //   > img {
-    //     object-fit: contain;
-    //   }
-    // }
-
-    // &.-is-cover {
-    //   > img {
-    //     object-fit: cover;
-    //   }
-    // }
-
-    // &.-is-lazy {
-    //   img {
-    //     opacity: 0;
-    //     transition: opacity 0.6s;
-    //   }
-
-    //   &.-is-loaded {
-    //     > img {
-    //       opacity: 1;
-    //     }
-    //   }
-    // }
-  }
-</style>

@@ -10,7 +10,7 @@
   >
     <div class="row">
       <div class="col-12">
-        <h2 :id="`title-${uid}`" class="primary-color-a9">{{ title }}</h2>
+        <h2 :id="`title-${uid}`" class="primary-color-a9 mb-3">{{ title }}</h2>
         <div v-if="htmlContent" class="text-md-left" v-html="htmlContent" />
         <Button
           v-if="link"

@@ -1,0 +1,10 @@
+fragment ImageFull on AssetInterface {
+  src: url(width: 1920)
+  webp: url(format: "webp", width: 1920)
+  avif: url(format: "avif", width: 1920)
+  filename
+  focalPoint
+  hasFocalPoint
+  width
+  height
+}

@@ -1,0 +1,20 @@
+#import ./BlockContacts.gql
+#import ./BlockMedia.gql
+#import ./BlockParagraph.gql
+#import ./BlockTimeline.gql
+
+fragment PageBlocks on pageBlocks_MatrixField {
+  __typename
+  ... on blockContacts_Entry {
+    ...BlockContacts
+  }
+  ... on blockMedia_Entry {
+    ...BlockMedia
+  }
+  ... on blockParagraph_Entry {
+    ...BlockParagraph
+  }
+  ... on blockTimeline_Entry {
+    ...BlockTimeline
+  }
+}
