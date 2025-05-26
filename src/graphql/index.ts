@@ -1899,6 +1899,54 @@ export type EntryRelationCriteriaInput = {
   withStructure?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
+/** This is the interface implemented by all global sets. */
+export type GlobalSetInterface = {
+  /** Return a number of related elements for a field. */
+  _count?: Maybe<Scalars['Int']['output']>;
+  /** Whether the element is archived. */
+  archived?: Maybe<Scalars['Boolean']['output']>;
+  /** The date the element was created. */
+  dateCreated?: Maybe<Scalars['DateTime']['output']>;
+  /** The date the element was last updated. */
+  dateUpdated?: Maybe<Scalars['DateTime']['output']>;
+  /** Whether the element is enabled. */
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  /** The handle of the global set. */
+  handle: Scalars['String']['output'];
+  /** The ID of the entity */
+  id?: Maybe<Scalars['ID']['output']>;
+  /** The language of the site element is associated with. */
+  language?: Maybe<Scalars['String']['output']>;
+  /** The name of the global set. */
+  name: Scalars['String']['output'];
+  /** The element’s search score, if the `search` parameter was used when querying for the element. */
+  searchScore?: Maybe<Scalars['Int']['output']>;
+  /** The handle of the site the element is associated with. */
+  siteHandle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the site the element is associated with. */
+  siteId?: Maybe<Scalars['Int']['output']>;
+  /** The unique identifier for an element-site relation. */
+  siteSettingsId?: Maybe<Scalars['ID']['output']>;
+  /** The element’s slug. */
+  slug?: Maybe<Scalars['String']['output']>;
+  /** The element’s status. */
+  status?: Maybe<Scalars['String']['output']>;
+  /** The element’s title. */
+  title?: Maybe<Scalars['String']['output']>;
+  /** Whether the element has been soft-deleted. */
+  trashed?: Maybe<Scalars['Boolean']['output']>;
+  /** The UID of the entity */
+  uid?: Maybe<Scalars['String']['output']>;
+  /** The element’s URI. */
+  uri?: Maybe<Scalars['String']['output']>;
+};
+
+
+/** This is the interface implemented by all global sets. */
+export type GlobalSetInterface_CountArgs = {
+  field: Scalars['String']['input'];
+};
+
 export type LinkData = {
   ariaLabel?: Maybe<Scalars['String']['output']>;
   asset?: Maybe<AssetInterface>;
@@ -2091,6 +2139,10 @@ export type Query = {
   entry?: Maybe<EntryInterface>;
   /** This query is used to return the number of entries. */
   entryCount: Scalars['Int']['output'];
+  /** This query is used to query for a single global set. */
+  globalSet?: Maybe<GlobalSetInterface>;
+  /** This query is used to query for global sets. */
+  globalSets?: Maybe<Array<Maybe<GlobalSetInterface>>>;
   /** This query is used to query for a single node. */
   navigationNode?: Maybe<NodeInterface>;
   /** This query is used to query for nodes. */
@@ -2678,6 +2730,80 @@ export type QueryEntryCountArgs = {
   uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   withSidebar?: InputMaybe<Scalars['Boolean']['input']>;
   withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type QueryGlobalSetArgs = {
+  additionalInfo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  companyName?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  handle?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  info?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+export type QueryGlobalSetsArgs = {
+  additionalInfo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  companyName?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  handle?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  info?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
@@ -8681,7 +8807,190 @@ export type BlockTimeline_EntryTimelineItemsArgs = {
   withStructure?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
+export type BottomNavigation_Node = ElementInterface & NodeInterface & {
+  /** Return a number of related elements for a field. */
+  _count?: Maybe<Scalars['Int']['output']>;
+  /** Whether the element is archived. */
+  archived?: Maybe<Scalars['Boolean']['output']>;
+  /** The node’s children. Accepts the same arguments as the `nodes` query. */
+  children?: Maybe<Array<Maybe<NodeInterface>>>;
+  /** Any additional classes for the node. */
+  classes?: Maybe<Scalars['String']['output']>;
+  /** Any additional custom attributes for the node. */
+  customAttributes?: Maybe<Array<Maybe<NodeCustomAttribute>>>;
+  /** Any additional data for the node. */
+  data?: Maybe<Scalars['String']['output']>;
+  /** The date the element was created. */
+  dateCreated?: Maybe<Scalars['DateTime']['output']>;
+  /** The date the element was last updated. */
+  dateUpdated?: Maybe<Scalars['DateTime']['output']>;
+  /** The element the node links to. */
+  element?: Maybe<ElementInterface>;
+  /** The ID of the element this node is linked to. */
+  elementId?: Maybe<Scalars['Int']['output']>;
+  /** Whether the element is enabled. */
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  /** The ID of the entity */
+  id?: Maybe<Scalars['ID']['output']>;
+  /** The language of the site element is associated with. */
+  language?: Maybe<Scalars['String']['output']>;
+  /** The element’s level within its structure */
+  level?: Maybe<Scalars['Int']['output']>;
+  /** The element’s left position within its structure. */
+  lft?: Maybe<Scalars['Int']['output']>;
+  /** The handle of the navigation this node belongs to. */
+  navHandle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the navigation this node belongs to. */
+  navId?: Maybe<Scalars['Int']['output']>;
+  /** The name of the navigation this node belongs to. */
+  navName?: Maybe<Scalars['String']['output']>;
+  /** Whether this node should open in a new window. */
+  newWindow?: Maybe<Scalars['String']['output']>;
+  /** The node’s URI */
+  nodeUri?: Maybe<Scalars['String']['output']>;
+  /** The node’s parent. */
+  parent?: Maybe<NodeInterface>;
+  /** The element’s right position within its structure. */
+  rgt?: Maybe<Scalars['Int']['output']>;
+  /** The element’s structure’s root ID */
+  root?: Maybe<Scalars['Int']['output']>;
+  /** The element’s search score, if the `search` parameter was used when querying for the element. */
+  searchScore?: Maybe<Scalars['Int']['output']>;
+  /** The handle of the site the element is associated with. */
+  siteHandle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the site the element is associated with. */
+  siteId?: Maybe<Scalars['Int']['output']>;
+  /** The unique identifier for an element-site relation. */
+  siteSettingsId?: Maybe<Scalars['ID']['output']>;
+  /** The element’s slug. */
+  slug?: Maybe<Scalars['String']['output']>;
+  /** The element’s status. */
+  status?: Maybe<Scalars['String']['output']>;
+  /** The element’s structure ID. */
+  structureId?: Maybe<Scalars['Int']['output']>;
+  /** The element’s title. */
+  title?: Maybe<Scalars['String']['output']>;
+  /** Whether the element has been soft-deleted. */
+  trashed?: Maybe<Scalars['Boolean']['output']>;
+  /** The type of node this is. */
+  type?: Maybe<Scalars['String']['output']>;
+  /** The display name for the type of node this is. */
+  typeLabel?: Maybe<Scalars['String']['output']>;
+  /** The UID of the entity */
+  uid?: Maybe<Scalars['String']['output']>;
+  /** The element’s URI. */
+  uri?: Maybe<Scalars['String']['output']>;
+  /** The node’s full URL */
+  url?: Maybe<Scalars['String']['output']>;
+  /** The URL for this navigation item. */
+  urlSuffix?: Maybe<Scalars['String']['output']>;
+};
+
+
+export type BottomNavigation_Node_CountArgs = {
+  field: Scalars['String']['input'];
+};
+
+
+export type BottomNavigation_NodeChildrenArgs = {
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  nav?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  navHandle?: InputMaybe<Scalars['String']['input']>;
+  navId?: InputMaybe<Scalars['Int']['input']>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
 export type CompanyBlocks_MatrixField = BlockHighlightedLinks_Entry | BlockHighlightedNews_Entry | BlockHighlightedServices_Entry;
+
+export type CompanyInfo_GlobalSet = ElementInterface & GlobalSetInterface & {
+  /** Return a number of related elements for a field. */
+  _count?: Maybe<Scalars['Int']['output']>;
+  additionalInfo?: Maybe<Scalars['String']['output']>;
+  /** Whether the element is archived. */
+  archived?: Maybe<Scalars['Boolean']['output']>;
+  companyName?: Maybe<Scalars['String']['output']>;
+  /** The date the element was created. */
+  dateCreated?: Maybe<Scalars['DateTime']['output']>;
+  /** The date the element was last updated. */
+  dateUpdated?: Maybe<Scalars['DateTime']['output']>;
+  /** Whether the element is enabled. */
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  /** The handle of the global set. */
+  handle: Scalars['String']['output'];
+  /** The ID of the entity */
+  id?: Maybe<Scalars['ID']['output']>;
+  info?: Maybe<Scalars['String']['output']>;
+  /** The language of the site element is associated with. */
+  language?: Maybe<Scalars['String']['output']>;
+  /** The name of the global set. */
+  name: Scalars['String']['output'];
+  /** The element’s search score, if the `search` parameter was used when querying for the element. */
+  searchScore?: Maybe<Scalars['Int']['output']>;
+  /** The handle of the site the element is associated with. */
+  siteHandle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the site the element is associated with. */
+  siteId?: Maybe<Scalars['Int']['output']>;
+  /** The unique identifier for an element-site relation. */
+  siteSettingsId?: Maybe<Scalars['ID']['output']>;
+  /** The element’s slug. */
+  slug?: Maybe<Scalars['String']['output']>;
+  /** The element’s status. */
+  status?: Maybe<Scalars['String']['output']>;
+  /** The element’s title. */
+  title?: Maybe<Scalars['String']['output']>;
+  /** Whether the element has been soft-deleted. */
+  trashed?: Maybe<Scalars['Boolean']['output']>;
+  /** The UID of the entity */
+  uid?: Maybe<Scalars['String']['output']>;
+  /** The element’s URI. */
+  uri?: Maybe<Scalars['String']['output']>;
+};
+
+
+export type CompanyInfo_GlobalSet_CountArgs = {
+  field: Scalars['String']['input'];
+};
 
 export type CompanySectionEntryUnion = Company_Entry;
 
@@ -19455,12 +19764,19 @@ export type TimelineItem_EntryPrevArgs = {
 
 export type TimelineItems_MatrixField = TimelineItem_Entry;
 
+export type GetCompanyInfoQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetCompanyInfoQuery = { globalSet?: { companyName?: string, info?: string, additionalInfo?: string } };
+
+export type NavigationLinkFragment = { id?: string, newWindow?: string, title?: string, type?: string, typeLabel?: string, url?: string, children?: Array<{ id?: string, newWindow?: string, title?: string, type?: string, typeLabel?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } }>, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } };
+
 export type GetNavigationQueryVariables = Exact<{
   navHandle?: InputMaybe<Scalars['String']['input']>;
 }>;
 
 
-export type GetNavigationQuery = { navigationNodes?: Array<{ title?: string, type?: string, url?: string, children?: Array<{ title?: string, url?: string }>, element?: { uri?: string } | { uri?: string } }> };
+export type GetNavigationQuery = { navigationNodes?: Array<{ id?: string, newWindow?: string, title?: string, type?: string, typeLabel?: string, url?: string, children?: Array<{ id?: string, newWindow?: string, title?: string, type?: string, typeLabel?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } }>, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } }> };
 
 export type ListNewsQueryVariables = Exact<{
   offset?: InputMaybe<Scalars['Int']['input']>;
@@ -19510,21 +19826,21 @@ export type ListServicesCategoriesQuery = { categories?: Array<{ id?: string, ti
 export type PageHomeQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type PageHomeQuery = { entries?: Array<{ id?: string, metaDescription?: string, metaTitle?: string, title?: string, companyBlocks: Array<{ title?: string, typeHandle: string, uid?: string, linkItems: Array<{ buttonLink?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string } } }> } | { title?: string, typeHandle: string, uid?: string, newsEntries: Array<{ abstract?: string, date?: any, id?: string, slug?: string, title?: string, image: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, newsCategories: Array<{ title?: string, slug?: string }> }> } | { title?: string, typeHandle: string, uid?: string, serviceItems: Array<{ htmlContent?: string, abstract?: string, title?: string, buttonLink?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string } } }> }> }> };
+export type PageHomeQuery = { entries?: Array<{ id?: string, metaDescription?: string, metaTitle?: string, title?: string, companyBlocks: Array<{ title?: string, typeHandle: string, uid?: string, linkItems: Array<{ buttonLink?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string }, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, slug?: string, uri?: string } } }> } | { title?: string, typeHandle: string, uid?: string, newsEntries: Array<{ abstract?: string, date?: any, id?: string, slug?: string, title?: string, image: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, newsCategories: Array<{ title?: string, slug?: string }> }> } | { title?: string, typeHandle: string, uid?: string, serviceItems: Array<{ htmlContent?: string, abstract?: string, title?: string, buttonLink?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string }, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, slug?: string, uri?: string } } }> }> }> };
 
 export type PageNewsQueryVariables = Exact<{
   slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>> | InputMaybe<Scalars['String']['input']>>;
 }>;
 
 
-export type PageNewsQuery = { entries?: Array<{ htmlContent?: string, id?: string, title?: string, buttonLink?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string } }, image: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, pageBlocks: Array<(
-      { abstract?: string, id?: string, title?: string, typeHandle: string, uid?: string, contactItems: Array<{ address?: string, id?: string, slug?: string, title?: string, email?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string } } }> }
+export type PageNewsQuery = { entries?: Array<{ htmlContent?: string, id?: string, title?: string, buttonLink?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string }, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, slug?: string, uri?: string } }, image: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, pageBlocks: Array<(
+      { abstract?: string, id?: string, title?: string, typeHandle: string, uid?: string, contactItems: Array<{ address?: string, id?: string, slug?: string, title?: string, email?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string }, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, slug?: string, uri?: string } } }> }
       & { __typename: 'blockContacts_Entry' }
     ) | (
       { id?: string, title?: string, typeHandle: string, uid?: string, medias: Array<{ column?: string, image: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, video: Array<{ src?: string, type?: string }> }> }
       & { __typename: 'blockMedia_Entry' }
     ) | (
-      { evidence?: boolean, htmlContent?: string, title?: string, typeHandle: string, uid?: string, buttonLink?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string } } }
+      { evidence?: boolean, htmlContent?: string, title?: string, typeHandle: string, uid?: string, buttonLink?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string }, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, slug?: string, uri?: string } } }
       & { __typename: 'blockParagraph_Entry' }
     ) | (
       { id?: string, htmlContent?: string, title?: string, typeHandle: string, uid?: string, timelineItems: Array<{ abstract?: string, date?: any, title?: string }> }
@@ -19541,14 +19857,14 @@ export type PageNoticesQueryVariables = Exact<{
 }>;
 
 
-export type PageNoticesQuery = { entries?: Array<{ htmlContent?: string, id?: string, title?: string, buttonLink?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string } }, pageBlocks: Array<(
-      { abstract?: string, id?: string, title?: string, typeHandle: string, uid?: string, contactItems: Array<{ address?: string, id?: string, slug?: string, title?: string, email?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string } } }> }
+export type PageNoticesQuery = { entries?: Array<{ htmlContent?: string, id?: string, title?: string, buttonLink?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string }, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, slug?: string, uri?: string } }, pageBlocks: Array<(
+      { abstract?: string, id?: string, title?: string, typeHandle: string, uid?: string, contactItems: Array<{ address?: string, id?: string, slug?: string, title?: string, email?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string }, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, slug?: string, uri?: string } } }> }
       & { __typename: 'blockContacts_Entry' }
     ) | (
       { id?: string, title?: string, typeHandle: string, uid?: string, medias: Array<{ column?: string, image: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, video: Array<{ src?: string, type?: string }> }> }
       & { __typename: 'blockMedia_Entry' }
     ) | (
-      { evidence?: boolean, htmlContent?: string, title?: string, typeHandle: string, uid?: string, buttonLink?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string } } }
+      { evidence?: boolean, htmlContent?: string, title?: string, typeHandle: string, uid?: string, buttonLink?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string }, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, slug?: string, uri?: string } } }
       & { __typename: 'blockParagraph_Entry' }
     ) | (
       { id?: string, htmlContent?: string, title?: string, typeHandle: string, uid?: string, timelineItems: Array<{ abstract?: string, date?: any, title?: string }> }
@@ -19565,14 +19881,14 @@ export type PageServiceQueryVariables = Exact<{
 }>;
 
 
-export type PageServiceQuery = { entries?: Array<{ dateUpdated?: any, htmlContent?: string, id?: string, title?: string, withSidebar?: boolean, buttonLink?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string } }, pageBlocks: Array<(
-      { abstract?: string, id?: string, title?: string, typeHandle: string, uid?: string, contactItems: Array<{ address?: string, id?: string, slug?: string, title?: string, email?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string } } }> }
+export type PageServiceQuery = { entries?: Array<{ dateUpdated?: any, htmlContent?: string, id?: string, title?: string, withSidebar?: boolean, buttonLink?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string }, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, slug?: string, uri?: string } }, pageBlocks: Array<(
+      { abstract?: string, id?: string, title?: string, typeHandle: string, uid?: string, contactItems: Array<{ address?: string, id?: string, slug?: string, title?: string, email?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string }, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, slug?: string, uri?: string } } }> }
       & { __typename: 'blockContacts_Entry' }
     ) | (
       { id?: string, title?: string, typeHandle: string, uid?: string, medias: Array<{ column?: string, image: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, video: Array<{ src?: string, type?: string }> }> }
       & { __typename: 'blockMedia_Entry' }
     ) | (
-      { evidence?: boolean, htmlContent?: string, title?: string, typeHandle: string, uid?: string, buttonLink?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string } } }
+      { evidence?: boolean, htmlContent?: string, title?: string, typeHandle: string, uid?: string, buttonLink?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string }, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, slug?: string, uri?: string } } }
       & { __typename: 'blockParagraph_Entry' }
     ) | (
       { id?: string, htmlContent?: string, title?: string, typeHandle: string, uid?: string, timelineItems: Array<{ abstract?: string, date?: any, title?: string }> }
@@ -19584,21 +19900,21 @@ export type ServicesIndexQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type ServicesIndexQuery = { entries?: Array<{ title?: string, abstract?: string }> };
 
-export type BlockContactsFragment = { abstract?: string, id?: string, title?: string, typeHandle: string, uid?: string, contactItems: Array<{ address?: string, id?: string, slug?: string, title?: string, email?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string } } }> };
+export type BlockContactsFragment = { abstract?: string, id?: string, title?: string, typeHandle: string, uid?: string, contactItems: Array<{ address?: string, id?: string, slug?: string, title?: string, email?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string }, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, slug?: string, uri?: string } } }> };
 
-export type BlockHighlightedLinksFragment = { title?: string, typeHandle: string, uid?: string, linkItems: Array<{ buttonLink?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string } } }> };
+export type BlockHighlightedLinksFragment = { title?: string, typeHandle: string, uid?: string, linkItems: Array<{ buttonLink?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string }, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, slug?: string, uri?: string } } }> };
 
 export type BlockHighlightedNewsFragment = { title?: string, typeHandle: string, uid?: string, newsEntries: Array<{ abstract?: string, date?: any, id?: string, slug?: string, title?: string, image: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, newsCategories: Array<{ title?: string, slug?: string }> }> };
 
-export type BlockHighlightedServicesFragment = { title?: string, typeHandle: string, uid?: string, serviceItems: Array<{ htmlContent?: string, abstract?: string, title?: string, buttonLink?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string } } }> };
+export type BlockHighlightedServicesFragment = { title?: string, typeHandle: string, uid?: string, serviceItems: Array<{ htmlContent?: string, abstract?: string, title?: string, buttonLink?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string }, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, slug?: string, uri?: string } } }> };
 
 export type BlockMediaFragment = { id?: string, title?: string, typeHandle: string, uid?: string, medias: Array<{ column?: string, image: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, video: Array<{ src?: string, type?: string }> }> };
 
-export type BlockParagraphFragment = { evidence?: boolean, htmlContent?: string, title?: string, typeHandle: string, uid?: string, buttonLink?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string } } };
+export type BlockParagraphFragment = { evidence?: boolean, htmlContent?: string, title?: string, typeHandle: string, uid?: string, buttonLink?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string }, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, slug?: string, uri?: string } } };
 
 export type BlockTimelineFragment = { id?: string, htmlContent?: string, title?: string, typeHandle: string, uid?: string, timelineItems: Array<{ abstract?: string, date?: any, title?: string }> };
 
-export type ButtonLinkFragment = { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string } };
+export type ButtonLinkFragment = { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string }, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, slug?: string, uri?: string } };
 
 export type CardNewsFragment = { abstract?: string, date?: any, id?: string, slug?: string, title?: string, image: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, newsCategories: Array<{ title?: string, slug?: string }> };
 
@@ -19606,9 +19922,9 @@ export type CardNoticesFragment = { abstract?: string, expiryDate?: any, id?: st
 
 export type CardServicesFragment = { abstract?: string, id?: string, slug?: string, title?: string, serviceCategories: Array<{ title?: string, slug?: string }> };
 
-export type CompanyEntryFragment = { id?: string, metaDescription?: string, metaTitle?: string, title?: string, companyBlocks: Array<{ title?: string, typeHandle: string, uid?: string, linkItems: Array<{ buttonLink?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string } } }> } | { title?: string, typeHandle: string, uid?: string, newsEntries: Array<{ abstract?: string, date?: any, id?: string, slug?: string, title?: string, image: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, newsCategories: Array<{ title?: string, slug?: string }> }> } | { title?: string, typeHandle: string, uid?: string, serviceItems: Array<{ htmlContent?: string, abstract?: string, title?: string, buttonLink?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string } } }> }> };
+export type CompanyEntryFragment = { id?: string, metaDescription?: string, metaTitle?: string, title?: string, companyBlocks: Array<{ title?: string, typeHandle: string, uid?: string, linkItems: Array<{ buttonLink?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string }, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, slug?: string, uri?: string } } }> } | { title?: string, typeHandle: string, uid?: string, newsEntries: Array<{ abstract?: string, date?: any, id?: string, slug?: string, title?: string, image: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, newsCategories: Array<{ title?: string, slug?: string }> }> } | { title?: string, typeHandle: string, uid?: string, serviceItems: Array<{ htmlContent?: string, abstract?: string, title?: string, buttonLink?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string }, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, slug?: string, uri?: string } } }> }> };
 
-export type ContactItemFragment = { address?: string, id?: string, slug?: string, title?: string, email?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string } } };
+export type ContactItemFragment = { address?: string, id?: string, slug?: string, title?: string, email?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string }, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, slug?: string, uri?: string } } };
 
 export type ImageFullFragment = { filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string };
 
@@ -19616,14 +19932,14 @@ export type ImageThumbFragment = { filename: string, focalPoint?: Array<number>,
 
 export type MediaFragment = { column?: string, image: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, video: Array<{ src?: string, type?: string }> };
 
-export type NewsEntryFragment = { htmlContent?: string, id?: string, title?: string, buttonLink?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string } }, image: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, pageBlocks: Array<(
-    { abstract?: string, id?: string, title?: string, typeHandle: string, uid?: string, contactItems: Array<{ address?: string, id?: string, slug?: string, title?: string, email?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string } } }> }
+export type NewsEntryFragment = { htmlContent?: string, id?: string, title?: string, buttonLink?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string }, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, slug?: string, uri?: string } }, image: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, pageBlocks: Array<(
+    { abstract?: string, id?: string, title?: string, typeHandle: string, uid?: string, contactItems: Array<{ address?: string, id?: string, slug?: string, title?: string, email?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string }, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, slug?: string, uri?: string } } }> }
     & { __typename: 'blockContacts_Entry' }
   ) | (
     { id?: string, title?: string, typeHandle: string, uid?: string, medias: Array<{ column?: string, image: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, video: Array<{ src?: string, type?: string }> }> }
     & { __typename: 'blockMedia_Entry' }
   ) | (
-    { evidence?: boolean, htmlContent?: string, title?: string, typeHandle: string, uid?: string, buttonLink?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string } } }
+    { evidence?: boolean, htmlContent?: string, title?: string, typeHandle: string, uid?: string, buttonLink?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string }, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, slug?: string, uri?: string } } }
     & { __typename: 'blockParagraph_Entry' }
   ) | (
     { id?: string, htmlContent?: string, title?: string, typeHandle: string, uid?: string, timelineItems: Array<{ abstract?: string, date?: any, title?: string }> }
@@ -19632,14 +19948,14 @@ export type NewsEntryFragment = { htmlContent?: string, id?: string, title?: str
 
 export type NewsIndexEntryFragment = { title?: string, abstract?: string };
 
-export type NoticesEntryFragment = { htmlContent?: string, id?: string, title?: string, buttonLink?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string } }, pageBlocks: Array<(
-    { abstract?: string, id?: string, title?: string, typeHandle: string, uid?: string, contactItems: Array<{ address?: string, id?: string, slug?: string, title?: string, email?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string } } }> }
+export type NoticesEntryFragment = { htmlContent?: string, id?: string, title?: string, buttonLink?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string }, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, slug?: string, uri?: string } }, pageBlocks: Array<(
+    { abstract?: string, id?: string, title?: string, typeHandle: string, uid?: string, contactItems: Array<{ address?: string, id?: string, slug?: string, title?: string, email?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string }, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, slug?: string, uri?: string } } }> }
     & { __typename: 'blockContacts_Entry' }
   ) | (
     { id?: string, title?: string, typeHandle: string, uid?: string, medias: Array<{ column?: string, image: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, video: Array<{ src?: string, type?: string }> }> }
     & { __typename: 'blockMedia_Entry' }
   ) | (
-    { evidence?: boolean, htmlContent?: string, title?: string, typeHandle: string, uid?: string, buttonLink?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string } } }
+    { evidence?: boolean, htmlContent?: string, title?: string, typeHandle: string, uid?: string, buttonLink?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string }, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, slug?: string, uri?: string } } }
     & { __typename: 'blockParagraph_Entry' }
   ) | (
     { id?: string, htmlContent?: string, title?: string, typeHandle: string, uid?: string, timelineItems: Array<{ abstract?: string, date?: any, title?: string }> }
@@ -19649,7 +19965,7 @@ export type NoticesEntryFragment = { htmlContent?: string, id?: string, title?: 
 export type NoticesIndexEntryFragment = { title?: string, abstract?: string };
 
 type PageBlocks_BlockContacts_Entry_Fragment = (
-  { abstract?: string, id?: string, title?: string, typeHandle: string, uid?: string, contactItems: Array<{ address?: string, id?: string, slug?: string, title?: string, email?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string } } }> }
+  { abstract?: string, id?: string, title?: string, typeHandle: string, uid?: string, contactItems: Array<{ address?: string, id?: string, slug?: string, title?: string, email?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string }, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, slug?: string, uri?: string } } }> }
   & { __typename: 'blockContacts_Entry' }
 );
 
@@ -19659,7 +19975,7 @@ type PageBlocks_BlockMedia_Entry_Fragment = (
 );
 
 type PageBlocks_BlockParagraph_Entry_Fragment = (
-  { evidence?: boolean, htmlContent?: string, title?: string, typeHandle: string, uid?: string, buttonLink?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string } } }
+  { evidence?: boolean, htmlContent?: string, title?: string, typeHandle: string, uid?: string, buttonLink?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string }, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, slug?: string, uri?: string } } }
   & { __typename: 'blockParagraph_Entry' }
 );
 
@@ -19670,16 +19986,16 @@ type PageBlocks_BlockTimeline_Entry_Fragment = (
 
 export type PageBlocksFragment = PageBlocks_BlockContacts_Entry_Fragment | PageBlocks_BlockMedia_Entry_Fragment | PageBlocks_BlockParagraph_Entry_Fragment | PageBlocks_BlockTimeline_Entry_Fragment;
 
-export type ServiceItemFragment = { htmlContent?: string, abstract?: string, title?: string, buttonLink?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string } } };
+export type ServiceItemFragment = { htmlContent?: string, abstract?: string, title?: string, buttonLink?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string }, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, slug?: string, uri?: string } } };
 
-export type ServicesEntryFragment = { dateUpdated?: any, htmlContent?: string, id?: string, title?: string, withSidebar?: boolean, buttonLink?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string } }, pageBlocks: Array<(
-    { abstract?: string, id?: string, title?: string, typeHandle: string, uid?: string, contactItems: Array<{ address?: string, id?: string, slug?: string, title?: string, email?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string } } }> }
+export type ServicesEntryFragment = { dateUpdated?: any, htmlContent?: string, id?: string, title?: string, withSidebar?: boolean, buttonLink?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string }, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, slug?: string, uri?: string } }, pageBlocks: Array<(
+    { abstract?: string, id?: string, title?: string, typeHandle: string, uid?: string, contactItems: Array<{ address?: string, id?: string, slug?: string, title?: string, email?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string }, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, slug?: string, uri?: string } } }> }
     & { __typename: 'blockContacts_Entry' }
   ) | (
     { id?: string, title?: string, typeHandle: string, uid?: string, medias: Array<{ column?: string, image: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, video: Array<{ src?: string, type?: string }> }> }
     & { __typename: 'blockMedia_Entry' }
   ) | (
-    { evidence?: boolean, htmlContent?: string, title?: string, typeHandle: string, uid?: string, buttonLink?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string } } }
+    { evidence?: boolean, htmlContent?: string, title?: string, typeHandle: string, uid?: string, buttonLink?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string }, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, slug?: string, uri?: string } } }
     & { __typename: 'blockParagraph_Entry' }
   ) | (
     { id?: string, htmlContent?: string, title?: string, typeHandle: string, uid?: string, timelineItems: Array<{ abstract?: string, date?: any, title?: string }> }

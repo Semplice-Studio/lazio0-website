@@ -16,8 +16,8 @@ const { data, status } = await useCraftPage<ServicesIndexEntryFragment>('service
 </script>
 
 <template>
-  <div v-if="status === 'success'">
-    <section class="container my-4">
+  <div v-if="status === 'success'" class="container">
+    <section class="my-4">
       <Breadcrumb>
         <BreadcrumbItem>
           <NuxtLinkLocale :to="{ name: 'index' }">Home</NuxtLinkLocale>
@@ -26,12 +26,12 @@ const { data, status } = await useCraftPage<ServicesIndexEntryFragment>('service
         <BreadcrumbItem>{{ data.title }}</BreadcrumbItem>
       </Breadcrumb>
     </section>
-    <section class="container">
+    <section>
       <PageHero :abstract="data.abstract" :title="data.title">
         <FormSearch v-model:search="search" />
       </PageHero>
     </section>
-    <section class="container mb-5">
+    <section class="mb-5">
       <ListServicesCategories v-model:categories="categories" />
       <ListServices :categories="categories" :search="search" />
     </section>

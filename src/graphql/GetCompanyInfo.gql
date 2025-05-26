@@ -1,0 +1,9 @@
+query GetCompanyInfo {
+  globalSet(handle: "companyInfo") {
+    ... on companyInfo_GlobalSet {
+      companyName
+      info
+      additionalInfo
+    }
+  }
+}

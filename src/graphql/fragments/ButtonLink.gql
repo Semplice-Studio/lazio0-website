@@ -7,4 +7,16 @@ fragment ButtonLink on LinkData {
   label
   type
   url
+  element {
+    ... on EntryInterface {
+      title
+      slug
+      uri
+    }
+    ... on AssetInterface {
+      title
+      filename
+      mimeType
+    }
+  }
 }

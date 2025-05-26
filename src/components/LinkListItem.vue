@@ -12,16 +12,20 @@
         'medium': bold,
         'dropdown-item': inDropdown
       }"
-      :href="href"
+      :link="link"
       :tabindex="inDropdown ? 0 : undefined"
     >
-      <!-- :role="role" -->
       <slot />
     </component>
   </li>
 </template>
 
 <script setup lang="ts">
+import type { Component } from 'vue'
+
+import type { CraftLinkProps } from '@/components/CraftLink.vue'
+import { CraftLink } from '#components'
+
 interface LinkListItemProps {
   active?: boolean
   disabled?: boolean
@@ -30,12 +34,12 @@ interface LinkListItemProps {
   header?: boolean
   divider?: boolean
   inDropdown?: boolean
-  tag?: string
-  href?: string
+  tag?: string | Component
+  link: Partial<CraftLinkProps>
 }
 
 const props = withDefaults(defineProps<LinkListItemProps>(), {
-  tag: 'div'
+  tag: CraftLink
 })
 
 const tagComputed = computed(() => {

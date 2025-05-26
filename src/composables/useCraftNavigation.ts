@@ -1,10 +1,10 @@
 import type { DocumentNode } from 'graphql'
 
-import type { NodeInterface } from '@/graphql'
+import type { NavigationLinkFragment } from '@/graphql'
 import type { CraftGraphqlVariables } from '@/types'
 
 export type CraftNavigationResponse = {
-  navigationNodes?: NodeInterface[]
+  navigationNodes?: NavigationLinkFragment[]
 }
 
 export async function useCraftNavigation(cacheKey: string, gql: DocumentNode, variables?: CraftGraphqlVariables) {
@@ -19,7 +19,7 @@ export async function useCraftNavigation(cacheKey: string, gql: DocumentNode, va
   const data = computed(() => {
     if (!query.data.value?.navigationNodes) return []
     return query.data.value?.navigationNodes
-  }) as Ref<NodeInterface[]>
+  }) as Ref<NavigationLinkFragment[]>
 
   return {
     // data: data.value,
