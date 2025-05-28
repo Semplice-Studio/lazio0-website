@@ -24,19 +24,20 @@
     }
   }
 
-  .modal-title {
-    // @include font(18, 48);
+  .modal-header {
     display: flex;
     align-items: center;
-    padding: 1.125rem 1.5rem;
+    padding: 1.125rem 2rem !important;
     margin-bottom: 4rem;
     box-shadow: 0 12px 40px rgb(0 0 0 / 0.06);
-    color: get-color(light, grey);
+    // color: get-color(light, grey);
     font-weight: 600;
     line-height: 1.25;
 
+    @extend .container;
+
     @include media-breakpoint-up(sm) {
-      padding: 1rem 1.25rem;
+      padding: 2rem !important;
       margin-bottom: 3.5rem;
     }
 
@@ -45,8 +46,9 @@
       box-shadow: none;
     }
 
-    h2 {
-      // @include font(18, 48);
+    .modal-title {
+      @include font(18, 48);
+      // color: get-color(light, grey) !important;
       font-weight: 600;
       line-height: 1.5;
 
@@ -70,6 +72,7 @@
 
   .form-group {
     display: flex;
+    width: 100%;
     align-items: flex-end;
     padding-right: 1.5rem;
     padding-left: 1.5rem;
@@ -81,10 +84,23 @@
       gap: 1.67rem;
     }
 
+    .autocomplete-wrapper {
+      position: relative;
+      width: 100%;
+    }
+
+    .autocomplete__menu {
+      position: absolute;
+      top: 100%;
+      right: -0.5px;
+      left: -0.5px;
+      width: auto;
+    }
+
     .autocomplete-icon {
       top: 50%;
       right: auto;
-      left: 20px;
+      left: 0;
       transform: translateY(-50%);
       .icon {
         fill: $primary;
@@ -109,7 +125,7 @@
 
     input {
       background-color: #fff;
-      // @include font(16, 40);
+      @include font(16, 40);
 
       @include media-breakpoint-up(md) {
         height: auto;
@@ -139,13 +155,17 @@
   }
 
   .searches-list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
     li {
       & + li {
         margin-top: 1rem;
       }
 
       a {
-        // @include font(18, 18);
+        @include font(18, 18);
         color: $primary;
         line-height: 1.5;
         text-decoration: underline;

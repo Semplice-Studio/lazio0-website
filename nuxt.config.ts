@@ -78,6 +78,7 @@ export default defineNuxtConfig({
     css: {
       preprocessorOptions: {
         scss: {
+          additionalData: '$sass-silent: true;',
           api: 'modern-compiler',
           quietDeps: true
         }

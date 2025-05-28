@@ -37,16 +37,16 @@ const props = defineProps<{
   link: CraftLinkProps
 }>()
 
-const type = computed(() => props.link?.typeLabel)
+const type = computed(() => props.link?.type.toLowerCase())
 const url = computed(() => props.link?.url)
 
 const isEmail = computed(() => type.value === 'email')
 const isTel = computed(() => type.value === 'tel')
-const isEntry = computed(() => type.value === 'Articolo')
-const isAsset = computed(() => type.value === 'Risorsa')
-const isPassive = computed(() => type.value === 'Passive')
+const isEntry = computed(() => type.value.includes('entry'))
+const isAsset = computed(() => type.value.includes('asset'))
+const isPassive = computed(() => type.value.includes('passive'))
 // const isExternal = computed(() => /^https?:\/\//.test(url.value))
-const isExternal = computed(() => false)
+const isExternal = computed(() => type.value.includes('url'))
 const isNuxtLink = computed(() => isEntry.value && !isExternal.value)
 
 const href = computed(() => {
@@ -65,7 +65,7 @@ const tagComponent = computed(() => {
 
 const target = computed(() => {
   // return props.link?.newWindow ? props.link?.newWindow : isAsset.value || isExternal.value ? '_blank' : undefined
-  return props.link?.newWindow
+  return props.link?.newWindow ? props.link?.newWindow : isAsset.value || isExternal.value ? '_blank' : undefined
 })
 
 const rel = computed(() => {

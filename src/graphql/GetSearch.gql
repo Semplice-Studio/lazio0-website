@@ -1,0 +1,11 @@
+query SearchWithRanking($search: String!) {
+  entries(
+    search: $search,
+    orderBy: "score DESC"
+  ) {
+    id
+    title
+    slug
+    uri
+  }
+}

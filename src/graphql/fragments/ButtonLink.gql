@@ -1,16 +1,8 @@
 fragment ButtonLink on LinkData {
-  ariaLabel
-  defaultLabel
-  entry {
-    uri
-  }
-  label
-  type
-  url
+  id
   element {
     ... on EntryInterface {
       title
-      slug
       uri
     }
     ... on AssetInterface {
@@ -19,4 +11,11 @@ fragment ButtonLink on LinkData {
       mimeType
     }
   }
+  # newWindow
+  title
+  label
+  defaultLabel
+  type
+  # typeLabel
+  url
 }

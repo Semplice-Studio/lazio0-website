@@ -19778,6 +19778,13 @@ export type GetNavigationQueryVariables = Exact<{
 
 export type GetNavigationQuery = { navigationNodes?: Array<{ id?: string, newWindow?: string, title?: string, type?: string, typeLabel?: string, url?: string, children?: Array<{ id?: string, newWindow?: string, title?: string, type?: string, typeLabel?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } }>, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } }> };
 
+export type SearchWithRankingQueryVariables = Exact<{
+  search: Scalars['String']['input'];
+}>;
+
+
+export type SearchWithRankingQuery = { entries?: Array<{ id?: string, title?: string, slug?: string, uri?: string }> };
+
 export type ListNewsQueryVariables = Exact<{
   offset?: InputMaybe<Scalars['Int']['input']>;
   limit?: InputMaybe<Scalars['Int']['input']>;
@@ -19826,21 +19833,21 @@ export type ListServicesCategoriesQuery = { categories?: Array<{ id?: string, ti
 export type PageHomeQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type PageHomeQuery = { entries?: Array<{ id?: string, metaDescription?: string, metaTitle?: string, title?: string, companyBlocks: Array<{ title?: string, typeHandle: string, uid?: string, linkItems: Array<{ buttonLink?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string }, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, slug?: string, uri?: string } } }> } | { title?: string, typeHandle: string, uid?: string, newsEntries: Array<{ abstract?: string, date?: any, id?: string, slug?: string, title?: string, image: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, newsCategories: Array<{ title?: string, slug?: string }> }> } | { title?: string, typeHandle: string, uid?: string, serviceItems: Array<{ htmlContent?: string, abstract?: string, title?: string, buttonLink?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string }, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, slug?: string, uri?: string } } }> }> }> };
+export type PageHomeQuery = { entries?: Array<{ id?: string, metaDescription?: string, metaTitle?: string, title?: string, companyBlocks: Array<{ title?: string, typeHandle: string, uid?: string, linkItems: Array<{ buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } } }> } | { title?: string, typeHandle: string, uid?: string, newsEntries: Array<{ abstract?: string, date?: any, id?: string, slug?: string, title?: string, image: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, newsCategories: Array<{ title?: string, slug?: string }> }> } | { title?: string, typeHandle: string, uid?: string, serviceItems: Array<{ htmlContent?: string, abstract?: string, title?: string, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } } }> }> }> };
 
 export type PageNewsQueryVariables = Exact<{
   slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>> | InputMaybe<Scalars['String']['input']>>;
 }>;
 
 
-export type PageNewsQuery = { entries?: Array<{ htmlContent?: string, id?: string, title?: string, buttonLink?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string }, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, slug?: string, uri?: string } }, image: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, pageBlocks: Array<(
-      { abstract?: string, id?: string, title?: string, typeHandle: string, uid?: string, contactItems: Array<{ address?: string, id?: string, slug?: string, title?: string, email?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string }, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, slug?: string, uri?: string } } }> }
+export type PageNewsQuery = { entries?: Array<{ htmlContent?: string, id?: string, title?: string, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } }, image: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, pageBlocks: Array<(
+      { abstract?: string, id?: string, title?: string, typeHandle: string, uid?: string, contactItems: Array<{ address?: string, id?: string, slug?: string, title?: string, email?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } } }> }
       & { __typename: 'blockContacts_Entry' }
     ) | (
       { id?: string, title?: string, typeHandle: string, uid?: string, medias: Array<{ column?: string, image: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, video: Array<{ src?: string, type?: string }> }> }
       & { __typename: 'blockMedia_Entry' }
     ) | (
-      { evidence?: boolean, htmlContent?: string, title?: string, typeHandle: string, uid?: string, buttonLink?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string }, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, slug?: string, uri?: string } } }
+      { evidence?: boolean, htmlContent?: string, title?: string, typeHandle: string, uid?: string, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } } }
       & { __typename: 'blockParagraph_Entry' }
     ) | (
       { id?: string, htmlContent?: string, title?: string, typeHandle: string, uid?: string, timelineItems: Array<{ abstract?: string, date?: any, title?: string }> }
@@ -19857,14 +19864,14 @@ export type PageNoticesQueryVariables = Exact<{
 }>;
 
 
-export type PageNoticesQuery = { entries?: Array<{ htmlContent?: string, id?: string, title?: string, buttonLink?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string }, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, slug?: string, uri?: string } }, pageBlocks: Array<(
-      { abstract?: string, id?: string, title?: string, typeHandle: string, uid?: string, contactItems: Array<{ address?: string, id?: string, slug?: string, title?: string, email?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string }, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, slug?: string, uri?: string } } }> }
+export type PageNoticesQuery = { entries?: Array<{ htmlContent?: string, id?: string, title?: string, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } }, pageBlocks: Array<(
+      { abstract?: string, id?: string, title?: string, typeHandle: string, uid?: string, contactItems: Array<{ address?: string, id?: string, slug?: string, title?: string, email?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } } }> }
       & { __typename: 'blockContacts_Entry' }
     ) | (
       { id?: string, title?: string, typeHandle: string, uid?: string, medias: Array<{ column?: string, image: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, video: Array<{ src?: string, type?: string }> }> }
       & { __typename: 'blockMedia_Entry' }
     ) | (
-      { evidence?: boolean, htmlContent?: string, title?: string, typeHandle: string, uid?: string, buttonLink?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string }, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, slug?: string, uri?: string } } }
+      { evidence?: boolean, htmlContent?: string, title?: string, typeHandle: string, uid?: string, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } } }
       & { __typename: 'blockParagraph_Entry' }
     ) | (
       { id?: string, htmlContent?: string, title?: string, typeHandle: string, uid?: string, timelineItems: Array<{ abstract?: string, date?: any, title?: string }> }
@@ -19881,14 +19888,14 @@ export type PageServiceQueryVariables = Exact<{
 }>;
 
 
-export type PageServiceQuery = { entries?: Array<{ dateUpdated?: any, htmlContent?: string, id?: string, title?: string, withSidebar?: boolean, buttonLink?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string }, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, slug?: string, uri?: string } }, pageBlocks: Array<(
-      { abstract?: string, id?: string, title?: string, typeHandle: string, uid?: string, contactItems: Array<{ address?: string, id?: string, slug?: string, title?: string, email?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string }, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, slug?: string, uri?: string } } }> }
+export type PageServiceQuery = { entries?: Array<{ dateUpdated?: any, htmlContent?: string, id?: string, title?: string, withSidebar?: boolean, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } }, pageBlocks: Array<(
+      { abstract?: string, id?: string, title?: string, typeHandle: string, uid?: string, contactItems: Array<{ address?: string, id?: string, slug?: string, title?: string, email?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } } }> }
       & { __typename: 'blockContacts_Entry' }
     ) | (
       { id?: string, title?: string, typeHandle: string, uid?: string, medias: Array<{ column?: string, image: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, video: Array<{ src?: string, type?: string }> }> }
       & { __typename: 'blockMedia_Entry' }
     ) | (
-      { evidence?: boolean, htmlContent?: string, title?: string, typeHandle: string, uid?: string, buttonLink?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string }, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, slug?: string, uri?: string } } }
+      { evidence?: boolean, htmlContent?: string, title?: string, typeHandle: string, uid?: string, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } } }
       & { __typename: 'blockParagraph_Entry' }
     ) | (
       { id?: string, htmlContent?: string, title?: string, typeHandle: string, uid?: string, timelineItems: Array<{ abstract?: string, date?: any, title?: string }> }
@@ -19900,21 +19907,21 @@ export type ServicesIndexQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type ServicesIndexQuery = { entries?: Array<{ title?: string, abstract?: string }> };
 
-export type BlockContactsFragment = { abstract?: string, id?: string, title?: string, typeHandle: string, uid?: string, contactItems: Array<{ address?: string, id?: string, slug?: string, title?: string, email?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string }, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, slug?: string, uri?: string } } }> };
+export type BlockContactsFragment = { abstract?: string, id?: string, title?: string, typeHandle: string, uid?: string, contactItems: Array<{ address?: string, id?: string, slug?: string, title?: string, email?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } } }> };
 
-export type BlockHighlightedLinksFragment = { title?: string, typeHandle: string, uid?: string, linkItems: Array<{ buttonLink?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string }, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, slug?: string, uri?: string } } }> };
+export type BlockHighlightedLinksFragment = { title?: string, typeHandle: string, uid?: string, linkItems: Array<{ buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } } }> };
 
 export type BlockHighlightedNewsFragment = { title?: string, typeHandle: string, uid?: string, newsEntries: Array<{ abstract?: string, date?: any, id?: string, slug?: string, title?: string, image: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, newsCategories: Array<{ title?: string, slug?: string }> }> };
 
-export type BlockHighlightedServicesFragment = { title?: string, typeHandle: string, uid?: string, serviceItems: Array<{ htmlContent?: string, abstract?: string, title?: string, buttonLink?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string }, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, slug?: string, uri?: string } } }> };
+export type BlockHighlightedServicesFragment = { title?: string, typeHandle: string, uid?: string, serviceItems: Array<{ htmlContent?: string, abstract?: string, title?: string, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } } }> };
 
 export type BlockMediaFragment = { id?: string, title?: string, typeHandle: string, uid?: string, medias: Array<{ column?: string, image: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, video: Array<{ src?: string, type?: string }> }> };
 
-export type BlockParagraphFragment = { evidence?: boolean, htmlContent?: string, title?: string, typeHandle: string, uid?: string, buttonLink?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string }, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, slug?: string, uri?: string } } };
+export type BlockParagraphFragment = { evidence?: boolean, htmlContent?: string, title?: string, typeHandle: string, uid?: string, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } } };
 
 export type BlockTimelineFragment = { id?: string, htmlContent?: string, title?: string, typeHandle: string, uid?: string, timelineItems: Array<{ abstract?: string, date?: any, title?: string }> };
 
-export type ButtonLinkFragment = { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string }, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, slug?: string, uri?: string } };
+export type ButtonLinkFragment = { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } };
 
 export type CardNewsFragment = { abstract?: string, date?: any, id?: string, slug?: string, title?: string, image: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, newsCategories: Array<{ title?: string, slug?: string }> };
 
@@ -19922,9 +19929,9 @@ export type CardNoticesFragment = { abstract?: string, expiryDate?: any, id?: st
 
 export type CardServicesFragment = { abstract?: string, id?: string, slug?: string, title?: string, serviceCategories: Array<{ title?: string, slug?: string }> };
 
-export type CompanyEntryFragment = { id?: string, metaDescription?: string, metaTitle?: string, title?: string, companyBlocks: Array<{ title?: string, typeHandle: string, uid?: string, linkItems: Array<{ buttonLink?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string }, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, slug?: string, uri?: string } } }> } | { title?: string, typeHandle: string, uid?: string, newsEntries: Array<{ abstract?: string, date?: any, id?: string, slug?: string, title?: string, image: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, newsCategories: Array<{ title?: string, slug?: string }> }> } | { title?: string, typeHandle: string, uid?: string, serviceItems: Array<{ htmlContent?: string, abstract?: string, title?: string, buttonLink?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string }, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, slug?: string, uri?: string } } }> }> };
+export type CompanyEntryFragment = { id?: string, metaDescription?: string, metaTitle?: string, title?: string, companyBlocks: Array<{ title?: string, typeHandle: string, uid?: string, linkItems: Array<{ buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } } }> } | { title?: string, typeHandle: string, uid?: string, newsEntries: Array<{ abstract?: string, date?: any, id?: string, slug?: string, title?: string, image: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, newsCategories: Array<{ title?: string, slug?: string }> }> } | { title?: string, typeHandle: string, uid?: string, serviceItems: Array<{ htmlContent?: string, abstract?: string, title?: string, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } } }> }> };
 
-export type ContactItemFragment = { address?: string, id?: string, slug?: string, title?: string, email?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string }, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, slug?: string, uri?: string } } };
+export type ContactItemFragment = { address?: string, id?: string, slug?: string, title?: string, email?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } } };
 
 export type ImageFullFragment = { filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string };
 
@@ -19932,14 +19939,14 @@ export type ImageThumbFragment = { filename: string, focalPoint?: Array<number>,
 
 export type MediaFragment = { column?: string, image: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, video: Array<{ src?: string, type?: string }> };
 
-export type NewsEntryFragment = { htmlContent?: string, id?: string, title?: string, buttonLink?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string }, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, slug?: string, uri?: string } }, image: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, pageBlocks: Array<(
-    { abstract?: string, id?: string, title?: string, typeHandle: string, uid?: string, contactItems: Array<{ address?: string, id?: string, slug?: string, title?: string, email?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string }, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, slug?: string, uri?: string } } }> }
+export type NewsEntryFragment = { htmlContent?: string, id?: string, title?: string, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } }, image: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, pageBlocks: Array<(
+    { abstract?: string, id?: string, title?: string, typeHandle: string, uid?: string, contactItems: Array<{ address?: string, id?: string, slug?: string, title?: string, email?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } } }> }
     & { __typename: 'blockContacts_Entry' }
   ) | (
     { id?: string, title?: string, typeHandle: string, uid?: string, medias: Array<{ column?: string, image: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, video: Array<{ src?: string, type?: string }> }> }
     & { __typename: 'blockMedia_Entry' }
   ) | (
-    { evidence?: boolean, htmlContent?: string, title?: string, typeHandle: string, uid?: string, buttonLink?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string }, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, slug?: string, uri?: string } } }
+    { evidence?: boolean, htmlContent?: string, title?: string, typeHandle: string, uid?: string, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } } }
     & { __typename: 'blockParagraph_Entry' }
   ) | (
     { id?: string, htmlContent?: string, title?: string, typeHandle: string, uid?: string, timelineItems: Array<{ abstract?: string, date?: any, title?: string }> }
@@ -19948,14 +19955,14 @@ export type NewsEntryFragment = { htmlContent?: string, id?: string, title?: str
 
 export type NewsIndexEntryFragment = { title?: string, abstract?: string };
 
-export type NoticesEntryFragment = { htmlContent?: string, id?: string, title?: string, buttonLink?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string }, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, slug?: string, uri?: string } }, pageBlocks: Array<(
-    { abstract?: string, id?: string, title?: string, typeHandle: string, uid?: string, contactItems: Array<{ address?: string, id?: string, slug?: string, title?: string, email?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string }, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, slug?: string, uri?: string } } }> }
+export type NoticesEntryFragment = { htmlContent?: string, id?: string, title?: string, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } }, pageBlocks: Array<(
+    { abstract?: string, id?: string, title?: string, typeHandle: string, uid?: string, contactItems: Array<{ address?: string, id?: string, slug?: string, title?: string, email?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } } }> }
     & { __typename: 'blockContacts_Entry' }
   ) | (
     { id?: string, title?: string, typeHandle: string, uid?: string, medias: Array<{ column?: string, image: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, video: Array<{ src?: string, type?: string }> }> }
     & { __typename: 'blockMedia_Entry' }
   ) | (
-    { evidence?: boolean, htmlContent?: string, title?: string, typeHandle: string, uid?: string, buttonLink?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string }, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, slug?: string, uri?: string } } }
+    { evidence?: boolean, htmlContent?: string, title?: string, typeHandle: string, uid?: string, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } } }
     & { __typename: 'blockParagraph_Entry' }
   ) | (
     { id?: string, htmlContent?: string, title?: string, typeHandle: string, uid?: string, timelineItems: Array<{ abstract?: string, date?: any, title?: string }> }
@@ -19965,7 +19972,7 @@ export type NoticesEntryFragment = { htmlContent?: string, id?: string, title?: 
 export type NoticesIndexEntryFragment = { title?: string, abstract?: string };
 
 type PageBlocks_BlockContacts_Entry_Fragment = (
-  { abstract?: string, id?: string, title?: string, typeHandle: string, uid?: string, contactItems: Array<{ address?: string, id?: string, slug?: string, title?: string, email?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string }, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, slug?: string, uri?: string } } }> }
+  { abstract?: string, id?: string, title?: string, typeHandle: string, uid?: string, contactItems: Array<{ address?: string, id?: string, slug?: string, title?: string, email?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } } }> }
   & { __typename: 'blockContacts_Entry' }
 );
 
@@ -19975,7 +19982,7 @@ type PageBlocks_BlockMedia_Entry_Fragment = (
 );
 
 type PageBlocks_BlockParagraph_Entry_Fragment = (
-  { evidence?: boolean, htmlContent?: string, title?: string, typeHandle: string, uid?: string, buttonLink?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string }, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, slug?: string, uri?: string } } }
+  { evidence?: boolean, htmlContent?: string, title?: string, typeHandle: string, uid?: string, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } } }
   & { __typename: 'blockParagraph_Entry' }
 );
 
@@ -19986,16 +19993,16 @@ type PageBlocks_BlockTimeline_Entry_Fragment = (
 
 export type PageBlocksFragment = PageBlocks_BlockContacts_Entry_Fragment | PageBlocks_BlockMedia_Entry_Fragment | PageBlocks_BlockParagraph_Entry_Fragment | PageBlocks_BlockTimeline_Entry_Fragment;
 
-export type ServiceItemFragment = { htmlContent?: string, abstract?: string, title?: string, buttonLink?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string }, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, slug?: string, uri?: string } } };
+export type ServiceItemFragment = { htmlContent?: string, abstract?: string, title?: string, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } } };
 
-export type ServicesEntryFragment = { dateUpdated?: any, htmlContent?: string, id?: string, title?: string, withSidebar?: boolean, buttonLink?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string }, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, slug?: string, uri?: string } }, pageBlocks: Array<(
-    { abstract?: string, id?: string, title?: string, typeHandle: string, uid?: string, contactItems: Array<{ address?: string, id?: string, slug?: string, title?: string, email?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string }, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, slug?: string, uri?: string } } }> }
+export type ServicesEntryFragment = { dateUpdated?: any, htmlContent?: string, id?: string, title?: string, withSidebar?: boolean, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } }, pageBlocks: Array<(
+    { abstract?: string, id?: string, title?: string, typeHandle: string, uid?: string, contactItems: Array<{ address?: string, id?: string, slug?: string, title?: string, email?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } } }> }
     & { __typename: 'blockContacts_Entry' }
   ) | (
     { id?: string, title?: string, typeHandle: string, uid?: string, medias: Array<{ column?: string, image: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, video: Array<{ src?: string, type?: string }> }> }
     & { __typename: 'blockMedia_Entry' }
   ) | (
-    { evidence?: boolean, htmlContent?: string, title?: string, typeHandle: string, uid?: string, buttonLink?: { ariaLabel?: string, defaultLabel?: string, label?: string, type?: string, url?: string, entry?: { uri?: string }, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, slug?: string, uri?: string } } }
+    { evidence?: boolean, htmlContent?: string, title?: string, typeHandle: string, uid?: string, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } } }
     & { __typename: 'blockParagraph_Entry' }
   ) | (
     { id?: string, htmlContent?: string, title?: string, typeHandle: string, uid?: string, timelineItems: Array<{ abstract?: string, date?: any, title?: string }> }

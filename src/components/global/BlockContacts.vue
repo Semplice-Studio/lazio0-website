@@ -14,7 +14,7 @@
       <div
         v-for="(item, index) in contactItems"
         :key="index"
-        class="col-6"
+        class="col-lg-6"
       >
         <CardContact v-bind="item" />
       </div>

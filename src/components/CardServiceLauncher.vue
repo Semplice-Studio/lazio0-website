@@ -1,5 +1,5 @@
 <template>
-  <Card spacing class="card-bg card-big">
+  <Card spacing class="card-bg">
     <BCardBody>
       <div class="categoryicon-top text-primary">
         <Icon icon="it-settings" />
@@ -32,7 +32,8 @@ withDefaults(defineProps<ServiceItemFragment>(), {
 </script>
 
 <style scoped>
-.card-abstract {
+.card-abstract,
+.card-abstract > * {
   font-size: 1rem;
 }
 </style>

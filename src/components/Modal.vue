@@ -1,5 +1,6 @@
 <template>
-  <BModal v-model="visible" :size="size" :title="title">
+  <BModal v-model="visible" no-footer :size="size" :title="title">
+    <slot name="header" />
     <slot />
   </BModal>
 </template>
