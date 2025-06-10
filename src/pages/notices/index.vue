@@ -9,6 +9,13 @@ defineI18nRoute({
   }
 })
 
+const { isPreview, previewTimestamp } = usePreview()
+
+// Disable SSR for preview mode
+if (isPreview.value) {
+  definePageMeta({ ssr: false })
+}
+
 const search = ref('')
 const categories = ref([])
 
@@ -16,7 +23,7 @@ const { data, status } = await useCraftPage<NoticesIndexEntryFragment>('notices'
 </script>
 
 <template>
-  <div v-if="status === 'success'" class="container">
+  <div v-if="status === 'success'" :key="previewTimestamp" class="container">
     <section class="my-4">
       <Breadcrumb>
         <BreadcrumbItem>

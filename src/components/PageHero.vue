@@ -7,11 +7,17 @@
           <h1 class="h1">{{ title }}</h1>
           <div v-if="abstract" class="hero-text neutral-1-color-a7" v-html="abstract" />
           <Button
-            v-if="link"
-            :aria-label="link.ariaLabel"
-            :to="link.url"
+            v-if="buttonLink"
+            :download="isAsset ? true : undefined"
+            :href="!isNuxtLink ? href : undefined"
+            :rel="rel"
+            :tag="tagComponent"
+            :target="target"
+            :to="isNuxtLink ? to : undefined"
           >
-            {{ link.label }}
+            <slot>
+              {{ label }}
+            </slot>
           </Button>
           <slot />
         </div>
@@ -40,7 +46,16 @@ const props = defineProps({
   }
 })
 
-const link = useCraftLink(props.buttonLink)
+const {
+  tagComponent,
+  href,
+  to,
+  label,
+  isNuxtLink,
+  rel,
+  target,
+  isAsset
+} = useCraftLink(props.buttonLink)
 </script>
 
 <style scoped>

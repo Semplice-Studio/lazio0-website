@@ -11,7 +11,7 @@
         </div>
       </div>
       <div class="row ps-lg-5">
-        <div v-for="(item, index) in serviceItems" :key="index" class="col-12 col-lg-4">
+        <div v-for="(item, index) in servicesLauncherItems" :key="index" class="col-12 col-lg-4">
           <div class="card-wrapper">
             <!-- <CardNews v-bind="item" /> -->
             <CardServiceLauncher v-bind="item" />
@@ -23,15 +23,15 @@
 </template>
 
 <script setup lang="ts">
-import type { ServiceItemFragment } from '@/graphql'
+import type { ServicesLauncherItemFragment } from '@/graphql'
 
 defineProps({
   title: {
     type: String,
     default: ''
   },
-  serviceItems: {
-    type: Array as PropType<ServiceItemFragment[]>,
+  servicesLauncherItems: {
+    type: Array as PropType<ServicesLauncherItemFragment[]>,
     default: () => ([])
   },
   uid: {

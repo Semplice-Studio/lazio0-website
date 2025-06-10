@@ -35,6 +35,10 @@ fragment NavigationLink on NodeInterface {
   type
   typeLabel
   url
+  ... on mainNavigation_Node {
+    secondary
+    buttonStyle
+  }
 }
 
 query GetNavigation($navHandle: String) {

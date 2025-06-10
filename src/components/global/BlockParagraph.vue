@@ -13,11 +13,17 @@
         <h2 :id="`title-${uid}`" class="primary-color-a9 mb-3">{{ title }}</h2>
         <div v-if="htmlContent" class="text-md-left" v-html="htmlContent" />
         <Button
-          v-if="link"
-          :aria-label="link.ariaLabel"
-          :to="link.url"
+          v-if="buttonLink"
+          :download="isAsset ? true : undefined"
+          :href="!isNuxtLink ? href : undefined"
+          :rel="rel"
+          :tag="tagComponent"
+          :target="target"
+          :to="isNuxtLink ? to : undefined"
         >
-          {{ link.label }}
+          <slot>
+            {{ label }}
+          </slot>
         </Button>
       </div>
     </div>
@@ -50,5 +56,14 @@ const props = defineProps({
   }
 })
 
-const link = useCraftLink(props.buttonLink)
+const {
+  tagComponent,
+  href,
+  to,
+  label,
+  isNuxtLink,
+  rel,
+  target,
+  isAsset
+} = useCraftLink(props.buttonLink)
 </script>

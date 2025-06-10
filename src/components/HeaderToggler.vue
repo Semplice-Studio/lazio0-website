@@ -17,9 +17,9 @@ const headerType = useHeaderContext()
 const ariaExpanded = computed(() => String(props.isOpen ?? false))
 
 onMounted(() => {
-  document.querySelectorAll('.container-fluid').forEach((el) => {
-    el.classList.remove('container-fluid')
-  })
+  // document.querySelectorAll('.container-fluid').forEach((el) => {
+  //   el.classList.remove('container-fluid')
+  // })
 })
 </script>
 

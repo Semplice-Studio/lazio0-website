@@ -13,11 +13,11 @@ export default [
     language: 'it-IT',
     name: 'Italiano',
     file: 'it.js'
-  },
-  {
-    code: 'en',
-    language: 'en-GB',
-    name: 'English',
-    file: 'en.js'
   }
+  // {
+  //   code: 'en',
+  //   language: 'en-GB',
+  //   name: 'English',
+  //   file: 'en.js'
+  // }
 ] as Translation[]

@@ -1,0 +1,13 @@
+#import ./CardServices.gql
+#import ./ButtonLink.gql
+
+fragment ServicesLauncherItem on servicesLauncher_Entry {
+  abstract
+  title
+  serviceEntries {
+    ... CardServices
+  }
+  buttonLink {
+    ...ButtonLink
+  }
+}

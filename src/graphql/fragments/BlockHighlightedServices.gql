@@ -1,8 +1,8 @@
-#import ./ServiceItem.gql
+#import ./ServicesLauncherItem.gql
 
 fragment BlockHighlightedServices on blockHighlightedServices_Entry {
-  serviceItems {
-    ...ServiceItem
+  servicesLauncherItems {
+    ...ServicesLauncherItem
   }
   title
   typeHandle

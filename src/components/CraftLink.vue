@@ -5,7 +5,7 @@
     :href="!isNuxtLink ? href : undefined"
     :rel="rel"
     :target="target"
-    :to="isNuxtLink ? '/' + link.element?.uri : undefined"
+    :to="isNuxtLink ? to : undefined"
   >
     <slot>
       {{ label }}
@@ -14,14 +14,15 @@
 </template>
 
 <script lang="ts" setup>
-import { computed } from 'vue'
+// import { computed } from 'vue'
 
-import { NuxtLinkLocale } from '#components'
+// import { NuxtLinkLocale } from '#components'
 
-type LinkType = 'Entry' | 'Asset'
+// type LinkType = 'Entry' | 'Asset'
 
 export interface CraftLinkProps {
   url?: string
+  type?: string
   typeLabel?: string
   newWindow?: string
   element?: {
@@ -30,54 +31,82 @@ export interface CraftLinkProps {
     filename?: string
     mimeType?: string
   }
-  title: string
+  title?: string
 }
 
 const props = defineProps<{
   link: CraftLinkProps
 }>()
 
-const type = computed(() => props.link?.type.toLowerCase())
-const url = computed(() => props.link?.url)
+const {
+  tagComponent,
+  href,
+  to,
+  label,
+  isNuxtLink,
+  rel,
+  target,
+  isAsset
+} = useCraftLink(props.link)
 
-const isEmail = computed(() => type.value === 'email')
-const isTel = computed(() => type.value === 'tel')
-const isEntry = computed(() => type.value.includes('entry'))
-const isAsset = computed(() => type.value.includes('asset'))
-const isPassive = computed(() => type.value.includes('passive'))
-// const isExternal = computed(() => /^https?:\/\//.test(url.value))
-const isExternal = computed(() => type.value.includes('url'))
-const isNuxtLink = computed(() => isEntry.value && !isExternal.value)
+// const type = computed(() => props.link?.type!.toLowerCase())
+// const url = computed(() => props.link?.url)
 
-const href = computed(() => {
-  if (!url.value) return null
-  if (isEmail.value) return `mailto:${url.value}`
-  if (isTel.value) return `tel:${url.value}`
-  return url.value
-})
+// const isEmail = computed(() => type.value === 'email')
+// const isTel = computed(() => type.value === 'tel')
+// const isEntry = computed(() => type.value.includes('entry'))
+// const isAsset = computed(() => type.value.includes('asset'))
+// const isPassive = computed(() => type.value.includes('passive'))
+// // const isExternal = computed(() => /^https?:\/\//.test(url.value))
+// const isExternal = computed(() => type.value.includes('url'))
+// const isNuxtLink = computed(() => isEntry.value && !isExternal.value)
 
-const tagComponent = computed(() => {
-  if (isPassive.value) return 'span'
-  if (isNuxtLink.value) return NuxtLinkLocale
-  else if (!isNuxtLink.value && href.value) return 'a'
-  else return 'span'
-})
+// const href = computed(() => {
+//   if (!url.value) return null
+//   if (isEmail.value) return `mailto:${url.value}`
+//   if (isTel.value) return `tel:${url.value}`
+//   return url.value
+// })
 
-const target = computed(() => {
-  // return props.link?.newWindow ? props.link?.newWindow : isAsset.value || isExternal.value ? '_blank' : undefined
-  return props.link?.newWindow ? props.link?.newWindow : isAsset.value || isExternal.value ? '_blank' : undefined
-})
+// const tagComponent = computed(() => {
+//   if (isPassive.value) return 'span'
+//   if (isNuxtLink.value) return NuxtLinkLocale
+//   else if (!isNuxtLink.value && href.value) return 'a'
+//   else return 'span'
+// })
 
-const rel = computed(() => {
-  return target.value ? 'noopener noreferrer' : undefined
-})
+// function getURI(uri: string | undefined) {
+//   if (!uri || uri === '__home__') {
+//     return ''
+//   } else {
+//     return `/${uri}`
+//   }
+// }
 
-const label = computed(() => {
-  return (
-    props.link?.title
-    || props.link?.element?.title
-    || props.link?.element?.filename
-    || props.link?.url
-  )
-})
+// const to = computed(() => {
+//   if (isNuxtLink.value) {
+//     return props.link?.element?.uri
+//       ? getURI(props.link.element.uri)
+//       : undefined
+//   }
+//   return undefined
+// })
+
+// const target = computed(() => {
+//   // return props.link?.newWindow ? props.link?.newWindow : isAsset.value || isExternal.value ? '_blank' : undefined
+//   return props.link?.newWindow ? props.link?.newWindow : isAsset.value || isExternal.value ? '_blank' : undefined
+// })
+
+// const rel = computed(() => {
+//   return target.value ? 'noopener noreferrer' : undefined
+// })
+
+// const label = computed(() => {
+//   return (
+//     props.link?.title
+//     || props.link?.element?.title
+//     || props.link?.element?.filename
+//     || props.link?.url
+//   )
+// })
 </script>

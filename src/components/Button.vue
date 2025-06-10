@@ -12,6 +12,8 @@
 </template>
 
 <script setup lang="ts">
+import type { Component } from 'vue'
+
 import type { NuxtLinkProps } from '#app'
 import { NuxtLinkLocale } from '#components'
 
@@ -22,12 +24,12 @@ interface ButtonProps {
   block?: boolean
   outline?: boolean
   theme?: ButtonTheme
-  tag?: string
+  tag?: string | Component
   icon?: boolean
   size?: ButtonSize
   close?: boolean
   active?: boolean
-  to?: NuxtLinkProps['to']
+  to: NuxtLinkProps['to']
   disabled?: boolean
 }
 

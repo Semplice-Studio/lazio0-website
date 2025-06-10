@@ -13,6 +13,13 @@ defineI18nRoute({
 const route = useRoute()
 const slug = route.params.slug as string
 
+const { isPreview, previewTimestamp } = usePreview()
+
+// Disable SSR for preview mode
+if (isPreview.value) {
+  definePageMeta({ ssr: false })
+}
+
 const { data, status } = await useCraftPage<NewsEntryFragment>('news-' + slug, PageNewsGQL, { slug })
 
 const blocks = computed(() => (data?.pageBlocks || []) as CraftMatrixField[])
@@ -20,7 +27,7 @@ const featuredImage = computed(() => data.image?.[0])
 </script>
 
 <template>
-  <div v-if="status === 'success'">
+  <div v-if="status === 'success'" :key="previewTimestamp">
     <section class="container my-4">
       <Breadcrumb>
         <BreadcrumbItem>

@@ -23,7 +23,7 @@ const className = computed(() => {
 <template>
   <div class="container">
     <div class="row">
-      <div class="col">
+      <div class="col-12">
         <BNavbar
           v-if="type === NAVBAR"
           :class="className"
@@ -43,5 +43,10 @@ const className = computed(() => {
 nav {
   padding-right: 0 !important;
   padding-left: 0 !important;
+}
+
+:deep(.container-fluid) {
+  --bs-gutter-x: 0 !important;
+  padding: 0 !important;
 }
 </style>

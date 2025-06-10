@@ -30,7 +30,7 @@ withDefaults(defineProps<NavProps>(), {
 </script>
 
 <template>
-  <nav aria-label="Principale">
+  <nav>
     <BNav
       :is="tag"
       role="tablist"
