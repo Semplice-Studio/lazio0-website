@@ -1,4 +1,5 @@
 #import ./ButtonLink.gql
+#import ./ImageFull.gql 
 #import ./PageBlocks.gql
 #import ./Tag.gql
 
@@ -9,6 +10,11 @@ fragment ServicesEntry on services_Entry {
   dateUpdated
   htmlContent
   id
+  metaTitle
+  metaDescription
+  ogImage {
+    ... ImageFull
+  }
   pageBlocks {
     ...PageBlocks
   }

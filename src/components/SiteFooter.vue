@@ -56,11 +56,11 @@
           <div class="col-lg-3 col-md-3 pb-2">
             <h4 class="footer-heading-title">Seguici su</h4>
             <ul class="list-inline text-start social">
-              <li v-for="icon in socials" :key="icon.name" class="list-inline-item">
-                <a class="p-2 text-white" href="#" target="_blank">
-                  <Icon class="align-top" color="white" size="sm" :icon="icon.icon" />
-                  <span class="visually-hidden">{{ icon.name }}</span>
-                </a>
+              <li v-for="icon in socials.socialItems" :key="icon.title" class="list-inline-item">
+                <CraftLink class="p-2 text-white" href="#" target="_blank" :link="(icon.link_ as ButtonLinkFragment)">
+                  <Icon class="align-top" color="white" size="sm" :icon="`it-${icon.title!.toLowerCase()}`" />
+                  <span class="visually-hidden">{{ icon.title }}</span>
+                </CraftLink>
               </li>
             </ul>
           </div>
@@ -86,18 +86,20 @@
 
 <script setup lang="ts">
 import LogoFull from '@/assets/images/LogoFullLight.svg'
-import type { CompanyInfo_GlobalSet } from '@/graphql'
+import type { ButtonLinkFragment, CompanyInfo_GlobalSet, Socials_GlobalSet } from '@/graphql'
 import GetCompanyInfo from '@/graphql/GetCompanyInfo.gql'
 import GetNavigation from '@/graphql/GetNavigation.gql'
+import GetSocials from '@/graphql/GetSocials.gql'
 
 const { data: companyInfo } = await useCraftGlobals<CompanyInfo_GlobalSet>('companyInfo', GetCompanyInfo)
+const { data: socials } = await useCraftGlobals<Socials_GlobalSet>('socials', GetSocials)
 const { data: navigation } = await useCraftNavigation('footerNavigation', GetNavigation, { navHandle: 'footerNavigation' })
 const { data: bottomNavigation } = await useCraftNavigation('bottomNavigation', GetNavigation, { navHandle: 'bottomNavigation' })
 
-const socials = ref([
-  { icon: 'it-designers-italia', name: 'Designers Italia' },
-  { icon: 'it-twitter', name: 'Twitter' },
-  { icon: 'it-medium', name: 'Medium' },
-  { icon: 'it-behance', name: 'Behance' }
-])
+// const socials = ref([
+//   { icon: 'it-designers-italia', name: 'Designers Italia' },
+//   { icon: 'it-twitter', name: 'Twitter' },
+//   { icon: 'it-medium', name: 'Medium' },
+//   { icon: 'it-behance', name: 'Behance' }
+// ])
 </script>

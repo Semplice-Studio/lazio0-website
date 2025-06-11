@@ -1,0 +1,13 @@
+#import ./fragments/ImageFull.gql
+
+query GetSEO {
+  globalSet(handle: "seo") {
+    ... on seo_GlobalSet {
+      metaTitle
+      metaDescription
+      ogImage {
+        ... ImageFull
+      }
+    }
+  }
+}

@@ -1,45 +1,4 @@
-fragment NavigationLink on NodeInterface {
-  children {
-    id
-    element {
-      ... on EntryInterface {
-        title
-        uri
-      }
-      ... on AssetInterface {
-        title
-        filename
-        mimeType
-      }
-    }
-    newWindow
-    title
-    type
-    typeLabel
-    url
-  }
-  id
-  element {
-    ... on EntryInterface {
-      title
-      uri
-    }
-    ... on AssetInterface {
-      title
-      filename
-      mimeType
-    }
-  }
-  newWindow
-  title
-  type
-  typeLabel
-  url
-  ... on mainNavigation_Node {
-    secondary
-    buttonStyle
-  }
-}
+#import ./fragments/NavigationLink.gql
 
 query GetNavigation($navHandle: String) {
   navigationNodes (navHandle: $navHandle, level: 1) {

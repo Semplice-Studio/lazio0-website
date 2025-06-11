@@ -10,7 +10,6 @@
           <Icon v-if="buttonLink.type === 'asset'" icon="it-clip" />
           <Icon v-else-if="buttonLink.type === 'entry'" icon="it-link" />
           <Icon v-else icon="it-external-link" />
-          <!-- <span class="text">{{ buttonLink.label || buttonLink.defaultLabel }}</span> -->
           <BCardTitle class="mb-0" tag="h5">
             {{ buttonLink.label || buttonLink.defaultLabel }}
           </BCardTitle>

@@ -1,4 +1,11 @@
+#import ./ImageFull.gql 
+
 fragment ServicesIndexEntry on servicesIndex_Entry {
   title
   abstract
+  metaTitle
+  metaDescription
+  ogImage {
+    ... ImageFull
+  }
 }

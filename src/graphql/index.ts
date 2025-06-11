@@ -14,6 +14,7 @@ export type Scalars = {
   Int: { input: number; output: number; }
   Float: { input: number; output: number; }
   DateTime: { input: any; output: any; }
+  Json: { input: any; output: any; }
   QueryArgument: { input: any; output: any; }
 };
 
@@ -1023,6 +1024,15 @@ export type CategoryRelationCriteriaInput = {
   withStructure?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
+export type CountryOption = {
+  /** The code attribute. */
+  code?: Maybe<Scalars['String']['output']>;
+  /** The label attribute. */
+  label?: Maybe<Scalars['String']['output']>;
+  /** The value attribute. */
+  value?: Maybe<Scalars['String']['output']>;
+};
+
 export type Element = ElementInterface & {
   /** Return a number of related elements for a field. */
   _count?: Maybe<Scalars['Int']['output']>;
@@ -1519,6 +1529,8 @@ export type EntryInterfaceLocalizedArgs = {
   section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarNavigation?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -1595,6 +1607,8 @@ export type EntryInterfaceNextArgs = {
   section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarNavigation?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -1747,6 +1761,8 @@ export type EntryInterfacePrevArgs = {
   section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarNavigation?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -1871,6 +1887,8 @@ export type EntryRelationCriteriaInput = {
   /** Narrows the query results based on the sections the entries belong to, per the sections’ IDs. */
   sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarNavigation?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   /** Determines which site(s) the elements should be queried in. Defaults to the current (requested) site. */
   site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   /** Determines which site(s) the elements should be queried in. Defaults to the current (requested) site. */
@@ -1897,6 +1915,4094 @@ export type EntryRelationCriteriaInput = {
   withSidebar?: InputMaybe<Scalars['Boolean']['input']>;
   /** Explicitly determines whether the query should join in the structure data. */
   withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type FieldAttribute = {
+  /** The label attribute. */
+  label?: Maybe<Scalars['String']['output']>;
+  /** The value attribute. */
+  value?: Maybe<Scalars['String']['output']>;
+};
+
+/** This is the interface implemented by all fields. */
+export type FieldInterface = {
+  /** The field’s conditions as a JSON string. */
+  conditions?: Maybe<Scalars['Json']['output']>;
+  /** The field’s container attributes. */
+  containerAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s CSS classes. */
+  cssClasses?: Maybe<Scalars['String']['output']>;
+  /** The field’s default value as a string. Some fields have different fields for their default value. */
+  defaultValue?: Maybe<Scalars['String']['output']>;
+  /** The field’s display name (last portion of the class). */
+  displayName?: Maybe<Scalars['String']['output']>;
+  /** The field’s value type to use in email notifications. */
+  emailValue?: Maybe<Scalars['String']['output']>;
+  /** Whether the field has conditions enabled. */
+  enableConditions?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field has content encryption enabled. */
+  enableContentEncryption?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field is enabled. */
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s error message. */
+  errorMessage?: Maybe<Scalars['String']['output']>;
+  /** The field’s handle. */
+  handle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the entity */
+  id?: Maybe<Scalars['ID']['output']>;
+  /** Whether the field should be included in email content. */
+  includeInEmail?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s input attributes. */
+  inputAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s full GQL input type. Useful for mutations. */
+  inputTypeName?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions. */
+  instructions?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions position. This will be a `verbb\formie\positions` class name. */
+  instructionsPosition?: Maybe<Scalars['String']['output']>;
+  /** The field’s label. */
+  label?: Maybe<Scalars['String']['output']>;
+  /** The field’s label position. This will be a `verbb\formie\positions` class name. */
+  labelPosition?: Maybe<Scalars['String']['output']>;
+  /** The field handle for another field that this value should match exactly. */
+  matchField?: Maybe<Scalars['String']['output']>;
+  /** The field’s placeholder. */
+  placeholder?: Maybe<Scalars['String']['output']>;
+  /** The field’s pre-populated value extracted from the query string. */
+  prePopulate?: Maybe<Scalars['String']['output']>;
+  /** Whether the field is required. */
+  required?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s type. */
+  type?: Maybe<Scalars['String']['output']>;
+  /** The field’s full GQL type. */
+  typeName?: Maybe<Scalars['String']['output']>;
+  /** The UID of the entity */
+  uid?: Maybe<Scalars['String']['output']>;
+  /** The field’s visibility. */
+  visibility?: Maybe<Scalars['String']['output']>;
+};
+
+export type FieldOption = {
+  /** Whether this option has been marked as disabled. */
+  disabled?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether this option has been marked as a default. */
+  isDefault?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether this option has been marked as an `optgroup`. */
+  isOptgroup?: Maybe<Scalars['Boolean']['output']>;
+  /** The label of the option. */
+  label?: Maybe<Scalars['String']['output']>;
+  /** The value of the option. */
+  value?: Maybe<Scalars['String']['output']>;
+};
+
+export type Field_Address = FieldInterface & {
+  /** The field’s conditions as a JSON string. */
+  conditions?: Maybe<Scalars['Json']['output']>;
+  /** The field’s container attributes. */
+  containerAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s CSS classes. */
+  cssClasses?: Maybe<Scalars['String']['output']>;
+  /** The field’s default value as a string. Some fields have different fields for their default value. */
+  defaultValue?: Maybe<Scalars['String']['output']>;
+  /** The field’s display name (last portion of the class). */
+  displayName?: Maybe<Scalars['String']['output']>;
+  /** The field’s value type to use in email notifications. */
+  emailValue?: Maybe<Scalars['String']['output']>;
+  /** Whether the field has conditions enabled. */
+  enableConditions?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field has content encryption enabled. */
+  enableContentEncryption?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field is enabled. */
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s error message. */
+  errorMessage?: Maybe<Scalars['String']['output']>;
+  /** The field’s nested fields. */
+  fields?: Maybe<Array<Maybe<FieldInterface>>>;
+  /** The field’s handle. */
+  handle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the entity */
+  id?: Maybe<Scalars['ID']['output']>;
+  /** Whether the field should be included in email content. */
+  includeInEmail?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s input attributes. */
+  inputAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s full GQL input type. Useful for mutations. */
+  inputTypeName?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions. */
+  instructions?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions position. This will be a `verbb\formie\positions` class name. */
+  instructionsPosition?: Maybe<Scalars['String']['output']>;
+  /** The field’s label. */
+  label?: Maybe<Scalars['String']['output']>;
+  /** The field’s label position. This will be a `verbb\formie\positions` class name. */
+  labelPosition?: Maybe<Scalars['String']['output']>;
+  /** The field handle for another field that this value should match exactly. */
+  matchField?: Maybe<Scalars['String']['output']>;
+  /** The field’s nested rows. */
+  nestedRows?: Maybe<Array<Maybe<RowInterface>>>;
+  /** The field’s placeholder. */
+  placeholder?: Maybe<Scalars['String']['output']>;
+  /** The field’s pre-populated value extracted from the query string. */
+  prePopulate?: Maybe<Scalars['String']['output']>;
+  /** Whether the field is required. */
+  required?: Maybe<Scalars['Boolean']['output']>;
+  subFieldLabelPosition?: Maybe<Scalars['String']['output']>;
+  /** The field’s type. */
+  type?: Maybe<Scalars['String']['output']>;
+  /** The field’s full GQL type. */
+  typeName?: Maybe<Scalars['String']['output']>;
+  /** The UID of the entity */
+  uid?: Maybe<Scalars['String']['output']>;
+  /** The field’s visibility. */
+  visibility?: Maybe<Scalars['String']['output']>;
+};
+
+
+export type Field_AddressFieldsArgs = {
+  includeDisabled?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type Field_AddressNestedRowsArgs = {
+  includeDisabled?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type Field_Address1 = FieldInterface & {
+  /** The field’s conditions as a JSON string. */
+  conditions?: Maybe<Scalars['Json']['output']>;
+  /** The field’s container attributes. */
+  containerAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s CSS classes. */
+  cssClasses?: Maybe<Scalars['String']['output']>;
+  /** The field’s default value as a string. Some fields have different fields for their default value. */
+  defaultValue?: Maybe<Scalars['String']['output']>;
+  /** The field’s display name (last portion of the class). */
+  displayName?: Maybe<Scalars['String']['output']>;
+  /** The field’s value type to use in email notifications. */
+  emailValue?: Maybe<Scalars['String']['output']>;
+  /** Whether the field has conditions enabled. */
+  enableConditions?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field has content encryption enabled. */
+  enableContentEncryption?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field is enabled. */
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s error message. */
+  errorMessage?: Maybe<Scalars['String']['output']>;
+  /** The field’s handle. */
+  handle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the entity */
+  id?: Maybe<Scalars['ID']['output']>;
+  /** Whether the field should be included in email content. */
+  includeInEmail?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s input attributes. */
+  inputAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s full GQL input type. Useful for mutations. */
+  inputTypeName?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions. */
+  instructions?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions position. This will be a `verbb\formie\positions` class name. */
+  instructionsPosition?: Maybe<Scalars['String']['output']>;
+  /** The field’s label. */
+  label?: Maybe<Scalars['String']['output']>;
+  /** The field’s label position. This will be a `verbb\formie\positions` class name. */
+  labelPosition?: Maybe<Scalars['String']['output']>;
+  limit?: Maybe<Scalars['Boolean']['output']>;
+  /** The field handle for another field that this value should match exactly. */
+  matchField?: Maybe<Scalars['String']['output']>;
+  max?: Maybe<Scalars['Int']['output']>;
+  maxType?: Maybe<Scalars['String']['output']>;
+  min?: Maybe<Scalars['Int']['output']>;
+  minType?: Maybe<Scalars['String']['output']>;
+  /** The field’s placeholder. */
+  placeholder?: Maybe<Scalars['String']['output']>;
+  /** The field’s pre-populated value extracted from the query string. */
+  prePopulate?: Maybe<Scalars['String']['output']>;
+  /** Whether the field is required. */
+  required?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s type. */
+  type?: Maybe<Scalars['String']['output']>;
+  /** The field’s full GQL type. */
+  typeName?: Maybe<Scalars['String']['output']>;
+  /** The UID of the entity */
+  uid?: Maybe<Scalars['String']['output']>;
+  uniqueValue?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s visibility. */
+  visibility?: Maybe<Scalars['String']['output']>;
+};
+
+export type Field_Address2 = FieldInterface & {
+  /** The field’s conditions as a JSON string. */
+  conditions?: Maybe<Scalars['Json']['output']>;
+  /** The field’s container attributes. */
+  containerAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s CSS classes. */
+  cssClasses?: Maybe<Scalars['String']['output']>;
+  /** The field’s default value as a string. Some fields have different fields for their default value. */
+  defaultValue?: Maybe<Scalars['String']['output']>;
+  /** The field’s display name (last portion of the class). */
+  displayName?: Maybe<Scalars['String']['output']>;
+  /** The field’s value type to use in email notifications. */
+  emailValue?: Maybe<Scalars['String']['output']>;
+  /** Whether the field has conditions enabled. */
+  enableConditions?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field has content encryption enabled. */
+  enableContentEncryption?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field is enabled. */
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s error message. */
+  errorMessage?: Maybe<Scalars['String']['output']>;
+  /** The field’s handle. */
+  handle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the entity */
+  id?: Maybe<Scalars['ID']['output']>;
+  /** Whether the field should be included in email content. */
+  includeInEmail?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s input attributes. */
+  inputAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s full GQL input type. Useful for mutations. */
+  inputTypeName?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions. */
+  instructions?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions position. This will be a `verbb\formie\positions` class name. */
+  instructionsPosition?: Maybe<Scalars['String']['output']>;
+  /** The field’s label. */
+  label?: Maybe<Scalars['String']['output']>;
+  /** The field’s label position. This will be a `verbb\formie\positions` class name. */
+  labelPosition?: Maybe<Scalars['String']['output']>;
+  limit?: Maybe<Scalars['Boolean']['output']>;
+  /** The field handle for another field that this value should match exactly. */
+  matchField?: Maybe<Scalars['String']['output']>;
+  max?: Maybe<Scalars['Int']['output']>;
+  maxType?: Maybe<Scalars['String']['output']>;
+  min?: Maybe<Scalars['Int']['output']>;
+  minType?: Maybe<Scalars['String']['output']>;
+  /** The field’s placeholder. */
+  placeholder?: Maybe<Scalars['String']['output']>;
+  /** The field’s pre-populated value extracted from the query string. */
+  prePopulate?: Maybe<Scalars['String']['output']>;
+  /** Whether the field is required. */
+  required?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s type. */
+  type?: Maybe<Scalars['String']['output']>;
+  /** The field’s full GQL type. */
+  typeName?: Maybe<Scalars['String']['output']>;
+  /** The UID of the entity */
+  uid?: Maybe<Scalars['String']['output']>;
+  uniqueValue?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s visibility. */
+  visibility?: Maybe<Scalars['String']['output']>;
+};
+
+export type Field_Address3 = FieldInterface & {
+  /** The field’s conditions as a JSON string. */
+  conditions?: Maybe<Scalars['Json']['output']>;
+  /** The field’s container attributes. */
+  containerAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s CSS classes. */
+  cssClasses?: Maybe<Scalars['String']['output']>;
+  /** The field’s default value as a string. Some fields have different fields for their default value. */
+  defaultValue?: Maybe<Scalars['String']['output']>;
+  /** The field’s display name (last portion of the class). */
+  displayName?: Maybe<Scalars['String']['output']>;
+  /** The field’s value type to use in email notifications. */
+  emailValue?: Maybe<Scalars['String']['output']>;
+  /** Whether the field has conditions enabled. */
+  enableConditions?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field has content encryption enabled. */
+  enableContentEncryption?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field is enabled. */
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s error message. */
+  errorMessage?: Maybe<Scalars['String']['output']>;
+  /** The field’s handle. */
+  handle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the entity */
+  id?: Maybe<Scalars['ID']['output']>;
+  /** Whether the field should be included in email content. */
+  includeInEmail?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s input attributes. */
+  inputAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s full GQL input type. Useful for mutations. */
+  inputTypeName?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions. */
+  instructions?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions position. This will be a `verbb\formie\positions` class name. */
+  instructionsPosition?: Maybe<Scalars['String']['output']>;
+  /** The field’s label. */
+  label?: Maybe<Scalars['String']['output']>;
+  /** The field’s label position. This will be a `verbb\formie\positions` class name. */
+  labelPosition?: Maybe<Scalars['String']['output']>;
+  limit?: Maybe<Scalars['Boolean']['output']>;
+  /** The field handle for another field that this value should match exactly. */
+  matchField?: Maybe<Scalars['String']['output']>;
+  max?: Maybe<Scalars['Int']['output']>;
+  maxType?: Maybe<Scalars['String']['output']>;
+  min?: Maybe<Scalars['Int']['output']>;
+  minType?: Maybe<Scalars['String']['output']>;
+  /** The field’s placeholder. */
+  placeholder?: Maybe<Scalars['String']['output']>;
+  /** The field’s pre-populated value extracted from the query string. */
+  prePopulate?: Maybe<Scalars['String']['output']>;
+  /** Whether the field is required. */
+  required?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s type. */
+  type?: Maybe<Scalars['String']['output']>;
+  /** The field’s full GQL type. */
+  typeName?: Maybe<Scalars['String']['output']>;
+  /** The UID of the entity */
+  uid?: Maybe<Scalars['String']['output']>;
+  uniqueValue?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s visibility. */
+  visibility?: Maybe<Scalars['String']['output']>;
+};
+
+export type Field_AddressAutoComplete = FieldInterface & {
+  /** The field’s conditions as a JSON string. */
+  conditions?: Maybe<Scalars['Json']['output']>;
+  /** The field’s container attributes. */
+  containerAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s CSS classes. */
+  cssClasses?: Maybe<Scalars['String']['output']>;
+  /** The field’s default value as a string. Some fields have different fields for their default value. */
+  defaultValue?: Maybe<Scalars['String']['output']>;
+  /** The field’s display name (last portion of the class). */
+  displayName?: Maybe<Scalars['String']['output']>;
+  /** The field’s value type to use in email notifications. */
+  emailValue?: Maybe<Scalars['String']['output']>;
+  /** Whether the field has conditions enabled. */
+  enableConditions?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field has content encryption enabled. */
+  enableContentEncryption?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field is enabled. */
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s error message. */
+  errorMessage?: Maybe<Scalars['String']['output']>;
+  /** The field’s handle. */
+  handle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the entity */
+  id?: Maybe<Scalars['ID']['output']>;
+  /** Whether the field should be included in email content. */
+  includeInEmail?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s input attributes. */
+  inputAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s full GQL input type. Useful for mutations. */
+  inputTypeName?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions. */
+  instructions?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions position. This will be a `verbb\formie\positions` class name. */
+  instructionsPosition?: Maybe<Scalars['String']['output']>;
+  /** The field’s label. */
+  label?: Maybe<Scalars['String']['output']>;
+  /** The field’s label position. This will be a `verbb\formie\positions` class name. */
+  labelPosition?: Maybe<Scalars['String']['output']>;
+  limit?: Maybe<Scalars['Boolean']['output']>;
+  /** The field handle for another field that this value should match exactly. */
+  matchField?: Maybe<Scalars['String']['output']>;
+  max?: Maybe<Scalars['Int']['output']>;
+  maxType?: Maybe<Scalars['String']['output']>;
+  min?: Maybe<Scalars['Int']['output']>;
+  minType?: Maybe<Scalars['String']['output']>;
+  /** The field’s placeholder. */
+  placeholder?: Maybe<Scalars['String']['output']>;
+  /** The field’s pre-populated value extracted from the query string. */
+  prePopulate?: Maybe<Scalars['String']['output']>;
+  /** Whether the field is required. */
+  required?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s type. */
+  type?: Maybe<Scalars['String']['output']>;
+  /** The field’s full GQL type. */
+  typeName?: Maybe<Scalars['String']['output']>;
+  /** The UID of the entity */
+  uid?: Maybe<Scalars['String']['output']>;
+  uniqueValue?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s visibility. */
+  visibility?: Maybe<Scalars['String']['output']>;
+};
+
+export type Field_AddressCity = FieldInterface & {
+  /** The field’s conditions as a JSON string. */
+  conditions?: Maybe<Scalars['Json']['output']>;
+  /** The field’s container attributes. */
+  containerAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s CSS classes. */
+  cssClasses?: Maybe<Scalars['String']['output']>;
+  /** The field’s default value as a string. Some fields have different fields for their default value. */
+  defaultValue?: Maybe<Scalars['String']['output']>;
+  /** The field’s display name (last portion of the class). */
+  displayName?: Maybe<Scalars['String']['output']>;
+  /** The field’s value type to use in email notifications. */
+  emailValue?: Maybe<Scalars['String']['output']>;
+  /** Whether the field has conditions enabled. */
+  enableConditions?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field has content encryption enabled. */
+  enableContentEncryption?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field is enabled. */
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s error message. */
+  errorMessage?: Maybe<Scalars['String']['output']>;
+  /** The field’s handle. */
+  handle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the entity */
+  id?: Maybe<Scalars['ID']['output']>;
+  /** Whether the field should be included in email content. */
+  includeInEmail?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s input attributes. */
+  inputAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s full GQL input type. Useful for mutations. */
+  inputTypeName?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions. */
+  instructions?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions position. This will be a `verbb\formie\positions` class name. */
+  instructionsPosition?: Maybe<Scalars['String']['output']>;
+  /** The field’s label. */
+  label?: Maybe<Scalars['String']['output']>;
+  /** The field’s label position. This will be a `verbb\formie\positions` class name. */
+  labelPosition?: Maybe<Scalars['String']['output']>;
+  limit?: Maybe<Scalars['Boolean']['output']>;
+  /** The field handle for another field that this value should match exactly. */
+  matchField?: Maybe<Scalars['String']['output']>;
+  max?: Maybe<Scalars['Int']['output']>;
+  maxType?: Maybe<Scalars['String']['output']>;
+  min?: Maybe<Scalars['Int']['output']>;
+  minType?: Maybe<Scalars['String']['output']>;
+  /** The field’s placeholder. */
+  placeholder?: Maybe<Scalars['String']['output']>;
+  /** The field’s pre-populated value extracted from the query string. */
+  prePopulate?: Maybe<Scalars['String']['output']>;
+  /** Whether the field is required. */
+  required?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s type. */
+  type?: Maybe<Scalars['String']['output']>;
+  /** The field’s full GQL type. */
+  typeName?: Maybe<Scalars['String']['output']>;
+  /** The UID of the entity */
+  uid?: Maybe<Scalars['String']['output']>;
+  uniqueValue?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s visibility. */
+  visibility?: Maybe<Scalars['String']['output']>;
+};
+
+export type Field_AddressCountry = FieldInterface & {
+  /** The field’s conditions as a JSON string. */
+  conditions?: Maybe<Scalars['Json']['output']>;
+  /** The field’s container attributes. */
+  containerAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s CSS classes. */
+  cssClasses?: Maybe<Scalars['String']['output']>;
+  /** The field’s default value as a string. Some fields have different fields for their default value. */
+  defaultValue?: Maybe<Scalars['String']['output']>;
+  /** The field’s display name (last portion of the class). */
+  displayName?: Maybe<Scalars['String']['output']>;
+  /** The field’s value type to use in email notifications. */
+  emailValue?: Maybe<Scalars['String']['output']>;
+  /** Whether the field has conditions enabled. */
+  enableConditions?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field has content encryption enabled. */
+  enableContentEncryption?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field is enabled. */
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s error message. */
+  errorMessage?: Maybe<Scalars['String']['output']>;
+  /** The field’s handle. */
+  handle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the entity */
+  id?: Maybe<Scalars['ID']['output']>;
+  /** Whether the field should be included in email content. */
+  includeInEmail?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s input attributes. */
+  inputAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s full GQL input type. Useful for mutations. */
+  inputTypeName?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions. */
+  instructions?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions position. This will be a `verbb\formie\positions` class name. */
+  instructionsPosition?: Maybe<Scalars['String']['output']>;
+  /** The field’s label. */
+  label?: Maybe<Scalars['String']['output']>;
+  /** The field’s label position. This will be a `verbb\formie\positions` class name. */
+  labelPosition?: Maybe<Scalars['String']['output']>;
+  layout?: Maybe<Scalars['String']['output']>;
+  /** The field handle for another field that this value should match exactly. */
+  matchField?: Maybe<Scalars['String']['output']>;
+  multi?: Maybe<Scalars['Boolean']['output']>;
+  options?: Maybe<Array<Maybe<FieldOption>>>;
+  /** The field’s placeholder. */
+  placeholder?: Maybe<Scalars['String']['output']>;
+  /** The field’s pre-populated value extracted from the query string. */
+  prePopulate?: Maybe<Scalars['String']['output']>;
+  /** Whether the field is required. */
+  required?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s type. */
+  type?: Maybe<Scalars['String']['output']>;
+  /** The field’s full GQL type. */
+  typeName?: Maybe<Scalars['String']['output']>;
+  /** The UID of the entity */
+  uid?: Maybe<Scalars['String']['output']>;
+  /** The field’s visibility. */
+  visibility?: Maybe<Scalars['String']['output']>;
+};
+
+export type Field_AddressState = FieldInterface & {
+  /** The field’s conditions as a JSON string. */
+  conditions?: Maybe<Scalars['Json']['output']>;
+  /** The field’s container attributes. */
+  containerAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s CSS classes. */
+  cssClasses?: Maybe<Scalars['String']['output']>;
+  /** The field’s default value as a string. Some fields have different fields for their default value. */
+  defaultValue?: Maybe<Scalars['String']['output']>;
+  /** The field’s display name (last portion of the class). */
+  displayName?: Maybe<Scalars['String']['output']>;
+  /** The field’s value type to use in email notifications. */
+  emailValue?: Maybe<Scalars['String']['output']>;
+  /** Whether the field has conditions enabled. */
+  enableConditions?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field has content encryption enabled. */
+  enableContentEncryption?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field is enabled. */
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s error message. */
+  errorMessage?: Maybe<Scalars['String']['output']>;
+  /** The field’s handle. */
+  handle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the entity */
+  id?: Maybe<Scalars['ID']['output']>;
+  /** Whether the field should be included in email content. */
+  includeInEmail?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s input attributes. */
+  inputAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s full GQL input type. Useful for mutations. */
+  inputTypeName?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions. */
+  instructions?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions position. This will be a `verbb\formie\positions` class name. */
+  instructionsPosition?: Maybe<Scalars['String']['output']>;
+  /** The field’s label. */
+  label?: Maybe<Scalars['String']['output']>;
+  /** The field’s label position. This will be a `verbb\formie\positions` class name. */
+  labelPosition?: Maybe<Scalars['String']['output']>;
+  limit?: Maybe<Scalars['Boolean']['output']>;
+  /** The field handle for another field that this value should match exactly. */
+  matchField?: Maybe<Scalars['String']['output']>;
+  max?: Maybe<Scalars['Int']['output']>;
+  maxType?: Maybe<Scalars['String']['output']>;
+  min?: Maybe<Scalars['Int']['output']>;
+  minType?: Maybe<Scalars['String']['output']>;
+  /** The field’s placeholder. */
+  placeholder?: Maybe<Scalars['String']['output']>;
+  /** The field’s pre-populated value extracted from the query string. */
+  prePopulate?: Maybe<Scalars['String']['output']>;
+  /** Whether the field is required. */
+  required?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s type. */
+  type?: Maybe<Scalars['String']['output']>;
+  /** The field’s full GQL type. */
+  typeName?: Maybe<Scalars['String']['output']>;
+  /** The UID of the entity */
+  uid?: Maybe<Scalars['String']['output']>;
+  uniqueValue?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s visibility. */
+  visibility?: Maybe<Scalars['String']['output']>;
+};
+
+export type Field_AddressZip = FieldInterface & {
+  /** The field’s conditions as a JSON string. */
+  conditions?: Maybe<Scalars['Json']['output']>;
+  /** The field’s container attributes. */
+  containerAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s CSS classes. */
+  cssClasses?: Maybe<Scalars['String']['output']>;
+  /** The field’s default value as a string. Some fields have different fields for their default value. */
+  defaultValue?: Maybe<Scalars['String']['output']>;
+  /** The field’s display name (last portion of the class). */
+  displayName?: Maybe<Scalars['String']['output']>;
+  /** The field’s value type to use in email notifications. */
+  emailValue?: Maybe<Scalars['String']['output']>;
+  /** Whether the field has conditions enabled. */
+  enableConditions?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field has content encryption enabled. */
+  enableContentEncryption?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field is enabled. */
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s error message. */
+  errorMessage?: Maybe<Scalars['String']['output']>;
+  /** The field’s handle. */
+  handle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the entity */
+  id?: Maybe<Scalars['ID']['output']>;
+  /** Whether the field should be included in email content. */
+  includeInEmail?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s input attributes. */
+  inputAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s full GQL input type. Useful for mutations. */
+  inputTypeName?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions. */
+  instructions?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions position. This will be a `verbb\formie\positions` class name. */
+  instructionsPosition?: Maybe<Scalars['String']['output']>;
+  /** The field’s label. */
+  label?: Maybe<Scalars['String']['output']>;
+  /** The field’s label position. This will be a `verbb\formie\positions` class name. */
+  labelPosition?: Maybe<Scalars['String']['output']>;
+  limit?: Maybe<Scalars['Boolean']['output']>;
+  /** The field handle for another field that this value should match exactly. */
+  matchField?: Maybe<Scalars['String']['output']>;
+  max?: Maybe<Scalars['Int']['output']>;
+  maxType?: Maybe<Scalars['String']['output']>;
+  min?: Maybe<Scalars['Int']['output']>;
+  minType?: Maybe<Scalars['String']['output']>;
+  /** The field’s placeholder. */
+  placeholder?: Maybe<Scalars['String']['output']>;
+  /** The field’s pre-populated value extracted from the query string. */
+  prePopulate?: Maybe<Scalars['String']['output']>;
+  /** Whether the field is required. */
+  required?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s type. */
+  type?: Maybe<Scalars['String']['output']>;
+  /** The field’s full GQL type. */
+  typeName?: Maybe<Scalars['String']['output']>;
+  /** The UID of the entity */
+  uid?: Maybe<Scalars['String']['output']>;
+  uniqueValue?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s visibility. */
+  visibility?: Maybe<Scalars['String']['output']>;
+};
+
+export type Field_Agree = FieldInterface & {
+  checkedValue?: Maybe<Scalars['String']['output']>;
+  /** The field’s conditions as a JSON string. */
+  conditions?: Maybe<Scalars['Json']['output']>;
+  /** The field’s container attributes. */
+  containerAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s CSS classes. */
+  cssClasses?: Maybe<Scalars['String']['output']>;
+  defaultState?: Maybe<Scalars['Boolean']['output']>;
+  defaultValue?: Maybe<Scalars['String']['output']>;
+  descriptionHtml?: Maybe<Scalars['String']['output']>;
+  /** The field’s display name (last portion of the class). */
+  displayName?: Maybe<Scalars['String']['output']>;
+  /** The field’s value type to use in email notifications. */
+  emailValue?: Maybe<Scalars['String']['output']>;
+  /** Whether the field has conditions enabled. */
+  enableConditions?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field has content encryption enabled. */
+  enableContentEncryption?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field is enabled. */
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s error message. */
+  errorMessage?: Maybe<Scalars['String']['output']>;
+  /** The field’s handle. */
+  handle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the entity */
+  id?: Maybe<Scalars['ID']['output']>;
+  /** Whether the field should be included in email content. */
+  includeInEmail?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s input attributes. */
+  inputAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s full GQL input type. Useful for mutations. */
+  inputTypeName?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions. */
+  instructions?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions position. This will be a `verbb\formie\positions` class name. */
+  instructionsPosition?: Maybe<Scalars['String']['output']>;
+  /** The field’s label. */
+  label?: Maybe<Scalars['String']['output']>;
+  /** The field’s label position. This will be a `verbb\formie\positions` class name. */
+  labelPosition?: Maybe<Scalars['String']['output']>;
+  /** The field handle for another field that this value should match exactly. */
+  matchField?: Maybe<Scalars['String']['output']>;
+  /** The field’s placeholder. */
+  placeholder?: Maybe<Scalars['String']['output']>;
+  /** The field’s pre-populated value extracted from the query string. */
+  prePopulate?: Maybe<Scalars['String']['output']>;
+  /** Whether the field is required. */
+  required?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s type. */
+  type?: Maybe<Scalars['String']['output']>;
+  /** The field’s full GQL type. */
+  typeName?: Maybe<Scalars['String']['output']>;
+  /** The UID of the entity */
+  uid?: Maybe<Scalars['String']['output']>;
+  uncheckedValue?: Maybe<Scalars['String']['output']>;
+  /** The field’s visibility. */
+  visibility?: Maybe<Scalars['String']['output']>;
+};
+
+export type Field_Calculations = FieldInterface & {
+  /** The field’s conditions as a JSON string. */
+  conditions?: Maybe<Scalars['Json']['output']>;
+  /** The field’s container attributes. */
+  containerAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s CSS classes. */
+  cssClasses?: Maybe<Scalars['String']['output']>;
+  decimals?: Maybe<Scalars['Int']['output']>;
+  /** The field’s default value as a string. Some fields have different fields for their default value. */
+  defaultValue?: Maybe<Scalars['String']['output']>;
+  /** The field’s display name (last portion of the class). */
+  displayName?: Maybe<Scalars['String']['output']>;
+  /** The field’s value type to use in email notifications. */
+  emailValue?: Maybe<Scalars['String']['output']>;
+  /** Whether the field has conditions enabled. */
+  enableConditions?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field has content encryption enabled. */
+  enableContentEncryption?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field is enabled. */
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s error message. */
+  errorMessage?: Maybe<Scalars['String']['output']>;
+  formatting?: Maybe<Scalars['String']['output']>;
+  formula?: Maybe<Scalars['String']['output']>;
+  /** The field’s handle. */
+  handle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the entity */
+  id?: Maybe<Scalars['ID']['output']>;
+  /** Whether the field should be included in email content. */
+  includeInEmail?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s input attributes. */
+  inputAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s full GQL input type. Useful for mutations. */
+  inputTypeName?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions. */
+  instructions?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions position. This will be a `verbb\formie\positions` class name. */
+  instructionsPosition?: Maybe<Scalars['String']['output']>;
+  /** The field’s label. */
+  label?: Maybe<Scalars['String']['output']>;
+  /** The field’s label position. This will be a `verbb\formie\positions` class name. */
+  labelPosition?: Maybe<Scalars['String']['output']>;
+  /** The field handle for another field that this value should match exactly. */
+  matchField?: Maybe<Scalars['String']['output']>;
+  /** The field’s placeholder. */
+  placeholder?: Maybe<Scalars['String']['output']>;
+  /** The field’s pre-populated value extracted from the query string. */
+  prePopulate?: Maybe<Scalars['String']['output']>;
+  prefix?: Maybe<Scalars['String']['output']>;
+  /** Whether the field is required. */
+  required?: Maybe<Scalars['Boolean']['output']>;
+  suffix?: Maybe<Scalars['String']['output']>;
+  /** The field’s type. */
+  type?: Maybe<Scalars['String']['output']>;
+  /** The field’s full GQL type. */
+  typeName?: Maybe<Scalars['String']['output']>;
+  /** The UID of the entity */
+  uid?: Maybe<Scalars['String']['output']>;
+  /** The field’s visibility. */
+  visibility?: Maybe<Scalars['String']['output']>;
+};
+
+export type Field_Categories = FieldInterface & {
+  categories?: Maybe<Array<Maybe<CategoryInterface>>>;
+  /** The field’s conditions as a JSON string. */
+  conditions?: Maybe<Scalars['Json']['output']>;
+  /** The field’s container attributes. */
+  containerAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s CSS classes. */
+  cssClasses?: Maybe<Scalars['String']['output']>;
+  defaultCategory?: Maybe<CategoryInterface>;
+  defaultValue?: Maybe<Scalars['String']['output']>;
+  /** The field’s display name (last portion of the class). */
+  displayName?: Maybe<Scalars['String']['output']>;
+  displayType?: Maybe<Scalars['String']['output']>;
+  /** The field’s value type to use in email notifications. */
+  emailValue?: Maybe<Scalars['String']['output']>;
+  /** Whether the field has conditions enabled. */
+  enableConditions?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field has content encryption enabled. */
+  enableContentEncryption?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field is enabled. */
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s error message. */
+  errorMessage?: Maybe<Scalars['String']['output']>;
+  /** The field’s handle. */
+  handle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the entity */
+  id?: Maybe<Scalars['ID']['output']>;
+  /** Whether the field should be included in email content. */
+  includeInEmail?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s input attributes. */
+  inputAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s full GQL input type. Useful for mutations. */
+  inputTypeName?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions. */
+  instructions?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions position. This will be a `verbb\formie\positions` class name. */
+  instructionsPosition?: Maybe<Scalars['String']['output']>;
+  /** The field’s label. */
+  label?: Maybe<Scalars['String']['output']>;
+  /** The field’s label position. This will be a `verbb\formie\positions` class name. */
+  labelPosition?: Maybe<Scalars['String']['output']>;
+  labelSource?: Maybe<Scalars['String']['output']>;
+  limitOptions?: Maybe<Scalars['String']['output']>;
+  /** The field handle for another field that this value should match exactly. */
+  matchField?: Maybe<Scalars['String']['output']>;
+  multi?: Maybe<Scalars['Boolean']['output']>;
+  orderBy?: Maybe<Scalars['String']['output']>;
+  /** The field’s placeholder. */
+  placeholder?: Maybe<Scalars['String']['output']>;
+  /** The field’s pre-populated value extracted from the query string. */
+  prePopulate?: Maybe<Scalars['String']['output']>;
+  /** Whether the field is required. */
+  required?: Maybe<Scalars['Boolean']['output']>;
+  rootCategory?: Maybe<CategoryInterface>;
+  source?: Maybe<Scalars['String']['output']>;
+  sources?: Maybe<Scalars['String']['output']>;
+  /** The field’s type. */
+  type?: Maybe<Scalars['String']['output']>;
+  /** The field’s full GQL type. */
+  typeName?: Maybe<Scalars['String']['output']>;
+  /** The UID of the entity */
+  uid?: Maybe<Scalars['String']['output']>;
+  /** The field’s visibility. */
+  visibility?: Maybe<Scalars['String']['output']>;
+};
+
+
+export type Field_CategoriesCategoriesArgs = {
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  group?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  groupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type Field_CategoriesDefaultCategoryArgs = {
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  group?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  groupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type Field_CategoriesRootCategoryArgs = {
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  group?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  groupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type Field_Checkboxes = FieldInterface & {
+  /** The field’s conditions as a JSON string. */
+  conditions?: Maybe<Scalars['Json']['output']>;
+  /** The field’s container attributes. */
+  containerAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s CSS classes. */
+  cssClasses?: Maybe<Scalars['String']['output']>;
+  /** The field’s default value as a string. Some fields have different fields for their default value. */
+  defaultValue?: Maybe<Scalars['String']['output']>;
+  /** The field’s display name (last portion of the class). */
+  displayName?: Maybe<Scalars['String']['output']>;
+  /** The field’s value type to use in email notifications. */
+  emailValue?: Maybe<Scalars['String']['output']>;
+  /** Whether the field has conditions enabled. */
+  enableConditions?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field has content encryption enabled. */
+  enableContentEncryption?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field is enabled. */
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s error message. */
+  errorMessage?: Maybe<Scalars['String']['output']>;
+  /** The field’s handle. */
+  handle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the entity */
+  id?: Maybe<Scalars['ID']['output']>;
+  /** Whether the field should be included in email content. */
+  includeInEmail?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s input attributes. */
+  inputAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s full GQL input type. Useful for mutations. */
+  inputTypeName?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions. */
+  instructions?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions position. This will be a `verbb\formie\positions` class name. */
+  instructionsPosition?: Maybe<Scalars['String']['output']>;
+  /** The field’s label. */
+  label?: Maybe<Scalars['String']['output']>;
+  /** The field’s label position. This will be a `verbb\formie\positions` class name. */
+  labelPosition?: Maybe<Scalars['String']['output']>;
+  layout?: Maybe<Scalars['String']['output']>;
+  limitOptions?: Maybe<Scalars['Boolean']['output']>;
+  /** The field handle for another field that this value should match exactly. */
+  matchField?: Maybe<Scalars['String']['output']>;
+  max?: Maybe<Scalars['Int']['output']>;
+  min?: Maybe<Scalars['Int']['output']>;
+  multi?: Maybe<Scalars['Boolean']['output']>;
+  options?: Maybe<Array<Maybe<FieldOption>>>;
+  /** The field’s placeholder. */
+  placeholder?: Maybe<Scalars['String']['output']>;
+  /** The field’s pre-populated value extracted from the query string. */
+  prePopulate?: Maybe<Scalars['String']['output']>;
+  /** Whether the field is required. */
+  required?: Maybe<Scalars['Boolean']['output']>;
+  toggleCheckbox?: Maybe<Scalars['String']['output']>;
+  toggleCheckboxLabel?: Maybe<Scalars['String']['output']>;
+  /** The field’s type. */
+  type?: Maybe<Scalars['String']['output']>;
+  /** The field’s full GQL type. */
+  typeName?: Maybe<Scalars['String']['output']>;
+  /** The UID of the entity */
+  uid?: Maybe<Scalars['String']['output']>;
+  /** The field’s visibility. */
+  visibility?: Maybe<Scalars['String']['output']>;
+};
+
+export type Field_Date = FieldInterface & {
+  availableDaysOfWeek?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  /** The field’s conditions as a JSON string. */
+  conditions?: Maybe<Scalars['Json']['output']>;
+  /** The field’s container attributes. */
+  containerAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s CSS classes. */
+  cssClasses?: Maybe<Scalars['String']['output']>;
+  datePickerOptions?: Maybe<Array<Maybe<FieldAttribute>>>;
+  defaultDate?: Maybe<Scalars['DateTime']['output']>;
+  defaultValue?: Maybe<Scalars['String']['output']>;
+  /** The field’s display name (last portion of the class). */
+  displayName?: Maybe<Scalars['String']['output']>;
+  displayType?: Maybe<Scalars['String']['output']>;
+  /** The field’s value type to use in email notifications. */
+  emailValue?: Maybe<Scalars['String']['output']>;
+  /** Whether the field has conditions enabled. */
+  enableConditions?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field has content encryption enabled. */
+  enableContentEncryption?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field is enabled. */
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s error message. */
+  errorMessage?: Maybe<Scalars['String']['output']>;
+  /** The field’s nested fields. */
+  fields?: Maybe<Array<Maybe<FieldInterface>>>;
+  /** The field’s handle. */
+  handle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the entity */
+  id?: Maybe<Scalars['ID']['output']>;
+  /** Whether the field should be included in email content. */
+  includeInEmail?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s input attributes. */
+  inputAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s full GQL input type. Useful for mutations. */
+  inputTypeName?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions. */
+  instructions?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions position. This will be a `verbb\formie\positions` class name. */
+  instructionsPosition?: Maybe<Scalars['String']['output']>;
+  /** The field’s label. */
+  label?: Maybe<Scalars['String']['output']>;
+  /** The field’s label position. This will be a `verbb\formie\positions` class name. */
+  labelPosition?: Maybe<Scalars['String']['output']>;
+  /** The field handle for another field that this value should match exactly. */
+  matchField?: Maybe<Scalars['String']['output']>;
+  maxDate?: Maybe<Scalars['DateTime']['output']>;
+  minDate?: Maybe<Scalars['DateTime']['output']>;
+  /** The field’s nested rows. */
+  nestedRows?: Maybe<Array<Maybe<RowInterface>>>;
+  /** The field’s placeholder. */
+  placeholder?: Maybe<Scalars['String']['output']>;
+  /** The field’s pre-populated value extracted from the query string. */
+  prePopulate?: Maybe<Scalars['String']['output']>;
+  /** Whether the field is required. */
+  required?: Maybe<Scalars['Boolean']['output']>;
+  subFieldLabelPosition?: Maybe<Scalars['String']['output']>;
+  /** The field’s type. */
+  type?: Maybe<Scalars['String']['output']>;
+  /** The field’s full GQL type. */
+  typeName?: Maybe<Scalars['String']['output']>;
+  /** The UID of the entity */
+  uid?: Maybe<Scalars['String']['output']>;
+  /** The field’s visibility. */
+  visibility?: Maybe<Scalars['String']['output']>;
+};
+
+
+export type Field_DateFieldsArgs = {
+  includeDisabled?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type Field_DateNestedRowsArgs = {
+  includeDisabled?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type Field_DateAmPmDropdown = FieldInterface & {
+  /** The field’s conditions as a JSON string. */
+  conditions?: Maybe<Scalars['Json']['output']>;
+  /** The field’s container attributes. */
+  containerAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s CSS classes. */
+  cssClasses?: Maybe<Scalars['String']['output']>;
+  /** The field’s default value as a string. Some fields have different fields for their default value. */
+  defaultValue?: Maybe<Scalars['String']['output']>;
+  /** The field’s display name (last portion of the class). */
+  displayName?: Maybe<Scalars['String']['output']>;
+  /** The field’s value type to use in email notifications. */
+  emailValue?: Maybe<Scalars['String']['output']>;
+  /** Whether the field has conditions enabled. */
+  enableConditions?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field has content encryption enabled. */
+  enableContentEncryption?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field is enabled. */
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s error message. */
+  errorMessage?: Maybe<Scalars['String']['output']>;
+  /** The field’s handle. */
+  handle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the entity */
+  id?: Maybe<Scalars['ID']['output']>;
+  /** Whether the field should be included in email content. */
+  includeInEmail?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s input attributes. */
+  inputAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s full GQL input type. Useful for mutations. */
+  inputTypeName?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions. */
+  instructions?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions position. This will be a `verbb\formie\positions` class name. */
+  instructionsPosition?: Maybe<Scalars['String']['output']>;
+  /** The field’s label. */
+  label?: Maybe<Scalars['String']['output']>;
+  /** The field’s label position. This will be a `verbb\formie\positions` class name. */
+  labelPosition?: Maybe<Scalars['String']['output']>;
+  layout?: Maybe<Scalars['String']['output']>;
+  /** The field handle for another field that this value should match exactly. */
+  matchField?: Maybe<Scalars['String']['output']>;
+  multi?: Maybe<Scalars['Boolean']['output']>;
+  options?: Maybe<Array<Maybe<FieldOption>>>;
+  /** The field’s placeholder. */
+  placeholder?: Maybe<Scalars['String']['output']>;
+  /** The field’s pre-populated value extracted from the query string. */
+  prePopulate?: Maybe<Scalars['String']['output']>;
+  /** Whether the field is required. */
+  required?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s type. */
+  type?: Maybe<Scalars['String']['output']>;
+  /** The field’s full GQL type. */
+  typeName?: Maybe<Scalars['String']['output']>;
+  /** The UID of the entity */
+  uid?: Maybe<Scalars['String']['output']>;
+  /** The field’s visibility. */
+  visibility?: Maybe<Scalars['String']['output']>;
+};
+
+export type Field_DateAmPmNumber = FieldInterface & {
+  /** The field’s conditions as a JSON string. */
+  conditions?: Maybe<Scalars['Json']['output']>;
+  /** The field’s container attributes. */
+  containerAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s CSS classes. */
+  cssClasses?: Maybe<Scalars['String']['output']>;
+  /** The field’s default value as a string. Some fields have different fields for their default value. */
+  defaultValue?: Maybe<Scalars['String']['output']>;
+  /** The field’s display name (last portion of the class). */
+  displayName?: Maybe<Scalars['String']['output']>;
+  /** The field’s value type to use in email notifications. */
+  emailValue?: Maybe<Scalars['String']['output']>;
+  /** Whether the field has conditions enabled. */
+  enableConditions?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field has content encryption enabled. */
+  enableContentEncryption?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field is enabled. */
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s error message. */
+  errorMessage?: Maybe<Scalars['String']['output']>;
+  /** The field’s handle. */
+  handle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the entity */
+  id?: Maybe<Scalars['ID']['output']>;
+  /** Whether the field should be included in email content. */
+  includeInEmail?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s input attributes. */
+  inputAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s full GQL input type. Useful for mutations. */
+  inputTypeName?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions. */
+  instructions?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions position. This will be a `verbb\formie\positions` class name. */
+  instructionsPosition?: Maybe<Scalars['String']['output']>;
+  /** The field’s label. */
+  label?: Maybe<Scalars['String']['output']>;
+  /** The field’s label position. This will be a `verbb\formie\positions` class name. */
+  labelPosition?: Maybe<Scalars['String']['output']>;
+  /** The field handle for another field that this value should match exactly. */
+  matchField?: Maybe<Scalars['String']['output']>;
+  max?: Maybe<Scalars['Int']['output']>;
+  maxValue?: Maybe<Scalars['Float']['output']>;
+  min?: Maybe<Scalars['Int']['output']>;
+  minValue?: Maybe<Scalars['Float']['output']>;
+  /** The field’s placeholder. */
+  placeholder?: Maybe<Scalars['String']['output']>;
+  /** The field’s pre-populated value extracted from the query string. */
+  prePopulate?: Maybe<Scalars['String']['output']>;
+  /** Whether the field is required. */
+  required?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s type. */
+  type?: Maybe<Scalars['String']['output']>;
+  /** The field’s full GQL type. */
+  typeName?: Maybe<Scalars['String']['output']>;
+  /** The UID of the entity */
+  uid?: Maybe<Scalars['String']['output']>;
+  /** The field’s visibility. */
+  visibility?: Maybe<Scalars['String']['output']>;
+};
+
+export type Field_DateDayDropdown = FieldInterface & {
+  /** The field’s conditions as a JSON string. */
+  conditions?: Maybe<Scalars['Json']['output']>;
+  /** The field’s container attributes. */
+  containerAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s CSS classes. */
+  cssClasses?: Maybe<Scalars['String']['output']>;
+  /** The field’s default value as a string. Some fields have different fields for their default value. */
+  defaultValue?: Maybe<Scalars['String']['output']>;
+  /** The field’s display name (last portion of the class). */
+  displayName?: Maybe<Scalars['String']['output']>;
+  /** The field’s value type to use in email notifications. */
+  emailValue?: Maybe<Scalars['String']['output']>;
+  /** Whether the field has conditions enabled. */
+  enableConditions?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field has content encryption enabled. */
+  enableContentEncryption?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field is enabled. */
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s error message. */
+  errorMessage?: Maybe<Scalars['String']['output']>;
+  /** The field’s handle. */
+  handle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the entity */
+  id?: Maybe<Scalars['ID']['output']>;
+  /** Whether the field should be included in email content. */
+  includeInEmail?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s input attributes. */
+  inputAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s full GQL input type. Useful for mutations. */
+  inputTypeName?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions. */
+  instructions?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions position. This will be a `verbb\formie\positions` class name. */
+  instructionsPosition?: Maybe<Scalars['String']['output']>;
+  /** The field’s label. */
+  label?: Maybe<Scalars['String']['output']>;
+  /** The field’s label position. This will be a `verbb\formie\positions` class name. */
+  labelPosition?: Maybe<Scalars['String']['output']>;
+  layout?: Maybe<Scalars['String']['output']>;
+  /** The field handle for another field that this value should match exactly. */
+  matchField?: Maybe<Scalars['String']['output']>;
+  multi?: Maybe<Scalars['Boolean']['output']>;
+  options?: Maybe<Array<Maybe<FieldOption>>>;
+  /** The field’s placeholder. */
+  placeholder?: Maybe<Scalars['String']['output']>;
+  /** The field’s pre-populated value extracted from the query string. */
+  prePopulate?: Maybe<Scalars['String']['output']>;
+  /** Whether the field is required. */
+  required?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s type. */
+  type?: Maybe<Scalars['String']['output']>;
+  /** The field’s full GQL type. */
+  typeName?: Maybe<Scalars['String']['output']>;
+  /** The UID of the entity */
+  uid?: Maybe<Scalars['String']['output']>;
+  /** The field’s visibility. */
+  visibility?: Maybe<Scalars['String']['output']>;
+};
+
+export type Field_DateDayNumber = FieldInterface & {
+  /** The field’s conditions as a JSON string. */
+  conditions?: Maybe<Scalars['Json']['output']>;
+  /** The field’s container attributes. */
+  containerAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s CSS classes. */
+  cssClasses?: Maybe<Scalars['String']['output']>;
+  /** The field’s default value as a string. Some fields have different fields for their default value. */
+  defaultValue?: Maybe<Scalars['String']['output']>;
+  /** The field’s display name (last portion of the class). */
+  displayName?: Maybe<Scalars['String']['output']>;
+  /** The field’s value type to use in email notifications. */
+  emailValue?: Maybe<Scalars['String']['output']>;
+  /** Whether the field has conditions enabled. */
+  enableConditions?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field has content encryption enabled. */
+  enableContentEncryption?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field is enabled. */
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s error message. */
+  errorMessage?: Maybe<Scalars['String']['output']>;
+  /** The field’s handle. */
+  handle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the entity */
+  id?: Maybe<Scalars['ID']['output']>;
+  /** Whether the field should be included in email content. */
+  includeInEmail?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s input attributes. */
+  inputAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s full GQL input type. Useful for mutations. */
+  inputTypeName?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions. */
+  instructions?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions position. This will be a `verbb\formie\positions` class name. */
+  instructionsPosition?: Maybe<Scalars['String']['output']>;
+  /** The field’s label. */
+  label?: Maybe<Scalars['String']['output']>;
+  /** The field’s label position. This will be a `verbb\formie\positions` class name. */
+  labelPosition?: Maybe<Scalars['String']['output']>;
+  /** The field handle for another field that this value should match exactly. */
+  matchField?: Maybe<Scalars['String']['output']>;
+  max?: Maybe<Scalars['Int']['output']>;
+  maxValue?: Maybe<Scalars['Float']['output']>;
+  min?: Maybe<Scalars['Int']['output']>;
+  minValue?: Maybe<Scalars['Float']['output']>;
+  /** The field’s placeholder. */
+  placeholder?: Maybe<Scalars['String']['output']>;
+  /** The field’s pre-populated value extracted from the query string. */
+  prePopulate?: Maybe<Scalars['String']['output']>;
+  /** Whether the field is required. */
+  required?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s type. */
+  type?: Maybe<Scalars['String']['output']>;
+  /** The field’s full GQL type. */
+  typeName?: Maybe<Scalars['String']['output']>;
+  /** The UID of the entity */
+  uid?: Maybe<Scalars['String']['output']>;
+  /** The field’s visibility. */
+  visibility?: Maybe<Scalars['String']['output']>;
+};
+
+export type Field_DateHourDropdown = FieldInterface & {
+  /** The field’s conditions as a JSON string. */
+  conditions?: Maybe<Scalars['Json']['output']>;
+  /** The field’s container attributes. */
+  containerAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s CSS classes. */
+  cssClasses?: Maybe<Scalars['String']['output']>;
+  /** The field’s default value as a string. Some fields have different fields for their default value. */
+  defaultValue?: Maybe<Scalars['String']['output']>;
+  /** The field’s display name (last portion of the class). */
+  displayName?: Maybe<Scalars['String']['output']>;
+  /** The field’s value type to use in email notifications. */
+  emailValue?: Maybe<Scalars['String']['output']>;
+  /** Whether the field has conditions enabled. */
+  enableConditions?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field has content encryption enabled. */
+  enableContentEncryption?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field is enabled. */
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s error message. */
+  errorMessage?: Maybe<Scalars['String']['output']>;
+  /** The field’s handle. */
+  handle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the entity */
+  id?: Maybe<Scalars['ID']['output']>;
+  /** Whether the field should be included in email content. */
+  includeInEmail?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s input attributes. */
+  inputAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s full GQL input type. Useful for mutations. */
+  inputTypeName?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions. */
+  instructions?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions position. This will be a `verbb\formie\positions` class name. */
+  instructionsPosition?: Maybe<Scalars['String']['output']>;
+  /** The field’s label. */
+  label?: Maybe<Scalars['String']['output']>;
+  /** The field’s label position. This will be a `verbb\formie\positions` class name. */
+  labelPosition?: Maybe<Scalars['String']['output']>;
+  layout?: Maybe<Scalars['String']['output']>;
+  /** The field handle for another field that this value should match exactly. */
+  matchField?: Maybe<Scalars['String']['output']>;
+  multi?: Maybe<Scalars['Boolean']['output']>;
+  options?: Maybe<Array<Maybe<FieldOption>>>;
+  /** The field’s placeholder. */
+  placeholder?: Maybe<Scalars['String']['output']>;
+  /** The field’s pre-populated value extracted from the query string. */
+  prePopulate?: Maybe<Scalars['String']['output']>;
+  /** Whether the field is required. */
+  required?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s type. */
+  type?: Maybe<Scalars['String']['output']>;
+  /** The field’s full GQL type. */
+  typeName?: Maybe<Scalars['String']['output']>;
+  /** The UID of the entity */
+  uid?: Maybe<Scalars['String']['output']>;
+  /** The field’s visibility. */
+  visibility?: Maybe<Scalars['String']['output']>;
+};
+
+export type Field_DateHourNumber = FieldInterface & {
+  /** The field’s conditions as a JSON string. */
+  conditions?: Maybe<Scalars['Json']['output']>;
+  /** The field’s container attributes. */
+  containerAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s CSS classes. */
+  cssClasses?: Maybe<Scalars['String']['output']>;
+  /** The field’s default value as a string. Some fields have different fields for their default value. */
+  defaultValue?: Maybe<Scalars['String']['output']>;
+  /** The field’s display name (last portion of the class). */
+  displayName?: Maybe<Scalars['String']['output']>;
+  /** The field’s value type to use in email notifications. */
+  emailValue?: Maybe<Scalars['String']['output']>;
+  /** Whether the field has conditions enabled. */
+  enableConditions?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field has content encryption enabled. */
+  enableContentEncryption?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field is enabled. */
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s error message. */
+  errorMessage?: Maybe<Scalars['String']['output']>;
+  /** The field’s handle. */
+  handle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the entity */
+  id?: Maybe<Scalars['ID']['output']>;
+  /** Whether the field should be included in email content. */
+  includeInEmail?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s input attributes. */
+  inputAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s full GQL input type. Useful for mutations. */
+  inputTypeName?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions. */
+  instructions?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions position. This will be a `verbb\formie\positions` class name. */
+  instructionsPosition?: Maybe<Scalars['String']['output']>;
+  /** The field’s label. */
+  label?: Maybe<Scalars['String']['output']>;
+  /** The field’s label position. This will be a `verbb\formie\positions` class name. */
+  labelPosition?: Maybe<Scalars['String']['output']>;
+  /** The field handle for another field that this value should match exactly. */
+  matchField?: Maybe<Scalars['String']['output']>;
+  max?: Maybe<Scalars['Int']['output']>;
+  maxValue?: Maybe<Scalars['Float']['output']>;
+  min?: Maybe<Scalars['Int']['output']>;
+  minValue?: Maybe<Scalars['Float']['output']>;
+  /** The field’s placeholder. */
+  placeholder?: Maybe<Scalars['String']['output']>;
+  /** The field’s pre-populated value extracted from the query string. */
+  prePopulate?: Maybe<Scalars['String']['output']>;
+  /** Whether the field is required. */
+  required?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s type. */
+  type?: Maybe<Scalars['String']['output']>;
+  /** The field’s full GQL type. */
+  typeName?: Maybe<Scalars['String']['output']>;
+  /** The UID of the entity */
+  uid?: Maybe<Scalars['String']['output']>;
+  /** The field’s visibility. */
+  visibility?: Maybe<Scalars['String']['output']>;
+};
+
+export type Field_DateMinuteDropdown = FieldInterface & {
+  /** The field’s conditions as a JSON string. */
+  conditions?: Maybe<Scalars['Json']['output']>;
+  /** The field’s container attributes. */
+  containerAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s CSS classes. */
+  cssClasses?: Maybe<Scalars['String']['output']>;
+  /** The field’s default value as a string. Some fields have different fields for their default value. */
+  defaultValue?: Maybe<Scalars['String']['output']>;
+  /** The field’s display name (last portion of the class). */
+  displayName?: Maybe<Scalars['String']['output']>;
+  /** The field’s value type to use in email notifications. */
+  emailValue?: Maybe<Scalars['String']['output']>;
+  /** Whether the field has conditions enabled. */
+  enableConditions?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field has content encryption enabled. */
+  enableContentEncryption?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field is enabled. */
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s error message. */
+  errorMessage?: Maybe<Scalars['String']['output']>;
+  /** The field’s handle. */
+  handle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the entity */
+  id?: Maybe<Scalars['ID']['output']>;
+  /** Whether the field should be included in email content. */
+  includeInEmail?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s input attributes. */
+  inputAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s full GQL input type. Useful for mutations. */
+  inputTypeName?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions. */
+  instructions?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions position. This will be a `verbb\formie\positions` class name. */
+  instructionsPosition?: Maybe<Scalars['String']['output']>;
+  /** The field’s label. */
+  label?: Maybe<Scalars['String']['output']>;
+  /** The field’s label position. This will be a `verbb\formie\positions` class name. */
+  labelPosition?: Maybe<Scalars['String']['output']>;
+  layout?: Maybe<Scalars['String']['output']>;
+  /** The field handle for another field that this value should match exactly. */
+  matchField?: Maybe<Scalars['String']['output']>;
+  multi?: Maybe<Scalars['Boolean']['output']>;
+  options?: Maybe<Array<Maybe<FieldOption>>>;
+  /** The field’s placeholder. */
+  placeholder?: Maybe<Scalars['String']['output']>;
+  /** The field’s pre-populated value extracted from the query string. */
+  prePopulate?: Maybe<Scalars['String']['output']>;
+  /** Whether the field is required. */
+  required?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s type. */
+  type?: Maybe<Scalars['String']['output']>;
+  /** The field’s full GQL type. */
+  typeName?: Maybe<Scalars['String']['output']>;
+  /** The UID of the entity */
+  uid?: Maybe<Scalars['String']['output']>;
+  /** The field’s visibility. */
+  visibility?: Maybe<Scalars['String']['output']>;
+};
+
+export type Field_DateMinuteNumber = FieldInterface & {
+  /** The field’s conditions as a JSON string. */
+  conditions?: Maybe<Scalars['Json']['output']>;
+  /** The field’s container attributes. */
+  containerAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s CSS classes. */
+  cssClasses?: Maybe<Scalars['String']['output']>;
+  /** The field’s default value as a string. Some fields have different fields for their default value. */
+  defaultValue?: Maybe<Scalars['String']['output']>;
+  /** The field’s display name (last portion of the class). */
+  displayName?: Maybe<Scalars['String']['output']>;
+  /** The field’s value type to use in email notifications. */
+  emailValue?: Maybe<Scalars['String']['output']>;
+  /** Whether the field has conditions enabled. */
+  enableConditions?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field has content encryption enabled. */
+  enableContentEncryption?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field is enabled. */
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s error message. */
+  errorMessage?: Maybe<Scalars['String']['output']>;
+  /** The field’s handle. */
+  handle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the entity */
+  id?: Maybe<Scalars['ID']['output']>;
+  /** Whether the field should be included in email content. */
+  includeInEmail?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s input attributes. */
+  inputAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s full GQL input type. Useful for mutations. */
+  inputTypeName?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions. */
+  instructions?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions position. This will be a `verbb\formie\positions` class name. */
+  instructionsPosition?: Maybe<Scalars['String']['output']>;
+  /** The field’s label. */
+  label?: Maybe<Scalars['String']['output']>;
+  /** The field’s label position. This will be a `verbb\formie\positions` class name. */
+  labelPosition?: Maybe<Scalars['String']['output']>;
+  /** The field handle for another field that this value should match exactly. */
+  matchField?: Maybe<Scalars['String']['output']>;
+  max?: Maybe<Scalars['Int']['output']>;
+  maxValue?: Maybe<Scalars['Float']['output']>;
+  min?: Maybe<Scalars['Int']['output']>;
+  minValue?: Maybe<Scalars['Float']['output']>;
+  /** The field’s placeholder. */
+  placeholder?: Maybe<Scalars['String']['output']>;
+  /** The field’s pre-populated value extracted from the query string. */
+  prePopulate?: Maybe<Scalars['String']['output']>;
+  /** Whether the field is required. */
+  required?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s type. */
+  type?: Maybe<Scalars['String']['output']>;
+  /** The field’s full GQL type. */
+  typeName?: Maybe<Scalars['String']['output']>;
+  /** The UID of the entity */
+  uid?: Maybe<Scalars['String']['output']>;
+  /** The field’s visibility. */
+  visibility?: Maybe<Scalars['String']['output']>;
+};
+
+export type Field_DateMonthDropdown = FieldInterface & {
+  /** The field’s conditions as a JSON string. */
+  conditions?: Maybe<Scalars['Json']['output']>;
+  /** The field’s container attributes. */
+  containerAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s CSS classes. */
+  cssClasses?: Maybe<Scalars['String']['output']>;
+  /** The field’s default value as a string. Some fields have different fields for their default value. */
+  defaultValue?: Maybe<Scalars['String']['output']>;
+  /** The field’s display name (last portion of the class). */
+  displayName?: Maybe<Scalars['String']['output']>;
+  /** The field’s value type to use in email notifications. */
+  emailValue?: Maybe<Scalars['String']['output']>;
+  /** Whether the field has conditions enabled. */
+  enableConditions?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field has content encryption enabled. */
+  enableContentEncryption?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field is enabled. */
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s error message. */
+  errorMessage?: Maybe<Scalars['String']['output']>;
+  /** The field’s handle. */
+  handle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the entity */
+  id?: Maybe<Scalars['ID']['output']>;
+  /** Whether the field should be included in email content. */
+  includeInEmail?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s input attributes. */
+  inputAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s full GQL input type. Useful for mutations. */
+  inputTypeName?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions. */
+  instructions?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions position. This will be a `verbb\formie\positions` class name. */
+  instructionsPosition?: Maybe<Scalars['String']['output']>;
+  /** The field’s label. */
+  label?: Maybe<Scalars['String']['output']>;
+  /** The field’s label position. This will be a `verbb\formie\positions` class name. */
+  labelPosition?: Maybe<Scalars['String']['output']>;
+  layout?: Maybe<Scalars['String']['output']>;
+  /** The field handle for another field that this value should match exactly. */
+  matchField?: Maybe<Scalars['String']['output']>;
+  multi?: Maybe<Scalars['Boolean']['output']>;
+  options?: Maybe<Array<Maybe<FieldOption>>>;
+  /** The field’s placeholder. */
+  placeholder?: Maybe<Scalars['String']['output']>;
+  /** The field’s pre-populated value extracted from the query string. */
+  prePopulate?: Maybe<Scalars['String']['output']>;
+  /** Whether the field is required. */
+  required?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s type. */
+  type?: Maybe<Scalars['String']['output']>;
+  /** The field’s full GQL type. */
+  typeName?: Maybe<Scalars['String']['output']>;
+  /** The UID of the entity */
+  uid?: Maybe<Scalars['String']['output']>;
+  /** The field’s visibility. */
+  visibility?: Maybe<Scalars['String']['output']>;
+};
+
+export type Field_DateMonthNumber = FieldInterface & {
+  /** The field’s conditions as a JSON string. */
+  conditions?: Maybe<Scalars['Json']['output']>;
+  /** The field’s container attributes. */
+  containerAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s CSS classes. */
+  cssClasses?: Maybe<Scalars['String']['output']>;
+  /** The field’s default value as a string. Some fields have different fields for their default value. */
+  defaultValue?: Maybe<Scalars['String']['output']>;
+  /** The field’s display name (last portion of the class). */
+  displayName?: Maybe<Scalars['String']['output']>;
+  /** The field’s value type to use in email notifications. */
+  emailValue?: Maybe<Scalars['String']['output']>;
+  /** Whether the field has conditions enabled. */
+  enableConditions?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field has content encryption enabled. */
+  enableContentEncryption?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field is enabled. */
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s error message. */
+  errorMessage?: Maybe<Scalars['String']['output']>;
+  /** The field’s handle. */
+  handle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the entity */
+  id?: Maybe<Scalars['ID']['output']>;
+  /** Whether the field should be included in email content. */
+  includeInEmail?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s input attributes. */
+  inputAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s full GQL input type. Useful for mutations. */
+  inputTypeName?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions. */
+  instructions?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions position. This will be a `verbb\formie\positions` class name. */
+  instructionsPosition?: Maybe<Scalars['String']['output']>;
+  /** The field’s label. */
+  label?: Maybe<Scalars['String']['output']>;
+  /** The field’s label position. This will be a `verbb\formie\positions` class name. */
+  labelPosition?: Maybe<Scalars['String']['output']>;
+  /** The field handle for another field that this value should match exactly. */
+  matchField?: Maybe<Scalars['String']['output']>;
+  max?: Maybe<Scalars['Int']['output']>;
+  maxValue?: Maybe<Scalars['Float']['output']>;
+  min?: Maybe<Scalars['Int']['output']>;
+  minValue?: Maybe<Scalars['Float']['output']>;
+  /** The field’s placeholder. */
+  placeholder?: Maybe<Scalars['String']['output']>;
+  /** The field’s pre-populated value extracted from the query string. */
+  prePopulate?: Maybe<Scalars['String']['output']>;
+  /** Whether the field is required. */
+  required?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s type. */
+  type?: Maybe<Scalars['String']['output']>;
+  /** The field’s full GQL type. */
+  typeName?: Maybe<Scalars['String']['output']>;
+  /** The UID of the entity */
+  uid?: Maybe<Scalars['String']['output']>;
+  /** The field’s visibility. */
+  visibility?: Maybe<Scalars['String']['output']>;
+};
+
+export type Field_DateSecondDropdown = FieldInterface & {
+  /** The field’s conditions as a JSON string. */
+  conditions?: Maybe<Scalars['Json']['output']>;
+  /** The field’s container attributes. */
+  containerAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s CSS classes. */
+  cssClasses?: Maybe<Scalars['String']['output']>;
+  /** The field’s default value as a string. Some fields have different fields for their default value. */
+  defaultValue?: Maybe<Scalars['String']['output']>;
+  /** The field’s display name (last portion of the class). */
+  displayName?: Maybe<Scalars['String']['output']>;
+  /** The field’s value type to use in email notifications. */
+  emailValue?: Maybe<Scalars['String']['output']>;
+  /** Whether the field has conditions enabled. */
+  enableConditions?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field has content encryption enabled. */
+  enableContentEncryption?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field is enabled. */
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s error message. */
+  errorMessage?: Maybe<Scalars['String']['output']>;
+  /** The field’s handle. */
+  handle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the entity */
+  id?: Maybe<Scalars['ID']['output']>;
+  /** Whether the field should be included in email content. */
+  includeInEmail?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s input attributes. */
+  inputAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s full GQL input type. Useful for mutations. */
+  inputTypeName?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions. */
+  instructions?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions position. This will be a `verbb\formie\positions` class name. */
+  instructionsPosition?: Maybe<Scalars['String']['output']>;
+  /** The field’s label. */
+  label?: Maybe<Scalars['String']['output']>;
+  /** The field’s label position. This will be a `verbb\formie\positions` class name. */
+  labelPosition?: Maybe<Scalars['String']['output']>;
+  layout?: Maybe<Scalars['String']['output']>;
+  /** The field handle for another field that this value should match exactly. */
+  matchField?: Maybe<Scalars['String']['output']>;
+  multi?: Maybe<Scalars['Boolean']['output']>;
+  options?: Maybe<Array<Maybe<FieldOption>>>;
+  /** The field’s placeholder. */
+  placeholder?: Maybe<Scalars['String']['output']>;
+  /** The field’s pre-populated value extracted from the query string. */
+  prePopulate?: Maybe<Scalars['String']['output']>;
+  /** Whether the field is required. */
+  required?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s type. */
+  type?: Maybe<Scalars['String']['output']>;
+  /** The field’s full GQL type. */
+  typeName?: Maybe<Scalars['String']['output']>;
+  /** The UID of the entity */
+  uid?: Maybe<Scalars['String']['output']>;
+  /** The field’s visibility. */
+  visibility?: Maybe<Scalars['String']['output']>;
+};
+
+export type Field_DateSecondNumber = FieldInterface & {
+  /** The field’s conditions as a JSON string. */
+  conditions?: Maybe<Scalars['Json']['output']>;
+  /** The field’s container attributes. */
+  containerAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s CSS classes. */
+  cssClasses?: Maybe<Scalars['String']['output']>;
+  /** The field’s default value as a string. Some fields have different fields for their default value. */
+  defaultValue?: Maybe<Scalars['String']['output']>;
+  /** The field’s display name (last portion of the class). */
+  displayName?: Maybe<Scalars['String']['output']>;
+  /** The field’s value type to use in email notifications. */
+  emailValue?: Maybe<Scalars['String']['output']>;
+  /** Whether the field has conditions enabled. */
+  enableConditions?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field has content encryption enabled. */
+  enableContentEncryption?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field is enabled. */
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s error message. */
+  errorMessage?: Maybe<Scalars['String']['output']>;
+  /** The field’s handle. */
+  handle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the entity */
+  id?: Maybe<Scalars['ID']['output']>;
+  /** Whether the field should be included in email content. */
+  includeInEmail?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s input attributes. */
+  inputAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s full GQL input type. Useful for mutations. */
+  inputTypeName?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions. */
+  instructions?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions position. This will be a `verbb\formie\positions` class name. */
+  instructionsPosition?: Maybe<Scalars['String']['output']>;
+  /** The field’s label. */
+  label?: Maybe<Scalars['String']['output']>;
+  /** The field’s label position. This will be a `verbb\formie\positions` class name. */
+  labelPosition?: Maybe<Scalars['String']['output']>;
+  /** The field handle for another field that this value should match exactly. */
+  matchField?: Maybe<Scalars['String']['output']>;
+  max?: Maybe<Scalars['Int']['output']>;
+  maxValue?: Maybe<Scalars['Float']['output']>;
+  min?: Maybe<Scalars['Int']['output']>;
+  minValue?: Maybe<Scalars['Float']['output']>;
+  /** The field’s placeholder. */
+  placeholder?: Maybe<Scalars['String']['output']>;
+  /** The field’s pre-populated value extracted from the query string. */
+  prePopulate?: Maybe<Scalars['String']['output']>;
+  /** Whether the field is required. */
+  required?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s type. */
+  type?: Maybe<Scalars['String']['output']>;
+  /** The field’s full GQL type. */
+  typeName?: Maybe<Scalars['String']['output']>;
+  /** The UID of the entity */
+  uid?: Maybe<Scalars['String']['output']>;
+  /** The field’s visibility. */
+  visibility?: Maybe<Scalars['String']['output']>;
+};
+
+export type Field_DateYearDropdown = FieldInterface & {
+  /** The field’s conditions as a JSON string. */
+  conditions?: Maybe<Scalars['Json']['output']>;
+  /** The field’s container attributes. */
+  containerAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s CSS classes. */
+  cssClasses?: Maybe<Scalars['String']['output']>;
+  /** The field’s default value as a string. Some fields have different fields for their default value. */
+  defaultValue?: Maybe<Scalars['String']['output']>;
+  /** The field’s display name (last portion of the class). */
+  displayName?: Maybe<Scalars['String']['output']>;
+  /** The field’s value type to use in email notifications. */
+  emailValue?: Maybe<Scalars['String']['output']>;
+  /** Whether the field has conditions enabled. */
+  enableConditions?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field has content encryption enabled. */
+  enableContentEncryption?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field is enabled. */
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s error message. */
+  errorMessage?: Maybe<Scalars['String']['output']>;
+  /** The field’s handle. */
+  handle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the entity */
+  id?: Maybe<Scalars['ID']['output']>;
+  /** Whether the field should be included in email content. */
+  includeInEmail?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s input attributes. */
+  inputAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s full GQL input type. Useful for mutations. */
+  inputTypeName?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions. */
+  instructions?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions position. This will be a `verbb\formie\positions` class name. */
+  instructionsPosition?: Maybe<Scalars['String']['output']>;
+  /** The field’s label. */
+  label?: Maybe<Scalars['String']['output']>;
+  /** The field’s label position. This will be a `verbb\formie\positions` class name. */
+  labelPosition?: Maybe<Scalars['String']['output']>;
+  layout?: Maybe<Scalars['String']['output']>;
+  /** The field handle for another field that this value should match exactly. */
+  matchField?: Maybe<Scalars['String']['output']>;
+  multi?: Maybe<Scalars['Boolean']['output']>;
+  options?: Maybe<Array<Maybe<FieldOption>>>;
+  /** The field’s placeholder. */
+  placeholder?: Maybe<Scalars['String']['output']>;
+  /** The field’s pre-populated value extracted from the query string. */
+  prePopulate?: Maybe<Scalars['String']['output']>;
+  /** Whether the field is required. */
+  required?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s type. */
+  type?: Maybe<Scalars['String']['output']>;
+  /** The field’s full GQL type. */
+  typeName?: Maybe<Scalars['String']['output']>;
+  /** The UID of the entity */
+  uid?: Maybe<Scalars['String']['output']>;
+  /** The field’s visibility. */
+  visibility?: Maybe<Scalars['String']['output']>;
+};
+
+export type Field_DateYearNumber = FieldInterface & {
+  /** The field’s conditions as a JSON string. */
+  conditions?: Maybe<Scalars['Json']['output']>;
+  /** The field’s container attributes. */
+  containerAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s CSS classes. */
+  cssClasses?: Maybe<Scalars['String']['output']>;
+  /** The field’s default value as a string. Some fields have different fields for their default value. */
+  defaultValue?: Maybe<Scalars['String']['output']>;
+  /** The field’s display name (last portion of the class). */
+  displayName?: Maybe<Scalars['String']['output']>;
+  /** The field’s value type to use in email notifications. */
+  emailValue?: Maybe<Scalars['String']['output']>;
+  /** Whether the field has conditions enabled. */
+  enableConditions?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field has content encryption enabled. */
+  enableContentEncryption?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field is enabled. */
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s error message. */
+  errorMessage?: Maybe<Scalars['String']['output']>;
+  /** The field’s handle. */
+  handle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the entity */
+  id?: Maybe<Scalars['ID']['output']>;
+  /** Whether the field should be included in email content. */
+  includeInEmail?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s input attributes. */
+  inputAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s full GQL input type. Useful for mutations. */
+  inputTypeName?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions. */
+  instructions?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions position. This will be a `verbb\formie\positions` class name. */
+  instructionsPosition?: Maybe<Scalars['String']['output']>;
+  /** The field’s label. */
+  label?: Maybe<Scalars['String']['output']>;
+  /** The field’s label position. This will be a `verbb\formie\positions` class name. */
+  labelPosition?: Maybe<Scalars['String']['output']>;
+  /** The field handle for another field that this value should match exactly. */
+  matchField?: Maybe<Scalars['String']['output']>;
+  max?: Maybe<Scalars['Int']['output']>;
+  maxValue?: Maybe<Scalars['Float']['output']>;
+  min?: Maybe<Scalars['Int']['output']>;
+  minValue?: Maybe<Scalars['Float']['output']>;
+  /** The field’s placeholder. */
+  placeholder?: Maybe<Scalars['String']['output']>;
+  /** The field’s pre-populated value extracted from the query string. */
+  prePopulate?: Maybe<Scalars['String']['output']>;
+  /** Whether the field is required. */
+  required?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s type. */
+  type?: Maybe<Scalars['String']['output']>;
+  /** The field’s full GQL type. */
+  typeName?: Maybe<Scalars['String']['output']>;
+  /** The UID of the entity */
+  uid?: Maybe<Scalars['String']['output']>;
+  /** The field’s visibility. */
+  visibility?: Maybe<Scalars['String']['output']>;
+};
+
+export type Field_Dropdown = FieldInterface & {
+  /** The field’s conditions as a JSON string. */
+  conditions?: Maybe<Scalars['Json']['output']>;
+  /** The field’s container attributes. */
+  containerAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s CSS classes. */
+  cssClasses?: Maybe<Scalars['String']['output']>;
+  /** The field’s default value as a string. Some fields have different fields for their default value. */
+  defaultValue?: Maybe<Scalars['String']['output']>;
+  /** The field’s display name (last portion of the class). */
+  displayName?: Maybe<Scalars['String']['output']>;
+  /** The field’s value type to use in email notifications. */
+  emailValue?: Maybe<Scalars['String']['output']>;
+  /** Whether the field has conditions enabled. */
+  enableConditions?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field has content encryption enabled. */
+  enableContentEncryption?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field is enabled. */
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s error message. */
+  errorMessage?: Maybe<Scalars['String']['output']>;
+  /** The field’s handle. */
+  handle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the entity */
+  id?: Maybe<Scalars['ID']['output']>;
+  /** Whether the field should be included in email content. */
+  includeInEmail?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s input attributes. */
+  inputAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s full GQL input type. Useful for mutations. */
+  inputTypeName?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions. */
+  instructions?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions position. This will be a `verbb\formie\positions` class name. */
+  instructionsPosition?: Maybe<Scalars['String']['output']>;
+  /** The field’s label. */
+  label?: Maybe<Scalars['String']['output']>;
+  /** The field’s label position. This will be a `verbb\formie\positions` class name. */
+  labelPosition?: Maybe<Scalars['String']['output']>;
+  layout?: Maybe<Scalars['String']['output']>;
+  /** The field handle for another field that this value should match exactly. */
+  matchField?: Maybe<Scalars['String']['output']>;
+  multi?: Maybe<Scalars['Boolean']['output']>;
+  options?: Maybe<Array<Maybe<FieldOption>>>;
+  /** The field’s placeholder. */
+  placeholder?: Maybe<Scalars['String']['output']>;
+  /** The field’s pre-populated value extracted from the query string. */
+  prePopulate?: Maybe<Scalars['String']['output']>;
+  /** Whether the field is required. */
+  required?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s type. */
+  type?: Maybe<Scalars['String']['output']>;
+  /** The field’s full GQL type. */
+  typeName?: Maybe<Scalars['String']['output']>;
+  /** The UID of the entity */
+  uid?: Maybe<Scalars['String']['output']>;
+  /** The field’s visibility. */
+  visibility?: Maybe<Scalars['String']['output']>;
+};
+
+export type Field_Email = FieldInterface & {
+  blockedDomains?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  /** The field’s conditions as a JSON string. */
+  conditions?: Maybe<Scalars['Json']['output']>;
+  /** The field’s container attributes. */
+  containerAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s CSS classes. */
+  cssClasses?: Maybe<Scalars['String']['output']>;
+  /** The field’s default value as a string. Some fields have different fields for their default value. */
+  defaultValue?: Maybe<Scalars['String']['output']>;
+  /** The field’s display name (last portion of the class). */
+  displayName?: Maybe<Scalars['String']['output']>;
+  /** The field’s value type to use in email notifications. */
+  emailValue?: Maybe<Scalars['String']['output']>;
+  /** Whether the field has conditions enabled. */
+  enableConditions?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field has content encryption enabled. */
+  enableContentEncryption?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field is enabled. */
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s error message. */
+  errorMessage?: Maybe<Scalars['String']['output']>;
+  /** The field’s handle. */
+  handle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the entity */
+  id?: Maybe<Scalars['ID']['output']>;
+  /** Whether the field should be included in email content. */
+  includeInEmail?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s input attributes. */
+  inputAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s full GQL input type. Useful for mutations. */
+  inputTypeName?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions. */
+  instructions?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions position. This will be a `verbb\formie\positions` class name. */
+  instructionsPosition?: Maybe<Scalars['String']['output']>;
+  /** The field’s label. */
+  label?: Maybe<Scalars['String']['output']>;
+  /** The field’s label position. This will be a `verbb\formie\positions` class name. */
+  labelPosition?: Maybe<Scalars['String']['output']>;
+  /** The field handle for another field that this value should match exactly. */
+  matchField?: Maybe<Scalars['String']['output']>;
+  /** The field’s placeholder. */
+  placeholder?: Maybe<Scalars['String']['output']>;
+  /** The field’s pre-populated value extracted from the query string. */
+  prePopulate?: Maybe<Scalars['String']['output']>;
+  /** Whether the field is required. */
+  required?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s type. */
+  type?: Maybe<Scalars['String']['output']>;
+  /** The field’s full GQL type. */
+  typeName?: Maybe<Scalars['String']['output']>;
+  /** The UID of the entity */
+  uid?: Maybe<Scalars['String']['output']>;
+  /** The field’s visibility. */
+  visibility?: Maybe<Scalars['String']['output']>;
+};
+
+export type Field_Entries = FieldInterface & {
+  /** The field’s conditions as a JSON string. */
+  conditions?: Maybe<Scalars['Json']['output']>;
+  /** The field’s container attributes. */
+  containerAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s CSS classes. */
+  cssClasses?: Maybe<Scalars['String']['output']>;
+  defaultEntry?: Maybe<EntryInterface>;
+  defaultValue?: Maybe<Scalars['String']['output']>;
+  /** The field’s display name (last portion of the class). */
+  displayName?: Maybe<Scalars['String']['output']>;
+  displayType?: Maybe<Scalars['String']['output']>;
+  /** The field’s value type to use in email notifications. */
+  emailValue?: Maybe<Scalars['String']['output']>;
+  /** Whether the field has conditions enabled. */
+  enableConditions?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field has content encryption enabled. */
+  enableContentEncryption?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field is enabled. */
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  entries?: Maybe<Array<Maybe<EntryInterface>>>;
+  /** The field’s error message. */
+  errorMessage?: Maybe<Scalars['String']['output']>;
+  /** The field’s handle. */
+  handle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the entity */
+  id?: Maybe<Scalars['ID']['output']>;
+  /** Whether the field should be included in email content. */
+  includeInEmail?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s input attributes. */
+  inputAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s full GQL input type. Useful for mutations. */
+  inputTypeName?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions. */
+  instructions?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions position. This will be a `verbb\formie\positions` class name. */
+  instructionsPosition?: Maybe<Scalars['String']['output']>;
+  /** The field’s label. */
+  label?: Maybe<Scalars['String']['output']>;
+  /** The field’s label position. This will be a `verbb\formie\positions` class name. */
+  labelPosition?: Maybe<Scalars['String']['output']>;
+  labelSource?: Maybe<Scalars['String']['output']>;
+  limitOptions?: Maybe<Scalars['String']['output']>;
+  /** The field handle for another field that this value should match exactly. */
+  matchField?: Maybe<Scalars['String']['output']>;
+  multi?: Maybe<Scalars['Boolean']['output']>;
+  orderBy?: Maybe<Scalars['String']['output']>;
+  /** The field’s placeholder. */
+  placeholder?: Maybe<Scalars['String']['output']>;
+  /** The field’s pre-populated value extracted from the query string. */
+  prePopulate?: Maybe<Scalars['String']['output']>;
+  /** Whether the field is required. */
+  required?: Maybe<Scalars['Boolean']['output']>;
+  source?: Maybe<Scalars['String']['output']>;
+  sources?: Maybe<Scalars['String']['output']>;
+  /** The field’s type. */
+  type?: Maybe<Scalars['String']['output']>;
+  /** The field’s full GQL type. */
+  typeName?: Maybe<Scalars['String']['output']>;
+  /** The UID of the entity */
+  uid?: Maybe<Scalars['String']['output']>;
+  /** The field’s visibility. */
+  visibility?: Maybe<Scalars['String']['output']>;
+};
+
+
+export type Field_EntriesDefaultEntryArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  authorGroup?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  ownerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  postDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  primaryOwnerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type Field_EntriesEntriesArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  authorGroup?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  ownerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  postDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  primaryOwnerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type Field_FileUpload = FieldInterface & {
+  allowedKinds?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  /** The field’s conditions as a JSON string. */
+  conditions?: Maybe<Scalars['Json']['output']>;
+  /** The field’s container attributes. */
+  containerAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s CSS classes. */
+  cssClasses?: Maybe<Scalars['String']['output']>;
+  defaultValue?: Maybe<Scalars['String']['output']>;
+  /** The field’s display name (last portion of the class). */
+  displayName?: Maybe<Scalars['String']['output']>;
+  displayType?: Maybe<Scalars['String']['output']>;
+  /** The field’s value type to use in email notifications. */
+  emailValue?: Maybe<Scalars['String']['output']>;
+  /** Whether the field has conditions enabled. */
+  enableConditions?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field has content encryption enabled. */
+  enableContentEncryption?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field is enabled. */
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s error message. */
+  errorMessage?: Maybe<Scalars['String']['output']>;
+  /** The field’s handle. */
+  handle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the entity */
+  id?: Maybe<Scalars['ID']['output']>;
+  /** Whether the field should be included in email content. */
+  includeInEmail?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s input attributes. */
+  inputAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s full GQL input type. Useful for mutations. */
+  inputTypeName?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions. */
+  instructions?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions position. This will be a `verbb\formie\positions` class name. */
+  instructionsPosition?: Maybe<Scalars['String']['output']>;
+  /** The field’s label. */
+  label?: Maybe<Scalars['String']['output']>;
+  /** The field’s label position. This will be a `verbb\formie\positions` class name. */
+  labelPosition?: Maybe<Scalars['String']['output']>;
+  labelSource?: Maybe<Scalars['String']['output']>;
+  limitFiles?: Maybe<Scalars['String']['output']>;
+  /** The field handle for another field that this value should match exactly. */
+  matchField?: Maybe<Scalars['String']['output']>;
+  orderBy?: Maybe<Scalars['String']['output']>;
+  /** The field’s placeholder. */
+  placeholder?: Maybe<Scalars['String']['output']>;
+  /** The field’s pre-populated value extracted from the query string. */
+  prePopulate?: Maybe<Scalars['String']['output']>;
+  /** Whether the field is required. */
+  required?: Maybe<Scalars['Boolean']['output']>;
+  sizeLimit?: Maybe<Scalars['String']['output']>;
+  sizeMinLimit?: Maybe<Scalars['String']['output']>;
+  source?: Maybe<Scalars['String']['output']>;
+  sources?: Maybe<Scalars['String']['output']>;
+  /** The field’s type. */
+  type?: Maybe<Scalars['String']['output']>;
+  /** The field’s full GQL type. */
+  typeName?: Maybe<Scalars['String']['output']>;
+  /** The UID of the entity */
+  uid?: Maybe<Scalars['String']['output']>;
+  /** The field’s visibility. */
+  visibility?: Maybe<Scalars['String']['output']>;
+  volumeHandle?: Maybe<Scalars['String']['output']>;
+};
+
+export type Field_Group = FieldInterface & {
+  /** The field’s conditions as a JSON string. */
+  conditions?: Maybe<Scalars['Json']['output']>;
+  /** The field’s container attributes. */
+  containerAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s CSS classes. */
+  cssClasses?: Maybe<Scalars['String']['output']>;
+  /** The field’s default value as a string. Some fields have different fields for their default value. */
+  defaultValue?: Maybe<Scalars['String']['output']>;
+  /** The field’s display name (last portion of the class). */
+  displayName?: Maybe<Scalars['String']['output']>;
+  /** The field’s value type to use in email notifications. */
+  emailValue?: Maybe<Scalars['String']['output']>;
+  /** Whether the field has conditions enabled. */
+  enableConditions?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field has content encryption enabled. */
+  enableContentEncryption?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field is enabled. */
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s error message. */
+  errorMessage?: Maybe<Scalars['String']['output']>;
+  /** The field’s nested fields. */
+  fields?: Maybe<Array<Maybe<FieldInterface>>>;
+  /** The field’s handle. */
+  handle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the entity */
+  id?: Maybe<Scalars['ID']['output']>;
+  /** Whether the field should be included in email content. */
+  includeInEmail?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s input attributes. */
+  inputAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s full GQL input type. Useful for mutations. */
+  inputTypeName?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions. */
+  instructions?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions position. This will be a `verbb\formie\positions` class name. */
+  instructionsPosition?: Maybe<Scalars['String']['output']>;
+  /** The field’s label. */
+  label?: Maybe<Scalars['String']['output']>;
+  /** The field’s label position. This will be a `verbb\formie\positions` class name. */
+  labelPosition?: Maybe<Scalars['String']['output']>;
+  /** The field handle for another field that this value should match exactly. */
+  matchField?: Maybe<Scalars['String']['output']>;
+  /** The field’s nested rows. */
+  nestedRows?: Maybe<Array<Maybe<RowInterface>>>;
+  /** The field’s placeholder. */
+  placeholder?: Maybe<Scalars['String']['output']>;
+  /** The field’s pre-populated value extracted from the query string. */
+  prePopulate?: Maybe<Scalars['String']['output']>;
+  /** Whether the field is required. */
+  required?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s type. */
+  type?: Maybe<Scalars['String']['output']>;
+  /** The field’s full GQL type. */
+  typeName?: Maybe<Scalars['String']['output']>;
+  /** The UID of the entity */
+  uid?: Maybe<Scalars['String']['output']>;
+  /** The field’s visibility. */
+  visibility?: Maybe<Scalars['String']['output']>;
+};
+
+
+export type Field_GroupFieldsArgs = {
+  includeDisabled?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type Field_GroupNestedRowsArgs = {
+  includeDisabled?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type Field_Heading = FieldInterface & {
+  /** The field’s conditions as a JSON string. */
+  conditions?: Maybe<Scalars['Json']['output']>;
+  /** The field’s container attributes. */
+  containerAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s CSS classes. */
+  cssClasses?: Maybe<Scalars['String']['output']>;
+  /** The field’s default value as a string. Some fields have different fields for their default value. */
+  defaultValue?: Maybe<Scalars['String']['output']>;
+  /** The field’s display name (last portion of the class). */
+  displayName?: Maybe<Scalars['String']['output']>;
+  /** The field’s value type to use in email notifications. */
+  emailValue?: Maybe<Scalars['String']['output']>;
+  /** Whether the field has conditions enabled. */
+  enableConditions?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field has content encryption enabled. */
+  enableContentEncryption?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field is enabled. */
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s error message. */
+  errorMessage?: Maybe<Scalars['String']['output']>;
+  /** The field’s handle. */
+  handle?: Maybe<Scalars['String']['output']>;
+  headingSize?: Maybe<Scalars['String']['output']>;
+  /** The ID of the entity */
+  id?: Maybe<Scalars['ID']['output']>;
+  /** Whether the field should be included in email content. */
+  includeInEmail?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s input attributes. */
+  inputAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s full GQL input type. Useful for mutations. */
+  inputTypeName?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions. */
+  instructions?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions position. This will be a `verbb\formie\positions` class name. */
+  instructionsPosition?: Maybe<Scalars['String']['output']>;
+  /** The field’s label. */
+  label?: Maybe<Scalars['String']['output']>;
+  /** The field’s label position. This will be a `verbb\formie\positions` class name. */
+  labelPosition?: Maybe<Scalars['String']['output']>;
+  /** The field handle for another field that this value should match exactly. */
+  matchField?: Maybe<Scalars['String']['output']>;
+  /** The field’s placeholder. */
+  placeholder?: Maybe<Scalars['String']['output']>;
+  /** The field’s pre-populated value extracted from the query string. */
+  prePopulate?: Maybe<Scalars['String']['output']>;
+  /** Whether the field is required. */
+  required?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s type. */
+  type?: Maybe<Scalars['String']['output']>;
+  /** The field’s full GQL type. */
+  typeName?: Maybe<Scalars['String']['output']>;
+  /** The UID of the entity */
+  uid?: Maybe<Scalars['String']['output']>;
+  /** The field’s visibility. */
+  visibility?: Maybe<Scalars['String']['output']>;
+};
+
+export type Field_Hidden = FieldInterface & {
+  /** The field’s conditions as a JSON string. */
+  conditions?: Maybe<Scalars['Json']['output']>;
+  /** The field’s container attributes. */
+  containerAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  cookieName?: Maybe<Scalars['String']['output']>;
+  /** The field’s CSS classes. */
+  cssClasses?: Maybe<Scalars['String']['output']>;
+  defaultOption?: Maybe<Scalars['String']['output']>;
+  /** The field’s default value as a string. Some fields have different fields for their default value. */
+  defaultValue?: Maybe<Scalars['String']['output']>;
+  /** The field’s display name (last portion of the class). */
+  displayName?: Maybe<Scalars['String']['output']>;
+  /** The field’s value type to use in email notifications. */
+  emailValue?: Maybe<Scalars['String']['output']>;
+  /** Whether the field has conditions enabled. */
+  enableConditions?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field has content encryption enabled. */
+  enableContentEncryption?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field is enabled. */
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s error message. */
+  errorMessage?: Maybe<Scalars['String']['output']>;
+  /** The field’s handle. */
+  handle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the entity */
+  id?: Maybe<Scalars['ID']['output']>;
+  /** Whether the field should be included in email content. */
+  includeInEmail?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s input attributes. */
+  inputAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s full GQL input type. Useful for mutations. */
+  inputTypeName?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions. */
+  instructions?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions position. This will be a `verbb\formie\positions` class name. */
+  instructionsPosition?: Maybe<Scalars['String']['output']>;
+  /** The field’s label. */
+  label?: Maybe<Scalars['String']['output']>;
+  /** The field’s label position. This will be a `verbb\formie\positions` class name. */
+  labelPosition?: Maybe<Scalars['String']['output']>;
+  /** The field handle for another field that this value should match exactly. */
+  matchField?: Maybe<Scalars['String']['output']>;
+  /** The field’s placeholder. */
+  placeholder?: Maybe<Scalars['String']['output']>;
+  /** The field’s pre-populated value extracted from the query string. */
+  prePopulate?: Maybe<Scalars['String']['output']>;
+  queryParameter?: Maybe<Scalars['String']['output']>;
+  /** Whether the field is required. */
+  required?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s type. */
+  type?: Maybe<Scalars['String']['output']>;
+  /** The field’s full GQL type. */
+  typeName?: Maybe<Scalars['String']['output']>;
+  /** The UID of the entity */
+  uid?: Maybe<Scalars['String']['output']>;
+  /** The field’s visibility. */
+  visibility?: Maybe<Scalars['String']['output']>;
+};
+
+export type Field_Html = FieldInterface & {
+  /** The field’s conditions as a JSON string. */
+  conditions?: Maybe<Scalars['Json']['output']>;
+  /** The field’s container attributes. */
+  containerAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s CSS classes. */
+  cssClasses?: Maybe<Scalars['String']['output']>;
+  /** The field’s default value as a string. Some fields have different fields for their default value. */
+  defaultValue?: Maybe<Scalars['String']['output']>;
+  /** The field’s display name (last portion of the class). */
+  displayName?: Maybe<Scalars['String']['output']>;
+  /** The field’s value type to use in email notifications. */
+  emailValue?: Maybe<Scalars['String']['output']>;
+  /** Whether the field has conditions enabled. */
+  enableConditions?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field has content encryption enabled. */
+  enableContentEncryption?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field is enabled. */
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s error message. */
+  errorMessage?: Maybe<Scalars['String']['output']>;
+  /** The field’s handle. */
+  handle?: Maybe<Scalars['String']['output']>;
+  htmlContent?: Maybe<Scalars['String']['output']>;
+  /** The ID of the entity */
+  id?: Maybe<Scalars['ID']['output']>;
+  /** Whether the field should be included in email content. */
+  includeInEmail?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s input attributes. */
+  inputAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s full GQL input type. Useful for mutations. */
+  inputTypeName?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions. */
+  instructions?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions position. This will be a `verbb\formie\positions` class name. */
+  instructionsPosition?: Maybe<Scalars['String']['output']>;
+  /** The field’s label. */
+  label?: Maybe<Scalars['String']['output']>;
+  /** The field’s label position. This will be a `verbb\formie\positions` class name. */
+  labelPosition?: Maybe<Scalars['String']['output']>;
+  /** The field handle for another field that this value should match exactly. */
+  matchField?: Maybe<Scalars['String']['output']>;
+  /** The field’s placeholder. */
+  placeholder?: Maybe<Scalars['String']['output']>;
+  /** The field’s pre-populated value extracted from the query string. */
+  prePopulate?: Maybe<Scalars['String']['output']>;
+  /** Whether the field is required. */
+  required?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s type. */
+  type?: Maybe<Scalars['String']['output']>;
+  /** The field’s full GQL type. */
+  typeName?: Maybe<Scalars['String']['output']>;
+  /** The UID of the entity */
+  uid?: Maybe<Scalars['String']['output']>;
+  /** The field’s visibility. */
+  visibility?: Maybe<Scalars['String']['output']>;
+};
+
+export type Field_MultiLineText = FieldInterface & {
+  /** The field’s conditions as a JSON string. */
+  conditions?: Maybe<Scalars['Json']['output']>;
+  /** The field’s container attributes. */
+  containerAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s CSS classes. */
+  cssClasses?: Maybe<Scalars['String']['output']>;
+  /** The field’s default value as a string. Some fields have different fields for their default value. */
+  defaultValue?: Maybe<Scalars['String']['output']>;
+  /** The field’s display name (last portion of the class). */
+  displayName?: Maybe<Scalars['String']['output']>;
+  /** The field’s value type to use in email notifications. */
+  emailValue?: Maybe<Scalars['String']['output']>;
+  /** Whether the field has conditions enabled. */
+  enableConditions?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field has content encryption enabled. */
+  enableContentEncryption?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field is enabled. */
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s error message. */
+  errorMessage?: Maybe<Scalars['String']['output']>;
+  /** The field’s handle. */
+  handle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the entity */
+  id?: Maybe<Scalars['ID']['output']>;
+  /** Whether the field should be included in email content. */
+  includeInEmail?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s input attributes. */
+  inputAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s full GQL input type. Useful for mutations. */
+  inputTypeName?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions. */
+  instructions?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions position. This will be a `verbb\formie\positions` class name. */
+  instructionsPosition?: Maybe<Scalars['String']['output']>;
+  /** The field’s label. */
+  label?: Maybe<Scalars['String']['output']>;
+  /** The field’s label position. This will be a `verbb\formie\positions` class name. */
+  labelPosition?: Maybe<Scalars['String']['output']>;
+  limit?: Maybe<Scalars['Boolean']['output']>;
+  /** The field handle for another field that this value should match exactly. */
+  matchField?: Maybe<Scalars['String']['output']>;
+  max?: Maybe<Scalars['Int']['output']>;
+  maxType?: Maybe<Scalars['String']['output']>;
+  min?: Maybe<Scalars['Int']['output']>;
+  minType?: Maybe<Scalars['String']['output']>;
+  /** The field’s placeholder. */
+  placeholder?: Maybe<Scalars['String']['output']>;
+  /** The field’s pre-populated value extracted from the query string. */
+  prePopulate?: Maybe<Scalars['String']['output']>;
+  /** Whether the field is required. */
+  required?: Maybe<Scalars['Boolean']['output']>;
+  richTextButtons?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  /** The field’s type. */
+  type?: Maybe<Scalars['String']['output']>;
+  /** The field’s full GQL type. */
+  typeName?: Maybe<Scalars['String']['output']>;
+  /** The UID of the entity */
+  uid?: Maybe<Scalars['String']['output']>;
+  uniqueValue?: Maybe<Scalars['Boolean']['output']>;
+  useRichText?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s visibility. */
+  visibility?: Maybe<Scalars['String']['output']>;
+};
+
+export type Field_Name = FieldInterface & {
+  /** The field’s conditions as a JSON string. */
+  conditions?: Maybe<Scalars['Json']['output']>;
+  /** The field’s container attributes. */
+  containerAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s CSS classes. */
+  cssClasses?: Maybe<Scalars['String']['output']>;
+  /** The field’s default value as a string. Some fields have different fields for their default value. */
+  defaultValue?: Maybe<Scalars['String']['output']>;
+  /** The field’s display name (last portion of the class). */
+  displayName?: Maybe<Scalars['String']['output']>;
+  /** The field’s value type to use in email notifications. */
+  emailValue?: Maybe<Scalars['String']['output']>;
+  /** Whether the field has conditions enabled. */
+  enableConditions?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field has content encryption enabled. */
+  enableContentEncryption?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field is enabled. */
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s error message. */
+  errorMessage?: Maybe<Scalars['String']['output']>;
+  /** The field’s nested fields. */
+  fields?: Maybe<Array<Maybe<FieldInterface>>>;
+  /** The field’s handle. */
+  handle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the entity */
+  id?: Maybe<Scalars['ID']['output']>;
+  /** Whether the field should be included in email content. */
+  includeInEmail?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s input attributes. */
+  inputAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s full GQL input type. Useful for mutations. */
+  inputTypeName?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions. */
+  instructions?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions position. This will be a `verbb\formie\positions` class name. */
+  instructionsPosition?: Maybe<Scalars['String']['output']>;
+  /** The field’s label. */
+  label?: Maybe<Scalars['String']['output']>;
+  /** The field’s label position. This will be a `verbb\formie\positions` class name. */
+  labelPosition?: Maybe<Scalars['String']['output']>;
+  /** The field handle for another field that this value should match exactly. */
+  matchField?: Maybe<Scalars['String']['output']>;
+  /** The field’s nested rows. */
+  nestedRows?: Maybe<Array<Maybe<RowInterface>>>;
+  /** The field’s placeholder. */
+  placeholder?: Maybe<Scalars['String']['output']>;
+  /** The field’s pre-populated value extracted from the query string. */
+  prePopulate?: Maybe<Scalars['String']['output']>;
+  /** Whether the field is required. */
+  required?: Maybe<Scalars['Boolean']['output']>;
+  subFieldLabelPosition?: Maybe<Scalars['String']['output']>;
+  /** The field’s type. */
+  type?: Maybe<Scalars['String']['output']>;
+  /** The field’s full GQL type. */
+  typeName?: Maybe<Scalars['String']['output']>;
+  /** The UID of the entity */
+  uid?: Maybe<Scalars['String']['output']>;
+  useMultipleFields?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s visibility. */
+  visibility?: Maybe<Scalars['String']['output']>;
+};
+
+
+export type Field_NameFieldsArgs = {
+  includeDisabled?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type Field_NameNestedRowsArgs = {
+  includeDisabled?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type Field_NameFirst = FieldInterface & {
+  /** The field’s conditions as a JSON string. */
+  conditions?: Maybe<Scalars['Json']['output']>;
+  /** The field’s container attributes. */
+  containerAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s CSS classes. */
+  cssClasses?: Maybe<Scalars['String']['output']>;
+  /** The field’s default value as a string. Some fields have different fields for their default value. */
+  defaultValue?: Maybe<Scalars['String']['output']>;
+  /** The field’s display name (last portion of the class). */
+  displayName?: Maybe<Scalars['String']['output']>;
+  /** The field’s value type to use in email notifications. */
+  emailValue?: Maybe<Scalars['String']['output']>;
+  /** Whether the field has conditions enabled. */
+  enableConditions?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field has content encryption enabled. */
+  enableContentEncryption?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field is enabled. */
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s error message. */
+  errorMessage?: Maybe<Scalars['String']['output']>;
+  /** The field’s handle. */
+  handle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the entity */
+  id?: Maybe<Scalars['ID']['output']>;
+  /** Whether the field should be included in email content. */
+  includeInEmail?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s input attributes. */
+  inputAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s full GQL input type. Useful for mutations. */
+  inputTypeName?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions. */
+  instructions?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions position. This will be a `verbb\formie\positions` class name. */
+  instructionsPosition?: Maybe<Scalars['String']['output']>;
+  /** The field’s label. */
+  label?: Maybe<Scalars['String']['output']>;
+  /** The field’s label position. This will be a `verbb\formie\positions` class name. */
+  labelPosition?: Maybe<Scalars['String']['output']>;
+  limit?: Maybe<Scalars['Boolean']['output']>;
+  /** The field handle for another field that this value should match exactly. */
+  matchField?: Maybe<Scalars['String']['output']>;
+  max?: Maybe<Scalars['Int']['output']>;
+  maxType?: Maybe<Scalars['String']['output']>;
+  min?: Maybe<Scalars['Int']['output']>;
+  minType?: Maybe<Scalars['String']['output']>;
+  /** The field’s placeholder. */
+  placeholder?: Maybe<Scalars['String']['output']>;
+  /** The field’s pre-populated value extracted from the query string. */
+  prePopulate?: Maybe<Scalars['String']['output']>;
+  /** Whether the field is required. */
+  required?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s type. */
+  type?: Maybe<Scalars['String']['output']>;
+  /** The field’s full GQL type. */
+  typeName?: Maybe<Scalars['String']['output']>;
+  /** The UID of the entity */
+  uid?: Maybe<Scalars['String']['output']>;
+  uniqueValue?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s visibility. */
+  visibility?: Maybe<Scalars['String']['output']>;
+};
+
+export type Field_NameLast = FieldInterface & {
+  /** The field’s conditions as a JSON string. */
+  conditions?: Maybe<Scalars['Json']['output']>;
+  /** The field’s container attributes. */
+  containerAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s CSS classes. */
+  cssClasses?: Maybe<Scalars['String']['output']>;
+  /** The field’s default value as a string. Some fields have different fields for their default value. */
+  defaultValue?: Maybe<Scalars['String']['output']>;
+  /** The field’s display name (last portion of the class). */
+  displayName?: Maybe<Scalars['String']['output']>;
+  /** The field’s value type to use in email notifications. */
+  emailValue?: Maybe<Scalars['String']['output']>;
+  /** Whether the field has conditions enabled. */
+  enableConditions?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field has content encryption enabled. */
+  enableContentEncryption?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field is enabled. */
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s error message. */
+  errorMessage?: Maybe<Scalars['String']['output']>;
+  /** The field’s handle. */
+  handle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the entity */
+  id?: Maybe<Scalars['ID']['output']>;
+  /** Whether the field should be included in email content. */
+  includeInEmail?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s input attributes. */
+  inputAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s full GQL input type. Useful for mutations. */
+  inputTypeName?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions. */
+  instructions?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions position. This will be a `verbb\formie\positions` class name. */
+  instructionsPosition?: Maybe<Scalars['String']['output']>;
+  /** The field’s label. */
+  label?: Maybe<Scalars['String']['output']>;
+  /** The field’s label position. This will be a `verbb\formie\positions` class name. */
+  labelPosition?: Maybe<Scalars['String']['output']>;
+  limit?: Maybe<Scalars['Boolean']['output']>;
+  /** The field handle for another field that this value should match exactly. */
+  matchField?: Maybe<Scalars['String']['output']>;
+  max?: Maybe<Scalars['Int']['output']>;
+  maxType?: Maybe<Scalars['String']['output']>;
+  min?: Maybe<Scalars['Int']['output']>;
+  minType?: Maybe<Scalars['String']['output']>;
+  /** The field’s placeholder. */
+  placeholder?: Maybe<Scalars['String']['output']>;
+  /** The field’s pre-populated value extracted from the query string. */
+  prePopulate?: Maybe<Scalars['String']['output']>;
+  /** Whether the field is required. */
+  required?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s type. */
+  type?: Maybe<Scalars['String']['output']>;
+  /** The field’s full GQL type. */
+  typeName?: Maybe<Scalars['String']['output']>;
+  /** The UID of the entity */
+  uid?: Maybe<Scalars['String']['output']>;
+  uniqueValue?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s visibility. */
+  visibility?: Maybe<Scalars['String']['output']>;
+};
+
+export type Field_NameMiddle = FieldInterface & {
+  /** The field’s conditions as a JSON string. */
+  conditions?: Maybe<Scalars['Json']['output']>;
+  /** The field’s container attributes. */
+  containerAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s CSS classes. */
+  cssClasses?: Maybe<Scalars['String']['output']>;
+  /** The field’s default value as a string. Some fields have different fields for their default value. */
+  defaultValue?: Maybe<Scalars['String']['output']>;
+  /** The field’s display name (last portion of the class). */
+  displayName?: Maybe<Scalars['String']['output']>;
+  /** The field’s value type to use in email notifications. */
+  emailValue?: Maybe<Scalars['String']['output']>;
+  /** Whether the field has conditions enabled. */
+  enableConditions?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field has content encryption enabled. */
+  enableContentEncryption?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field is enabled. */
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s error message. */
+  errorMessage?: Maybe<Scalars['String']['output']>;
+  /** The field’s handle. */
+  handle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the entity */
+  id?: Maybe<Scalars['ID']['output']>;
+  /** Whether the field should be included in email content. */
+  includeInEmail?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s input attributes. */
+  inputAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s full GQL input type. Useful for mutations. */
+  inputTypeName?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions. */
+  instructions?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions position. This will be a `verbb\formie\positions` class name. */
+  instructionsPosition?: Maybe<Scalars['String']['output']>;
+  /** The field’s label. */
+  label?: Maybe<Scalars['String']['output']>;
+  /** The field’s label position. This will be a `verbb\formie\positions` class name. */
+  labelPosition?: Maybe<Scalars['String']['output']>;
+  limit?: Maybe<Scalars['Boolean']['output']>;
+  /** The field handle for another field that this value should match exactly. */
+  matchField?: Maybe<Scalars['String']['output']>;
+  max?: Maybe<Scalars['Int']['output']>;
+  maxType?: Maybe<Scalars['String']['output']>;
+  min?: Maybe<Scalars['Int']['output']>;
+  minType?: Maybe<Scalars['String']['output']>;
+  /** The field’s placeholder. */
+  placeholder?: Maybe<Scalars['String']['output']>;
+  /** The field’s pre-populated value extracted from the query string. */
+  prePopulate?: Maybe<Scalars['String']['output']>;
+  /** Whether the field is required. */
+  required?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s type. */
+  type?: Maybe<Scalars['String']['output']>;
+  /** The field’s full GQL type. */
+  typeName?: Maybe<Scalars['String']['output']>;
+  /** The UID of the entity */
+  uid?: Maybe<Scalars['String']['output']>;
+  uniqueValue?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s visibility. */
+  visibility?: Maybe<Scalars['String']['output']>;
+};
+
+export type Field_NamePrefix = FieldInterface & {
+  /** The field’s conditions as a JSON string. */
+  conditions?: Maybe<Scalars['Json']['output']>;
+  /** The field’s container attributes. */
+  containerAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s CSS classes. */
+  cssClasses?: Maybe<Scalars['String']['output']>;
+  /** The field’s default value as a string. Some fields have different fields for their default value. */
+  defaultValue?: Maybe<Scalars['String']['output']>;
+  /** The field’s display name (last portion of the class). */
+  displayName?: Maybe<Scalars['String']['output']>;
+  /** The field’s value type to use in email notifications. */
+  emailValue?: Maybe<Scalars['String']['output']>;
+  /** Whether the field has conditions enabled. */
+  enableConditions?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field has content encryption enabled. */
+  enableContentEncryption?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field is enabled. */
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s error message. */
+  errorMessage?: Maybe<Scalars['String']['output']>;
+  /** The field’s handle. */
+  handle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the entity */
+  id?: Maybe<Scalars['ID']['output']>;
+  /** Whether the field should be included in email content. */
+  includeInEmail?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s input attributes. */
+  inputAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s full GQL input type. Useful for mutations. */
+  inputTypeName?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions. */
+  instructions?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions position. This will be a `verbb\formie\positions` class name. */
+  instructionsPosition?: Maybe<Scalars['String']['output']>;
+  /** The field’s label. */
+  label?: Maybe<Scalars['String']['output']>;
+  /** The field’s label position. This will be a `verbb\formie\positions` class name. */
+  labelPosition?: Maybe<Scalars['String']['output']>;
+  layout?: Maybe<Scalars['String']['output']>;
+  /** The field handle for another field that this value should match exactly. */
+  matchField?: Maybe<Scalars['String']['output']>;
+  multi?: Maybe<Scalars['Boolean']['output']>;
+  options?: Maybe<Array<Maybe<FieldOption>>>;
+  /** The field’s placeholder. */
+  placeholder?: Maybe<Scalars['String']['output']>;
+  /** The field’s pre-populated value extracted from the query string. */
+  prePopulate?: Maybe<Scalars['String']['output']>;
+  /** Whether the field is required. */
+  required?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s type. */
+  type?: Maybe<Scalars['String']['output']>;
+  /** The field’s full GQL type. */
+  typeName?: Maybe<Scalars['String']['output']>;
+  /** The UID of the entity */
+  uid?: Maybe<Scalars['String']['output']>;
+  /** The field’s visibility. */
+  visibility?: Maybe<Scalars['String']['output']>;
+};
+
+export type Field_Number = FieldInterface & {
+  /** The field’s conditions as a JSON string. */
+  conditions?: Maybe<Scalars['Json']['output']>;
+  /** The field’s container attributes. */
+  containerAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s CSS classes. */
+  cssClasses?: Maybe<Scalars['String']['output']>;
+  /** The field’s default value as a string. Some fields have different fields for their default value. */
+  defaultValue?: Maybe<Scalars['String']['output']>;
+  /** The field’s display name (last portion of the class). */
+  displayName?: Maybe<Scalars['String']['output']>;
+  /** The field’s value type to use in email notifications. */
+  emailValue?: Maybe<Scalars['String']['output']>;
+  /** Whether the field has conditions enabled. */
+  enableConditions?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field has content encryption enabled. */
+  enableContentEncryption?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field is enabled. */
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s error message. */
+  errorMessage?: Maybe<Scalars['String']['output']>;
+  /** The field’s handle. */
+  handle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the entity */
+  id?: Maybe<Scalars['ID']['output']>;
+  /** Whether the field should be included in email content. */
+  includeInEmail?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s input attributes. */
+  inputAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s full GQL input type. Useful for mutations. */
+  inputTypeName?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions. */
+  instructions?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions position. This will be a `verbb\formie\positions` class name. */
+  instructionsPosition?: Maybe<Scalars['String']['output']>;
+  /** The field’s label. */
+  label?: Maybe<Scalars['String']['output']>;
+  /** The field’s label position. This will be a `verbb\formie\positions` class name. */
+  labelPosition?: Maybe<Scalars['String']['output']>;
+  /** The field handle for another field that this value should match exactly. */
+  matchField?: Maybe<Scalars['String']['output']>;
+  max?: Maybe<Scalars['Int']['output']>;
+  maxValue?: Maybe<Scalars['Float']['output']>;
+  min?: Maybe<Scalars['Int']['output']>;
+  minValue?: Maybe<Scalars['Float']['output']>;
+  /** The field’s placeholder. */
+  placeholder?: Maybe<Scalars['String']['output']>;
+  /** The field’s pre-populated value extracted from the query string. */
+  prePopulate?: Maybe<Scalars['String']['output']>;
+  /** Whether the field is required. */
+  required?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s type. */
+  type?: Maybe<Scalars['String']['output']>;
+  /** The field’s full GQL type. */
+  typeName?: Maybe<Scalars['String']['output']>;
+  /** The UID of the entity */
+  uid?: Maybe<Scalars['String']['output']>;
+  /** The field’s visibility. */
+  visibility?: Maybe<Scalars['String']['output']>;
+};
+
+export type Field_Password = FieldInterface & {
+  /** The field’s conditions as a JSON string. */
+  conditions?: Maybe<Scalars['Json']['output']>;
+  /** The field’s container attributes. */
+  containerAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s CSS classes. */
+  cssClasses?: Maybe<Scalars['String']['output']>;
+  /** The field’s default value as a string. Some fields have different fields for their default value. */
+  defaultValue?: Maybe<Scalars['String']['output']>;
+  /** The field’s display name (last portion of the class). */
+  displayName?: Maybe<Scalars['String']['output']>;
+  /** The field’s value type to use in email notifications. */
+  emailValue?: Maybe<Scalars['String']['output']>;
+  /** Whether the field has conditions enabled. */
+  enableConditions?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field has content encryption enabled. */
+  enableContentEncryption?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field is enabled. */
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s error message. */
+  errorMessage?: Maybe<Scalars['String']['output']>;
+  /** The field’s handle. */
+  handle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the entity */
+  id?: Maybe<Scalars['ID']['output']>;
+  /** Whether the field should be included in email content. */
+  includeInEmail?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s input attributes. */
+  inputAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s full GQL input type. Useful for mutations. */
+  inputTypeName?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions. */
+  instructions?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions position. This will be a `verbb\formie\positions` class name. */
+  instructionsPosition?: Maybe<Scalars['String']['output']>;
+  /** The field’s label. */
+  label?: Maybe<Scalars['String']['output']>;
+  /** The field’s label position. This will be a `verbb\formie\positions` class name. */
+  labelPosition?: Maybe<Scalars['String']['output']>;
+  /** The field handle for another field that this value should match exactly. */
+  matchField?: Maybe<Scalars['String']['output']>;
+  /** The field’s placeholder. */
+  placeholder?: Maybe<Scalars['String']['output']>;
+  /** The field’s pre-populated value extracted from the query string. */
+  prePopulate?: Maybe<Scalars['String']['output']>;
+  /** Whether the field is required. */
+  required?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s type. */
+  type?: Maybe<Scalars['String']['output']>;
+  /** The field’s full GQL type. */
+  typeName?: Maybe<Scalars['String']['output']>;
+  /** The UID of the entity */
+  uid?: Maybe<Scalars['String']['output']>;
+  /** The field’s visibility. */
+  visibility?: Maybe<Scalars['String']['output']>;
+};
+
+export type Field_Payment = FieldInterface & {
+  /** The field’s conditions as a JSON string. */
+  conditions?: Maybe<Scalars['Json']['output']>;
+  /** The field’s container attributes. */
+  containerAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s CSS classes. */
+  cssClasses?: Maybe<Scalars['String']['output']>;
+  /** The field’s default value as a string. Some fields have different fields for their default value. */
+  defaultValue?: Maybe<Scalars['String']['output']>;
+  /** The field’s display name (last portion of the class). */
+  displayName?: Maybe<Scalars['String']['output']>;
+  /** The field’s value type to use in email notifications. */
+  emailValue?: Maybe<Scalars['String']['output']>;
+  /** Whether the field has conditions enabled. */
+  enableConditions?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field has content encryption enabled. */
+  enableContentEncryption?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field is enabled. */
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s error message. */
+  errorMessage?: Maybe<Scalars['String']['output']>;
+  /** The field’s handle. */
+  handle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the entity */
+  id?: Maybe<Scalars['ID']['output']>;
+  /** Whether the field should be included in email content. */
+  includeInEmail?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s input attributes. */
+  inputAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s full GQL input type. Useful for mutations. */
+  inputTypeName?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions. */
+  instructions?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions position. This will be a `verbb\formie\positions` class name. */
+  instructionsPosition?: Maybe<Scalars['String']['output']>;
+  /** The field’s label. */
+  label?: Maybe<Scalars['String']['output']>;
+  /** The field’s label position. This will be a `verbb\formie\positions` class name. */
+  labelPosition?: Maybe<Scalars['String']['output']>;
+  /** The field handle for another field that this value should match exactly. */
+  matchField?: Maybe<Scalars['String']['output']>;
+  paymentIntegration?: Maybe<Scalars['String']['output']>;
+  paymentIntegrationType?: Maybe<Scalars['String']['output']>;
+  /** The field’s placeholder. */
+  placeholder?: Maybe<Scalars['String']['output']>;
+  /** The field’s pre-populated value extracted from the query string. */
+  prePopulate?: Maybe<Scalars['String']['output']>;
+  providerSettings?: Maybe<Scalars['String']['output']>;
+  /** Whether the field is required. */
+  required?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s type. */
+  type?: Maybe<Scalars['String']['output']>;
+  /** The field’s full GQL type. */
+  typeName?: Maybe<Scalars['String']['output']>;
+  /** The UID of the entity */
+  uid?: Maybe<Scalars['String']['output']>;
+  /** The field’s visibility. */
+  visibility?: Maybe<Scalars['String']['output']>;
+};
+
+export type Field_Phone = FieldInterface & {
+  /** The field’s conditions as a JSON string. */
+  conditions?: Maybe<Scalars['Json']['output']>;
+  /** The field’s container attributes. */
+  containerAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  countryAllowed?: Maybe<Scalars['String']['output']>;
+  countryDefaultValue?: Maybe<Scalars['String']['output']>;
+  countryEnabled?: Maybe<Scalars['Boolean']['output']>;
+  countryOptions?: Maybe<Array<Maybe<CountryOption>>>;
+  /** The field’s CSS classes. */
+  cssClasses?: Maybe<Scalars['String']['output']>;
+  /** The field’s default value as a string. Some fields have different fields for their default value. */
+  defaultValue?: Maybe<Scalars['String']['output']>;
+  /** The field’s display name (last portion of the class). */
+  displayName?: Maybe<Scalars['String']['output']>;
+  /** The field’s value type to use in email notifications. */
+  emailValue?: Maybe<Scalars['String']['output']>;
+  /** Whether the field has conditions enabled. */
+  enableConditions?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field has content encryption enabled. */
+  enableContentEncryption?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field is enabled. */
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s error message. */
+  errorMessage?: Maybe<Scalars['String']['output']>;
+  /** The field’s handle. */
+  handle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the entity */
+  id?: Maybe<Scalars['ID']['output']>;
+  /** Whether the field should be included in email content. */
+  includeInEmail?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s input attributes. */
+  inputAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s full GQL input type. Useful for mutations. */
+  inputTypeName?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions. */
+  instructions?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions position. This will be a `verbb\formie\positions` class name. */
+  instructionsPosition?: Maybe<Scalars['String']['output']>;
+  /** The field’s label. */
+  label?: Maybe<Scalars['String']['output']>;
+  /** The field’s label position. This will be a `verbb\formie\positions` class name. */
+  labelPosition?: Maybe<Scalars['String']['output']>;
+  /** The field handle for another field that this value should match exactly. */
+  matchField?: Maybe<Scalars['String']['output']>;
+  /** The field’s placeholder. */
+  placeholder?: Maybe<Scalars['String']['output']>;
+  /** The field’s pre-populated value extracted from the query string. */
+  prePopulate?: Maybe<Scalars['String']['output']>;
+  /** Whether the field is required. */
+  required?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s type. */
+  type?: Maybe<Scalars['String']['output']>;
+  /** The field’s full GQL type. */
+  typeName?: Maybe<Scalars['String']['output']>;
+  /** The UID of the entity */
+  uid?: Maybe<Scalars['String']['output']>;
+  /** The field’s visibility. */
+  visibility?: Maybe<Scalars['String']['output']>;
+};
+
+export type Field_Radio = FieldInterface & {
+  /** The field’s conditions as a JSON string. */
+  conditions?: Maybe<Scalars['Json']['output']>;
+  /** The field’s container attributes. */
+  containerAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s CSS classes. */
+  cssClasses?: Maybe<Scalars['String']['output']>;
+  /** The field’s default value as a string. Some fields have different fields for their default value. */
+  defaultValue?: Maybe<Scalars['String']['output']>;
+  /** The field’s display name (last portion of the class). */
+  displayName?: Maybe<Scalars['String']['output']>;
+  /** The field’s value type to use in email notifications. */
+  emailValue?: Maybe<Scalars['String']['output']>;
+  /** Whether the field has conditions enabled. */
+  enableConditions?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field has content encryption enabled. */
+  enableContentEncryption?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field is enabled. */
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s error message. */
+  errorMessage?: Maybe<Scalars['String']['output']>;
+  /** The field’s handle. */
+  handle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the entity */
+  id?: Maybe<Scalars['ID']['output']>;
+  /** Whether the field should be included in email content. */
+  includeInEmail?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s input attributes. */
+  inputAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s full GQL input type. Useful for mutations. */
+  inputTypeName?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions. */
+  instructions?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions position. This will be a `verbb\formie\positions` class name. */
+  instructionsPosition?: Maybe<Scalars['String']['output']>;
+  /** The field’s label. */
+  label?: Maybe<Scalars['String']['output']>;
+  /** The field’s label position. This will be a `verbb\formie\positions` class name. */
+  labelPosition?: Maybe<Scalars['String']['output']>;
+  layout?: Maybe<Scalars['String']['output']>;
+  /** The field handle for another field that this value should match exactly. */
+  matchField?: Maybe<Scalars['String']['output']>;
+  multi?: Maybe<Scalars['Boolean']['output']>;
+  options?: Maybe<Array<Maybe<FieldOption>>>;
+  /** The field’s placeholder. */
+  placeholder?: Maybe<Scalars['String']['output']>;
+  /** The field’s pre-populated value extracted from the query string. */
+  prePopulate?: Maybe<Scalars['String']['output']>;
+  /** Whether the field is required. */
+  required?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s type. */
+  type?: Maybe<Scalars['String']['output']>;
+  /** The field’s full GQL type. */
+  typeName?: Maybe<Scalars['String']['output']>;
+  /** The UID of the entity */
+  uid?: Maybe<Scalars['String']['output']>;
+  /** The field’s visibility. */
+  visibility?: Maybe<Scalars['String']['output']>;
+};
+
+export type Field_Recipients = FieldInterface & {
+  /** The field’s conditions as a JSON string. */
+  conditions?: Maybe<Scalars['Json']['output']>;
+  /** The field’s container attributes. */
+  containerAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s CSS classes. */
+  cssClasses?: Maybe<Scalars['String']['output']>;
+  /** The field’s default value as a string. Some fields have different fields for their default value. */
+  defaultValue?: Maybe<Scalars['String']['output']>;
+  /** The field’s display name (last portion of the class). */
+  displayName?: Maybe<Scalars['String']['output']>;
+  displayType?: Maybe<Scalars['String']['output']>;
+  /** The field’s value type to use in email notifications. */
+  emailValue?: Maybe<Scalars['String']['output']>;
+  /** Whether the field has conditions enabled. */
+  enableConditions?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field has content encryption enabled. */
+  enableContentEncryption?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field is enabled. */
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s error message. */
+  errorMessage?: Maybe<Scalars['String']['output']>;
+  /** The field’s handle. */
+  handle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the entity */
+  id?: Maybe<Scalars['ID']['output']>;
+  /** Whether the field should be included in email content. */
+  includeInEmail?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s input attributes. */
+  inputAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s full GQL input type. Useful for mutations. */
+  inputTypeName?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions. */
+  instructions?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions position. This will be a `verbb\formie\positions` class name. */
+  instructionsPosition?: Maybe<Scalars['String']['output']>;
+  /** The field’s label. */
+  label?: Maybe<Scalars['String']['output']>;
+  /** The field’s label position. This will be a `verbb\formie\positions` class name. */
+  labelPosition?: Maybe<Scalars['String']['output']>;
+  /** The field handle for another field that this value should match exactly. */
+  matchField?: Maybe<Scalars['String']['output']>;
+  multiple?: Maybe<Scalars['Boolean']['output']>;
+  options?: Maybe<Array<Maybe<FieldOption>>>;
+  /** The field’s placeholder. */
+  placeholder?: Maybe<Scalars['String']['output']>;
+  /** The field’s pre-populated value extracted from the query string. */
+  prePopulate?: Maybe<Scalars['String']['output']>;
+  /** Whether the field is required. */
+  required?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s type. */
+  type?: Maybe<Scalars['String']['output']>;
+  /** The field’s full GQL type. */
+  typeName?: Maybe<Scalars['String']['output']>;
+  /** The UID of the entity */
+  uid?: Maybe<Scalars['String']['output']>;
+  /** The field’s visibility. */
+  visibility?: Maybe<Scalars['String']['output']>;
+};
+
+export type Field_Repeater = FieldInterface & {
+  addLabel?: Maybe<Scalars['String']['output']>;
+  /** The field’s conditions as a JSON string. */
+  conditions?: Maybe<Scalars['Json']['output']>;
+  /** The field’s container attributes. */
+  containerAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s CSS classes. */
+  cssClasses?: Maybe<Scalars['String']['output']>;
+  /** The field’s default value as a string. Some fields have different fields for their default value. */
+  defaultValue?: Maybe<Scalars['String']['output']>;
+  /** The field’s display name (last portion of the class). */
+  displayName?: Maybe<Scalars['String']['output']>;
+  /** The field’s value type to use in email notifications. */
+  emailValue?: Maybe<Scalars['String']['output']>;
+  /** Whether the field has conditions enabled. */
+  enableConditions?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field has content encryption enabled. */
+  enableContentEncryption?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field is enabled. */
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s error message. */
+  errorMessage?: Maybe<Scalars['String']['output']>;
+  /** The field’s nested fields. */
+  fields?: Maybe<Array<Maybe<FieldInterface>>>;
+  /** The field’s handle. */
+  handle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the entity */
+  id?: Maybe<Scalars['ID']['output']>;
+  /** Whether the field should be included in email content. */
+  includeInEmail?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s input attributes. */
+  inputAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s full GQL input type. Useful for mutations. */
+  inputTypeName?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions. */
+  instructions?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions position. This will be a `verbb\formie\positions` class name. */
+  instructionsPosition?: Maybe<Scalars['String']['output']>;
+  /** The field’s label. */
+  label?: Maybe<Scalars['String']['output']>;
+  /** The field’s label position. This will be a `verbb\formie\positions` class name. */
+  labelPosition?: Maybe<Scalars['String']['output']>;
+  /** The field handle for another field that this value should match exactly. */
+  matchField?: Maybe<Scalars['String']['output']>;
+  maxRows?: Maybe<Scalars['Int']['output']>;
+  minRows?: Maybe<Scalars['Int']['output']>;
+  /** The field’s nested rows. */
+  nestedRows?: Maybe<Array<Maybe<RowInterface>>>;
+  /** The field’s placeholder. */
+  placeholder?: Maybe<Scalars['String']['output']>;
+  /** The field’s pre-populated value extracted from the query string. */
+  prePopulate?: Maybe<Scalars['String']['output']>;
+  /** Whether the field is required. */
+  required?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s type. */
+  type?: Maybe<Scalars['String']['output']>;
+  /** The field’s full GQL type. */
+  typeName?: Maybe<Scalars['String']['output']>;
+  /** The UID of the entity */
+  uid?: Maybe<Scalars['String']['output']>;
+  /** The field’s visibility. */
+  visibility?: Maybe<Scalars['String']['output']>;
+};
+
+
+export type Field_RepeaterFieldsArgs = {
+  includeDisabled?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type Field_RepeaterNestedRowsArgs = {
+  includeDisabled?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type Field_Section = FieldInterface & {
+  borderColor?: Maybe<Scalars['String']['output']>;
+  borderStyle?: Maybe<Scalars['String']['output']>;
+  borderWidth?: Maybe<Scalars['Int']['output']>;
+  /** The field’s conditions as a JSON string. */
+  conditions?: Maybe<Scalars['Json']['output']>;
+  /** The field’s container attributes. */
+  containerAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s CSS classes. */
+  cssClasses?: Maybe<Scalars['String']['output']>;
+  /** The field’s default value as a string. Some fields have different fields for their default value. */
+  defaultValue?: Maybe<Scalars['String']['output']>;
+  /** The field’s display name (last portion of the class). */
+  displayName?: Maybe<Scalars['String']['output']>;
+  /** The field’s value type to use in email notifications. */
+  emailValue?: Maybe<Scalars['String']['output']>;
+  /** Whether the field has conditions enabled. */
+  enableConditions?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field has content encryption enabled. */
+  enableContentEncryption?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field is enabled. */
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s error message. */
+  errorMessage?: Maybe<Scalars['String']['output']>;
+  /** The field’s handle. */
+  handle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the entity */
+  id?: Maybe<Scalars['ID']['output']>;
+  /** Whether the field should be included in email content. */
+  includeInEmail?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s input attributes. */
+  inputAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s full GQL input type. Useful for mutations. */
+  inputTypeName?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions. */
+  instructions?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions position. This will be a `verbb\formie\positions` class name. */
+  instructionsPosition?: Maybe<Scalars['String']['output']>;
+  /** The field’s label. */
+  label?: Maybe<Scalars['String']['output']>;
+  /** The field’s label position. This will be a `verbb\formie\positions` class name. */
+  labelPosition?: Maybe<Scalars['String']['output']>;
+  /** The field handle for another field that this value should match exactly. */
+  matchField?: Maybe<Scalars['String']['output']>;
+  /** The field’s placeholder. */
+  placeholder?: Maybe<Scalars['String']['output']>;
+  /** The field’s pre-populated value extracted from the query string. */
+  prePopulate?: Maybe<Scalars['String']['output']>;
+  /** Whether the field is required. */
+  required?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s type. */
+  type?: Maybe<Scalars['String']['output']>;
+  /** The field’s full GQL type. */
+  typeName?: Maybe<Scalars['String']['output']>;
+  /** The UID of the entity */
+  uid?: Maybe<Scalars['String']['output']>;
+  /** The field’s visibility. */
+  visibility?: Maybe<Scalars['String']['output']>;
+};
+
+export type Field_Signature = FieldInterface & {
+  backgroundColor?: Maybe<Scalars['String']['output']>;
+  /** The field’s conditions as a JSON string. */
+  conditions?: Maybe<Scalars['Json']['output']>;
+  /** The field’s container attributes. */
+  containerAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s CSS classes. */
+  cssClasses?: Maybe<Scalars['String']['output']>;
+  /** The field’s default value as a string. Some fields have different fields for their default value. */
+  defaultValue?: Maybe<Scalars['String']['output']>;
+  /** The field’s display name (last portion of the class). */
+  displayName?: Maybe<Scalars['String']['output']>;
+  /** The field’s value type to use in email notifications. */
+  emailValue?: Maybe<Scalars['String']['output']>;
+  /** Whether the field has conditions enabled. */
+  enableConditions?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field has content encryption enabled. */
+  enableContentEncryption?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field is enabled. */
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s error message. */
+  errorMessage?: Maybe<Scalars['String']['output']>;
+  /** The field’s handle. */
+  handle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the entity */
+  id?: Maybe<Scalars['ID']['output']>;
+  /** Whether the field should be included in email content. */
+  includeInEmail?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s input attributes. */
+  inputAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s full GQL input type. Useful for mutations. */
+  inputTypeName?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions. */
+  instructions?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions position. This will be a `verbb\formie\positions` class name. */
+  instructionsPosition?: Maybe<Scalars['String']['output']>;
+  /** The field’s label. */
+  label?: Maybe<Scalars['String']['output']>;
+  /** The field’s label position. This will be a `verbb\formie\positions` class name. */
+  labelPosition?: Maybe<Scalars['String']['output']>;
+  /** The field handle for another field that this value should match exactly. */
+  matchField?: Maybe<Scalars['String']['output']>;
+  penColor?: Maybe<Scalars['String']['output']>;
+  penWeight?: Maybe<Scalars['String']['output']>;
+  /** The field’s placeholder. */
+  placeholder?: Maybe<Scalars['String']['output']>;
+  /** The field’s pre-populated value extracted from the query string. */
+  prePopulate?: Maybe<Scalars['String']['output']>;
+  /** Whether the field is required. */
+  required?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s type. */
+  type?: Maybe<Scalars['String']['output']>;
+  /** The field’s full GQL type. */
+  typeName?: Maybe<Scalars['String']['output']>;
+  /** The UID of the entity */
+  uid?: Maybe<Scalars['String']['output']>;
+  /** The field’s visibility. */
+  visibility?: Maybe<Scalars['String']['output']>;
+};
+
+export type Field_SingleLineText = FieldInterface & {
+  /** The field’s conditions as a JSON string. */
+  conditions?: Maybe<Scalars['Json']['output']>;
+  /** The field’s container attributes. */
+  containerAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s CSS classes. */
+  cssClasses?: Maybe<Scalars['String']['output']>;
+  /** The field’s default value as a string. Some fields have different fields for their default value. */
+  defaultValue?: Maybe<Scalars['String']['output']>;
+  /** The field’s display name (last portion of the class). */
+  displayName?: Maybe<Scalars['String']['output']>;
+  /** The field’s value type to use in email notifications. */
+  emailValue?: Maybe<Scalars['String']['output']>;
+  /** Whether the field has conditions enabled. */
+  enableConditions?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field has content encryption enabled. */
+  enableContentEncryption?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field is enabled. */
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s error message. */
+  errorMessage?: Maybe<Scalars['String']['output']>;
+  /** The field’s handle. */
+  handle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the entity */
+  id?: Maybe<Scalars['ID']['output']>;
+  /** Whether the field should be included in email content. */
+  includeInEmail?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s input attributes. */
+  inputAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s full GQL input type. Useful for mutations. */
+  inputTypeName?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions. */
+  instructions?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions position. This will be a `verbb\formie\positions` class name. */
+  instructionsPosition?: Maybe<Scalars['String']['output']>;
+  /** The field’s label. */
+  label?: Maybe<Scalars['String']['output']>;
+  /** The field’s label position. This will be a `verbb\formie\positions` class name. */
+  labelPosition?: Maybe<Scalars['String']['output']>;
+  limit?: Maybe<Scalars['Boolean']['output']>;
+  /** The field handle for another field that this value should match exactly. */
+  matchField?: Maybe<Scalars['String']['output']>;
+  max?: Maybe<Scalars['Int']['output']>;
+  maxType?: Maybe<Scalars['String']['output']>;
+  min?: Maybe<Scalars['Int']['output']>;
+  minType?: Maybe<Scalars['String']['output']>;
+  /** The field’s placeholder. */
+  placeholder?: Maybe<Scalars['String']['output']>;
+  /** The field’s pre-populated value extracted from the query string. */
+  prePopulate?: Maybe<Scalars['String']['output']>;
+  /** Whether the field is required. */
+  required?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s type. */
+  type?: Maybe<Scalars['String']['output']>;
+  /** The field’s full GQL type. */
+  typeName?: Maybe<Scalars['String']['output']>;
+  /** The UID of the entity */
+  uid?: Maybe<Scalars['String']['output']>;
+  uniqueValue?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s visibility. */
+  visibility?: Maybe<Scalars['String']['output']>;
+};
+
+export type Field_Summary = FieldInterface & {
+  /** The field’s conditions as a JSON string. */
+  conditions?: Maybe<Scalars['Json']['output']>;
+  /** The field’s container attributes. */
+  containerAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s CSS classes. */
+  cssClasses?: Maybe<Scalars['String']['output']>;
+  /** The field’s default value as a string. Some fields have different fields for their default value. */
+  defaultValue?: Maybe<Scalars['String']['output']>;
+  /** The field’s display name (last portion of the class). */
+  displayName?: Maybe<Scalars['String']['output']>;
+  /** The field’s value type to use in email notifications. */
+  emailValue?: Maybe<Scalars['String']['output']>;
+  /** Whether the field has conditions enabled. */
+  enableConditions?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field has content encryption enabled. */
+  enableContentEncryption?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field is enabled. */
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s error message. */
+  errorMessage?: Maybe<Scalars['String']['output']>;
+  /** The field’s handle. */
+  handle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the entity */
+  id?: Maybe<Scalars['ID']['output']>;
+  /** Whether the field should be included in email content. */
+  includeInEmail?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s input attributes. */
+  inputAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s full GQL input type. Useful for mutations. */
+  inputTypeName?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions. */
+  instructions?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions position. This will be a `verbb\formie\positions` class name. */
+  instructionsPosition?: Maybe<Scalars['String']['output']>;
+  /** The field’s label. */
+  label?: Maybe<Scalars['String']['output']>;
+  /** The field’s label position. This will be a `verbb\formie\positions` class name. */
+  labelPosition?: Maybe<Scalars['String']['output']>;
+  /** The field handle for another field that this value should match exactly. */
+  matchField?: Maybe<Scalars['String']['output']>;
+  /** The field’s placeholder. */
+  placeholder?: Maybe<Scalars['String']['output']>;
+  /** The field’s pre-populated value extracted from the query string. */
+  prePopulate?: Maybe<Scalars['String']['output']>;
+  /** Whether the field is required. */
+  required?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s type. */
+  type?: Maybe<Scalars['String']['output']>;
+  /** The field’s full GQL type. */
+  typeName?: Maybe<Scalars['String']['output']>;
+  /** The UID of the entity */
+  uid?: Maybe<Scalars['String']['output']>;
+  /** The field’s visibility. */
+  visibility?: Maybe<Scalars['String']['output']>;
+};
+
+export type Field_Table = FieldInterface & {
+  columns?: Maybe<Array<Maybe<KeyValueType>>>;
+  /** The field’s conditions as a JSON string. */
+  conditions?: Maybe<Scalars['Json']['output']>;
+  /** The field’s container attributes. */
+  containerAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s CSS classes. */
+  cssClasses?: Maybe<Scalars['String']['output']>;
+  /** The field’s default value as a string. Some fields have different fields for their default value. */
+  defaultValue?: Maybe<Scalars['String']['output']>;
+  /** The field’s display name (last portion of the class). */
+  displayName?: Maybe<Scalars['String']['output']>;
+  /** The field’s value type to use in email notifications. */
+  emailValue?: Maybe<Scalars['String']['output']>;
+  /** Whether the field has conditions enabled. */
+  enableConditions?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field has content encryption enabled. */
+  enableContentEncryption?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field is enabled. */
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s error message. */
+  errorMessage?: Maybe<Scalars['String']['output']>;
+  /** The field’s handle. */
+  handle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the entity */
+  id?: Maybe<Scalars['ID']['output']>;
+  /** Whether the field should be included in email content. */
+  includeInEmail?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s input attributes. */
+  inputAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s full GQL input type. Useful for mutations. */
+  inputTypeName?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions. */
+  instructions?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions position. This will be a `verbb\formie\positions` class name. */
+  instructionsPosition?: Maybe<Scalars['String']['output']>;
+  /** The field’s label. */
+  label?: Maybe<Scalars['String']['output']>;
+  /** The field’s label position. This will be a `verbb\formie\positions` class name. */
+  labelPosition?: Maybe<Scalars['String']['output']>;
+  /** The field handle for another field that this value should match exactly. */
+  matchField?: Maybe<Scalars['String']['output']>;
+  /** The field’s placeholder. */
+  placeholder?: Maybe<Scalars['String']['output']>;
+  /** The field’s pre-populated value extracted from the query string. */
+  prePopulate?: Maybe<Scalars['String']['output']>;
+  /** Whether the field is required. */
+  required?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s type. */
+  type?: Maybe<Scalars['String']['output']>;
+  /** The field’s full GQL type. */
+  typeName?: Maybe<Scalars['String']['output']>;
+  /** The UID of the entity */
+  uid?: Maybe<Scalars['String']['output']>;
+  /** The field’s visibility. */
+  visibility?: Maybe<Scalars['String']['output']>;
+};
+
+export type Field_Tags = FieldInterface & {
+  /** The field’s conditions as a JSON string. */
+  conditions?: Maybe<Scalars['Json']['output']>;
+  /** The field’s container attributes. */
+  containerAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s CSS classes. */
+  cssClasses?: Maybe<Scalars['String']['output']>;
+  defaultTag?: Maybe<TagInterface>;
+  defaultValue?: Maybe<Scalars['String']['output']>;
+  /** The field’s display name (last portion of the class). */
+  displayName?: Maybe<Scalars['String']['output']>;
+  displayType?: Maybe<Scalars['String']['output']>;
+  /** The field’s value type to use in email notifications. */
+  emailValue?: Maybe<Scalars['String']['output']>;
+  /** Whether the field has conditions enabled. */
+  enableConditions?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field has content encryption enabled. */
+  enableContentEncryption?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the field is enabled. */
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s error message. */
+  errorMessage?: Maybe<Scalars['String']['output']>;
+  /** The field’s handle. */
+  handle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the entity */
+  id?: Maybe<Scalars['ID']['output']>;
+  /** Whether the field should be included in email content. */
+  includeInEmail?: Maybe<Scalars['Boolean']['output']>;
+  /** The field’s input attributes. */
+  inputAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The field’s full GQL input type. Useful for mutations. */
+  inputTypeName?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions. */
+  instructions?: Maybe<Scalars['String']['output']>;
+  /** The field’s instructions position. This will be a `verbb\formie\positions` class name. */
+  instructionsPosition?: Maybe<Scalars['String']['output']>;
+  /** The field’s label. */
+  label?: Maybe<Scalars['String']['output']>;
+  /** The field’s label position. This will be a `verbb\formie\positions` class name. */
+  labelPosition?: Maybe<Scalars['String']['output']>;
+  labelSource?: Maybe<Scalars['String']['output']>;
+  limitOptions?: Maybe<Scalars['String']['output']>;
+  /** The field handle for another field that this value should match exactly. */
+  matchField?: Maybe<Scalars['String']['output']>;
+  multi?: Maybe<Scalars['Boolean']['output']>;
+  orderBy?: Maybe<Scalars['String']['output']>;
+  /** The field’s placeholder. */
+  placeholder?: Maybe<Scalars['String']['output']>;
+  /** The field’s pre-populated value extracted from the query string. */
+  prePopulate?: Maybe<Scalars['String']['output']>;
+  /** Whether the field is required. */
+  required?: Maybe<Scalars['Boolean']['output']>;
+  source?: Maybe<Scalars['String']['output']>;
+  sources?: Maybe<Scalars['String']['output']>;
+  tags?: Maybe<Array<Maybe<TagInterface>>>;
+  /** The field’s type. */
+  type?: Maybe<Scalars['String']['output']>;
+  /** The field’s full GQL type. */
+  typeName?: Maybe<Scalars['String']['output']>;
+  /** The UID of the entity */
+  uid?: Maybe<Scalars['String']['output']>;
+  /** The field’s visibility. */
+  visibility?: Maybe<Scalars['String']['output']>;
+};
+
+
+export type Field_TagsDefaultTagArgs = {
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  group?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  groupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+export type Field_TagsTagsArgs = {
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  group?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  groupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type FormIntegrationsType = {
+  /** Whether the integration is enabled. */
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  /** The integration’s handle. */
+  handle?: Maybe<Scalars['String']['output']>;
+  /** The integration’s name. */
+  name?: Maybe<Scalars['String']['output']>;
+  /** The integration’s settings as a JSON string. */
+  settings?: Maybe<Scalars['String']['output']>;
+};
+
+/** This is the interface implemented by all forms. */
+export type FormInterface = {
+  /** Return a number of related elements for a field. */
+  _count?: Maybe<Scalars['Int']['output']>;
+  /** Whether the element is archived. */
+  archived?: Maybe<Scalars['Boolean']['output']>;
+  /** A list of captcha values (name and value) to assist with spam protection. */
+  captchas?: Maybe<Array<Maybe<FormieCaptchaType>>>;
+  /** The form’s config as JSON. */
+  configJson?: Maybe<Scalars['String']['output']>;
+  /** A CSRF token (name and value). */
+  csrfToken?: Maybe<FormieCsrfTokenType>;
+  /** The date the element was created. */
+  dateCreated?: Maybe<Scalars['DateTime']['output']>;
+  /** The date the element was last updated. */
+  dateUpdated?: Maybe<Scalars['DateTime']['output']>;
+  /** Whether the element is enabled. */
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  /** The form’s fields. */
+  formFields?: Maybe<Array<Maybe<FieldInterface>>>;
+  /** The form’s handle. */
+  handle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the entity */
+  id?: Maybe<Scalars['ID']['output']>;
+  /** Whether the form is considered available according to user checks, scheduling and more. */
+  isAvailable?: Maybe<Scalars['Boolean']['output']>;
+  /** The language of the site element is associated with. */
+  language?: Maybe<Scalars['String']['output']>;
+  /** The form’s pages. */
+  pages?: Maybe<Array<Maybe<PageInterface>>>;
+  /** The form’s rows. */
+  rows?: Maybe<Array<Maybe<RowInterface>>>;
+  /** The element’s search score, if the `search` parameter was used when querying for the element. */
+  searchScore?: Maybe<Scalars['Int']['output']>;
+  /** The form’s settings. */
+  settings?: Maybe<FormSettingsType>;
+  /** The handle of the site the element is associated with. */
+  siteHandle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the site the element is associated with. */
+  siteId?: Maybe<Scalars['Int']['output']>;
+  /** The unique identifier for an element-site relation. */
+  siteSettingsId?: Maybe<Scalars['ID']['output']>;
+  /** The element’s slug. */
+  slug?: Maybe<Scalars['String']['output']>;
+  /** The element’s status. */
+  status?: Maybe<Scalars['String']['output']>;
+  /** The form’s endpoint for sending submissions to, if using POST requests. */
+  submissionEndpoint?: Maybe<Scalars['String']['output']>;
+  /** The form’s GQL mutation name for submissions to use. */
+  submissionMutationName?: Maybe<Scalars['String']['output']>;
+  /** The form’s CSS for rendering. */
+  templateCss?: Maybe<Scalars['String']['output']>;
+  /** The form’s rendered HTML. */
+  templateHtml?: Maybe<Scalars['String']['output']>;
+  /** The form’s JS for rendering and functionality. */
+  templateJs?: Maybe<Scalars['String']['output']>;
+  /** The element’s title. */
+  title?: Maybe<Scalars['String']['output']>;
+  /** Whether the element has been soft-deleted. */
+  trashed?: Maybe<Scalars['Boolean']['output']>;
+  /** The UID of the entity */
+  uid?: Maybe<Scalars['String']['output']>;
+  /** The element’s URI. */
+  uri?: Maybe<Scalars['String']['output']>;
+};
+
+
+/** This is the interface implemented by all forms. */
+export type FormInterface_CountArgs = {
+  field: Scalars['String']['input'];
+};
+
+
+/** This is the interface implemented by all forms. */
+export type FormInterfaceFormFieldsArgs = {
+  includeDisabled?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+/** This is the interface implemented by all forms. */
+export type FormInterfaceRowsArgs = {
+  includeDisabled?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+/** This is the interface implemented by all forms. */
+export type FormInterfaceTemplateHtmlArgs = {
+  options?: InputMaybe<Scalars['String']['input']>;
+  populateFormValues?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+/** This is the interface implemented by all forms. */
+export type FormInterfaceTemplateJsArgs = {
+  initJs?: InputMaybe<Scalars['Boolean']['input']>;
+  useObserver?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type FormSettingsType = {
+  /** The form’s default instructions position for fields. This will be a `verbb\formie\positions` class name. */
+  defaultInstructionsPosition?: Maybe<Scalars['String']['output']>;
+  /** The form’s default label position for fields. This will be a `verbb\formie\positions` class name. */
+  defaultLabelPosition?: Maybe<Scalars['String']['output']>;
+  /** Whether to show the form’s current page title. */
+  displayCurrentPageTitle?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether to show the form’s title. */
+  displayFormTitle?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether to show the form’s page progress. */
+  displayPageProgress?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether to show the form’s page tabs. */
+  displayPageTabs?: Maybe<Scalars['Boolean']['output']>;
+  /** The form’s submit error message. */
+  errorMessageHtml?: Maybe<Scalars['String']['output']>;
+  /** The form’s error message position. Either `null`, `top-form` or `bottom-form`. */
+  errorMessagePosition?: Maybe<Scalars['String']['output']>;
+  /** The form’s enabled integrations. */
+  integrations?: Maybe<Array<Maybe<FormIntegrationsType>>>;
+  /** The type of loading indicator to use. Either `spinner` or `text`. */
+  loadingIndicator?: Maybe<Scalars['String']['output']>;
+  /** The form’s loading indicator text. */
+  loadingIndicatorText?: Maybe<Scalars['String']['output']>;
+  /** The form’s progress bar position. Either `start` or `end`. */
+  progressPosition?: Maybe<Scalars['String']['output']>;
+  /** The form’s submit action entry (for redirection), if `submitAction` is `entry`. */
+  redirectEntry?: Maybe<EntryInterface>;
+  /** The form’s submit action redirect URL, resolved depending on `submitAction` being `entry` or `url`. */
+  redirectUrl?: Maybe<Scalars['String']['output']>;
+  /** The form’s required fields indicator. Either `asterisk` or `optional`. */
+  requiredIndicator?: Maybe<Scalars['String']['output']>;
+  /** Whether to the form should scroll to the top of the page when submitted. */
+  scrollToTop?: Maybe<Scalars['Boolean']['output']>;
+  /** The form’s submit action. Either `message`, `entry`, `url`, `reload`. */
+  submitAction?: Maybe<Scalars['String']['output']>;
+  /** Whether to hide the form’s success message. */
+  submitActionFormHide?: Maybe<Scalars['Boolean']['output']>;
+  /** The form’s submit success message. */
+  submitActionMessageHtml?: Maybe<Scalars['String']['output']>;
+  /** The form’s submit message position. Either `top-form` or `bottom-form`. */
+  submitActionMessagePosition?: Maybe<Scalars['String']['output']>;
+  /** The form’s submit success message timeout in seconds. */
+  submitActionMessageTimeout?: Maybe<Scalars['Int']['output']>;
+  /** The form’s submit redirect option (if in new tab or same tab). Either `same-tab` or `new-tab`. */
+  submitActionTab?: Maybe<Scalars['String']['output']>;
+  /** The form’s submit method. Either `page-reload` or `ajax`. */
+  submitMethod?: Maybe<Scalars['String']['output']>;
+  /** Whether to validate the form’s on focus. */
+  validationOnFocus?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether to validate the form’s on submit. */
+  validationOnSubmit?: Maybe<Scalars['Boolean']['output']>;
+};
+
+
+export type FormSettingsTypeRedirectEntryArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  authorGroup?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  ownerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  postDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  primaryOwnerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type FormieCaptchaType = {
+  /** The captcha handle. */
+  handle?: Maybe<Scalars['String']['output']>;
+  /** The captcha name. */
+  name?: Maybe<Scalars['String']['output']>;
+  /** The catpcha value. */
+  value?: Maybe<Scalars['String']['output']>;
+};
+
+export type FormieCsrfTokenType = {
+  /** The CSRF name. */
+  name?: Maybe<Scalars['String']['output']>;
+  /** The CSRF token. */
+  value?: Maybe<Scalars['String']['output']>;
 };
 
 /** This is the interface implemented by all global sets. */
@@ -1947,6 +6053,13 @@ export type GlobalSetInterface_CountArgs = {
   field: Scalars['String']['input'];
 };
 
+export type KeyValueType = {
+  handle?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  type?: Maybe<Scalars['String']['output']>;
+  width?: Maybe<Scalars['String']['output']>;
+};
+
 export type LinkData = {
   ariaLabel?: Maybe<Scalars['String']['output']>;
   asset?: Maybe<AssetInterface>;
@@ -1974,6 +6087,19 @@ export type LinkData = {
 
 export type Mutation = {
   ping?: Maybe<Scalars['String']['output']>;
+};
+
+export type NameType = {
+  /** The first name value of the name. */
+  firstName?: Maybe<Scalars['String']['output']>;
+  /** The full name value. */
+  fullName?: Maybe<Scalars['String']['output']>;
+  /** The last name value of the name. */
+  lastName?: Maybe<Scalars['String']['output']>;
+  /** The middle name value of the name. */
+  middleName?: Maybe<Scalars['String']['output']>;
+  /** The prefix value of the name. */
+  prefix?: Maybe<Scalars['String']['output']>;
 };
 
 export type NodeCustomAttribute = {
@@ -2120,6 +6246,118 @@ export type NodeInterfaceChildrenArgs = {
   withStructure?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
+/** This is the interface implemented by all pages. */
+export type PageInterface = {
+  /** The ID of the entity */
+  id?: Maybe<Scalars['ID']['output']>;
+  /** The page’s label. */
+  label?: Maybe<Scalars['String']['output']>;
+  /** The page’s fields. */
+  pageFields?: Maybe<Array<Maybe<FieldInterface>>>;
+  /** The page’s rows. */
+  rows?: Maybe<Array<Maybe<RowInterface>>>;
+  /** The page’s settings, including buttons. */
+  settings?: Maybe<PageSettingsInterface>;
+  /** The UID of the entity */
+  uid?: Maybe<Scalars['String']['output']>;
+};
+
+
+/** This is the interface implemented by all pages. */
+export type PageInterfacePageFieldsArgs = {
+  includeDisabled?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+/** This is the interface implemented by all pages. */
+export type PageInterfaceRowsArgs = {
+  includeDisabled?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+/** This is the interface implemented by all pages. */
+export type PageSettingsInterface = {
+  /** The page’s back button label. */
+  backButtonLabel?: Maybe<Scalars['String']['output']>;
+  /** The page’s button (back and submit) positions. */
+  buttonsPosition?: Maybe<Scalars['String']['output']>;
+  /** The page’s button (back and submit) container attributes. */
+  containerAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The page’s button (back and submit) CSS classes. */
+  cssClasses?: Maybe<Scalars['String']['output']>;
+  /** Whether the page’s next button has conditions enabled, for multi-page forms. */
+  enableNextButtonConditions?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the page has conditions enabled. */
+  enablePageConditions?: Maybe<Scalars['Boolean']['output']>;
+  /** The page’s button (back and submit) input attributes. */
+  inputAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The page’s conditions for whether to show the next button, for multi-page forms as a JSON string. */
+  nextButtonConditions?: Maybe<Scalars['Json']['output']>;
+  /** The page’s conditions as a JSON string. */
+  pageConditions?: Maybe<Scalars['Json']['output']>;
+  /** The page’s draft button label. */
+  saveButtonLabel?: Maybe<Scalars['String']['output']>;
+  /** Whether to show the page’s back button. */
+  showBackButton?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether to show the page’s draft button. */
+  showSaveButton?: Maybe<Scalars['Boolean']['output']>;
+  /** The page’s submit button label. */
+  submitButtonLabel?: Maybe<Scalars['String']['output']>;
+};
+
+export type PageSettingsType = PageSettingsInterface & {
+  /** The page’s back button label. */
+  backButtonLabel?: Maybe<Scalars['String']['output']>;
+  /** The page’s button (back and submit) positions. */
+  buttonsPosition?: Maybe<Scalars['String']['output']>;
+  /** The page’s button (back and submit) container attributes. */
+  containerAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The page’s button (back and submit) CSS classes. */
+  cssClasses?: Maybe<Scalars['String']['output']>;
+  /** Whether the page’s next button has conditions enabled, for multi-page forms. */
+  enableNextButtonConditions?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the page has conditions enabled. */
+  enablePageConditions?: Maybe<Scalars['Boolean']['output']>;
+  /** The page’s button (back and submit) input attributes. */
+  inputAttributes?: Maybe<Array<Maybe<FieldAttribute>>>;
+  /** The page’s conditions for whether to show the next button, for multi-page forms as a JSON string. */
+  nextButtonConditions?: Maybe<Scalars['Json']['output']>;
+  /** The page’s conditions as a JSON string. */
+  pageConditions?: Maybe<Scalars['Json']['output']>;
+  /** The page’s draft button label. */
+  saveButtonLabel?: Maybe<Scalars['String']['output']>;
+  /** Whether to show the page’s back button. */
+  showBackButton?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether to show the page’s draft button. */
+  showSaveButton?: Maybe<Scalars['Boolean']['output']>;
+  /** The page’s submit button label. */
+  submitButtonLabel?: Maybe<Scalars['String']['output']>;
+};
+
+export type PageType = PageInterface & {
+  /** The ID of the entity */
+  id?: Maybe<Scalars['ID']['output']>;
+  /** The page’s label. */
+  label?: Maybe<Scalars['String']['output']>;
+  /** The page’s fields. */
+  pageFields?: Maybe<Array<Maybe<FieldInterface>>>;
+  /** The page’s rows. */
+  rows?: Maybe<Array<Maybe<RowInterface>>>;
+  /** The page’s settings, including buttons. */
+  settings?: Maybe<PageSettingsInterface>;
+  /** The UID of the entity */
+  uid?: Maybe<Scalars['String']['output']>;
+};
+
+
+export type PageTypePageFieldsArgs = {
+  includeDisabled?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type PageTypeRowsArgs = {
+  includeDisabled?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
 export type Query = {
   /** This query is used to query for a single asset. */
   asset?: Maybe<AssetInterface>;
@@ -2157,6 +6395,8 @@ export type Query = {
   noticesEntries?: Maybe<Array<Maybe<NoticesSectionEntryUnion>>>;
   /** Entries within the “Pagina Lista Concorsi” section. */
   noticesIndexEntries?: Maybe<Array<Maybe<NoticesIndexSectionEntryUnion>>>;
+  /** Entries within the “Pagine” section. */
+  pagesEntries?: Maybe<Array<Maybe<PagesSectionEntryUnion>>>;
   ping?: Maybe<Scalars['String']['output']>;
   /** Entries within the “Servizi” section. */
   servicesEntries?: Maybe<Array<Maybe<ServicesSectionEntryUnion>>>;
@@ -2568,6 +6808,8 @@ export type QueryEntriesArgs = {
   section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarNavigation?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -2643,6 +6885,8 @@ export type QueryEntryArgs = {
   section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarNavigation?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -2718,6 +6962,8 @@ export type QueryEntryCountArgs = {
   section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarNavigation?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -2747,8 +6993,11 @@ export type QueryGlobalSetArgs = {
   info?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   limit?: InputMaybe<Scalars['Int']['input']>;
+  metaDescription?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  metaTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   offset?: InputMaybe<Scalars['Int']['input']>;
+  ogImage?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   orderBy?: InputMaybe<Scalars['String']['input']>;
   preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -2784,8 +7033,11 @@ export type QueryGlobalSetsArgs = {
   info?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   limit?: InputMaybe<Scalars['Int']['input']>;
+  metaDescription?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  metaTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   offset?: InputMaybe<Scalars['Int']['input']>;
+  ogImage?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   orderBy?: InputMaybe<Scalars['String']['input']>;
   preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -3167,6 +7419,72 @@ export type QueryNoticesIndexEntriesArgs = {
 };
 
 
+export type QueryPagesEntriesArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  authorGroup?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  buttonLink?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  metaDescription?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  metaTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  ogImage?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  postDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  primaryOwnerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  sidebarNavigation?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withSidebar?: InputMaybe<Scalars['Boolean']['input']>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
 export type QueryServicesEntriesArgs = {
   abstract?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   after?: InputMaybe<Scalars['String']['input']>;
@@ -3294,11 +7612,89 @@ export type QueryServicesIndexEntriesArgs = {
   withStructure?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
+/** This is the interface implemented by all rows. */
+export type RowInterface = {
+  /** The ID of the entity */
+  id?: Maybe<Scalars['ID']['output']>;
+  /** The row’s fields. */
+  rowFields?: Maybe<Array<Maybe<FieldInterface>>>;
+  /** The UID of the entity */
+  uid?: Maybe<Scalars['String']['output']>;
+};
+
+
+/** This is the interface implemented by all rows. */
+export type RowInterfaceRowFieldsArgs = {
+  includeDisabled?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type RowType = RowInterface & {
+  /** The ID of the entity */
+  id?: Maybe<Scalars['ID']['output']>;
+  /** The row’s fields. */
+  rowFields?: Maybe<Array<Maybe<FieldInterface>>>;
+  /** The UID of the entity */
+  uid?: Maybe<Scalars['String']['output']>;
+};
+
+
+export type RowTypeRowFieldsArgs = {
+  includeDisabled?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
 export type SearchTermOptions = {
   exact?: InputMaybe<Scalars['Boolean']['input']>;
   exclude?: InputMaybe<Scalars['Boolean']['input']>;
   subLeft?: InputMaybe<Scalars['Boolean']['input']>;
   subRight?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+/** This is the interface implemented by all tags. */
+export type TagInterface = {
+  /** Return a number of related elements for a field. */
+  _count?: Maybe<Scalars['Int']['output']>;
+  /** Whether the element is archived. */
+  archived?: Maybe<Scalars['Boolean']['output']>;
+  /** The date the element was created. */
+  dateCreated?: Maybe<Scalars['DateTime']['output']>;
+  /** The date the element was last updated. */
+  dateUpdated?: Maybe<Scalars['DateTime']['output']>;
+  /** Whether the element is enabled. */
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  /** The handle of the group that contains the tag. */
+  groupHandle: Scalars['String']['output'];
+  /** The ID of the group that contains the tag. */
+  groupId: Scalars['Int']['output'];
+  /** The ID of the entity */
+  id?: Maybe<Scalars['ID']['output']>;
+  /** The language of the site element is associated with. */
+  language?: Maybe<Scalars['String']['output']>;
+  /** The element’s search score, if the `search` parameter was used when querying for the element. */
+  searchScore?: Maybe<Scalars['Int']['output']>;
+  /** The handle of the site the element is associated with. */
+  siteHandle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the site the element is associated with. */
+  siteId?: Maybe<Scalars['Int']['output']>;
+  /** The unique identifier for an element-site relation. */
+  siteSettingsId?: Maybe<Scalars['ID']['output']>;
+  /** The element’s slug. */
+  slug?: Maybe<Scalars['String']['output']>;
+  /** The element’s status. */
+  status?: Maybe<Scalars['String']['output']>;
+  /** The element’s title. */
+  title?: Maybe<Scalars['String']['output']>;
+  /** Whether the element has been soft-deleted. */
+  trashed?: Maybe<Scalars['Boolean']['output']>;
+  /** The UID of the entity */
+  uid?: Maybe<Scalars['String']['output']>;
+  /** The element’s URI. */
+  uri?: Maybe<Scalars['String']['output']>;
+};
+
+
+/** This is the interface implemented by all tags. */
+export type TagInterface_CountArgs = {
+  field: Scalars['String']['input'];
 };
 
 export type TagRelationCriteriaInput = {
@@ -3668,6 +8064,142 @@ export type UserRelationCriteriaInput = {
   uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   /** Narrows the query results based on the users’ usernames. */
   username?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type AmministrazioneTrasparente_Node = ElementInterface & NodeInterface & {
+  /** Return a number of related elements for a field. */
+  _count?: Maybe<Scalars['Int']['output']>;
+  /** Whether the element is archived. */
+  archived?: Maybe<Scalars['Boolean']['output']>;
+  /** The node’s children. Accepts the same arguments as the `nodes` query. */
+  children?: Maybe<Array<Maybe<NodeInterface>>>;
+  /** Any additional classes for the node. */
+  classes?: Maybe<Scalars['String']['output']>;
+  /** Any additional custom attributes for the node. */
+  customAttributes?: Maybe<Array<Maybe<NodeCustomAttribute>>>;
+  /** Any additional data for the node. */
+  data?: Maybe<Scalars['String']['output']>;
+  /** The date the element was created. */
+  dateCreated?: Maybe<Scalars['DateTime']['output']>;
+  /** The date the element was last updated. */
+  dateUpdated?: Maybe<Scalars['DateTime']['output']>;
+  /** The element the node links to. */
+  element?: Maybe<ElementInterface>;
+  /** The ID of the element this node is linked to. */
+  elementId?: Maybe<Scalars['Int']['output']>;
+  /** Whether the element is enabled. */
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  /** The ID of the entity */
+  id?: Maybe<Scalars['ID']['output']>;
+  /** The language of the site element is associated with. */
+  language?: Maybe<Scalars['String']['output']>;
+  /** The element’s level within its structure */
+  level?: Maybe<Scalars['Int']['output']>;
+  /** The element’s left position within its structure. */
+  lft?: Maybe<Scalars['Int']['output']>;
+  /** The handle of the navigation this node belongs to. */
+  navHandle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the navigation this node belongs to. */
+  navId?: Maybe<Scalars['Int']['output']>;
+  /** The name of the navigation this node belongs to. */
+  navName?: Maybe<Scalars['String']['output']>;
+  /** Whether this node should open in a new window. */
+  newWindow?: Maybe<Scalars['String']['output']>;
+  /** The node’s URI */
+  nodeUri?: Maybe<Scalars['String']['output']>;
+  /** The node’s parent. */
+  parent?: Maybe<NodeInterface>;
+  /** The element’s right position within its structure. */
+  rgt?: Maybe<Scalars['Int']['output']>;
+  /** The element’s structure’s root ID */
+  root?: Maybe<Scalars['Int']['output']>;
+  /** The element’s search score, if the `search` parameter was used when querying for the element. */
+  searchScore?: Maybe<Scalars['Int']['output']>;
+  /** The handle of the site the element is associated with. */
+  siteHandle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the site the element is associated with. */
+  siteId?: Maybe<Scalars['Int']['output']>;
+  /** The unique identifier for an element-site relation. */
+  siteSettingsId?: Maybe<Scalars['ID']['output']>;
+  /** The element’s slug. */
+  slug?: Maybe<Scalars['String']['output']>;
+  /** The element’s status. */
+  status?: Maybe<Scalars['String']['output']>;
+  /** The element’s structure ID. */
+  structureId?: Maybe<Scalars['Int']['output']>;
+  /** The element’s title. */
+  title?: Maybe<Scalars['String']['output']>;
+  /** Whether the element has been soft-deleted. */
+  trashed?: Maybe<Scalars['Boolean']['output']>;
+  /** The type of node this is. */
+  type?: Maybe<Scalars['String']['output']>;
+  /** The display name for the type of node this is. */
+  typeLabel?: Maybe<Scalars['String']['output']>;
+  /** The UID of the entity */
+  uid?: Maybe<Scalars['String']['output']>;
+  /** The element’s URI. */
+  uri?: Maybe<Scalars['String']['output']>;
+  /** The node’s full URL */
+  url?: Maybe<Scalars['String']['output']>;
+  /** The URL for this navigation item. */
+  urlSuffix?: Maybe<Scalars['String']['output']>;
+};
+
+
+export type AmministrazioneTrasparente_Node_CountArgs = {
+  field: Scalars['String']['input'];
+};
+
+
+export type AmministrazioneTrasparente_NodeChildrenArgs = {
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  buttonStyle?: InputMaybe<Scalars['Boolean']['input']>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  nav?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  navHandle?: InputMaybe<Scalars['String']['input']>;
+  navId?: InputMaybe<Scalars['Int']['input']>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  secondary?: InputMaybe<Scalars['Boolean']['input']>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 export type Assets_Asset = AssetInterface & ElementInterface & {
@@ -4375,6 +8907,8 @@ export type BlockContacts_EntryLocalizedArgs = {
   section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarNavigation?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -4450,6 +8984,8 @@ export type BlockContacts_EntryNextArgs = {
   section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarNavigation?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -4600,6 +9136,8 @@ export type BlockContacts_EntryPrevArgs = {
   section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarNavigation?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -5084,6 +9622,8 @@ export type BlockHighlightedLinks_EntryLocalizedArgs = {
   section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarNavigation?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -5159,6 +9699,8 @@ export type BlockHighlightedLinks_EntryNextArgs = {
   section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarNavigation?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -5309,6 +9851,8 @@ export type BlockHighlightedLinks_EntryPrevArgs = {
   section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarNavigation?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -5730,6 +10274,8 @@ export type BlockHighlightedNews_EntryLocalizedArgs = {
   section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarNavigation?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -5867,6 +10413,8 @@ export type BlockHighlightedNews_EntryNextArgs = {
   section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarNavigation?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -6017,6 +10565,8 @@ export type BlockHighlightedNews_EntryPrevArgs = {
   section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarNavigation?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -6438,6 +10988,8 @@ export type BlockHighlightedServices_EntryLocalizedArgs = {
   section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarNavigation?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -6513,6 +11065,8 @@ export type BlockHighlightedServices_EntryNextArgs = {
   section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarNavigation?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -6663,6 +11217,8 @@ export type BlockHighlightedServices_EntryPrevArgs = {
   section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarNavigation?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -6741,6 +11297,721 @@ export type BlockHighlightedServices_EntryServicesLauncherItemsArgs = {
   uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   unique?: InputMaybe<Scalars['Boolean']['input']>;
   uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type BlockListLinks_Entry = ElementInterface & EntryInterface & {
+  /** Return a number of related elements for a field. */
+  _count?: Maybe<Scalars['Int']['output']>;
+  /** The entry’s ancestors, if the section is a structure. Accepts the same arguments as the `entries` query. */
+  ancestors: Array<EntryInterface>;
+  /** Whether the element is archived. */
+  archived?: Maybe<Scalars['Boolean']['output']>;
+  /** Returns the entry’s canonical ID. */
+  canonicalId?: Maybe<Scalars['Int']['output']>;
+  /** Returns the entry’s canonical UUID. */
+  canonicalUid?: Maybe<Scalars['String']['output']>;
+  /** The entry’s children, if the section is a structure. Accepts the same arguments as the `entries` query. */
+  children: Array<EntryInterface>;
+  /** The date the element was created. */
+  dateCreated?: Maybe<Scalars['DateTime']['output']>;
+  /** The date the element was last updated. */
+  dateUpdated?: Maybe<Scalars['DateTime']['output']>;
+  /** The entry’s descendants, if the section is a structure. Accepts the same arguments as the `entries` query. */
+  descendants: Array<EntryInterface>;
+  /** The draft ID (from the `drafts` table). */
+  draftId?: Maybe<Scalars['Int']['output']>;
+  /** The name of the draft. */
+  draftName?: Maybe<Scalars['String']['output']>;
+  /** The notes for the draft. */
+  draftNotes?: Maybe<Scalars['String']['output']>;
+  /** Whether the element is enabled. */
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the element is enabled for the site. */
+  enabledForSite?: Maybe<Scalars['Boolean']['output']>;
+  /** The expiry date of the entry. */
+  expiryDate?: Maybe<Scalars['DateTime']['output']>;
+  /** The handle of the field that contains the entry. */
+  fieldHandle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the field that contains the entry. */
+  fieldId?: Maybe<Scalars['Int']['output']>;
+  /** The ID of the entity */
+  id?: Maybe<Scalars['ID']['output']>;
+  /** Returns whether this is a draft. */
+  isDraft?: Maybe<Scalars['Boolean']['output']>;
+  /** Returns whether this is a revision. */
+  isRevision?: Maybe<Scalars['Boolean']['output']>;
+  /** Returns whether this is an unpublished draft. */
+  isUnpublishedDraft?: Maybe<Scalars['Boolean']['output']>;
+  /** The language of the site element is associated with. */
+  language?: Maybe<Scalars['String']['output']>;
+  /** The element’s level within its structure */
+  level?: Maybe<Scalars['Int']['output']>;
+  /** The element’s left position within its structure. */
+  lft?: Maybe<Scalars['Int']['output']>;
+  linkItems: Array<Maybe<LinkItems_MatrixField>>;
+  /** The same element in other locales. */
+  localized: Array<EntryInterface>;
+  /** Returns the next element relative to this one, from a given set of criteria. */
+  next?: Maybe<EntryInterface>;
+  /** The ID of the entry’s owner element. */
+  ownerId?: Maybe<Scalars['Int']['output']>;
+  /** The entry’s parent, if the section is a structure. */
+  parent?: Maybe<EntryInterface>;
+  /** The entry’s post date. */
+  postDate?: Maybe<Scalars['DateTime']['output']>;
+  /** Returns the previous element relative to this one, from a given set of criteria. */
+  prev?: Maybe<EntryInterface>;
+  /** The revision ID (from the `revisions` table). */
+  revisionId?: Maybe<Scalars['Int']['output']>;
+  /** The revision notes (from the `revisions` table). */
+  revisionNotes?: Maybe<Scalars['String']['output']>;
+  /** The element’s right position within its structure. */
+  rgt?: Maybe<Scalars['Int']['output']>;
+  /** The element’s structure’s root ID */
+  root?: Maybe<Scalars['Int']['output']>;
+  /** The element’s search score, if the `search` parameter was used when querying for the element. */
+  searchScore?: Maybe<Scalars['Int']['output']>;
+  /** The handle of the section that contains the entry. */
+  sectionHandle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the section that contains the entry. */
+  sectionId?: Maybe<Scalars['Int']['output']>;
+  /** The handle of the site the element is associated with. */
+  siteHandle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the site the element is associated with. */
+  siteId?: Maybe<Scalars['Int']['output']>;
+  /** The unique identifier for an element-site relation. */
+  siteSettingsId?: Maybe<Scalars['ID']['output']>;
+  /** The element’s slug. */
+  slug?: Maybe<Scalars['String']['output']>;
+  /** The entry’s position within the field that contains it. */
+  sortOrder?: Maybe<Scalars['Int']['output']>;
+  /**
+   * Returns the entry’s canonical ID.
+   * @deprecated this field has been deprecated since Craft 3.7.7. Use `canonicalId` instead.
+   */
+  sourceId?: Maybe<Scalars['Int']['output']>;
+  /**
+   * Returns the entry’s canonical UUID.
+   * @deprecated this field has been deprecated since Craft 3.7.7. Use `canonicalUid` instead.
+   */
+  sourceUid?: Maybe<Scalars['String']['output']>;
+  /** The element’s status. */
+  status?: Maybe<Scalars['String']['output']>;
+  /** The element’s structure ID. */
+  structureId?: Maybe<Scalars['Int']['output']>;
+  /** The element’s title. */
+  title?: Maybe<Scalars['String']['output']>;
+  /** Whether the element has been soft-deleted. */
+  trashed?: Maybe<Scalars['Boolean']['output']>;
+  /** The handle of the entry type that contains the entry. */
+  typeHandle: Scalars['String']['output'];
+  /** The ID of the entry type that contains the entry. */
+  typeId: Scalars['Int']['output'];
+  /** The UID of the entity */
+  uid?: Maybe<Scalars['String']['output']>;
+  /** The element’s URI. */
+  uri?: Maybe<Scalars['String']['output']>;
+  /** The element’s full URL */
+  url?: Maybe<Scalars['String']['output']>;
+};
+
+
+export type BlockListLinks_Entry_CountArgs = {
+  field: Scalars['String']['input'];
+};
+
+
+export type BlockListLinks_EntryAncestorsArgs = {
+  abstract?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  authorGroup?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  buttonLink?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  date?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  metaDescription?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  metaTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  newsCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  noticeCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  ogImage?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  ownerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  postDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  primaryOwnerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  tags?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withSidebar?: InputMaybe<Scalars['Boolean']['input']>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type BlockListLinks_EntryChildrenArgs = {
+  abstract?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  authorGroup?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  buttonLink?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  date?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  metaDescription?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  metaTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  newsCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  noticeCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  ogImage?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  ownerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  postDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  primaryOwnerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  tags?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withSidebar?: InputMaybe<Scalars['Boolean']['input']>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type BlockListLinks_EntryDescendantsArgs = {
+  abstract?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  authorGroup?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  buttonLink?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  date?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  metaDescription?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  metaTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  newsCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  noticeCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  ogImage?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  ownerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  postDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  primaryOwnerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  tags?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withSidebar?: InputMaybe<Scalars['Boolean']['input']>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type BlockListLinks_EntryLinkItemsArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  authorGroup?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  buttonLink?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  ownerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  postDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  primaryOwnerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type BlockListLinks_EntryLocalizedArgs = {
+  abstract?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  authorGroup?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  buttonLink?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  date?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  metaDescription?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  metaTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  newsCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  noticeCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  ogImage?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  ownerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  postDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  primaryOwnerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarNavigation?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  tags?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withSidebar?: InputMaybe<Scalars['Boolean']['input']>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type BlockListLinks_EntryNextArgs = {
+  abstract?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  authorGroup?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  buttonLink?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  date?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  metaDescription?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  metaTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  newsCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  noticeCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  ogImage?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  ownerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  postDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  primaryOwnerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarNavigation?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  tags?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withSidebar?: InputMaybe<Scalars['Boolean']['input']>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type BlockListLinks_EntryParentArgs = {
+  abstract?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  authorGroup?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  buttonLink?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  date?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  metaDescription?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  metaTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  newsCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  noticeCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  ogImage?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  ownerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  postDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  primaryOwnerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  tags?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withSidebar?: InputMaybe<Scalars['Boolean']['input']>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type BlockListLinks_EntryPrevArgs = {
+  abstract?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  authorGroup?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  buttonLink?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  date?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  metaDescription?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  metaTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  newsCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  noticeCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  ogImage?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  ownerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  postDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  primaryOwnerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarNavigation?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  tags?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withSidebar?: InputMaybe<Scalars['Boolean']['input']>;
   withStructure?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
@@ -7149,6 +12420,8 @@ export type BlockMedia_EntryLocalizedArgs = {
   section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarNavigation?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -7288,6 +12561,8 @@ export type BlockMedia_EntryNextArgs = {
   section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarNavigation?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -7438,6 +12713,8 @@ export type BlockMedia_EntryPrevArgs = {
   section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarNavigation?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -7861,6 +13138,8 @@ export type BlockParagraph_EntryLocalizedArgs = {
   section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarNavigation?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -7936,6 +13215,8 @@ export type BlockParagraph_EntryNextArgs = {
   section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarNavigation?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -8086,6 +13367,8 @@ export type BlockParagraph_EntryPrevArgs = {
   section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarNavigation?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -8508,6 +13791,8 @@ export type BlockTimeline_EntryLocalizedArgs = {
   section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarNavigation?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -8583,6 +13868,8 @@ export type BlockTimeline_EntryNextArgs = {
   section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarNavigation?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -8733,6 +14020,8 @@ export type BlockTimeline_EntryPrevArgs = {
   section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarNavigation?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -9473,6 +14762,8 @@ export type Company_EntryLocalizedArgs = {
   section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarNavigation?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -9548,6 +14839,8 @@ export type Company_EntryNextArgs = {
   section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarNavigation?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -9744,6 +15037,8 @@ export type Company_EntryPrevArgs = {
   section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarNavigation?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -10166,6 +15461,8 @@ export type ContactItem_EntryLocalizedArgs = {
   section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarNavigation?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -10241,6 +15538,8 @@ export type ContactItem_EntryNextArgs = {
   section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarNavigation?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -10391,6 +15690,8 @@ export type ContactItem_EntryPrevArgs = {
   section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarNavigation?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -10950,6 +16251,8 @@ export type LinkItem_EntryLocalizedArgs = {
   section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarNavigation?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -11025,6 +16328,8 @@ export type LinkItem_EntryNextArgs = {
   section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarNavigation?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -11175,6 +16480,8 @@ export type LinkItem_EntryPrevArgs = {
   section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarNavigation?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -11789,6 +17096,8 @@ export type Media_EntryLocalizedArgs = {
   section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarNavigation?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -11864,6 +17173,8 @@ export type Media_EntryNextArgs = {
   section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarNavigation?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -12014,6 +17325,8 @@ export type Media_EntryPrevArgs = {
   section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarNavigation?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -12903,6 +18216,8 @@ export type NewsIndex_EntryLocalizedArgs = {
   section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarNavigation?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -12978,6 +18293,8 @@ export type NewsIndex_EntryNextArgs = {
   section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarNavigation?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -13174,6 +18491,8 @@ export type NewsIndex_EntryPrevArgs = {
   section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarNavigation?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -13653,6 +18972,8 @@ export type News_EntryLocalizedArgs = {
   section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarNavigation?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -13777,6 +19098,8 @@ export type News_EntryNextArgs = {
   section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarNavigation?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -14039,6 +19362,8 @@ export type News_EntryPrevArgs = {
   section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarNavigation?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -14929,6 +20254,8 @@ export type NoticesIndex_EntryLocalizedArgs = {
   section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarNavigation?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -15004,6 +20331,8 @@ export type NoticesIndex_EntryNextArgs = {
   section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarNavigation?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -15200,6 +20529,8 @@ export type NoticesIndex_EntryPrevArgs = {
   section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarNavigation?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -15631,6 +20962,8 @@ export type Notices_EntryLocalizedArgs = {
   section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarNavigation?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -15706,6 +21039,8 @@ export type Notices_EntryNextArgs = {
   section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarNavigation?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -16017,6 +21352,8 @@ export type Notices_EntryPrevArgs = {
   section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarNavigation?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -16082,7 +21419,975 @@ export type Notices_EntryTagsArgs = {
   withStructure?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
-export type PageBlocks_MatrixField = BlockContacts_Entry | BlockMedia_Entry | BlockParagraph_Entry | BlockTimeline_Entry;
+export type PageBlocks_MatrixField = BlockContacts_Entry | BlockListLinks_Entry | BlockMedia_Entry | BlockParagraph_Entry | BlockTimeline_Entry;
+
+export type PagesSectionEntryUnion = Pages_Entry;
+
+export type Pages_Entry = ElementInterface & EntryInterface & {
+  /** Return a number of related elements for a field. */
+  _count?: Maybe<Scalars['Int']['output']>;
+  /** The entry’s ancestors, if the section is a structure. Accepts the same arguments as the `entries` query. */
+  ancestors: Array<EntryInterface>;
+  /** Whether the element is archived. */
+  archived?: Maybe<Scalars['Boolean']['output']>;
+  buttonLink?: Maybe<LinkData>;
+  /** Returns the entry’s canonical ID. */
+  canonicalId?: Maybe<Scalars['Int']['output']>;
+  /** Returns the entry’s canonical UUID. */
+  canonicalUid?: Maybe<Scalars['String']['output']>;
+  /** The entry’s children, if the section is a structure. Accepts the same arguments as the `entries` query. */
+  children: Array<EntryInterface>;
+  /** The date the element was created. */
+  dateCreated?: Maybe<Scalars['DateTime']['output']>;
+  /** The date the element was last updated. */
+  dateUpdated?: Maybe<Scalars['DateTime']['output']>;
+  /** The entry’s descendants, if the section is a structure. Accepts the same arguments as the `entries` query. */
+  descendants: Array<EntryInterface>;
+  /** The draft ID (from the `drafts` table). */
+  draftId?: Maybe<Scalars['Int']['output']>;
+  /** The name of the draft. */
+  draftName?: Maybe<Scalars['String']['output']>;
+  /** The notes for the draft. */
+  draftNotes?: Maybe<Scalars['String']['output']>;
+  /** Whether the element is enabled. */
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the element is enabled for the site. */
+  enabledForSite?: Maybe<Scalars['Boolean']['output']>;
+  /** The expiry date of the entry. */
+  expiryDate?: Maybe<Scalars['DateTime']['output']>;
+  /** The handle of the field that contains the entry. */
+  fieldHandle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the field that contains the entry. */
+  fieldId?: Maybe<Scalars['Int']['output']>;
+  htmlContent?: Maybe<Scalars['String']['output']>;
+  /** The ID of the entity */
+  id?: Maybe<Scalars['ID']['output']>;
+  image: Array<Maybe<AssetInterface>>;
+  /** Returns whether this is a draft. */
+  isDraft?: Maybe<Scalars['Boolean']['output']>;
+  /** Returns whether this is a revision. */
+  isRevision?: Maybe<Scalars['Boolean']['output']>;
+  /** Returns whether this is an unpublished draft. */
+  isUnpublishedDraft?: Maybe<Scalars['Boolean']['output']>;
+  /** The language of the site element is associated with. */
+  language?: Maybe<Scalars['String']['output']>;
+  /** The element’s level within its structure */
+  level?: Maybe<Scalars['Int']['output']>;
+  /** The element’s left position within its structure. */
+  lft?: Maybe<Scalars['Int']['output']>;
+  /** The same element in other locales. */
+  localized: Array<EntryInterface>;
+  metaDescription?: Maybe<Scalars['String']['output']>;
+  metaTitle?: Maybe<Scalars['String']['output']>;
+  /** Returns the next element relative to this one, from a given set of criteria. */
+  next?: Maybe<EntryInterface>;
+  ogImage: Array<Maybe<AssetInterface>>;
+  /** The ID of the entry’s owner element. */
+  ownerId?: Maybe<Scalars['Int']['output']>;
+  pageBlocks: Array<Maybe<PageBlocks_MatrixField>>;
+  /** The entry’s parent, if the section is a structure. */
+  parent?: Maybe<EntryInterface>;
+  /** The entry’s post date. */
+  postDate?: Maybe<Scalars['DateTime']['output']>;
+  /** Returns the previous element relative to this one, from a given set of criteria. */
+  prev?: Maybe<EntryInterface>;
+  /** The revision ID (from the `revisions` table). */
+  revisionId?: Maybe<Scalars['Int']['output']>;
+  /** The revision notes (from the `revisions` table). */
+  revisionNotes?: Maybe<Scalars['String']['output']>;
+  /** The element’s right position within its structure. */
+  rgt?: Maybe<Scalars['Int']['output']>;
+  /** The element’s structure’s root ID */
+  root?: Maybe<Scalars['Int']['output']>;
+  /** The element’s search score, if the `search` parameter was used when querying for the element. */
+  searchScore?: Maybe<Scalars['Int']['output']>;
+  /** The handle of the section that contains the entry. */
+  sectionHandle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the section that contains the entry. */
+  sectionId?: Maybe<Scalars['Int']['output']>;
+  sidebarNavigation?: Maybe<Array<Maybe<NodeInterface>>>;
+  sidebarTitle?: Maybe<Scalars['String']['output']>;
+  /** The handle of the site the element is associated with. */
+  siteHandle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the site the element is associated with. */
+  siteId?: Maybe<Scalars['Int']['output']>;
+  /** The unique identifier for an element-site relation. */
+  siteSettingsId?: Maybe<Scalars['ID']['output']>;
+  /** The element’s slug. */
+  slug?: Maybe<Scalars['String']['output']>;
+  /** The entry’s position within the field that contains it. */
+  sortOrder?: Maybe<Scalars['Int']['output']>;
+  /**
+   * Returns the entry’s canonical ID.
+   * @deprecated this field has been deprecated since Craft 3.7.7. Use `canonicalId` instead.
+   */
+  sourceId?: Maybe<Scalars['Int']['output']>;
+  /**
+   * Returns the entry’s canonical UUID.
+   * @deprecated this field has been deprecated since Craft 3.7.7. Use `canonicalUid` instead.
+   */
+  sourceUid?: Maybe<Scalars['String']['output']>;
+  /** The element’s status. */
+  status?: Maybe<Scalars['String']['output']>;
+  /** The element’s structure ID. */
+  structureId?: Maybe<Scalars['Int']['output']>;
+  /** The element’s title. */
+  title?: Maybe<Scalars['String']['output']>;
+  /** Whether the element has been soft-deleted. */
+  trashed?: Maybe<Scalars['Boolean']['output']>;
+  /** The handle of the entry type that contains the entry. */
+  typeHandle: Scalars['String']['output'];
+  /** The ID of the entry type that contains the entry. */
+  typeId: Scalars['Int']['output'];
+  /** The UID of the entity */
+  uid?: Maybe<Scalars['String']['output']>;
+  /** The element’s URI. */
+  uri?: Maybe<Scalars['String']['output']>;
+  /** The element’s full URL */
+  url?: Maybe<Scalars['String']['output']>;
+  withSidebar?: Maybe<Scalars['Boolean']['output']>;
+};
+
+
+export type Pages_Entry_CountArgs = {
+  field: Scalars['String']['input'];
+};
+
+
+export type Pages_EntryAncestorsArgs = {
+  abstract?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  authorGroup?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  buttonLink?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  date?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  metaDescription?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  metaTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  newsCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  noticeCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  ogImage?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  ownerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  postDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  primaryOwnerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  tags?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withSidebar?: InputMaybe<Scalars['Boolean']['input']>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type Pages_EntryChildrenArgs = {
+  abstract?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  authorGroup?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  buttonLink?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  date?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  metaDescription?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  metaTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  newsCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  noticeCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  ogImage?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  ownerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  postDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  primaryOwnerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  tags?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withSidebar?: InputMaybe<Scalars['Boolean']['input']>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type Pages_EntryDescendantsArgs = {
+  abstract?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  authorGroup?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  buttonLink?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  date?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  metaDescription?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  metaTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  newsCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  noticeCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  ogImage?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  ownerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  postDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  primaryOwnerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  tags?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withSidebar?: InputMaybe<Scalars['Boolean']['input']>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type Pages_EntryImageArgs = {
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateModified?: InputMaybe<Scalars['String']['input']>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  filename?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  folderId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  hasAlt?: InputMaybe<Scalars['Boolean']['input']>;
+  height?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  includeSubfolders?: InputMaybe<Scalars['Boolean']['input']>;
+  kind?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  size?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uploader?: InputMaybe<Scalars['QueryArgument']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  volume?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  volumeId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  width?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withTransforms?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+export type Pages_EntryLocalizedArgs = {
+  abstract?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  authorGroup?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  buttonLink?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  date?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  metaDescription?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  metaTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  newsCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  noticeCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  ogImage?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  ownerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  postDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  primaryOwnerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarNavigation?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  tags?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withSidebar?: InputMaybe<Scalars['Boolean']['input']>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type Pages_EntryNextArgs = {
+  abstract?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  authorGroup?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  buttonLink?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  date?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  metaDescription?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  metaTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  newsCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  noticeCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  ogImage?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  ownerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  postDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  primaryOwnerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarNavigation?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  tags?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withSidebar?: InputMaybe<Scalars['Boolean']['input']>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type Pages_EntryOgImageArgs = {
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateModified?: InputMaybe<Scalars['String']['input']>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  filename?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  folderId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  hasAlt?: InputMaybe<Scalars['Boolean']['input']>;
+  height?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  includeSubfolders?: InputMaybe<Scalars['Boolean']['input']>;
+  kind?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  size?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uploader?: InputMaybe<Scalars['QueryArgument']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  volume?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  volumeId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  width?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withTransforms?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+export type Pages_EntryPageBlocksArgs = {
+  abstract?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  authorGroup?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  buttonLink?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  evidence?: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  ownerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  postDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  primaryOwnerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type Pages_EntryParentArgs = {
+  abstract?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  authorGroup?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  buttonLink?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  date?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  metaDescription?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  metaTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  newsCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  noticeCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  ogImage?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  ownerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  postDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  primaryOwnerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  tags?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withSidebar?: InputMaybe<Scalars['Boolean']['input']>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type Pages_EntryPrevArgs = {
+  abstract?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  authorGroup?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  buttonLink?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  date?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  metaDescription?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  metaTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  newsCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  noticeCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  ogImage?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  ownerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  postDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  primaryOwnerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarNavigation?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  tags?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withSidebar?: InputMaybe<Scalars['Boolean']['input']>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type Pages_EntrySidebarNavigationArgs = {
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  buttonStyle?: InputMaybe<Scalars['Boolean']['input']>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  nav?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  navHandle?: InputMaybe<Scalars['String']['input']>;
+  navId?: InputMaybe<Scalars['Int']['input']>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  secondary?: InputMaybe<Scalars['Boolean']['input']>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type Seo_GlobalSet = ElementInterface & GlobalSetInterface & {
+  /** Return a number of related elements for a field. */
+  _count?: Maybe<Scalars['Int']['output']>;
+  /** Whether the element is archived. */
+  archived?: Maybe<Scalars['Boolean']['output']>;
+  /** The date the element was created. */
+  dateCreated?: Maybe<Scalars['DateTime']['output']>;
+  /** The date the element was last updated. */
+  dateUpdated?: Maybe<Scalars['DateTime']['output']>;
+  /** Whether the element is enabled. */
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  /** The handle of the global set. */
+  handle: Scalars['String']['output'];
+  /** The ID of the entity */
+  id?: Maybe<Scalars['ID']['output']>;
+  /** The language of the site element is associated with. */
+  language?: Maybe<Scalars['String']['output']>;
+  metaDescription?: Maybe<Scalars['String']['output']>;
+  metaTitle?: Maybe<Scalars['String']['output']>;
+  /** The name of the global set. */
+  name: Scalars['String']['output'];
+  ogImage: Array<Maybe<AssetInterface>>;
+  /** The element’s search score, if the `search` parameter was used when querying for the element. */
+  searchScore?: Maybe<Scalars['Int']['output']>;
+  /** The handle of the site the element is associated with. */
+  siteHandle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the site the element is associated with. */
+  siteId?: Maybe<Scalars['Int']['output']>;
+  /** The unique identifier for an element-site relation. */
+  siteSettingsId?: Maybe<Scalars['ID']['output']>;
+  /** The element’s slug. */
+  slug?: Maybe<Scalars['String']['output']>;
+  /** The element’s status. */
+  status?: Maybe<Scalars['String']['output']>;
+  /** The element’s title. */
+  title?: Maybe<Scalars['String']['output']>;
+  /** Whether the element has been soft-deleted. */
+  trashed?: Maybe<Scalars['Boolean']['output']>;
+  /** The UID of the entity */
+  uid?: Maybe<Scalars['String']['output']>;
+  /** The element’s URI. */
+  uri?: Maybe<Scalars['String']['output']>;
+};
+
+
+export type Seo_GlobalSet_CountArgs = {
+  field: Scalars['String']['input'];
+};
+
+
+export type Seo_GlobalSetOgImageArgs = {
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateModified?: InputMaybe<Scalars['String']['input']>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  filename?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  folderId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  hasAlt?: InputMaybe<Scalars['Boolean']['input']>;
+  height?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  includeSubfolders?: InputMaybe<Scalars['Boolean']['input']>;
+  kind?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  size?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uploader?: InputMaybe<Scalars['QueryArgument']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  volume?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  volumeId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  width?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withTransforms?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
 
 export type ServiceCategories_Category = CategoryInterface & ElementInterface & {
   /** Return a number of related elements for a field. */
@@ -16909,6 +23214,8 @@ export type ServicesIndex_EntryLocalizedArgs = {
   section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarNavigation?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -16984,6 +23291,8 @@ export type ServicesIndex_EntryNextArgs = {
   section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarNavigation?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -17180,6 +23489,8 @@ export type ServicesIndex_EntryPrevArgs = {
   section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarNavigation?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -17605,6 +23916,8 @@ export type ServicesLauncher_EntryLocalizedArgs = {
   section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarNavigation?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -17680,6 +23993,8 @@ export type ServicesLauncher_EntryNextArgs = {
   section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarNavigation?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -17830,6 +24145,8 @@ export type ServicesLauncher_EntryPrevArgs = {
   section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarNavigation?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -17905,6 +24222,8 @@ export type ServicesLauncher_EntryServiceEntriesArgs = {
   section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarNavigation?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -18338,6 +24657,8 @@ export type Services_EntryLocalizedArgs = {
   section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarNavigation?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -18413,6 +24734,8 @@ export type Services_EntryNextArgs = {
   section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarNavigation?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -18675,6 +24998,8 @@ export type Services_EntryPrevArgs = {
   section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarNavigation?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -18783,6 +25108,770 @@ export type Services_EntryTagsArgs = {
   slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   structureId?: InputMaybe<Scalars['Int']['input']>;
   title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type SocialItem_Entry = ElementInterface & EntryInterface & {
+  /** Return a number of related elements for a field. */
+  _count?: Maybe<Scalars['Int']['output']>;
+  /** The entry’s ancestors, if the section is a structure. Accepts the same arguments as the `entries` query. */
+  ancestors: Array<EntryInterface>;
+  /** Whether the element is archived. */
+  archived?: Maybe<Scalars['Boolean']['output']>;
+  /** Returns the entry’s canonical ID. */
+  canonicalId?: Maybe<Scalars['Int']['output']>;
+  /** Returns the entry’s canonical UUID. */
+  canonicalUid?: Maybe<Scalars['String']['output']>;
+  /** The entry’s children, if the section is a structure. Accepts the same arguments as the `entries` query. */
+  children: Array<EntryInterface>;
+  /** The date the element was created. */
+  dateCreated?: Maybe<Scalars['DateTime']['output']>;
+  /** The date the element was last updated. */
+  dateUpdated?: Maybe<Scalars['DateTime']['output']>;
+  /** The entry’s descendants, if the section is a structure. Accepts the same arguments as the `entries` query. */
+  descendants: Array<EntryInterface>;
+  /** The draft ID (from the `drafts` table). */
+  draftId?: Maybe<Scalars['Int']['output']>;
+  /** The name of the draft. */
+  draftName?: Maybe<Scalars['String']['output']>;
+  /** The notes for the draft. */
+  draftNotes?: Maybe<Scalars['String']['output']>;
+  /** Whether the element is enabled. */
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the element is enabled for the site. */
+  enabledForSite?: Maybe<Scalars['Boolean']['output']>;
+  /** The expiry date of the entry. */
+  expiryDate?: Maybe<Scalars['DateTime']['output']>;
+  /** The handle of the field that contains the entry. */
+  fieldHandle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the field that contains the entry. */
+  fieldId?: Maybe<Scalars['Int']['output']>;
+  /** The ID of the entity */
+  id?: Maybe<Scalars['ID']['output']>;
+  /** Returns whether this is a draft. */
+  isDraft?: Maybe<Scalars['Boolean']['output']>;
+  /** Returns whether this is a revision. */
+  isRevision?: Maybe<Scalars['Boolean']['output']>;
+  /** Returns whether this is an unpublished draft. */
+  isUnpublishedDraft?: Maybe<Scalars['Boolean']['output']>;
+  /** The language of the site element is associated with. */
+  language?: Maybe<Scalars['String']['output']>;
+  /** The element’s level within its structure */
+  level?: Maybe<Scalars['Int']['output']>;
+  /** The element’s left position within its structure. */
+  lft?: Maybe<Scalars['Int']['output']>;
+  link_?: Maybe<LinkData>;
+  /** The same element in other locales. */
+  localized: Array<EntryInterface>;
+  /** Returns the next element relative to this one, from a given set of criteria. */
+  next?: Maybe<EntryInterface>;
+  /** The ID of the entry’s owner element. */
+  ownerId?: Maybe<Scalars['Int']['output']>;
+  /** The entry’s parent, if the section is a structure. */
+  parent?: Maybe<EntryInterface>;
+  /** The entry’s post date. */
+  postDate?: Maybe<Scalars['DateTime']['output']>;
+  /** Returns the previous element relative to this one, from a given set of criteria. */
+  prev?: Maybe<EntryInterface>;
+  /** The revision ID (from the `revisions` table). */
+  revisionId?: Maybe<Scalars['Int']['output']>;
+  /** The revision notes (from the `revisions` table). */
+  revisionNotes?: Maybe<Scalars['String']['output']>;
+  /** The element’s right position within its structure. */
+  rgt?: Maybe<Scalars['Int']['output']>;
+  /** The element’s structure’s root ID */
+  root?: Maybe<Scalars['Int']['output']>;
+  /** The element’s search score, if the `search` parameter was used when querying for the element. */
+  searchScore?: Maybe<Scalars['Int']['output']>;
+  /** The handle of the section that contains the entry. */
+  sectionHandle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the section that contains the entry. */
+  sectionId?: Maybe<Scalars['Int']['output']>;
+  /** The handle of the site the element is associated with. */
+  siteHandle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the site the element is associated with. */
+  siteId?: Maybe<Scalars['Int']['output']>;
+  /** The unique identifier for an element-site relation. */
+  siteSettingsId?: Maybe<Scalars['ID']['output']>;
+  /** The element’s slug. */
+  slug?: Maybe<Scalars['String']['output']>;
+  /** The entry’s position within the field that contains it. */
+  sortOrder?: Maybe<Scalars['Int']['output']>;
+  /**
+   * Returns the entry’s canonical ID.
+   * @deprecated this field has been deprecated since Craft 3.7.7. Use `canonicalId` instead.
+   */
+  sourceId?: Maybe<Scalars['Int']['output']>;
+  /**
+   * Returns the entry’s canonical UUID.
+   * @deprecated this field has been deprecated since Craft 3.7.7. Use `canonicalUid` instead.
+   */
+  sourceUid?: Maybe<Scalars['String']['output']>;
+  /** The element’s status. */
+  status?: Maybe<Scalars['String']['output']>;
+  /** The element’s structure ID. */
+  structureId?: Maybe<Scalars['Int']['output']>;
+  /** The element’s title. */
+  title?: Maybe<Scalars['String']['output']>;
+  /** Whether the element has been soft-deleted. */
+  trashed?: Maybe<Scalars['Boolean']['output']>;
+  /** The handle of the entry type that contains the entry. */
+  typeHandle: Scalars['String']['output'];
+  /** The ID of the entry type that contains the entry. */
+  typeId: Scalars['Int']['output'];
+  /** The UID of the entity */
+  uid?: Maybe<Scalars['String']['output']>;
+  /** The element’s URI. */
+  uri?: Maybe<Scalars['String']['output']>;
+  /** The element’s full URL */
+  url?: Maybe<Scalars['String']['output']>;
+};
+
+
+export type SocialItem_Entry_CountArgs = {
+  field: Scalars['String']['input'];
+};
+
+
+export type SocialItem_EntryAncestorsArgs = {
+  abstract?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  authorGroup?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  buttonLink?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  date?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  metaDescription?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  metaTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  newsCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  noticeCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  ogImage?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  ownerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  postDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  primaryOwnerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  tags?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withSidebar?: InputMaybe<Scalars['Boolean']['input']>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type SocialItem_EntryChildrenArgs = {
+  abstract?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  authorGroup?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  buttonLink?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  date?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  metaDescription?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  metaTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  newsCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  noticeCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  ogImage?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  ownerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  postDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  primaryOwnerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  tags?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withSidebar?: InputMaybe<Scalars['Boolean']['input']>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type SocialItem_EntryDescendantsArgs = {
+  abstract?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  authorGroup?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  buttonLink?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  date?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  metaDescription?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  metaTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  newsCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  noticeCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  ogImage?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  ownerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  postDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  primaryOwnerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  tags?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withSidebar?: InputMaybe<Scalars['Boolean']['input']>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type SocialItem_EntryLocalizedArgs = {
+  abstract?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  authorGroup?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  buttonLink?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  date?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  metaDescription?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  metaTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  newsCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  noticeCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  ogImage?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  ownerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  postDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  primaryOwnerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarNavigation?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  tags?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withSidebar?: InputMaybe<Scalars['Boolean']['input']>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type SocialItem_EntryNextArgs = {
+  abstract?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  authorGroup?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  buttonLink?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  date?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  metaDescription?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  metaTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  newsCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  noticeCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  ogImage?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  ownerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  postDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  primaryOwnerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarNavigation?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  tags?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withSidebar?: InputMaybe<Scalars['Boolean']['input']>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type SocialItem_EntryParentArgs = {
+  abstract?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  authorGroup?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  buttonLink?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  date?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  metaDescription?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  metaTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  newsCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  noticeCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  ogImage?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  ownerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  postDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  primaryOwnerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  tags?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withSidebar?: InputMaybe<Scalars['Boolean']['input']>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type SocialItem_EntryPrevArgs = {
+  abstract?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  authorGroup?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  buttonLink?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  date?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  image?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  metaDescription?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  metaTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  newsCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  noticeCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  ogImage?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  ownerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  postDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  primaryOwnerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarNavigation?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  tags?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  unique?: InputMaybe<Scalars['Boolean']['input']>;
+  uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  withSidebar?: InputMaybe<Scalars['Boolean']['input']>;
+  withStructure?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type SocialItems_MatrixField = SocialItem_Entry;
+
+export type Socials_GlobalSet = ElementInterface & GlobalSetInterface & {
+  /** Return a number of related elements for a field. */
+  _count?: Maybe<Scalars['Int']['output']>;
+  /** Whether the element is archived. */
+  archived?: Maybe<Scalars['Boolean']['output']>;
+  /** The date the element was created. */
+  dateCreated?: Maybe<Scalars['DateTime']['output']>;
+  /** The date the element was last updated. */
+  dateUpdated?: Maybe<Scalars['DateTime']['output']>;
+  /** Whether the element is enabled. */
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  /** The handle of the global set. */
+  handle: Scalars['String']['output'];
+  /** The ID of the entity */
+  id?: Maybe<Scalars['ID']['output']>;
+  /** The language of the site element is associated with. */
+  language?: Maybe<Scalars['String']['output']>;
+  /** The name of the global set. */
+  name: Scalars['String']['output'];
+  /** The element’s search score, if the `search` parameter was used when querying for the element. */
+  searchScore?: Maybe<Scalars['Int']['output']>;
+  /** The handle of the site the element is associated with. */
+  siteHandle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the site the element is associated with. */
+  siteId?: Maybe<Scalars['Int']['output']>;
+  /** The unique identifier for an element-site relation. */
+  siteSettingsId?: Maybe<Scalars['ID']['output']>;
+  /** The element’s slug. */
+  slug?: Maybe<Scalars['String']['output']>;
+  socialItems: Array<Maybe<SocialItems_MatrixField>>;
+  /** The element’s status. */
+  status?: Maybe<Scalars['String']['output']>;
+  /** The element’s title. */
+  title?: Maybe<Scalars['String']['output']>;
+  /** Whether the element has been soft-deleted. */
+  trashed?: Maybe<Scalars['Boolean']['output']>;
+  /** The UID of the entity */
+  uid?: Maybe<Scalars['String']['output']>;
+  /** The element’s URI. */
+  uri?: Maybe<Scalars['String']['output']>;
+};
+
+
+export type Socials_GlobalSet_CountArgs = {
+  field: Scalars['String']['input'];
+};
+
+
+export type Socials_GlobalSetSocialItemsArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  ancestorDist?: InputMaybe<Scalars['Int']['input']>;
+  ancestorOf?: InputMaybe<Scalars['Int']['input']>;
+  authorGroup?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  authorGroupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  authorId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  descendantDist?: InputMaybe<Scalars['Int']['input']>;
+  descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  editable?: InputMaybe<Scalars['Boolean']['input']>;
+  expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  inReverse?: InputMaybe<Scalars['Boolean']['input']>;
+  language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  leaves?: InputMaybe<Scalars['Boolean']['input']>;
+  level?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  link_?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  nextSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  notRelatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  ownerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  positionedAfter?: InputMaybe<Scalars['Int']['input']>;
+  positionedBefore?: InputMaybe<Scalars['Int']['input']>;
+  postDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  preferSites?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  prevSiblingOf?: InputMaybe<Scalars['Int']['input']>;
+  primaryOwnerId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  ref?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  relatedTo?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAll?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  relatedToAssets?: InputMaybe<Array<InputMaybe<AssetRelationCriteriaInput>>>;
+  relatedToCategories?: InputMaybe<Array<InputMaybe<CategoryRelationCriteriaInput>>>;
+  relatedToEntries?: InputMaybe<Array<InputMaybe<EntryRelationCriteriaInput>>>;
+  relatedToTags?: InputMaybe<Array<InputMaybe<TagRelationCriteriaInput>>>;
+  relatedToUsers?: InputMaybe<Array<InputMaybe<UserRelationCriteriaInput>>>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  searchTermOptions?: InputMaybe<SearchTermOptions>;
+  section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  structureId?: InputMaybe<Scalars['Int']['input']>;
+  title?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  type?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  typeId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   uid?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   unique?: InputMaybe<Scalars['Boolean']['input']>;
   uri?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -19610,6 +26699,8 @@ export type TimelineItem_EntryLocalizedArgs = {
   section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarNavigation?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -19685,6 +26776,8 @@ export type TimelineItem_EntryNextArgs = {
   section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarNavigation?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -19835,6 +26928,8 @@ export type TimelineItem_EntryPrevArgs = {
   section?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sectionId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   serviceCategories?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarNavigation?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
+  sidebarTitle?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   site?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   siteId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   siteSettingsId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
@@ -19853,30 +26948,129 @@ export type TimelineItem_EntryPrevArgs = {
 
 export type TimelineItems_MatrixField = TimelineItem_Entry;
 
+export type UrpForm_Form = ElementInterface & FormInterface & {
+  /** Return a number of related elements for a field. */
+  _count?: Maybe<Scalars['Int']['output']>;
+  /** Whether the element is archived. */
+  archived?: Maybe<Scalars['Boolean']['output']>;
+  /** A list of captcha values (name and value) to assist with spam protection. */
+  captchas?: Maybe<Array<Maybe<FormieCaptchaType>>>;
+  /** The form’s config as JSON. */
+  configJson?: Maybe<Scalars['String']['output']>;
+  /** A CSRF token (name and value). */
+  csrfToken?: Maybe<FormieCsrfTokenType>;
+  /** The date the element was created. */
+  dateCreated?: Maybe<Scalars['DateTime']['output']>;
+  /** The date the element was last updated. */
+  dateUpdated?: Maybe<Scalars['DateTime']['output']>;
+  emailAddress?: Maybe<Scalars['String']['output']>;
+  /** Whether the element is enabled. */
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  /** The form’s fields. */
+  formFields?: Maybe<Array<Maybe<FieldInterface>>>;
+  /** The form’s handle. */
+  handle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the entity */
+  id?: Maybe<Scalars['ID']['output']>;
+  /** Whether the form is considered available according to user checks, scheduling and more. */
+  isAvailable?: Maybe<Scalars['Boolean']['output']>;
+  /** The language of the site element is associated with. */
+  language?: Maybe<Scalars['String']['output']>;
+  message?: Maybe<Scalars['String']['output']>;
+  /** The form’s pages. */
+  pages?: Maybe<Array<Maybe<PageInterface>>>;
+  /** The form’s rows. */
+  rows?: Maybe<Array<Maybe<RowInterface>>>;
+  /** The element’s search score, if the `search` parameter was used when querying for the element. */
+  searchScore?: Maybe<Scalars['Int']['output']>;
+  /** The form’s settings. */
+  settings?: Maybe<FormSettingsType>;
+  /** The handle of the site the element is associated with. */
+  siteHandle?: Maybe<Scalars['String']['output']>;
+  /** The ID of the site the element is associated with. */
+  siteId?: Maybe<Scalars['Int']['output']>;
+  /** The unique identifier for an element-site relation. */
+  siteSettingsId?: Maybe<Scalars['ID']['output']>;
+  /** The element’s slug. */
+  slug?: Maybe<Scalars['String']['output']>;
+  /** The element’s status. */
+  status?: Maybe<Scalars['String']['output']>;
+  /** The form’s endpoint for sending submissions to, if using POST requests. */
+  submissionEndpoint?: Maybe<Scalars['String']['output']>;
+  /** The form’s GQL mutation name for submissions to use. */
+  submissionMutationName?: Maybe<Scalars['String']['output']>;
+  /** The form’s CSS for rendering. */
+  templateCss?: Maybe<Scalars['String']['output']>;
+  /** The form’s rendered HTML. */
+  templateHtml?: Maybe<Scalars['String']['output']>;
+  /** The form’s JS for rendering and functionality. */
+  templateJs?: Maybe<Scalars['String']['output']>;
+  /** The element’s title. */
+  title?: Maybe<Scalars['String']['output']>;
+  /** Whether the element has been soft-deleted. */
+  trashed?: Maybe<Scalars['Boolean']['output']>;
+  /** The UID of the entity */
+  uid?: Maybe<Scalars['String']['output']>;
+  /** The element’s URI. */
+  uri?: Maybe<Scalars['String']['output']>;
+  yourName?: Maybe<NameType>;
+};
+
+
+export type UrpForm_Form_CountArgs = {
+  field: Scalars['String']['input'];
+};
+
+
+export type UrpForm_FormFormFieldsArgs = {
+  includeDisabled?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type UrpForm_FormRowsArgs = {
+  includeDisabled?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type UrpForm_FormTemplateHtmlArgs = {
+  options?: InputMaybe<Scalars['String']['input']>;
+  populateFormValues?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+export type UrpForm_FormTemplateJsArgs = {
+  initJs?: InputMaybe<Scalars['Boolean']['input']>;
+  useObserver?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
 export type GetCompanyInfoQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type GetCompanyInfoQuery = { globalSet?: { companyName?: string, info?: string, additionalInfo?: string } };
-
-type NavigationLink_BottomNavigation_Node_FooterNavigation_Node_Fragment = { id?: string, newWindow?: string, title?: string, type?: string, typeLabel?: string, url?: string, children?: Array<{ id?: string, newWindow?: string, title?: string, type?: string, typeLabel?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } }>, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } };
-
-type NavigationLink_MainNavigation_Node_Fragment = { secondary?: boolean, buttonStyle?: boolean, id?: string, newWindow?: string, title?: string, type?: string, typeLabel?: string, url?: string, children?: Array<{ id?: string, newWindow?: string, title?: string, type?: string, typeLabel?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } }>, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } };
-
-export type NavigationLinkFragment = NavigationLink_BottomNavigation_Node_FooterNavigation_Node_Fragment | NavigationLink_MainNavigation_Node_Fragment;
 
 export type GetNavigationQueryVariables = Exact<{
   navHandle?: InputMaybe<Scalars['String']['input']>;
 }>;
 
 
-export type GetNavigationQuery = { navigationNodes?: Array<{ id?: string, newWindow?: string, title?: string, type?: string, typeLabel?: string, url?: string, children?: Array<{ id?: string, newWindow?: string, title?: string, type?: string, typeLabel?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } }>, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } } | { secondary?: boolean, buttonStyle?: boolean, id?: string, newWindow?: string, title?: string, type?: string, typeLabel?: string, url?: string, children?: Array<{ id?: string, newWindow?: string, title?: string, type?: string, typeLabel?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } }>, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } }> };
+export type GetNavigationQuery = { navigationNodes?: Array<{ id?: string, newWindow?: string, title?: string, type?: string, typeLabel?: string, url?: string, children?: Array<{ id?: string, newWindow?: string, title?: string, type?: string, typeLabel?: string, url?: string, children?: Array<{ id?: string, newWindow?: string, title?: string, type?: string, typeLabel?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } }>, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } }>, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } | { secondary?: boolean, buttonStyle?: boolean, id?: string, newWindow?: string, title?: string, type?: string, typeLabel?: string, url?: string, children?: Array<{ id?: string, newWindow?: string, title?: string, type?: string, typeLabel?: string, url?: string, children?: Array<{ id?: string, newWindow?: string, title?: string, type?: string, typeLabel?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } }>, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } }>, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } }> };
+
+export type GetSeoQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetSeoQuery = { globalSet?: { metaTitle?: string, metaDescription?: string, ogImage: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }> } };
 
 export type SearchWithRankingQueryVariables = Exact<{
   search: Scalars['String']['input'];
 }>;
 
 
-export type SearchWithRankingQuery = { entries?: Array<{ id?: string, title?: string, slug?: string, uri?: string }> };
+export type SearchWithRankingQuery = { entries?: Array<{ id?: string, title?: string, slug?: string, uri?: string } | { id?: string, title?: string, slug?: string, uri?: string }> };
+
+export type GetSocialsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetSocialsQuery = { globalSet?: { socialItems: Array<{ title?: string, link_?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }> } };
 
 export type ListNewsQueryVariables = Exact<{
   offset?: InputMaybe<Scalars['Int']['input']>;
@@ -19926,21 +27120,24 @@ export type ListServicesCategoriesQuery = { categories?: Array<{ id?: string, ti
 export type PageHomeQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type PageHomeQuery = { entries?: Array<{ id?: string, metaDescription?: string, metaTitle?: string, title?: string, companyBlocks: Array<{ title?: string, typeHandle: string, uid?: string, linkItems: Array<{ buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } } }> } | { title?: string, typeHandle: string, uid?: string, newsEntries: Array<{ abstract?: string, date?: any, id?: string, slug?: string, title?: string, image: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, newsCategories: Array<{ title?: string, slug?: string }> }> } | { title?: string, typeHandle: string, uid?: string, servicesLauncherItems: Array<{ abstract?: string, title?: string, serviceEntries: Array<{ abstract?: string, id?: string, slug?: string, title?: string, serviceCategories: Array<{ title?: string, slug?: string }> }>, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } } }> }> }> };
+export type PageHomeQuery = { entries?: Array<{ id?: string, metaTitle?: string, metaDescription?: string, title?: string, companyBlocks: Array<{ title?: string, typeHandle: string, uid?: string, linkItems: Array<{ buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }> } | { title?: string, typeHandle: string, uid?: string, newsEntries: Array<{ abstract?: string, date?: any, id?: string, slug?: string, title?: string, image: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, newsCategories: Array<{ title?: string, slug?: string }> }> } | { title?: string, typeHandle: string, uid?: string, servicesLauncherItems: Array<{ abstract?: string, title?: string, serviceEntries: Array<{ abstract?: string, id?: string, slug?: string, title?: string, serviceCategories: Array<{ title?: string, slug?: string }> }>, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }> }>, ogImage: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }> }> };
 
 export type PageNewsQueryVariables = Exact<{
   slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>> | InputMaybe<Scalars['String']['input']>>;
 }>;
 
 
-export type PageNewsQuery = { entries?: Array<{ htmlContent?: string, id?: string, title?: string, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } }, image: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, pageBlocks: Array<(
-      { abstract?: string, id?: string, title?: string, typeHandle: string, uid?: string, contactItems: Array<{ address?: string, id?: string, slug?: string, title?: string, email?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } } }> }
+export type PageNewsQuery = { entries?: Array<{ htmlContent?: string, id?: string, metaTitle?: string, metaDescription?: string, title?: string, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } }, image: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, ogImage: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, pageBlocks: Array<(
+      { abstract?: string, id?: string, title?: string, typeHandle: string, uid?: string, contactItems: Array<{ address?: string, id?: string, slug?: string, title?: string, email?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }> }
       & { __typename: 'blockContacts_Entry' }
+    ) | (
+      { title?: string, typeHandle: string, uid?: string, linkItems: Array<{ buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }> }
+      & { __typename: 'blockListLinks_Entry' }
     ) | (
       { id?: string, title?: string, typeHandle: string, uid?: string, medias: Array<{ column?: string, image: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, video: Array<{ src?: string, type?: string }> }> }
       & { __typename: 'blockMedia_Entry' }
     ) | (
-      { evidence?: boolean, htmlContent?: string, title?: string, typeHandle: string, uid?: string, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } } }
+      { evidence?: boolean, htmlContent?: string, title?: string, typeHandle: string, uid?: string, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }
       & { __typename: 'blockParagraph_Entry' }
     ) | (
       { id?: string, htmlContent?: string, title?: string, typeHandle: string, uid?: string, timelineItems: Array<{ abstract?: string, date?: any, title?: string }> }
@@ -19950,21 +27147,24 @@ export type PageNewsQuery = { entries?: Array<{ htmlContent?: string, id?: strin
 export type NewsIndexQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type NewsIndexQuery = { entries?: Array<{ title?: string, abstract?: string }> };
+export type NewsIndexQuery = { entries?: Array<{ abstract?: string, metaTitle?: string, metaDescription?: string, title?: string, ogImage: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }> }> };
 
 export type PageNoticesQueryVariables = Exact<{
   slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>> | InputMaybe<Scalars['String']['input']>>;
 }>;
 
 
-export type PageNoticesQuery = { entries?: Array<{ htmlContent?: string, id?: string, title?: string, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } }, pageBlocks: Array<(
-      { abstract?: string, id?: string, title?: string, typeHandle: string, uid?: string, contactItems: Array<{ address?: string, id?: string, slug?: string, title?: string, email?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } } }> }
+export type PageNoticesQuery = { entries?: Array<{ htmlContent?: string, id?: string, metaTitle?: string, metaDescription?: string, title?: string, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } }, ogImage: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, pageBlocks: Array<(
+      { abstract?: string, id?: string, title?: string, typeHandle: string, uid?: string, contactItems: Array<{ address?: string, id?: string, slug?: string, title?: string, email?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }> }
       & { __typename: 'blockContacts_Entry' }
+    ) | (
+      { title?: string, typeHandle: string, uid?: string, linkItems: Array<{ buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }> }
+      & { __typename: 'blockListLinks_Entry' }
     ) | (
       { id?: string, title?: string, typeHandle: string, uid?: string, medias: Array<{ column?: string, image: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, video: Array<{ src?: string, type?: string }> }> }
       & { __typename: 'blockMedia_Entry' }
     ) | (
-      { evidence?: boolean, htmlContent?: string, title?: string, typeHandle: string, uid?: string, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } } }
+      { evidence?: boolean, htmlContent?: string, title?: string, typeHandle: string, uid?: string, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }
       & { __typename: 'blockParagraph_Entry' }
     ) | (
       { id?: string, htmlContent?: string, title?: string, typeHandle: string, uid?: string, timelineItems: Array<{ abstract?: string, date?: any, title?: string }> }
@@ -19974,21 +27174,46 @@ export type PageNoticesQuery = { entries?: Array<{ htmlContent?: string, id?: st
 export type NoticesIndexQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type NoticesIndexQuery = { entries?: Array<{ title?: string, abstract?: string }> };
+export type NoticesIndexQuery = { entries?: Array<{ abstract?: string, metaTitle?: string, metaDescription?: string, title?: string, ogImage: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }> }> };
+
+export type PagePagesQueryVariables = Exact<{
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>> | InputMaybe<Scalars['String']['input']>>;
+}>;
+
+
+export type PagePagesQuery = { entries?: Array<{ dateUpdated?: any, htmlContent?: string, id?: string, metaTitle?: string, metaDescription?: string, title?: string, withSidebar?: boolean, sidebarTitle?: string, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } }, ogImage: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, pageBlocks: Array<(
+      { abstract?: string, id?: string, title?: string, typeHandle: string, uid?: string, contactItems: Array<{ address?: string, id?: string, slug?: string, title?: string, email?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }> }
+      & { __typename: 'blockContacts_Entry' }
+    ) | (
+      { title?: string, typeHandle: string, uid?: string, linkItems: Array<{ buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }> }
+      & { __typename: 'blockListLinks_Entry' }
+    ) | (
+      { id?: string, title?: string, typeHandle: string, uid?: string, medias: Array<{ column?: string, image: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, video: Array<{ src?: string, type?: string }> }> }
+      & { __typename: 'blockMedia_Entry' }
+    ) | (
+      { evidence?: boolean, htmlContent?: string, title?: string, typeHandle: string, uid?: string, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }
+      & { __typename: 'blockParagraph_Entry' }
+    ) | (
+      { id?: string, htmlContent?: string, title?: string, typeHandle: string, uid?: string, timelineItems: Array<{ abstract?: string, date?: any, title?: string }> }
+      & { __typename: 'blockTimeline_Entry' }
+    )>, sidebarNavigation?: Array<{ id?: string, newWindow?: string, title?: string, type?: string, typeLabel?: string, url?: string, children?: Array<{ id?: string, newWindow?: string, title?: string, type?: string, typeLabel?: string, url?: string, children?: Array<{ id?: string, newWindow?: string, title?: string, type?: string, typeLabel?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } }>, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } }>, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } | { secondary?: boolean, buttonStyle?: boolean, id?: string, newWindow?: string, title?: string, type?: string, typeLabel?: string, url?: string, children?: Array<{ id?: string, newWindow?: string, title?: string, type?: string, typeLabel?: string, url?: string, children?: Array<{ id?: string, newWindow?: string, title?: string, type?: string, typeLabel?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } }>, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } }>, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } }> }> };
 
 export type PageServiceQueryVariables = Exact<{
   slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>> | InputMaybe<Scalars['String']['input']>>;
 }>;
 
 
-export type PageServiceQuery = { entries?: Array<{ dateUpdated?: any, htmlContent?: string, id?: string, title?: string, withSidebar?: boolean, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } }, pageBlocks: Array<(
-      { abstract?: string, id?: string, title?: string, typeHandle: string, uid?: string, contactItems: Array<{ address?: string, id?: string, slug?: string, title?: string, email?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } } }> }
+export type PageServiceQuery = { entries?: Array<{ dateUpdated?: any, htmlContent?: string, id?: string, metaTitle?: string, metaDescription?: string, title?: string, withSidebar?: boolean, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } }, ogImage: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, pageBlocks: Array<(
+      { abstract?: string, id?: string, title?: string, typeHandle: string, uid?: string, contactItems: Array<{ address?: string, id?: string, slug?: string, title?: string, email?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }> }
       & { __typename: 'blockContacts_Entry' }
+    ) | (
+      { title?: string, typeHandle: string, uid?: string, linkItems: Array<{ buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }> }
+      & { __typename: 'blockListLinks_Entry' }
     ) | (
       { id?: string, title?: string, typeHandle: string, uid?: string, medias: Array<{ column?: string, image: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, video: Array<{ src?: string, type?: string }> }> }
       & { __typename: 'blockMedia_Entry' }
     ) | (
-      { evidence?: boolean, htmlContent?: string, title?: string, typeHandle: string, uid?: string, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } } }
+      { evidence?: boolean, htmlContent?: string, title?: string, typeHandle: string, uid?: string, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }
       & { __typename: 'blockParagraph_Entry' }
     ) | (
       { id?: string, htmlContent?: string, title?: string, typeHandle: string, uid?: string, timelineItems: Array<{ abstract?: string, date?: any, title?: string }> }
@@ -19998,23 +27223,25 @@ export type PageServiceQuery = { entries?: Array<{ dateUpdated?: any, htmlConten
 export type ServicesIndexQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type ServicesIndexQuery = { entries?: Array<{ title?: string, abstract?: string }> };
+export type ServicesIndexQuery = { entries?: Array<{ title?: string, abstract?: string, metaTitle?: string, metaDescription?: string, ogImage: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }> }> };
 
-export type BlockContactsFragment = { abstract?: string, id?: string, title?: string, typeHandle: string, uid?: string, contactItems: Array<{ address?: string, id?: string, slug?: string, title?: string, email?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } } }> };
+export type BlockContactsFragment = { abstract?: string, id?: string, title?: string, typeHandle: string, uid?: string, contactItems: Array<{ address?: string, id?: string, slug?: string, title?: string, email?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }> };
 
-export type BlockHighlightedLinksFragment = { title?: string, typeHandle: string, uid?: string, linkItems: Array<{ buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } } }> };
+export type BlockHighlightedLinksFragment = { title?: string, typeHandle: string, uid?: string, linkItems: Array<{ buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }> };
 
 export type BlockHighlightedNewsFragment = { title?: string, typeHandle: string, uid?: string, newsEntries: Array<{ abstract?: string, date?: any, id?: string, slug?: string, title?: string, image: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, newsCategories: Array<{ title?: string, slug?: string }> }> };
 
-export type BlockHighlightedServicesFragment = { title?: string, typeHandle: string, uid?: string, servicesLauncherItems: Array<{ abstract?: string, title?: string, serviceEntries: Array<{ abstract?: string, id?: string, slug?: string, title?: string, serviceCategories: Array<{ title?: string, slug?: string }> }>, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } } }> };
+export type BlockHighlightedServicesFragment = { title?: string, typeHandle: string, uid?: string, servicesLauncherItems: Array<{ abstract?: string, title?: string, serviceEntries: Array<{ abstract?: string, id?: string, slug?: string, title?: string, serviceCategories: Array<{ title?: string, slug?: string }> }>, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }> };
+
+export type BlockListLinksFragment = { title?: string, typeHandle: string, uid?: string, linkItems: Array<{ buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }> };
 
 export type BlockMediaFragment = { id?: string, title?: string, typeHandle: string, uid?: string, medias: Array<{ column?: string, image: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, video: Array<{ src?: string, type?: string }> }> };
 
-export type BlockParagraphFragment = { evidence?: boolean, htmlContent?: string, title?: string, typeHandle: string, uid?: string, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } } };
+export type BlockParagraphFragment = { evidence?: boolean, htmlContent?: string, title?: string, typeHandle: string, uid?: string, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } };
 
 export type BlockTimelineFragment = { id?: string, htmlContent?: string, title?: string, typeHandle: string, uid?: string, timelineItems: Array<{ abstract?: string, date?: any, title?: string }> };
 
-export type ButtonLinkFragment = { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } };
+export type ButtonLinkFragment = { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } };
 
 export type CardNewsFragment = { abstract?: string, date?: any, id?: string, slug?: string, title?: string, image: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, newsCategories: Array<{ title?: string, slug?: string }> };
 
@@ -20022,9 +27249,9 @@ export type CardNoticesFragment = { abstract?: string, expiryDate?: any, id?: st
 
 export type CardServicesFragment = { abstract?: string, id?: string, slug?: string, title?: string, serviceCategories: Array<{ title?: string, slug?: string }> };
 
-export type CompanyEntryFragment = { id?: string, metaDescription?: string, metaTitle?: string, title?: string, companyBlocks: Array<{ title?: string, typeHandle: string, uid?: string, linkItems: Array<{ buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } } }> } | { title?: string, typeHandle: string, uid?: string, newsEntries: Array<{ abstract?: string, date?: any, id?: string, slug?: string, title?: string, image: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, newsCategories: Array<{ title?: string, slug?: string }> }> } | { title?: string, typeHandle: string, uid?: string, servicesLauncherItems: Array<{ abstract?: string, title?: string, serviceEntries: Array<{ abstract?: string, id?: string, slug?: string, title?: string, serviceCategories: Array<{ title?: string, slug?: string }> }>, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } } }> }> };
+export type CompanyEntryFragment = { id?: string, metaTitle?: string, metaDescription?: string, title?: string, companyBlocks: Array<{ title?: string, typeHandle: string, uid?: string, linkItems: Array<{ buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }> } | { title?: string, typeHandle: string, uid?: string, newsEntries: Array<{ abstract?: string, date?: any, id?: string, slug?: string, title?: string, image: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, newsCategories: Array<{ title?: string, slug?: string }> }> } | { title?: string, typeHandle: string, uid?: string, servicesLauncherItems: Array<{ abstract?: string, title?: string, serviceEntries: Array<{ abstract?: string, id?: string, slug?: string, title?: string, serviceCategories: Array<{ title?: string, slug?: string }> }>, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }> }>, ogImage: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }> };
 
-export type ContactItemFragment = { address?: string, id?: string, slug?: string, title?: string, email?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } } };
+export type ContactItemFragment = { address?: string, id?: string, slug?: string, title?: string, email?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } };
 
 export type ImageFullFragment = { filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string };
 
@@ -20032,41 +27259,58 @@ export type ImageThumbFragment = { filename: string, focalPoint?: Array<number>,
 
 export type MediaFragment = { column?: string, image: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, video: Array<{ src?: string, type?: string }> };
 
-export type NewsEntryFragment = { htmlContent?: string, id?: string, title?: string, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } }, image: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, pageBlocks: Array<(
-    { abstract?: string, id?: string, title?: string, typeHandle: string, uid?: string, contactItems: Array<{ address?: string, id?: string, slug?: string, title?: string, email?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } } }> }
+type NavigationLink_AmministrazioneTrasparente_Node_BottomNavigation_Node_FooterNavigation_Node_Fragment = { id?: string, newWindow?: string, title?: string, type?: string, typeLabel?: string, url?: string, children?: Array<{ id?: string, newWindow?: string, title?: string, type?: string, typeLabel?: string, url?: string, children?: Array<{ id?: string, newWindow?: string, title?: string, type?: string, typeLabel?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } }>, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } }>, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } };
+
+type NavigationLink_MainNavigation_Node_Fragment = { secondary?: boolean, buttonStyle?: boolean, id?: string, newWindow?: string, title?: string, type?: string, typeLabel?: string, url?: string, children?: Array<{ id?: string, newWindow?: string, title?: string, type?: string, typeLabel?: string, url?: string, children?: Array<{ id?: string, newWindow?: string, title?: string, type?: string, typeLabel?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } }>, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } }>, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } };
+
+export type NavigationLinkFragment = NavigationLink_AmministrazioneTrasparente_Node_BottomNavigation_Node_FooterNavigation_Node_Fragment | NavigationLink_MainNavigation_Node_Fragment;
+
+export type NewsEntryFragment = { htmlContent?: string, id?: string, metaTitle?: string, metaDescription?: string, title?: string, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } }, image: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, ogImage: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, pageBlocks: Array<(
+    { abstract?: string, id?: string, title?: string, typeHandle: string, uid?: string, contactItems: Array<{ address?: string, id?: string, slug?: string, title?: string, email?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }> }
     & { __typename: 'blockContacts_Entry' }
+  ) | (
+    { title?: string, typeHandle: string, uid?: string, linkItems: Array<{ buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }> }
+    & { __typename: 'blockListLinks_Entry' }
   ) | (
     { id?: string, title?: string, typeHandle: string, uid?: string, medias: Array<{ column?: string, image: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, video: Array<{ src?: string, type?: string }> }> }
     & { __typename: 'blockMedia_Entry' }
   ) | (
-    { evidence?: boolean, htmlContent?: string, title?: string, typeHandle: string, uid?: string, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } } }
+    { evidence?: boolean, htmlContent?: string, title?: string, typeHandle: string, uid?: string, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }
     & { __typename: 'blockParagraph_Entry' }
   ) | (
     { id?: string, htmlContent?: string, title?: string, typeHandle: string, uid?: string, timelineItems: Array<{ abstract?: string, date?: any, title?: string }> }
     & { __typename: 'blockTimeline_Entry' }
   )> };
 
-export type NewsIndexEntryFragment = { title?: string, abstract?: string };
+export type NewsIndexEntryFragment = { abstract?: string, metaTitle?: string, metaDescription?: string, title?: string, ogImage: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }> };
 
-export type NoticesEntryFragment = { htmlContent?: string, id?: string, title?: string, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } }, pageBlocks: Array<(
-    { abstract?: string, id?: string, title?: string, typeHandle: string, uid?: string, contactItems: Array<{ address?: string, id?: string, slug?: string, title?: string, email?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } } }> }
+export type NoticesEntryFragment = { htmlContent?: string, id?: string, metaTitle?: string, metaDescription?: string, title?: string, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } }, ogImage: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, pageBlocks: Array<(
+    { abstract?: string, id?: string, title?: string, typeHandle: string, uid?: string, contactItems: Array<{ address?: string, id?: string, slug?: string, title?: string, email?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }> }
     & { __typename: 'blockContacts_Entry' }
+  ) | (
+    { title?: string, typeHandle: string, uid?: string, linkItems: Array<{ buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }> }
+    & { __typename: 'blockListLinks_Entry' }
   ) | (
     { id?: string, title?: string, typeHandle: string, uid?: string, medias: Array<{ column?: string, image: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, video: Array<{ src?: string, type?: string }> }> }
     & { __typename: 'blockMedia_Entry' }
   ) | (
-    { evidence?: boolean, htmlContent?: string, title?: string, typeHandle: string, uid?: string, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } } }
+    { evidence?: boolean, htmlContent?: string, title?: string, typeHandle: string, uid?: string, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }
     & { __typename: 'blockParagraph_Entry' }
   ) | (
     { id?: string, htmlContent?: string, title?: string, typeHandle: string, uid?: string, timelineItems: Array<{ abstract?: string, date?: any, title?: string }> }
     & { __typename: 'blockTimeline_Entry' }
   )> };
 
-export type NoticesIndexEntryFragment = { title?: string, abstract?: string };
+export type NoticesIndexEntryFragment = { abstract?: string, metaTitle?: string, metaDescription?: string, title?: string, ogImage: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }> };
 
 type PageBlocks_BlockContacts_Entry_Fragment = (
-  { abstract?: string, id?: string, title?: string, typeHandle: string, uid?: string, contactItems: Array<{ address?: string, id?: string, slug?: string, title?: string, email?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } } }> }
+  { abstract?: string, id?: string, title?: string, typeHandle: string, uid?: string, contactItems: Array<{ address?: string, id?: string, slug?: string, title?: string, email?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }> }
   & { __typename: 'blockContacts_Entry' }
+);
+
+type PageBlocks_BlockListLinks_Entry_Fragment = (
+  { title?: string, typeHandle: string, uid?: string, linkItems: Array<{ buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }> }
+  & { __typename: 'blockListLinks_Entry' }
 );
 
 type PageBlocks_BlockMedia_Entry_Fragment = (
@@ -20075,7 +27319,7 @@ type PageBlocks_BlockMedia_Entry_Fragment = (
 );
 
 type PageBlocks_BlockParagraph_Entry_Fragment = (
-  { evidence?: boolean, htmlContent?: string, title?: string, typeHandle: string, uid?: string, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } } }
+  { evidence?: boolean, htmlContent?: string, title?: string, typeHandle: string, uid?: string, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }
   & { __typename: 'blockParagraph_Entry' }
 );
 
@@ -20084,25 +27328,45 @@ type PageBlocks_BlockTimeline_Entry_Fragment = (
   & { __typename: 'blockTimeline_Entry' }
 );
 
-export type PageBlocksFragment = PageBlocks_BlockContacts_Entry_Fragment | PageBlocks_BlockMedia_Entry_Fragment | PageBlocks_BlockParagraph_Entry_Fragment | PageBlocks_BlockTimeline_Entry_Fragment;
+export type PageBlocksFragment = PageBlocks_BlockContacts_Entry_Fragment | PageBlocks_BlockListLinks_Entry_Fragment | PageBlocks_BlockMedia_Entry_Fragment | PageBlocks_BlockParagraph_Entry_Fragment | PageBlocks_BlockTimeline_Entry_Fragment;
 
-export type ServicesEntryFragment = { dateUpdated?: any, htmlContent?: string, id?: string, title?: string, withSidebar?: boolean, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } }, pageBlocks: Array<(
-    { abstract?: string, id?: string, title?: string, typeHandle: string, uid?: string, contactItems: Array<{ address?: string, id?: string, slug?: string, title?: string, email?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } } }> }
+export type PagesEntryFragment = { dateUpdated?: any, htmlContent?: string, id?: string, metaTitle?: string, metaDescription?: string, title?: string, withSidebar?: boolean, sidebarTitle?: string, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } }, ogImage: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, pageBlocks: Array<(
+    { abstract?: string, id?: string, title?: string, typeHandle: string, uid?: string, contactItems: Array<{ address?: string, id?: string, slug?: string, title?: string, email?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }> }
     & { __typename: 'blockContacts_Entry' }
+  ) | (
+    { title?: string, typeHandle: string, uid?: string, linkItems: Array<{ buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }> }
+    & { __typename: 'blockListLinks_Entry' }
   ) | (
     { id?: string, title?: string, typeHandle: string, uid?: string, medias: Array<{ column?: string, image: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, video: Array<{ src?: string, type?: string }> }> }
     & { __typename: 'blockMedia_Entry' }
   ) | (
-    { evidence?: boolean, htmlContent?: string, title?: string, typeHandle: string, uid?: string, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } } }
+    { evidence?: boolean, htmlContent?: string, title?: string, typeHandle: string, uid?: string, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }
+    & { __typename: 'blockParagraph_Entry' }
+  ) | (
+    { id?: string, htmlContent?: string, title?: string, typeHandle: string, uid?: string, timelineItems: Array<{ abstract?: string, date?: any, title?: string }> }
+    & { __typename: 'blockTimeline_Entry' }
+  )>, sidebarNavigation?: Array<{ id?: string, newWindow?: string, title?: string, type?: string, typeLabel?: string, url?: string, children?: Array<{ id?: string, newWindow?: string, title?: string, type?: string, typeLabel?: string, url?: string, children?: Array<{ id?: string, newWindow?: string, title?: string, type?: string, typeLabel?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } }>, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } }>, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } | { secondary?: boolean, buttonStyle?: boolean, id?: string, newWindow?: string, title?: string, type?: string, typeLabel?: string, url?: string, children?: Array<{ id?: string, newWindow?: string, title?: string, type?: string, typeLabel?: string, url?: string, children?: Array<{ id?: string, newWindow?: string, title?: string, type?: string, typeLabel?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } }>, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } }>, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } }> };
+
+export type ServicesEntryFragment = { dateUpdated?: any, htmlContent?: string, id?: string, metaTitle?: string, metaDescription?: string, title?: string, withSidebar?: boolean, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } }, ogImage: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, pageBlocks: Array<(
+    { abstract?: string, id?: string, title?: string, typeHandle: string, uid?: string, contactItems: Array<{ address?: string, id?: string, slug?: string, title?: string, email?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }> }
+    & { __typename: 'blockContacts_Entry' }
+  ) | (
+    { title?: string, typeHandle: string, uid?: string, linkItems: Array<{ buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }> }
+    & { __typename: 'blockListLinks_Entry' }
+  ) | (
+    { id?: string, title?: string, typeHandle: string, uid?: string, medias: Array<{ column?: string, image: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, video: Array<{ src?: string, type?: string }> }> }
+    & { __typename: 'blockMedia_Entry' }
+  ) | (
+    { evidence?: boolean, htmlContent?: string, title?: string, typeHandle: string, uid?: string, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }
     & { __typename: 'blockParagraph_Entry' }
   ) | (
     { id?: string, htmlContent?: string, title?: string, typeHandle: string, uid?: string, timelineItems: Array<{ abstract?: string, date?: any, title?: string }> }
     & { __typename: 'blockTimeline_Entry' }
   )>, tags: Array<{ id?: string, slug?: string, title?: string }> };
 
-export type ServicesIndexEntryFragment = { title?: string, abstract?: string };
+export type ServicesIndexEntryFragment = { title?: string, abstract?: string, metaTitle?: string, metaDescription?: string, ogImage: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }> };
 
-export type ServicesLauncherItemFragment = { abstract?: string, title?: string, serviceEntries: Array<{ abstract?: string, id?: string, slug?: string, title?: string, serviceCategories: Array<{ title?: string, slug?: string }> }>, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } } };
+export type ServicesLauncherItemFragment = { abstract?: string, title?: string, serviceEntries: Array<{ abstract?: string, id?: string, slug?: string, title?: string, serviceCategories: Array<{ title?: string, slug?: string }> }>, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } };
 
 export type TagFragment = { id?: string, slug?: string, title?: string };
 

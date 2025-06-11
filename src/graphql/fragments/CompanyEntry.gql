@@ -1,6 +1,7 @@
 #import ./BlockHighlightedNews.gql
 #import ./BlockHighlightedLinks.gql
 #import ./BlockHighlightedServices.gql
+#import ./ImageFull.gql
 
 fragment CompanyEntry on company_Entry {
   id
@@ -15,7 +16,10 @@ fragment CompanyEntry on company_Entry {
       ...BlockHighlightedServices
     }
   }
-  metaDescription
   metaTitle
+  metaDescription
+  ogImage {
+    ... ImageFull
+  }
   title
 }

@@ -1,0 +1,10 @@
+#import ./fragments/PagesEntry.gql
+
+query PagePages($slug: [String]) {
+  # Fetching the pages entry based on the slug
+  entries(section: "pages", slug: $slug) {
+    ... on pages_Entry {
+      ...PagesEntry
+    }
+  }
+}

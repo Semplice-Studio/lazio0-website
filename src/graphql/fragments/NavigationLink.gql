@@ -1,0 +1,61 @@
+fragment NavigationLink on NodeInterface {
+  children {
+    id
+    children {
+      id
+      element {
+        ... on EntryInterface {
+          title
+          uri
+        }
+        ... on AssetInterface {
+          title
+          filename
+          mimeType
+        }
+      }
+      newWindow
+      title
+      type
+      typeLabel
+      url
+    }
+    element {
+      ... on EntryInterface {
+        title
+        uri
+      }
+      ... on AssetInterface {
+        title
+        filename
+        mimeType
+      }
+    }
+    newWindow
+    title
+    type
+    typeLabel
+    url
+  }
+  id
+  element {
+    ... on EntryInterface {
+      title
+      uri
+    }
+    ... on AssetInterface {
+      title
+      filename
+      mimeType
+    }
+  }
+  newWindow
+  title
+  type
+  typeLabel
+  url
+  ... on mainNavigation_Node {
+    secondary
+    buttonStyle
+  }
+}

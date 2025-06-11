@@ -11,6 +11,11 @@ fragment NewsEntry on news_Entry {
   image {
     ...ImageFull
   }
+  metaTitle
+  metaDescription
+  ogImage {
+    ... ImageFull
+  }
   title
   pageBlocks {
     ...PageBlocks

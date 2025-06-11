@@ -2,11 +2,15 @@
 #import ./BlockMedia.gql
 #import ./BlockParagraph.gql
 #import ./BlockTimeline.gql
+#import ./BlockListLinks.gql
 
 fragment PageBlocks on pageBlocks_MatrixField {
   __typename
   ... on blockContacts_Entry {
     ...BlockContacts
+  }
+  ... on blockListLinks_Entry {
+    ...BlockListLinks
   }
   ... on blockMedia_Entry {
     ...BlockMedia

@@ -1,11 +1,13 @@
 #import ./ButtonLink.gql
 #import ./ImageFull.gql 
+#import ./NavigationLink.gql
 #import ./PageBlocks.gql
 
-fragment NoticesEntry on notices_Entry {
+fragment PagesEntry on pages_Entry {
   buttonLink {
     ...ButtonLink
   }
+  dateUpdated
   htmlContent
   id
   metaTitle
@@ -13,8 +15,13 @@ fragment NoticesEntry on notices_Entry {
   ogImage {
     ... ImageFull
   }
-  title
   pageBlocks {
     ...PageBlocks
   }
+  title
+  withSidebar
+  sidebarNavigation (level: 1) {
+    ...NavigationLink
+  }
+  sidebarTitle
 }

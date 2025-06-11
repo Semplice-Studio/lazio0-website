@@ -1,4 +1,11 @@
+#import ./ImageFull.gql 
+
 fragment NoticesIndexEntry on noticesIndex_Entry {
-  title
   abstract
+  metaTitle
+  metaDescription
+  ogImage {
+    ... ImageFull
+  }
+  title
 }
