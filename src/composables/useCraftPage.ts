@@ -13,8 +13,6 @@ export async function useCraftPage<T = Record<string, unknown>>(cacheKey: string
     watch: [locale]
   })
 
-  console.log('useCraftPage', query.error, query.status)
-
   const data = computed(() => {
     if (!query.data.value?.entries) return
     return Array.isArray(query.data.value.entries)

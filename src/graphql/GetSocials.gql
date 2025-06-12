@@ -1,5 +1,4 @@
 #import ./fragments/ButtonLink.gql
-#import ./fragments/ImageFull.gql
 
 query GetSocials {
   globalSet(handle: "socials") {
