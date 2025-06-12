@@ -31,7 +31,7 @@ const blocks = computed(() => (data?.pageBlocks || []) as CraftMatrixField[])
     <section class="container my-5">
       <PageHero :abstract="data.htmlContent" :button-link="data.buttonLink" :title="data.title" />
     </section>
-    <section v-if="blocks.length > 0" class="container my-5">
+    <section class="container my-5">
       <PageContentWithNav
         :blocks="blocks"
         :navigation="data.sidebarNavigation"

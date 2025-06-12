@@ -4,7 +4,7 @@
       <p v-if="navigationTitle" class="mb-4 text-uppercase">{{ navigationTitle }}</p>
       <PageAccordionNav :navigation="navigation" />
     </div>
-    <div class="it-page-sections-container col-12" :class="{ 'col-lg-8': withSidebar }">
+    <div v-if="blocks.length > 0" class="it-page-sections-container col-12" :class="{ 'col-lg-8': withSidebar }">
       <Blocks :blocks="blocks" />
       <slot />
     </div>
