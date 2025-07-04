@@ -9419,6 +9419,7 @@ export type BlockHighlightedLinks_EntryLinkItemsArgs = {
   dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   descendantDist?: InputMaybe<Scalars['Int']['input']>;
   descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  description?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   editable?: InputMaybe<Scalars['Boolean']['input']>;
   expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -11589,6 +11590,7 @@ export type BlockListLinks_EntryLinkItemsArgs = {
   dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   descendantDist?: InputMaybe<Scalars['Int']['input']>;
   descendantOf?: InputMaybe<Scalars['Int']['input']>;
+  description?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   editable?: InputMaybe<Scalars['Boolean']['input']>;
   expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -15837,6 +15839,7 @@ export type LinkItem_Entry = ElementInterface & EntryInterface & {
   dateUpdated?: Maybe<Scalars['DateTime']['output']>;
   /** The entry’s descendants, if the section is a structure. Accepts the same arguments as the `entries` query. */
   descendants: Array<EntryInterface>;
+  description?: Maybe<Scalars['String']['output']>;
   /** The draft ID (from the `drafts` table). */
   draftId?: Maybe<Scalars['Int']['output']>;
   /** The name of the draft. */
@@ -27926,7 +27929,7 @@ export type ListServicesCategoriesQuery = { categories?: Array<{ id?: string, ti
 export type PageHomeQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type PageHomeQuery = { entries?: Array<{ id?: string, metaTitle?: string, metaDescription?: string, title?: string, companyBlocks: Array<{ title?: string, typeHandle: string, uid?: string, linkItems: Array<{ buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }> } | { title?: string, typeHandle: string, uid?: string, newsEntries: Array<{ abstract?: string, date?: any, id?: string, slug?: string, title?: string, image: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, newsCategories: Array<{ title?: string, slug?: string }> }> } | { title?: string, typeHandle: string, uid?: string, servicesLauncherItems: Array<{ abstract?: string, title?: string, serviceEntries: Array<{ abstract?: string, id?: string, slug?: string, title?: string, serviceCategories: Array<{ title?: string, slug?: string }> }>, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }> }>, ogImage: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }> }> };
+export type PageHomeQuery = { entries?: Array<{ id?: string, metaTitle?: string, metaDescription?: string, title?: string, companyBlocks: Array<{ title?: string, typeHandle: string, uid?: string, linkItems: Array<{ description?: string, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }> } | { title?: string, typeHandle: string, uid?: string, newsEntries: Array<{ abstract?: string, date?: any, id?: string, slug?: string, title?: string, image: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, newsCategories: Array<{ title?: string, slug?: string }> }> } | { title?: string, typeHandle: string, uid?: string, servicesLauncherItems: Array<{ abstract?: string, title?: string, serviceEntries: Array<{ abstract?: string, id?: string, slug?: string, title?: string, serviceCategories: Array<{ title?: string, slug?: string }> }>, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }> }>, ogImage: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }> }> };
 
 export type PageNewsQueryVariables = Exact<{
   slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>> | InputMaybe<Scalars['String']['input']>>;
@@ -27937,7 +27940,7 @@ export type PageNewsQuery = { entries?: Array<{ htmlContent?: string, id?: strin
       { abstract?: string, id?: string, title?: string, typeHandle: string, uid?: string, contactItems: Array<{ address?: string, id?: string, slug?: string, title?: string, email?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }> }
       & { __typename: 'blockContacts_Entry' }
     ) | (
-      { title?: string, typeHandle: string, uid?: string, linkItems: Array<{ buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }> }
+      { title?: string, typeHandle: string, uid?: string, linkItems: Array<{ description?: string, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }> }
       & { __typename: 'blockListLinks_Entry' }
     ) | (
       { id?: string, title?: string, typeHandle: string, uid?: string, medias: Array<{ column?: string, image: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, video: Array<{ src?: string, type?: string }> }> }
@@ -27964,7 +27967,7 @@ export type PageNoticesQuery = { entries?: Array<{ htmlContent?: string, id?: st
       { abstract?: string, id?: string, title?: string, typeHandle: string, uid?: string, contactItems: Array<{ address?: string, id?: string, slug?: string, title?: string, email?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }> }
       & { __typename: 'blockContacts_Entry' }
     ) | (
-      { title?: string, typeHandle: string, uid?: string, linkItems: Array<{ buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }> }
+      { title?: string, typeHandle: string, uid?: string, linkItems: Array<{ description?: string, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }> }
       & { __typename: 'blockListLinks_Entry' }
     ) | (
       { id?: string, title?: string, typeHandle: string, uid?: string, medias: Array<{ column?: string, image: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, video: Array<{ src?: string, type?: string }> }> }
@@ -27991,7 +27994,7 @@ export type PagePagesQuery = { entries?: Array<{ dateUpdated?: any, htmlContent?
       { abstract?: string, id?: string, title?: string, typeHandle: string, uid?: string, contactItems: Array<{ address?: string, id?: string, slug?: string, title?: string, email?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }> }
       & { __typename: 'blockContacts_Entry' }
     ) | (
-      { title?: string, typeHandle: string, uid?: string, linkItems: Array<{ buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }> }
+      { title?: string, typeHandle: string, uid?: string, linkItems: Array<{ description?: string, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }> }
       & { __typename: 'blockListLinks_Entry' }
     ) | (
       { id?: string, title?: string, typeHandle: string, uid?: string, medias: Array<{ column?: string, image: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, video: Array<{ src?: string, type?: string }> }> }
@@ -28013,7 +28016,7 @@ export type PageServiceQuery = { entries?: Array<{ dateUpdated?: any, htmlConten
       { abstract?: string, id?: string, title?: string, typeHandle: string, uid?: string, contactItems: Array<{ address?: string, id?: string, slug?: string, title?: string, email?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }> }
       & { __typename: 'blockContacts_Entry' }
     ) | (
-      { title?: string, typeHandle: string, uid?: string, linkItems: Array<{ buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }> }
+      { title?: string, typeHandle: string, uid?: string, linkItems: Array<{ description?: string, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }> }
       & { __typename: 'blockListLinks_Entry' }
     ) | (
       { id?: string, title?: string, typeHandle: string, uid?: string, medias: Array<{ column?: string, image: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, video: Array<{ src?: string, type?: string }> }> }
@@ -28040,7 +28043,7 @@ export type PageTransparenciesQuery = { entries?: Array<{ dateUpdated?: any, htm
       { abstract?: string, id?: string, title?: string, typeHandle: string, uid?: string, contactItems: Array<{ address?: string, id?: string, slug?: string, title?: string, email?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }> }
       & { __typename: 'blockContacts_Entry' }
     ) | (
-      { title?: string, typeHandle: string, uid?: string, linkItems: Array<{ buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }> }
+      { title?: string, typeHandle: string, uid?: string, linkItems: Array<{ description?: string, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }> }
       & { __typename: 'blockListLinks_Entry' }
     ) | (
       { id?: string, title?: string, typeHandle: string, uid?: string, medias: Array<{ column?: string, image: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, video: Array<{ src?: string, type?: string }> }> }
@@ -28060,7 +28063,7 @@ export type PageTransparenciesIndexQuery = { entries?: Array<{ dateUpdated?: any
       { abstract?: string, id?: string, title?: string, typeHandle: string, uid?: string, contactItems: Array<{ address?: string, id?: string, slug?: string, title?: string, email?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }> }
       & { __typename: 'blockContacts_Entry' }
     ) | (
-      { title?: string, typeHandle: string, uid?: string, linkItems: Array<{ buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }> }
+      { title?: string, typeHandle: string, uid?: string, linkItems: Array<{ description?: string, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }> }
       & { __typename: 'blockListLinks_Entry' }
     ) | (
       { id?: string, title?: string, typeHandle: string, uid?: string, medias: Array<{ column?: string, image: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, video: Array<{ src?: string, type?: string }> }> }
@@ -28075,13 +28078,13 @@ export type PageTransparenciesIndexQuery = { entries?: Array<{ dateUpdated?: any
 
 export type BlockContactsFragment = { abstract?: string, id?: string, title?: string, typeHandle: string, uid?: string, contactItems: Array<{ address?: string, id?: string, slug?: string, title?: string, email?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }> };
 
-export type BlockHighlightedLinksFragment = { title?: string, typeHandle: string, uid?: string, linkItems: Array<{ buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }> };
+export type BlockHighlightedLinksFragment = { title?: string, typeHandle: string, uid?: string, linkItems: Array<{ description?: string, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }> };
 
 export type BlockHighlightedNewsFragment = { title?: string, typeHandle: string, uid?: string, newsEntries: Array<{ abstract?: string, date?: any, id?: string, slug?: string, title?: string, image: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, newsCategories: Array<{ title?: string, slug?: string }> }> };
 
 export type BlockHighlightedServicesFragment = { title?: string, typeHandle: string, uid?: string, servicesLauncherItems: Array<{ abstract?: string, title?: string, serviceEntries: Array<{ abstract?: string, id?: string, slug?: string, title?: string, serviceCategories: Array<{ title?: string, slug?: string }> }>, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }> };
 
-export type BlockListLinksFragment = { title?: string, typeHandle: string, uid?: string, linkItems: Array<{ buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }> };
+export type BlockListLinksFragment = { title?: string, typeHandle: string, uid?: string, linkItems: Array<{ description?: string, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }> };
 
 export type BlockMediaFragment = { id?: string, title?: string, typeHandle: string, uid?: string, medias: Array<{ column?: string, image: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, video: Array<{ src?: string, type?: string }> }> };
 
@@ -28097,7 +28100,7 @@ export type CardNoticesFragment = { abstract?: string, expiryDate?: any, id?: st
 
 export type CardServicesFragment = { abstract?: string, id?: string, slug?: string, title?: string, serviceCategories: Array<{ title?: string, slug?: string }> };
 
-export type CompanyEntryFragment = { id?: string, metaTitle?: string, metaDescription?: string, title?: string, companyBlocks: Array<{ title?: string, typeHandle: string, uid?: string, linkItems: Array<{ buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }> } | { title?: string, typeHandle: string, uid?: string, newsEntries: Array<{ abstract?: string, date?: any, id?: string, slug?: string, title?: string, image: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, newsCategories: Array<{ title?: string, slug?: string }> }> } | { title?: string, typeHandle: string, uid?: string, servicesLauncherItems: Array<{ abstract?: string, title?: string, serviceEntries: Array<{ abstract?: string, id?: string, slug?: string, title?: string, serviceCategories: Array<{ title?: string, slug?: string }> }>, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }> }>, ogImage: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }> };
+export type CompanyEntryFragment = { id?: string, metaTitle?: string, metaDescription?: string, title?: string, companyBlocks: Array<{ title?: string, typeHandle: string, uid?: string, linkItems: Array<{ description?: string, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }> } | { title?: string, typeHandle: string, uid?: string, newsEntries: Array<{ abstract?: string, date?: any, id?: string, slug?: string, title?: string, image: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, newsCategories: Array<{ title?: string, slug?: string }> }> } | { title?: string, typeHandle: string, uid?: string, servicesLauncherItems: Array<{ abstract?: string, title?: string, serviceEntries: Array<{ abstract?: string, id?: string, slug?: string, title?: string, serviceCategories: Array<{ title?: string, slug?: string }> }>, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }> }>, ogImage: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }> };
 
 export type ContactItemFragment = { address?: string, id?: string, slug?: string, title?: string, email?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } };
 
@@ -28117,7 +28120,7 @@ export type NewsEntryFragment = { htmlContent?: string, id?: string, metaTitle?:
     { abstract?: string, id?: string, title?: string, typeHandle: string, uid?: string, contactItems: Array<{ address?: string, id?: string, slug?: string, title?: string, email?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }> }
     & { __typename: 'blockContacts_Entry' }
   ) | (
-    { title?: string, typeHandle: string, uid?: string, linkItems: Array<{ buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }> }
+    { title?: string, typeHandle: string, uid?: string, linkItems: Array<{ description?: string, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }> }
     & { __typename: 'blockListLinks_Entry' }
   ) | (
     { id?: string, title?: string, typeHandle: string, uid?: string, medias: Array<{ column?: string, image: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, video: Array<{ src?: string, type?: string }> }> }
@@ -28136,7 +28139,7 @@ export type NoticesEntryFragment = { htmlContent?: string, id?: string, metaTitl
     { abstract?: string, id?: string, title?: string, typeHandle: string, uid?: string, contactItems: Array<{ address?: string, id?: string, slug?: string, title?: string, email?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }> }
     & { __typename: 'blockContacts_Entry' }
   ) | (
-    { title?: string, typeHandle: string, uid?: string, linkItems: Array<{ buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }> }
+    { title?: string, typeHandle: string, uid?: string, linkItems: Array<{ description?: string, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }> }
     & { __typename: 'blockListLinks_Entry' }
   ) | (
     { id?: string, title?: string, typeHandle: string, uid?: string, medias: Array<{ column?: string, image: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, video: Array<{ src?: string, type?: string }> }> }
@@ -28157,7 +28160,7 @@ type PageBlocks_BlockContacts_Entry_Fragment = (
 );
 
 type PageBlocks_BlockListLinks_Entry_Fragment = (
-  { title?: string, typeHandle: string, uid?: string, linkItems: Array<{ buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }> }
+  { title?: string, typeHandle: string, uid?: string, linkItems: Array<{ description?: string, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }> }
   & { __typename: 'blockListLinks_Entry' }
 );
 
@@ -28182,7 +28185,7 @@ export type PagesEntryFragment = { dateUpdated?: any, htmlContent?: string, id?:
     { abstract?: string, id?: string, title?: string, typeHandle: string, uid?: string, contactItems: Array<{ address?: string, id?: string, slug?: string, title?: string, email?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }> }
     & { __typename: 'blockContacts_Entry' }
   ) | (
-    { title?: string, typeHandle: string, uid?: string, linkItems: Array<{ buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }> }
+    { title?: string, typeHandle: string, uid?: string, linkItems: Array<{ description?: string, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }> }
     & { __typename: 'blockListLinks_Entry' }
   ) | (
     { id?: string, title?: string, typeHandle: string, uid?: string, medias: Array<{ column?: string, image: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, video: Array<{ src?: string, type?: string }> }> }
@@ -28199,7 +28202,7 @@ export type ServicesEntryFragment = { dateUpdated?: any, htmlContent?: string, i
     { abstract?: string, id?: string, title?: string, typeHandle: string, uid?: string, contactItems: Array<{ address?: string, id?: string, slug?: string, title?: string, email?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }> }
     & { __typename: 'blockContacts_Entry' }
   ) | (
-    { title?: string, typeHandle: string, uid?: string, linkItems: Array<{ buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }> }
+    { title?: string, typeHandle: string, uid?: string, linkItems: Array<{ description?: string, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }> }
     & { __typename: 'blockListLinks_Entry' }
   ) | (
     { id?: string, title?: string, typeHandle: string, uid?: string, medias: Array<{ column?: string, image: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, video: Array<{ src?: string, type?: string }> }> }
@@ -28224,7 +28227,7 @@ export type TransparenciesEntryFragment = { dateUpdated?: any, htmlContent?: str
     { abstract?: string, id?: string, title?: string, typeHandle: string, uid?: string, contactItems: Array<{ address?: string, id?: string, slug?: string, title?: string, email?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }> }
     & { __typename: 'blockContacts_Entry' }
   ) | (
-    { title?: string, typeHandle: string, uid?: string, linkItems: Array<{ buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }> }
+    { title?: string, typeHandle: string, uid?: string, linkItems: Array<{ description?: string, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }> }
     & { __typename: 'blockListLinks_Entry' }
   ) | (
     { id?: string, title?: string, typeHandle: string, uid?: string, medias: Array<{ column?: string, image: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, video: Array<{ src?: string, type?: string }> }> }

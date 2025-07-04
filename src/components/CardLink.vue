@@ -14,8 +14,8 @@
             {{ buttonLink.label || buttonLink.defaultLabel }}
           </BCardTitle>
         </div>
-        <BCardText>
-          <p class="ps-4 text-primary font-sans-serif">Descrizione</p>
+        <BCardText v-if="description">
+          <p class="ps-4 text-primary font-sans-serif">{{ description }}</p>
         </BCardText>
       </BCardBody>
     </CraftLink>
@@ -31,6 +31,10 @@ defineProps({
   buttonLink: {
     type: Array as PropType<ButtonLinkFragment>,
     required: true
+  },
+  description: {
+    type: String,
+    default: null
   }
 })
 </script>

@@ -6,6 +6,7 @@ fragment BlockListLinks on blockListLinks_Entry {
       buttonLink {
         ...ButtonLink
       }
+      description
     }
   }
   title

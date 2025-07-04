@@ -6,6 +6,7 @@ fragment BlockHighlightedLinks on blockHighlightedLinks_Entry {
       buttonLink {
         ...ButtonLink
       }
+      description
     }
   }
   title

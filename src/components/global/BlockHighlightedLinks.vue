@@ -29,6 +29,7 @@
 import type { ButtonLinkFragment } from '@/graphql'
 
 interface LinkItems {
+  description?: string
   buttonLink: ButtonLinkFragment
 }
 
