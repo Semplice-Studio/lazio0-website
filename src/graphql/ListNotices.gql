@@ -1,6 +1,6 @@
 #import ./fragments/CardNotices.gql
 
-query ListNotices($offset: Int, $limit: Int, $search: String, $categorySlugs: [String]) {
+query ListNotices($offset: Int, $limit: Int = 100, $search: String, $categorySlugs: [String]) {
   entries(
     section: "notices"
     offset: $offset

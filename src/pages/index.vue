@@ -10,10 +10,15 @@ if (isPreview.value) {
 }
 
 const { data, status } = await useCraftPage<CompanyEntryFragment>('home', PageHomeGQL)
+const companyBlocks = computed(() => data?.companyBlocks?.map((block) => ({
+  ...block,
+  typeHandle: block.typeHandle === 'blockParagraph' ? 'blockHighlightedParagraph' : block.typeHandle
+})) || []
+)
 </script>
 
 <template>
   <div v-if="status === 'success'" :key="previewTimestamp">
-    <Blocks :blocks="data.companyBlocks" />
+    <Blocks :blocks="companyBlocks" />
   </div>
 </template>

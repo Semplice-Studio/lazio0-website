@@ -1,0 +1,12 @@
+#import ./fragments/CardNews.gql
+
+query ListNewsAll($offset: Int, $limit: Int = 100, $search: String) {
+  entries(
+    section: "news"
+    offset: $offset
+    limit: $limit
+    search: $search
+  ) {
+    ...CardNews
+  }
+}

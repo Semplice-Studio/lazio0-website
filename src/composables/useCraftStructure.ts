@@ -6,7 +6,7 @@ export type CraftStructureResponse = {
   entries?: Record<string, unknown>[]
 }
 
-export async function useCraftStructure<T = Record<string, unknown>>(cacheKey: string, gql: DocumentNode, variables: MaybeRefOrGetter<CraftGraphqlVariables> = {}) {
+export async function useCraftStructure<T = Record<string, unknown>>(cacheKey: MaybeRefOrGetter<string>, gql: MaybeRefOrGetter<DocumentNode>, variables: MaybeRefOrGetter<CraftGraphqlVariables> = {}) {
   const { locale } = useI18n()
   const key = ref(Date.now())
 

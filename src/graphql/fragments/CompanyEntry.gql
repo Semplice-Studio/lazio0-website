@@ -1,6 +1,7 @@
 #import ./BlockHighlightedNews.gql
 #import ./BlockHighlightedLinks.gql
 #import ./BlockHighlightedServices.gql
+#import ./BlockParagraph.gql
 #import ./ImageFull.gql
 
 fragment CompanyEntry on company_Entry {
@@ -14,6 +15,9 @@ fragment CompanyEntry on company_Entry {
     }
     ... on blockHighlightedServices_Entry {
       ...BlockHighlightedServices
+    }
+    ... on blockParagraph_Entry {
+      ...BlockParagraph
     }
   }
   metaTitle

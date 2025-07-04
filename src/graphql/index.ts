@@ -14195,7 +14195,7 @@ export type BottomNavigation_NodeChildrenArgs = {
   withStructure?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
-export type CompanyBlocks_MatrixField = BlockHighlightedLinks_Entry | BlockHighlightedNews_Entry | BlockHighlightedServices_Entry;
+export type CompanyBlocks_MatrixField = BlockHighlightedLinks_Entry | BlockHighlightedNews_Entry | BlockHighlightedServices_Entry | BlockParagraph_Entry;
 
 export type CompanyInfo_GlobalSet = ElementInterface & GlobalSetInterface & {
   /** Return a number of related elements for a field. */
@@ -14535,16 +14535,19 @@ export type Company_EntryCompanyBlocksArgs = {
   authorGroupId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   authorId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   before?: InputMaybe<Scalars['String']['input']>;
+  buttonLink?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   dateCreated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   dateUpdated?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   descendantDist?: InputMaybe<Scalars['Int']['input']>;
   descendantOf?: InputMaybe<Scalars['Int']['input']>;
   editable?: InputMaybe<Scalars['Boolean']['input']>;
+  evidence?: InputMaybe<Scalars['Boolean']['input']>;
   expiryDate?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   field?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   fieldId?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   fixedOrder?: InputMaybe<Scalars['Boolean']['input']>;
   hasDescendants?: InputMaybe<Scalars['Boolean']['input']>;
+  htmlContent?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   id?: InputMaybe<Array<InputMaybe<Scalars['QueryArgument']['input']>>>;
   inReverse?: InputMaybe<Scalars['Boolean']['input']>;
   language?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -27891,6 +27894,15 @@ export type ListNewsQueryVariables = Exact<{
 
 export type ListNewsQuery = { entries?: Array<{ abstract?: string, date?: any, id?: string, slug?: string, title?: string, image: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, newsCategories: Array<{ title?: string, slug?: string }> }> };
 
+export type ListNewsAllQueryVariables = Exact<{
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  search?: InputMaybe<Scalars['String']['input']>;
+}>;
+
+
+export type ListNewsAllQuery = { entries?: Array<{ abstract?: string, date?: any, id?: string, slug?: string, title?: string, image: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, newsCategories: Array<{ title?: string, slug?: string }> }> };
+
 export type ListNewsCategoriesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -27905,6 +27917,15 @@ export type ListNoticesQueryVariables = Exact<{
 
 
 export type ListNoticesQuery = { entries?: Array<{ abstract?: string, expiryDate?: any, id?: string, postDate?: any, slug?: string, title?: string, noticeCategories: Array<{ title?: string, slug?: string }> }> };
+
+export type ListNoticesAllQueryVariables = Exact<{
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  search?: InputMaybe<Scalars['String']['input']>;
+}>;
+
+
+export type ListNoticesAllQuery = { entries?: Array<{ abstract?: string, expiryDate?: any, id?: string, postDate?: any, slug?: string, title?: string, noticeCategories: Array<{ title?: string, slug?: string }> }> };
 
 export type ListNoticesCategoriesQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -27921,6 +27942,15 @@ export type ListServicesQueryVariables = Exact<{
 
 export type ListServicesQuery = { entries?: Array<{ abstract?: string, id?: string, slug?: string, title?: string, serviceCategories: Array<{ title?: string, slug?: string }> }> };
 
+export type ListServicesAllQueryVariables = Exact<{
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  search?: InputMaybe<Scalars['String']['input']>;
+}>;
+
+
+export type ListServicesAllQuery = { entries?: Array<{ abstract?: string, id?: string, slug?: string, title?: string, serviceCategories: Array<{ title?: string, slug?: string }> }> };
+
 export type ListServicesCategoriesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -27929,7 +27959,7 @@ export type ListServicesCategoriesQuery = { categories?: Array<{ id?: string, ti
 export type PageHomeQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type PageHomeQuery = { entries?: Array<{ id?: string, metaTitle?: string, metaDescription?: string, title?: string, companyBlocks: Array<{ title?: string, typeHandle: string, uid?: string, linkItems: Array<{ description?: string, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }> } | { title?: string, typeHandle: string, uid?: string, newsEntries: Array<{ abstract?: string, date?: any, id?: string, slug?: string, title?: string, image: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, newsCategories: Array<{ title?: string, slug?: string }> }> } | { title?: string, typeHandle: string, uid?: string, servicesLauncherItems: Array<{ abstract?: string, title?: string, serviceEntries: Array<{ abstract?: string, id?: string, slug?: string, title?: string, serviceCategories: Array<{ title?: string, slug?: string }> }>, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }> }>, ogImage: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }> }> };
+export type PageHomeQuery = { entries?: Array<{ id?: string, metaTitle?: string, metaDescription?: string, title?: string, companyBlocks: Array<{ title?: string, typeHandle: string, uid?: string, linkItems: Array<{ description?: string, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }> } | { title?: string, typeHandle: string, uid?: string, newsEntries: Array<{ abstract?: string, date?: any, id?: string, slug?: string, title?: string, image: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, newsCategories: Array<{ title?: string, slug?: string }> }> } | { title?: string, typeHandle: string, uid?: string, servicesLauncherItems: Array<{ abstract?: string, title?: string, serviceEntries: Array<{ abstract?: string, id?: string, slug?: string, title?: string, serviceCategories: Array<{ title?: string, slug?: string }> }>, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }> } | { evidence?: boolean, htmlContent?: string, title?: string, typeHandle: string, uid?: string, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }>, ogImage: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }> }> };
 
 export type PageNewsQueryVariables = Exact<{
   slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>> | InputMaybe<Scalars['String']['input']>>;
@@ -28100,7 +28130,7 @@ export type CardNoticesFragment = { abstract?: string, expiryDate?: any, id?: st
 
 export type CardServicesFragment = { abstract?: string, id?: string, slug?: string, title?: string, serviceCategories: Array<{ title?: string, slug?: string }> };
 
-export type CompanyEntryFragment = { id?: string, metaTitle?: string, metaDescription?: string, title?: string, companyBlocks: Array<{ title?: string, typeHandle: string, uid?: string, linkItems: Array<{ description?: string, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }> } | { title?: string, typeHandle: string, uid?: string, newsEntries: Array<{ abstract?: string, date?: any, id?: string, slug?: string, title?: string, image: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, newsCategories: Array<{ title?: string, slug?: string }> }> } | { title?: string, typeHandle: string, uid?: string, servicesLauncherItems: Array<{ abstract?: string, title?: string, serviceEntries: Array<{ abstract?: string, id?: string, slug?: string, title?: string, serviceCategories: Array<{ title?: string, slug?: string }> }>, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }> }>, ogImage: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }> };
+export type CompanyEntryFragment = { id?: string, metaTitle?: string, metaDescription?: string, title?: string, companyBlocks: Array<{ title?: string, typeHandle: string, uid?: string, linkItems: Array<{ description?: string, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }> } | { title?: string, typeHandle: string, uid?: string, newsEntries: Array<{ abstract?: string, date?: any, id?: string, slug?: string, title?: string, image: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }>, newsCategories: Array<{ title?: string, slug?: string }> }> } | { title?: string, typeHandle: string, uid?: string, servicesLauncherItems: Array<{ abstract?: string, title?: string, serviceEntries: Array<{ abstract?: string, id?: string, slug?: string, title?: string, serviceCategories: Array<{ title?: string, slug?: string }> }>, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }> } | { evidence?: boolean, htmlContent?: string, title?: string, typeHandle: string, uid?: string, buttonLink?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } }>, ogImage: Array<{ filename: string, focalPoint?: Array<number>, hasFocalPoint: boolean, width?: number, height?: number, src?: string, webp?: string, avif?: string }> };
 
 export type ContactItemFragment = { address?: string, id?: string, slug?: string, title?: string, email?: { id?: string, title?: string, label?: string, defaultLabel?: string, type?: string, url?: string, element?: { title?: string, filename: string, mimeType?: string } | { title?: string, uri?: string } | { title?: string, uri?: string } } };
 

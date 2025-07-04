@@ -1,0 +1,12 @@
+#import ./fragments/CardNotices.gql
+
+query ListNoticesAll($offset: Int, $limit: Int = 100, $search: String) {
+  entries(
+    section: "notices"
+    offset: $offset
+    limit: $limit
+    search: $search
+  ) {
+    ...CardNotices
+  }
+}
