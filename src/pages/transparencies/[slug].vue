@@ -35,7 +35,9 @@ const flattenParentsReverse = (parentObj: TransparenciesEntryFragment['parent'])
 
   while (current && current.parent) {
     parents.push({
-      title: current.parent.title,
+      title: current.parent.title!.length > 60
+        ? current.parent.title!.substring(0, 60) + '...'
+        : current.parent.title,
       uri: current.parent.uri
     })
     current = current.parent

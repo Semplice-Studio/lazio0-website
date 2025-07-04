@@ -1,7 +1,7 @@
 <template>
   <Section
     :id="uid"
-    class="it-page-section"
+    class="it-page-section px-0"
     :aria-labelledby="`title-${uid}`"
     :class="{
       'lightgrey-bg-b4': evidence
