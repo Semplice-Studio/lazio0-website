@@ -63,7 +63,7 @@ const flattenParentsReverse = (parentObj: TransparenciesEntryFragment['parent'])
           <NuxtLinkLocale :to="`/${parent.uri}`">{{ parent.title }}</NuxtLinkLocale>
           <span class="separator">/</span>
         </BreadcrumbItem>
-        <BreadcrumbItem>{{ data.title }}</BreadcrumbItem>
+        <BreadcrumbItem>{{ data.title!.length > 60 ? data.title!.substring(0, 60) + '...' : data.title! }}</BreadcrumbItem>
       </Breadcrumb>
     </section>
     <section class="container my-5">
