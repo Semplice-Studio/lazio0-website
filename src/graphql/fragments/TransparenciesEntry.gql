@@ -1,9 +1,9 @@
 #import ./ButtonLink.gql
 #import ./ImageFull.gql 
+#import ./NavigationLink.gql
 #import ./PageBlocks.gql
-#import ./Tag.gql
 
-fragment PagesEntry on pages_Entry {
+fragment TransparenciesEntry on transparencies_Entry {
   buttonLink {
     ...ButtonLink
   }
@@ -18,9 +18,22 @@ fragment PagesEntry on pages_Entry {
   pageBlocks {
     ...PageBlocks
   }
-  tags {
-    ...Tag
+  parent {
+    title
+    uri
+    parent {
+      title
+			uri
+      parent {
+        title
+        uri
+      }
+    }
   }
   title
   withSidebar
+  sidebarNavigation (level: 1) {
+    ...NavigationLink
+  }
+  sidebarTitle
 }

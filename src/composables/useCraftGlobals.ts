@@ -15,8 +15,6 @@ export async function useCraftGlobals<T = Record<string, unknown>>(cacheKey: str
     watch: [locale]
   })
 
-  console.log('useCraftGlobals', query.data.value)
-
   const data = computed(() => {
     if (!query.data.value?.globalSet) return []
     return query.data.value?.globalSet

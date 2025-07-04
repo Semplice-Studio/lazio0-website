@@ -1,21 +1,26 @@
 <script setup lang="ts">
 import type { CraftMatrixField } from '@/components/Blocks.vue'
-import type { PagesEntryFragment } from '@/graphql'
-import PagePagesGQL from '@/graphql/PagePages.gql'
+import type { TransparenciesEntryFragment } from '@/graphql'
+import PageTransparenciesIndexGQL from '@/graphql/PageTransparenciesIndex.gql'
 
 const route = useRoute()
 const slug = route.params.slug as string
 
-console.log('Page slug:', slug)
-
 const { isPreview, previewTimestamp } = usePreview()
+
+defineI18nRoute({
+  paths: {
+    en: '/transparencies', // -> accessible at /en/transparencies
+    it: '/amministrazione-trasparente' // -> accessible at /it/amministrazione-trasparente
+  }
+})
 
 // Disable SSR for preview mode
 if (isPreview.value) {
   definePageMeta({ ssr: false })
 }
 
-const { data, status } = await useCraftPage<PagesEntryFragment>('pages-' + slug, PagePagesGQL, { slug })
+const { data, status } = await useCraftPage<TransparenciesEntryFragment>('transparencies-' + slug, PageTransparenciesIndexGQL, { slug })
 const blocks = computed(() => (data?.pageBlocks || []) as CraftMatrixField[])
 </script>
 
@@ -33,14 +38,15 @@ const blocks = computed(() => (data?.pageBlocks || []) as CraftMatrixField[])
     <section class="container my-5">
       <PageHero :abstract="data.htmlContent" :button-link="data.buttonLink" :title="data.title" />
     </section>
-    <section v-if="blocks.length > 0" class="container my-5">
-      <PageContent
+    <section class="container my-5">
+      <PageContentWithNav
         :blocks="blocks"
+        :navigation="data.sidebarNavigation"
+        :navigation-title="data.sidebarTitle"
         :with-sidebar="data.withSidebar"
       >
-        <PageArguments :tags="data.tags" />
         <PageUpdatedAt :date="data.dateUpdated" />
-      </PageContent>
+      </PageContentWithNav>
     </section>
   </div>
 </template>

@@ -10,7 +10,6 @@ export function useCraftGraphQL() {
 
   return <T> (query: string | DocumentNode, variables?: CraftGraphqlVariables): Promise<T> => {
     const queryAsString = typeof query === 'string' ? query : print(query)
-
     try {
       const headers: Record<string, unknown> = {
         'Content-Type': 'application/json',

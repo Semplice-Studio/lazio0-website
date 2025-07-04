@@ -1,0 +1,10 @@
+#import ./fragments/TransparenciesEntry.gql
+
+query PageTransparenciesIndex {
+  # Fetching the pages entry based on the slug
+  entries(section: "transparenciesIndex") {
+    ... on transparencies_Entry {
+      ...TransparenciesEntry
+    }
+  }
+}

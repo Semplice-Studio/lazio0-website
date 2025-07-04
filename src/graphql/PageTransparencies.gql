@@ -1,0 +1,10 @@
+#import ./fragments/TransparenciesEntry.gql
+
+query PageTransparencies($slug: [String]) {
+  # Fetching the pages entry based on the slug
+  entries(section: "transparencies", slug: $slug) {
+    ... on transparencies_Entry {
+      ...TransparenciesEntry
+    }
+  }
+}
