@@ -1,9 +1,17 @@
+#import ./fragments/ImageThumb.gql
+
 query GetCompanyInfo {
   globalSet(handle: "companyInfo") {
     ... on companyInfo_GlobalSet {
       companyName
       info
       additionalInfo
+      logoHeader {
+        ...ImageThumb
+      }
+      logoFooter {
+        ...ImageThumb   
+      }
     }
   }
 }

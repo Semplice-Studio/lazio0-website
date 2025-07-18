@@ -6,7 +6,8 @@
           <div class="col-sm-12">
             <div class="it-brand-wrapper">
               <NuxtLinkLocale to="/">
-                <LogoFull />
+                <!-- <LogoFull /> -->
+                <CraftImage v-bind="companyInfo.logoFooter?.[0]" />
               </NuxtLinkLocale>
             </div>
           </div>
@@ -90,7 +91,6 @@
 </template>
 
 <script setup lang="ts">
-import LogoFull from '@/assets/images/LogoFullLight.svg'
 import type { ButtonLinkFragment, CompanyInfo_GlobalSet, Socials_GlobalSet } from '@/graphql'
 import GetCompanyInfo from '@/graphql/GetCompanyInfo.gql'
 import GetNavigation from '@/graphql/GetNavigation.gql'

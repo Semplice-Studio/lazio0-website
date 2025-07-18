@@ -6,8 +6,12 @@
   >
     <div class="row mb-4">
       <div class="col-12">
-        <h2 :id="`title-${uid}`" class="primary-color-a9 mb-3">{{ title }}</h2>
-        <div v-if="htmlContent" class="text-md-left" v-html="htmlContent" />
+        <Paragraph
+          :abstract="abstract"
+          :html-content="htmlContent"
+          :title="title"
+          :uid="uid"
+        />
       </div>
     </div>
     <Timeline>
@@ -44,6 +48,10 @@ import { isBefore, isToday, startOfToday } from 'date-fns'
 import type { TimelineItemFragment } from '@/graphql'
 
 defineProps({
+  abstract: {
+    type: String,
+    default: ''
+  },
   title: {
     type: String,
     default: ''

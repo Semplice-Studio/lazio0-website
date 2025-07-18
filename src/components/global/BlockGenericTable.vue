@@ -17,16 +17,7 @@
       </div>
       <div class="row">
         <div class="col-12">
-          <List>
-            <ListItem v-for="(item, index) in linkItems" :key="index" icon>
-              <template #icon>
-                <Icon v-if="item.buttonLink.type === 'asset'" icon="it-clip" />
-                <Icon v-else-if="item.buttonLink.type === 'entry'" icon="it-link" />
-                <Icon v-else icon="it-external-link" />
-              </template>
-              <CraftLink class="text" :link="item.buttonLink" />
-            </ListItem>
-          </List>
+          <Table :table-data="table" />
         </div>
       </div>
     </div>
@@ -34,11 +25,7 @@
 </template>
 
 <script setup lang="ts">
-import type { ButtonLinkFragment } from '@/graphql'
-
-interface LinkItem {
-  buttonLink: ButtonLinkFragment
-}
+import type { Table_TableMakerField } from '~/graphql'
 
 defineProps({
   abstract: {
@@ -53,9 +40,9 @@ defineProps({
     type: String,
     default: ''
   },
-  linkItems: {
-    type: Array as PropType<LinkItem[]>,
-    default: () => ([])
+  table: {
+    type: Object as PropType<Table_TableMakerField>,
+    default: null
   },
   uid: {
     type: String,

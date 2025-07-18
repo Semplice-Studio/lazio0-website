@@ -1,6 +1,8 @@
 #import ./ButtonLink.gql
 
 fragment BlockListLinks on blockListLinks_Entry {
+  abstract
+  htmlContent
   linkItems {
     ...on linkItem_Entry {
       buttonLink {

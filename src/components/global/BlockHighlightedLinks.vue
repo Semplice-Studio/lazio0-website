@@ -1,7 +1,7 @@
 <template>
   <Section
     :id="uid"
-    class="it-page-section px-0 lightgrey-bg-b4"
+    class="it-page-section px-0 highlighted-links"
     :aria-labelledby="`title-${uid}`"
   >
     <div class="container">
@@ -28,7 +28,7 @@
 <script setup lang="ts">
 import type { ButtonLinkFragment } from '@/graphql'
 
-interface LinkItems {
+interface LinkItem {
   description?: string
   buttonLink: ButtonLinkFragment
 }
@@ -39,7 +39,7 @@ defineProps({
     default: ''
   },
   linkItems: {
-    type: Array as PropType<LinkItems[]>,
+    type: Array as PropType<LinkItem[]>,
     default: () => ([])
   },
   uid: {

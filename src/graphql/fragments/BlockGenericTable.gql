@@ -1,0 +1,17 @@
+fragment BlockGenericTable on blockGenericTable_Entry {
+  abstract
+  htmlContent
+  table {
+    table
+    rows
+    columns {
+      align
+      heading
+      width
+      type
+    }
+  }
+  title
+  typeHandle
+  uid
+}

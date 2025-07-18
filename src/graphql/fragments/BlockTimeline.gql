@@ -1,6 +1,7 @@
 #import ./TimelineItem.gql
 
 fragment BlockTimeline  on blockTimeline_Entry {
+  abstract
   id
   htmlContent
   timelineItems {

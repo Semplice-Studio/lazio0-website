@@ -1,4 +1,5 @@
 fragment BlockParagraph on blockParagraph_Entry {
+  abstract
   buttonLink {
     ...ButtonLink
   }

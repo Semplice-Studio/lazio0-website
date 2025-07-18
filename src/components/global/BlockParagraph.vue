@@ -10,8 +10,15 @@
   >
     <div class="row">
       <div class="col-12">
-        <h2 :id="`title-${uid}`" class="primary-color-a9 mb-3">{{ title }}</h2>
-        <div v-if="htmlContent" class="text-md-left" v-html="htmlContent" />
+        <Paragraph
+          :abstract="abstract"
+          :html-content="htmlContent"
+          :title="title"
+          :uid="uid"
+        />
+        <!-- <h2 :id="`title-${uid}`" class="primary-color-a9 mb-3">{{ title }}</h2>
+        <div v-if="abstract" class="subtitle-text neutral-1-color-a7" v-html="abstract" />
+        <div v-if="htmlContent" class="text-md-left" v-html="htmlContent" /> -->
         <Button
           v-if="buttonLink"
           :download="isAsset ? true : undefined"
@@ -34,6 +41,10 @@
 import type { ButtonLinkFragment } from '@/graphql'
 
 const props = defineProps({
+  abstract: {
+    type: String,
+    default: ''
+  },
   buttonLink: {
     type: Object as PropType<ButtonLinkFragment>,
     default: () => ({})
@@ -67,3 +78,10 @@ const {
   isAsset
 } = useCraftLink(props.buttonLink)
 </script>
+
+<style scoped lang="scss">
+.subtitle-text :deep(p) {
+  font-size: 1.5rem;
+  line-height: 1.5;
+}
+</style>

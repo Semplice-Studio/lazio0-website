@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import Logo from '@/assets/images/Logo.svg'
-import LogoFull from '@/assets/images/LogoFull.svg'
-import type { MainNavigation_Node, NodeInterface } from '@/graphql'
+import type { CompanyInfo_GlobalSet, MainNavigation_Node, NodeInterface } from '@/graphql'
+import GetCompanyInfo from '@/graphql/GetCompanyInfo.gql'
 import GetNavigation from '@/graphql/GetNavigation.gql'
 import { NuxtLinkLocale } from '#components'
 
 const route = useRoute()
 const { locale } = useI18n()
+const { data: companyInfo } = await useCraftGlobals<CompanyInfo_GlobalSet>('companyInfo', GetCompanyInfo)
 const { data: navigation } = await useCraftNavigation('mainNavigation', GetNavigation, { navHandle: 'mainNavigation' })
 
 const open = ref(false)
@@ -59,7 +60,8 @@ function getNavItemURL(item: NodeInterface) {
       <Header theme="light" type="center">
         <HeaderContent>
           <HeaderBrand to="/" :tag="NuxtLinkLocale">
-            <LogoFull />
+            <!-- <LogoFull /> -->
+            <CraftImage v-bind="companyInfo.logoHeader?.[0]" />
           </HeaderBrand>
           <HeaderRightZone>
             <HeaderSearch icon-name="it-search" label="Cerca" />

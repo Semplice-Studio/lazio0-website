@@ -29,7 +29,7 @@ import type { ButtonLinkFragment } from '@/graphql'
 
 defineProps({
   buttonLink: {
-    type: Array as PropType<ButtonLinkFragment>,
+    type: Object as PropType<ButtonLinkFragment>,
     required: true
   },
   description: {
@@ -42,7 +42,9 @@ defineProps({
 <style lang="scss" scoped>
 .card-link {
   border-radius: 0;
-  background-color: rgb(0 0 0 / 0.04);
+  // background-color: rgb(0 0 0 / 0.04);
+  border-left-color: rgb(0 0 0 / 0.04);
+  background-color: rgb(233 240 238 / 1);
   box-shadow: none;
 }
 </style>

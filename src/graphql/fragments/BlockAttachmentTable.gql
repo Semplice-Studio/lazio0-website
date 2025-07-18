@@ -1,0 +1,18 @@
+#import ./ButtonLink.gql
+
+fragment BlockAttachmentTable on blockAttachmentTable_Entry {
+  abstract
+  attachmentItems {
+    ...on attachmentItem_Entry {
+      buttonLink {
+        ...ButtonLink
+      }
+      date
+      size
+    }
+  }
+  htmlContent
+  title
+  typeHandle
+  uid
+}

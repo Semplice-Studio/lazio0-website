@@ -1,4 +1,6 @@
+#import ./BlockAttachmentTable.gql
 #import ./BlockContacts.gql
+#import ./BlockGenericTable.gql
 #import ./BlockMedia.gql
 #import ./BlockParagraph.gql
 #import ./BlockTimeline.gql
@@ -6,6 +8,12 @@
 
 fragment PageBlocks on pageBlocks_MatrixField {
   __typename
+  ... on blockAttachmentTable_Entry {
+    ...BlockAttachmentTable
+  }
+  ... on blockGenericTable_Entry {
+    ...BlockGenericTable
+  }
   ... on blockContacts_Entry {
     ...BlockContacts
   }
