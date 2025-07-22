@@ -51,7 +51,7 @@ function getNavItemURL(item: NodeInterface) {
     <Header class="primary-bg-a10" type="slim">
       <HeaderContent>
         <HeaderBrand responsive to="/" :tag="NuxtLinkLocale">
-          <Logo class="me-2" style="height: 24px;" /><!--
+          <Logo class="me-2" style="height: 18px;" /><!--
           -->REGIONE LAZIO
         </HeaderBrand>
       </HeaderContent>
