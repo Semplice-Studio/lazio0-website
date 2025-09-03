@@ -48,6 +48,10 @@ export default defineNuxtConfig({
     "nuxt-svgo",
     "nuxt-swiper",
   ],
+  devServer: {
+    host: "0.0.0.0",
+    port: process.env.NUXT_INTERNAL_PORT || 3000,
+  },
   runtimeConfig: {
     public: {
       url: process.env.NUXT_URL,
@@ -61,10 +65,6 @@ export default defineNuxtConfig({
         },
       },
     },
-  },
-  devServer: {
-    host: "0.0.0.0",
-    port: 3000, // interna al container
   },
   scripts: {
     registry: {
