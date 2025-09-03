@@ -27,7 +27,8 @@ USER nuxt
 
 # Espone la porta
 EXPOSE 8181
-
+ENV NUXT_HOST=0.0.0.0
+ENV NUXT_PORT=8181
 # Variabili d'ambiente
 ENV PORT=8181
 ENV NODE_ENV=production
