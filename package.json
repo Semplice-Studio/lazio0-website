@@ -3,8 +3,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "nuxt build",
-    "dev": "nuxt dev",
+    "build": "nuxt build --port 8181",
+    "dev": "nuxt dev --port 8181",
     "generate": "nuxt generate",
     "lint": "eslint . --fix",
     "preview": "nuxt preview",
