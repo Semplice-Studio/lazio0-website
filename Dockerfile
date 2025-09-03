@@ -7,7 +7,6 @@ WORKDIR /app
 
 # Copia package files
 COPY package*.json ./
-COPY yarn.lock* ./
 
 # Installa dipendenze
 RUN npm install
