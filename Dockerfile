@@ -26,11 +26,8 @@ RUN chown -R nuxt:nodejs /app
 USER nuxt
 
 # Espone la porta
-EXPOSE 8181
-ENV NUXT_HOST=0.0.0.0
-ENV NUXT_PORT=8181
+EXPOSE 3000
 # Variabili d'ambiente
-ENV PORT=8181
 ENV NODE_ENV=production
 
 # Comando di avvio
