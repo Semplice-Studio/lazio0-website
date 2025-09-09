@@ -13,7 +13,7 @@
           <FormSearchAutocomplete v-model:search="search" :autocomplete-items="autocompleteItems" />
         </div>
       </div>
-      <div class="row variable-gutters">
+      <!-- <div class="row variable-gutters">
         <div class="col-lg-5">
           <div class="searches-list-wrapper">
             <div class="other-link-title">FORSE STAVI CERCANDO</div>
@@ -36,10 +36,10 @@
               <li>
                 <a href="#">Voucher connettività</a>
               </li>
-            </ul><!-- /searches-list -->
-          </div><!-- /searches-list-wrapper -->
+            </ul>
+          </div>
         </div>
-      </div>
+      </div> -->
     </div>
   </Modal>
 </template>
